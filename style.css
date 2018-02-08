@@ -1,0 +1,84 @@
+form {
+  display: block;
+  margin: auto;
+  border: 1px solid #c6c7cc;
+  border-radius: 5px;
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 300px;
+}
+
+.account-info {
+  border: 0;
+  margin: auto;
+  padding: 40px 20px;
+}
+
+.account-info .form-header {
+  color: #395870;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.account-info .form-field {
+  color: #395870;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.account-info input {
+  background: #fff;
+  border: none;
+  border-bottom: 2px solid #c6c7cc;
+  color: #636466;
+  padding: 6px;
+  margin-top: 6px;
+  width: 95%;
+}
+
+.account-info .btn {
+  display: block;
+  background: #49708f;
+  border: 0;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 8px 16px;
+  width: 100px;
+  margin: auto;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 150px;
+  background-color: #49708f;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  bottom: 80%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip .tooltip-text::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border: 5px solid transparent;
+  border-top-color: #49708f;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
