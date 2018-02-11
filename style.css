@@ -1,21 +1,16 @@
-* {
-  box-sizing: border-box;
-}
-
-*:focus {
-  outline: none;
-}
 body {
   font-family: Arial;
   padding: 50px;
 }
+
 .login {
   margin: 20px auto;
   width: 300px;
 }
+
 .login-screen {
   border: 1px solid #c6c7cc;
-  background-color: #FFF;
+  background-color: #fff;
   padding: 20px;
   border-radius: 5px
 }
@@ -37,6 +32,7 @@ body {
 
 .app-title {
   text-align: center;
+  text-transform: uppercase;
   color: #777;
 }
 
@@ -49,7 +45,7 @@ body {
 
 .login-field {
   text-align: center;
-  background-color: #ECF0F1;
+  background-color: #ecf0f1;
   border: 2px solid transparent;
   border-radius: 3px;
   font-size: 16px;
@@ -60,14 +56,14 @@ body {
 }
 
 input:focus {
-  border: 2px solid #3498DB;
+  border: 2px solid #3498db;
   box-shadow: none;
 }
 
 .btn {
   border: 2px solid transparent;
-  background: #3498DB;
-  color: #ffffff;
+  background: #3498db;
+  color: #fff;
   font-size: 16px;
   line-height: 25px;
   padding: 10px 0;
