@@ -7,12 +7,16 @@
 </head>
 
 <body>
-<div class="login">
-  <form  class="login-screen" action="#">
+<div class="authorisation">
+  <form  class="screen" action="#">
+    <ul class="tab-group">
+      <li class="tab active"><a href="index.html">Log In</a></li>
+      <li class="tab"><a href="signUp.html">Sign Up</a></li>
+    </ul>
+
     <div class="app-title">
       <h1>hr app</h1>
     </div>
-
     <div class="login-form">
       <div class="control-group">
         <input type="text" class="login-field" value="" placeholder="login" id="login-name" required>
@@ -29,8 +33,9 @@
         <span class="tooltip-text">Enter your password</span>
       </div>
 
-      <input class="btn btn-primary btn-large btn-block" type="submit" name="submit" value="Login">
+      <input class="btn" type="submit" name="submit" value="Login">
     </div>
+
   </form >
 </div>
 </body>

@@ -3,15 +3,49 @@ body {
   padding: 50px;
 }
 
-.login {
-  margin: 20px auto;
-  width: 300px;
+.tab-group {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #3498db;
 }
 
-.login-screen {
+
+
+
+.tab {
+  float: left;
+  width: 50%;
+}
+
+
+.active{
+  background-color: #2980b9;
+}
+
+.tab a {
+  display: block;
+  color: #fff;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.tab a:hover {
+  background-color: #2980b9;
+}
+
+
+.authorisation {
+  margin: 20px auto;
+  width: 400px;
+}
+
+.screen {
   border: 1px solid #c6c7cc;
   background-color: #fff;
-  padding: 20px;
+  padding-bottom: 20px;
   border-radius: 5px
 }
 
@@ -31,27 +65,30 @@ body {
 }
 
 .app-title {
-  text-align: center;
   text-transform: uppercase;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 50px;
   color: #777;
 }
 
 .login-form {
   text-align: center;
 }
+
 .control-group {
   margin-bottom: 10px;
 }
 
 .login-field {
-  text-align: center;
+  text-align: left;
   background-color: #ecf0f1;
   border: 2px solid transparent;
   border-radius: 3px;
   font-size: 16px;
   font-weight: 200;
-  padding: 10px 0;
-  width: 250px;
+  padding: 10px 10px;
+  width: 330px;
   transition: border .5s;
 }
 
@@ -73,12 +110,63 @@ input:focus {
   box-shadow: none;
   transition: 0.25s;
   display: block;
-  width: 250px;
+  width: 350px;
   margin: 0 auto;
 }
 
 .btn:hover {
-  background-color: #2980B9;
+  background-color: #2980b9;
+}
+
+.signUp-form{
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.photo{
+  display: inline-block;
+  width: 40%;
+  float: left;
+}
+
+.signUp-field {
+  text-align: left;
+  background-color: #ecf0f1;
+  border: 2px solid transparent;
+  border-radius: 3px;
+  font-size: 16px;
+  font-weight: 200;
+  padding: 10px 10px;
+  width: 180px;
+  transition: border .5s;
+}
+
+.label-uploads {
+  margin-top: 10px;
+  background-color: #f2f2f2;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: 1px ridge grey;
+  font-size: 0.8rem;
+  height: auto;
+}
+
+.label-uploads:hover{
+  background-color: #dfdfdf;
+}
+
+
+.signUp{
+  display: inline-block;
+  width: 60%;
+  float: left;
+}
+
+.portrait{
+  width: 80px;
+  height: 80px;
+  margin-bottom: 5px;
 }
 
 
