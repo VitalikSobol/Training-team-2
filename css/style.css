@@ -1,53 +1,71 @@
-body{
-  background-color: #9098cd; !important;
+body {
+  background-color: #9098cd;
 }
-.center_form_position {
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+
+div {
+  background-color: #fff;
+  font-size: 20px;
+  font-family: serif;
 }
-.center_form_position.responsive {
-  width: 50%;
-  height: 60%;
-  min-width: 350px;
-  max-width: 500px;
-  padding: 40px;
+
+.container {
+  text-align: center;
+  margin: 5% auto;
+  width: 35%;
+  padding: 5px;
+  white-space: pre-line;
 }
-h2{
-  color: #0d141c;
-  font-family: Lobster, sans-serif;
+
+.field-container {
+  margin: 0 auto 0 auto;
+  width: 85%;
+  white-space: normal;
 }
-label{
-  font-family: Lobster, sans-serif;
+
+.field {
+  padding: 10px;
+  text-align: right;
+}
+
+.personal-fields {
+  width: 75%;
+  height: 25px;
+  border-radius: 4px;
+}
+
+.submit-container {
+  margin: 0 auto 0 auto;
+  width: 85%;
+  height: 45px;
+  white-space: normal;
+}
+
+.btn-submit {
+  margin: 4px;
+  height: 75%;
+  width: 35%;
+  background-color: #5ee07d;
+  border-radius: 4px;
+  color: #fff;
   font-size: 20px;
 }
-form{
-  background: #FFFFFF;
-  padding: 20px 20px 20px 20px;
-  border: 3px solid #17b5ee;
-  border-radius: 10px;
+
+label {
+  float: left;
 }
-form > div > div > input[type = "text"],
-form > div > div > input[type = "password"],
-form > div > div > input[type = "email"]{
-  width: 100%;
-  border: 0;
-  padding: 20px 20px 20px 50px;
-  border-radius: 20px;
-  background: #ffffff;
+
+h2 {
+  text-transform: uppercase;
 }
-form > div > div > input[type = "text"]:focus,
-form > div > div > input[type = "password"]:focus,
-form > div > div > input[type = "email"]:focus{
-  background: #fdffff;
+
+.personal-fields:focus {
+  background-color: #accfff;
 }
-form > div > div > input[type = "text"]:valid,
-form > div > div > input[type = "password"]:valid,
-form > div > div > input[type = "email"]:valid{
-  background: #44fa9d;
+
+.personal-fields:valid {
+  background-color: #44fa9d;
 }
-form > div > div > input[type = "text"]:invalid:not(:focus),
-form > div > div > input[type = "password"]:invalid:not(:focus),
-form > div > div > input[type = "email"]:invalid:not(:focus){
-  background: #ff8379;
+
+.personal-fields:invalid {
+  background-color: #ff8379;
 }
