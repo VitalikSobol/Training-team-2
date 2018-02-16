@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Vacancies</title>
+  <link rel="stylesheet" type="text/css" href="../css/vacancies.css">
+</head>
+<body>
+<div id="user-interface">
+  <div id="side-container">
+    <div id="title">
+      <h2>Hr app</h2>
+    </div>
+    <div id="menu">
+      <button class="btn-menu">Interview</button>
+      <button class="btn-menu">Vacancies</button>
+      <button class="btn-menu">Candidates</button>
+      <button class="btn-menu">Management</button>
+    </div>
+  </div>
+  <div id="content-container">
+    <div id="search-form-container">
+      <div class="search-form">
+        <form>
+          <input id="search-field" type="text" placeholder="Search for vacancies, candidates.....">
+          <button class="button-search" type="submit"><img id="icon-search" src="../images/icon-search.png" alt="icon-search">
+          </button>
+        </form>
+      </div>
+      <div class="button-group">
+        <button class="btn-control"><img id="icon-remainder" src="../images/remainder.png" alt="remainder"></button>
+        <button class="btn-control"><img id="icon-sign-out" src="../images/sign-out.png" alt="sign-out"></button>
+      </div>
+    </div>
+    <div id="filtering-menu-container">
+      <div id="filtering-header">
+        <h3>Vacancies</h3>
+      </div>
+      <div id="filtering-panel">
+        <label class="filtering-label" for="filtering-list">Filter by</label>
+        <select id="filtering-list">
+          <option></option>
+        </select>
+        <span class="filtering-criteria">
+          <label for="first"></label>
+            <input id="first" class="filtering-criteria-input" type="text" value="first" disabled>
+        </span>
+        <span class="filtering-criteria">
+          <label for="second"></label>
+            <input id="second" class="filtering-criteria-input" type="text" value="second" disabled>
+        </span>
+      </div>
+    </div>
+    <div id="vacancies-table-container">
+      <table id="vacancies-table">
+        <thead>
+        <tr>
+          <th>Specialization</th>
+          <th>Name</th>
+          <th>Last Name</th>
+          <th>Detail</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Java Developer</td>
+          <td>Some one</td>
+          <td>Some where</td>
+          <td>
+            <button class="btn-details">View Candidates</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Java Developer</td>
+          <td>Some one</td>
+          <td>Some where</td>
+          <td>
+            <button class="btn-details">View Candidates</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Java Developer</td>
+          <td>Some one</td>
+          <td>Some where</td>
+          <td>
+            <button class="btn-details">View Candidates</button>
+          </td>
+        </tr>
+        <tr>
+          <td>Java Developer</td>
+          <td>Some one</td>
+          <td>Some where</td>
+          <td>
+            <button class="btn-details">View Candidates</button>
+          </td>
+        </tr>
+        </tbody>
+        <tfoot>
+        </tfoot>
+      </table>
+    </div>
+    <div id="table-control-container">
+      <label class="table-control" for="record-selector">Record per page</label>
+      <select id="record-selector">
+        <option>10</option>
+        <option>15</option>
+      </select>
+      <span class="total-elements">1-10 of 100</span>
+      <button class="btn-table-control"><</button>
+      <button class="btn-table-control">></button>
+      <button class="btn-add-record"><img src="../images/add-icon.png" alt="add image"></button>
+    </div>
+  </div>
+</div>
+</body>
+</html>
