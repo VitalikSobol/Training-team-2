@@ -2,100 +2,106 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <link rel="stylesheet" type="text/css" href="assets/css/styles.css">
   <title>Vacancies</title>
-  <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="vacancies">
+<body class="vacancies-body">
 
-<div class="vacancies-navbar">
-  <h4>hr app</h4>
-  <ul>
-      <li><a href="#">Interview</a></li>
-      <li class="active"><a href="#">Vacancies</a></li>
-      <li><a href="#">Candidates</a></li>
-      <li><a href="#">Management</a></li>
-  </ul>
-
+<div class="header">
+  <span class="header-logo">HR APP</span>
+  <nav class="menu">
+    <ul class="menu-list">
+      <li class="menu-item"><a href="#">Interview</a></li>
+      <li class="menu-item menu-item_active"><a href="#">Vacancies</a></li>
+      <li class="menu-item"><a href="#">Candidates</a></li>
+      <li class="menu-item"><a href="#">Management</a></li>
+    </ul>
+  </nav>
 </div>
-<div class="vacancies-content">
-  <div class="header">
+<div class="content">
+  <div class="content-header">
     <div class="search">
-      <img class="search-image" src="assets/img/search.png">
+      <div class="search-image"></div>
       <input class="search-input" placeholder="Search for vacancies, candidates..." name="search" type="search">
     </div>
     <div class="header-button">
-      <img src="assets/img/notification.png" alt="">
-      <img src="assets/img/exit.png" alt="">
+      <button class="button-bell"></button>
+      <button class="button-enter"></button>
     </div>
   </div>
-
-  <div class="content">
-    <h1>Vacancies</h1>
-    <div class="filter-by">
+  <div class="content-body">
+    <h1 class="header-text">Vacancies</h1>
+    <div class="filter">
       <span>Filter by</span>
-      <div class="filters filters-menu">
-        <span>filters</span>
-        <img class="arrow-img" src="assets/img/arrow.png" alt="">
+      <div class="filter-items dropdown">
+        <div class="dropdown-button">
+          <span>Filter</span>
+          <div class="dropdown-arrow"></div>
+        </div>
+        <div class="dropdown-content">
+          <a href="#">filter 1</a>
+          <a href="#">filter 2</a>
+          <a href="#">filter 3</a>
+          <a href="#">filter 4</a>
+          <a href="#">filter 5</a>
+        </div>
       </div>
-      <div class="filters filters-parameters">
+      <div class="filter-item">
         <span>filter 1</span>
-        <img class="cancel-img" src="assets/img/cancel.png" alt="">
+        <button class="button-delete"></button>
       </div>
-      <div class="filters filters-parameters">
+      <div class="filter-item">
         <span>filter 2</span>
-        <img class="cancel-img" src="assets/img/cancel.png" alt="">
+        <button class="button-delete"></button>
       </div>
     </div>
-    <table class="data">
+    <table>
       <tr>
         <th>Vacancies</th>
-        <th>-----</th>
-        <th>-----</th>
+        <th>-//-</th>
+        <th>-//-</th>
         <th>Candidates</th>
       </tr>
       <tr>
         <td>Java Developer</td>
-        <td>-----</td>
-        <td>-----</td>
+        <td>---</td>
+        <td>---</td>
         <td><a href="#">View Candidates</a></td>
       </tr>
       <tr>
         <td>Java Developer</td>
-        <td>-----</td>
-        <td>-----</td>
+        <td>---</td>
+        <td>---</td>
         <td><a href="#">View Candidates</a></td>
       </tr>
       <tr>
         <td>Java Developer</td>
-        <td>-----</td>
-        <td>-----</td>
-        <td><a href="#">View Candidates</a></td>
-      </tr>
-      <tr>
-        <td>Java Developer</td>
-        <td>-----</td>
-        <td>-----</td>
-        <td><a href="#">View Candidates</a></td>
-      </tr>
-      <tr>
-        <td>Java Developer</td>
-        <td>-----</td>
-        <td>-----</td>
+        <td>---</td>
+        <td>---</td>
         <td><a href="#">View Candidates</a></td>
       </tr>
     </table>
-    <button class="add-data">+</button>
+    <button class="button-add">+</button>
   </div>
-  <div class="footer">
+  <div class="content-footer">
     <span>Rows per page:</span>
-    <div class="pages">
-      <span>10</span>
-      <img src="assets/img/arrow.png" alt="">
+    <div class="dropdown page-items">
+      <div class="dropdown-button">
+        <span>10</span>
+        <div class="dropdown-arrow"></div>
+      </div>
+      <div class="dropdown-content">
+        <a href="#">1</a>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">4</a>
+        <a href="#">5</a>
+      </div>
     </div>
     <span>1-10 of 100</span>
     <div class="button-nav">
-      <img src="assets/img/left.png" alt="">
-      <img src="assets/img/right.png" alt="">
+      <button class="button-prev"></button>
+      <button class="button-next"></button>
     </div>
   </div>
 </div>
