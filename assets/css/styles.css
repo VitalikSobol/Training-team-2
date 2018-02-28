@@ -1,3 +1,4 @@
+
 /*{Use only #
   --gray: #dcdcdc;
   --dark-gray: #636466;
@@ -528,5 +529,52 @@ div.filter > span {
     overflow-y: hidden;
     -ms-overflow-style: -ms-autohiding-scrollbar;
     border: none;
+  }
+}
+@media screen and (max-width: 600px) {
+  .filter {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .filter-item {
+    margin: 4px;
+  }
+  .search-input {
+    width: 100%;
+  }
+  .mobile-device {
+    display: none;
+  }
+  .header-button {
+    display: inline-flex;
+  }
+  .search span {
+    padding: 8px;
+  }
+  .button-nav button {
+    margin: 0 0;
+  }
+  .content-vacancies-footer {
+    display: inline-flex;
+  }
+  .content-vacancies-footer span {
+    padding: 0 25px;
+    font-size: 15px;
+  }
+  .button-add {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .content-vacancies-footer span {
+    padding: 0 15px;
+    font-size: 15px;
+  }
+}
+@media screen and (max-width: 310px) {
+  .content-vacancies-footer span {
+    padding: 0 5px;
+    font-size: 15px;
   }
 }
