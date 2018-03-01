@@ -7,29 +7,6 @@
       $('.navigation').toggleClass('show');
     });
 
-    $('.dropdown-content a').click(function () {
-
-      var $innerText = $(this).text(),
-        $panel = $(this).parents('.filterable'),
-        $filters = $('.filters').find('input[placeholder =' + $innerText + ']'),
-        $tbody = $panel.find('.table tbody');
-      if ($('.filter-item span:contains('+$innerText+')').length === 0)
-      {
-        $('.filter').append('<div class="filter-item"><span>' + $innerText + '</span><button class="button-delete"></button></div>');
-        $filters.prop('disabled', false);
-        $tbody.find('.no-result').remove();
-        $tbody.find('tr').show();
-
-        $('.button-delete').click(function () {
-          var filterItem = $(this).parent();
-          filterItem.remove();
-          $filters.prop('disabled', true);
-          $tbody.find('.no-result').remove();
-          $tbody.find('tr').show();
-        });
-      }
-    });
-
 
     $('.filterable .filters input').keyup(function (e) {
 
