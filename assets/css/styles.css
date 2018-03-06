@@ -405,6 +405,32 @@ div.filter > span {
   height: 100%;
   padding: 0;
 }
+
+.name-developer .dropdown-arrow {
+  width: 20px;
+  height: 14px;
+  background: url(../images/sprite.png) 0 -5px;
+}
+
+.name-developer .dropdown-button {
+  color: black;
+  font-size: 13px;
+  width: 200px;
+  background: white;
+}
+
+.name-developer .dropdown-content {
+  width: 200px;
+}
+
+.name-developer .dropdown-button:hover {
+  background: #c0c0c0;
+}
+
+.name-developer img {
+  margin-top: 10px;
+}
+
 .name-developer {
   display: flex;
   flex-direction: column;
