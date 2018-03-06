@@ -392,22 +392,48 @@ div.filter > span {
 .page-profile-header p {
   padding: 4px 0 0 30px;
 }
-.page-profile-table {
-  height: 1px;
-  min-height: calc(100vh - 80px);
+
+.page-profile-header a {
+  color: #3f3f3f;
 }
+
 .profile-table-left-part {
-  border-right: 1px solid #c0c0c0;
-  height: 100%;
+  padding: 0;
 }
 .profile-table-right-part {
+  border-left: 1px solid #c0c0c0;
   height: 100%;
+  padding: 0;
 }
+
+.name-developer .dropdown-arrow {
+  width: 20px;
+  height: 14px;
+  background: url(../images/sprite.png) 0 -5px;
+}
+
+.name-developer .dropdown-button {
+  color: black;
+  font-size: 13px;
+  width: 200px;
+  background: white;
+}
+
+.name-developer .dropdown-content {
+  width: 200px;
+}
+
+.name-developer .dropdown-button:hover {
+  background: #c0c0c0;
+}
+
+.name-developer img {
+  margin-top: 10px;
+}
+
 .name-developer {
   display: flex;
   flex-direction: column;
-  margin-right: -15px;
-  margin-left: -15px;
   border-bottom: 1px solid #c0c0c0;
   height: 55%;
   padding: 20px 20px 20px 20px;
@@ -426,8 +452,6 @@ div.filter > span {
 .contact-developer {
   display: flex;
   flex-direction: column;
-  margin-right: -15px;
-  margin-left: -15px;
   height: 45%;
   padding: 15px 20px 20px 20px;
 }
@@ -442,13 +466,88 @@ div.filter > span {
   font-weight: bold;
 }
 .experience-developer {
-  margin-right: -15px;
-  margin-left: -15px;
-  height: 75%;
+  min-height: 70vh;
+  padding: 10px 20px;
 }
+
+.experience {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.experience-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px 0
+}
+
+.experience-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+
+.experience-info .text-muted{
+  font-size: 12px;
+  margin: 0;
+}
+
+.experience-company {
+  display: flex;
+  flex-direction: row;
+  width: 65%;
+}
+
+.info-period {
+  padding: 3px 10px;
+  margin-bottom: 0;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+}
+
+.company-info {
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.company-name {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.title-name-experience {
+  font-size: 20px;
+}
+
+.experience-map {
+  margin: 0 20px;
+}
+
+.experience-point {
+  border-radius: 50%;
+  border: 2px solid #c0c0c0;
+  height: 9px;
+  width: 9px;
+}
+
+.experience-line {
+  width: 2px;
+  border: 1px solid #c0c0c0;
+  height: 100%;
+  margin-left: 4px;
+}
+
+.experience-item:nth-child(even) .experience-line {
+  border-style: dashed;
+}
+
+.experience-item:first-child .experience-line {
+  display: none;
+}
+
 .skill-developer {
-  margin-right: -15px;
-  margin-left: -15px;
   padding: 15px 0 0 15px;
   border-top: 1px solid #c0c0c0;
   height: 25%;
@@ -617,9 +716,10 @@ div.filter > span {
   }
   .profile-table-right-part {
     height: auto;
+    border: none;
   }
   .page-profile-table{
-  height: auto;
+    height: auto;
   }
 }
   @media (min-width: 992px) {
@@ -682,6 +782,10 @@ div.filter > span {
     .content-footer span {
       padding: 0 15px;
       font-size: 15px;
+    }
+
+    .experience-info {
+      font-size: 12px;
     }
   }
   @media screen and (max-width: 310px) {
