@@ -84,6 +84,62 @@ VALUES
 ('Human Resource', 'Daniil', 'Aldridge', 'Reject', 'some@gmail.com'), ('Java Script Developer', 'Evgenii', 'Holmes', 'Reject', 'some@gmail.com');
 
 
+-- -----------------------------------------------------
++-- Table `hr_application`.`candidates`
++-- -----------------------------------------------------
++CREATE TABLE IF NOT EXISTS `hr_application`.`candidates` (
++  `ID` BIGINT(20) NOT NULL AUTO_INCREMENT,
++  `NAME` VARCHAR(255) NOT NULL,
++  `LAST_NAME` VARCHAR(255) NOT NULL,
++  `PAYMENT` INT(11) NOT NULL,
++  `JOB_TITLE` VARCHAR(255) NOT NULL,
++  `IMAGE_URL` VARCHAR(255) NOT NULL,
++  `STATUS` VARCHAR(255) NOT NULL,
++  `DATE_PUBLISHING` DATE NOT NULL,
++  PRIMARY KEY (`ID`))
++ENGINE = InnoDB
++AUTO_INCREMENT = 1
++DEFAULT CHARACTER SET = utf8; 
++
++INSERT INTO `candidates` (`JOB_TITLE`, `NAME`, `LAST_NAME`, `STATUS`, `PAYMENT`, `DATE_PUBLISHING`, `IMAGE_URL`)
++VALUES 
++('Java Developer', 'Mohammed', 'Smith', 'CV-Accepted', 1500, '2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'EVIE', 'Hoggarth', 'CV-Accepted', 1500,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'George', 'Hoggarth', 'CV-Accepted', 450,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Alexandr', 'Hoggarth', 'CV-Accepted', 1500,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'George', 'Aldridge', 'NEW', 200,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Joshua', 'Jenkin', 'Accepted for Interview', 200,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Alexandr', 'Holmes', 'Accepted for Interview', 350,'2018-03-05', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Joshua', 'Holmes', 'Accepted for Interview', 350,'2018-03-05', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Alexandr', 'Jacobson', 'Accepted for Interview', 1500,'2018-03-05', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Tonny', 'Holmes', 'Accepted for Interview', 500,'2018-03-05', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Tonny', 'Hoggarth', 'Accepted for Interview', 500,'2018-03-05', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Tonny', 'Hoggarth', 'CV-Rejected', 100,'2018-03-05', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Tonny', 'Hoggarth', 'CV-Rejected', 100,'2018-03-05', 'http://via.placeholder.com/500x350/66bfff'), 
++('Java Developer', 'Tonny', 'Hoggarth', 'Accepted for Interview', 500,'2018-03-05', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'Tonny', 'Adamson', 'Accepted for Interview', 500,'2018-03-05', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'John', 'Adamson', 'Accepted for Interview', 500,'2018-03-06', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'John', 'Aldridge', 'CV-Rejected', 500,'2018-03-06', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'John', 'Jenkin', 'CV-Rejected', 100,'2018-03-06', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Developer', 'John', 'Adamson', 'Accepted for Interview', 100,'2018-03-06', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'John', 'Adamson', 'Accepted for Interview', 100,'2018-03-06', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'John', 'Adamson', 'NEW', 500,'2018-03-06', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'John', 'Adamson', 'NEW', 450,'2018-03-06', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'John', 'Adamson', 'CV-Rejected', 450,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'John', 'Adamson', 'CV-Rejected', 450,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'John', 'Holmes', 'CV-Accepted', 450,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Henry', 'Aldridge', 'CV-Accepted', 450,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Henry', 'Jenkin', 'Accepted for Interview', 450,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Ivan', 'Adamson', 'Accepted for Interview', 450,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Henry', 'Adamson', 'Accepted for Interview', 350,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Ivan', 'Adamson', 'CV-Rejected', 350,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Henry', 'Adamson', 'CV-Accepted', 350,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Ivan', 'Holmes', 'CV-Accepted', 350,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Evgenii', 'Aldridge', 'CV-Accepted', 450,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Evgenii', 'Aldridge', 'CV-Rejected', 450,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Evgenii', 'Adamson', 'CV-Accepted', 350,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff'),
++('Java Script Developer', 'Evgenii', 'Adamson', 'CV-Accepted', 350,'2018-03-03', 'http://via.placeholder.com/500x350/66bfff');
+
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
