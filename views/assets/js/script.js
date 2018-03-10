@@ -24,10 +24,9 @@ function Application() {
 		"model": {
 			"getModel": function (item) {
 				item = item || {};
-				item.name = item.name || "";
-				item.lastName = item.lastName || "";
 				item.position = item.position || "";
-				item.email = item.email || "soma@gmail.ru";
+				item.description = item.description || "";
+				item.salary = item.salary || "";
 				return item;
 			}
 		}
@@ -35,7 +34,7 @@ function Application() {
 	
 	let _$filter = $(".filters").data({
 		"model": {
-			"value": ["position=none", "name=none", "email=none", "lastName=none"]
+			"value": ["position=none", "description=none", "salary=none"]
 		}
 	});
 	
@@ -110,17 +109,13 @@ function Application() {
 				
 				_$filter.data("model").value[0] = "position=" + value;
 				
-			} else if (id === "name") {
+			} else if (id === "description") {
 				
-				_$filter.data("model").value[1] = "name=" + value;
+				_$filter.data("model").value[1] = "description=" + value;
 				
-			} else if (id === "mail") {
+			} else if (id === "salary") {
 				
-				_$filter.data("model").value[2] = "email=" + value;
-				
-			} else if (id === "last-name") {
-				
-				_$filter.data("model").value[3] = "lastName=" + value;
+				_$filter.data("model").value[2] = "salary=" + value;
 				
 			}
 		},
@@ -146,10 +141,9 @@ function Application() {
 			
 			this.append(
 				"<tr><td>" + item.position + "</td>" +
-				"<td>" + item.lastName + "</td>" +
-				"<td class='mobile-device'>" + item.name + "</td>" +
-				"<td class='mobile-device'>" + item.email + "</td>" +
-				"<td><a href='#'>View</a></td></tr>"
+				"<td>" + item.description + "</td>" +
+				"<td class='mobile-device'>" + item.salary + "</td>" +
+				"<td><a href='#'>View Candidates</a></td></tr>"
 			);
 			
 		},
