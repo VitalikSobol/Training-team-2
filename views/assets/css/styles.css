@@ -415,12 +415,12 @@ div.filter > span {
 .name-developer .dropdown-button {
   color: black;
   font-size: 13px;
-  width: 200px;
+  width: 100%;
   background: white;
 }
 
 .name-developer .dropdown-content {
-  width: 200px;
+  width: 100%;
 }
 
 .name-developer .dropdown-button:hover {
@@ -716,7 +716,6 @@ div.filter > span {
   }
   .profile-table-right-part {
     height: auto;
-    border: none;
   }
   .page-profile-table{
     height: auto;
@@ -735,9 +734,14 @@ div.filter > span {
       -ms-overflow-style: -ms-autohiding-scrollbar;
       border: none;
     }
-    .profile-table-left-part {
-      border-right: none;
+    .profile-table-right-part {
+      border-left: none;
     }
+
+    .name-developer .dropdown-content, .name-developer .dropdown-button {
+      width: 200px;
+    }
+
     .contact-developer {
       border-bottom: 1px solid #c0c0c0;
     }
