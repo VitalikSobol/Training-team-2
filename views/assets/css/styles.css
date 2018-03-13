@@ -406,6 +406,14 @@ div.filter > span {
   padding: 0;
 }
 
+.candidates-information input {
+  width: 100%;
+  height: 22px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  border: 1px solid #c0c0c0;
+}
+
 .name-developer .dropdown-arrow {
   width: 20px;
   height: 14px;
@@ -441,7 +449,7 @@ div.filter > span {
 .name-developer .position {
   font-size: 14px;
 }
-.name-developer .name {
+.name-developer .name, .last-name{
   font-size: 18px;
   color: black;
   font-weight: bold;
@@ -486,6 +494,7 @@ div.filter > span {
   display: flex;
   flex-direction: column;
   text-align: right;
+  min-width: 150px;
 }
 
 .experience-info .text-muted{
@@ -555,23 +564,38 @@ div.filter > span {
 .skill-developer .title-name-skill {
   font-size: 20px;
 }
+
 .skill-developer span {
-  padding-left: 15px;
-  padding-right: 15px;
-  margin-bottom: 10px;
+  padding: 0 15px;
+  margin-bottom: 20px;
+  margin-right: 10px;
   text-align: center;
   display: inline-block;
   border: 1px solid #c0c0c0;
   border-radius: 8px;
 }
-.skill-developer button {
+
+.profile-table-right-part button {
   padding-left: 10px;
   padding-right: 10px;
-  background: #ffffff;
+  background: #dcdcdc;
   border: 1px solid #c0c0c0;
   border-radius: 8px;
+  margin: 0 20px;
+  height: 30px;
 }
-.button-edit-experience {
+
+.profile-table-right-part button:hover {
+  background: #c0c0c0;
+}
+
+.profile-header {
+  display: flex;
+  justify-content: left;
+  flex-direction: row;
+}
+
+.button-edit {
   position: fixed;
   right: 40px;
   bottom: 50px;
@@ -742,6 +766,11 @@ div.filter > span {
       width: 200px;
     }
 
+    .experience-info {
+      min-width: 135px;
+      font-size: 12px;
+    }
+
     .contact-developer {
       border-bottom: 1px solid #c0c0c0;
     }
@@ -771,6 +800,7 @@ div.filter > span {
     .button-nav button {
       margin: 0 0;
     }
+
     .content-footer {
       display: inline-flex;
     }
@@ -789,7 +819,8 @@ div.filter > span {
     }
 
     .experience-info {
-      font-size: 12px;
+      min-width: 90px;
+      font-size: 10px;
     }
   }
   @media screen and (max-width: 310px) {

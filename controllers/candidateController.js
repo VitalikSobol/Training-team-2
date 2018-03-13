@@ -11,6 +11,13 @@ function candidateController() {
     range: ""
   };
 
+  let candidate = {
+    status: 0,
+    contact: [],
+    experience: [],
+    skills: []
+  };
+
   this.getCandidates = function (req, res) {
 
     if(req.query.filter === 'state=Empty&name=none') {
@@ -67,7 +74,64 @@ function candidateController() {
     }
   };
 
-  function addFilter(filter) {
+  this.getCandidateById = function (req, res) {
+
+    let query = "SELECT candidate.id as id, " +
+      " first_name as name, last_name as lastName, phone, address, email," +
+      " job_title as position," +
+      " salary as payment, status.name as status,	" +
+      " DATEDIFF(CURRENT_DATE(), date_publishing) as date,"	+
+      " image_url as image" +
+      " FROM candidate " +
+      "JOIN status on candidate.status_id = status.id WHERE candidate.id="+ req.params.id;
+
+    connection.query(query, function (err, data) {
+      if (err) throw err;
+      else {
+        candidate.contact = data;
+        query = "SELECT name FROM skill WHERE candidate_id="+ req.params.id;
+        connection.query(query, function (err, data) {
+          if (err) throw err;
+          else {
+            candidate.skills = data;
+            query = "SELECT * FROM experience WHERE candidate_id="+ req.params.id;
+            connection.query(query, function (err, data) {
+              if (err) throw err;
+              else {
+                candidate.experience = data;
+                candidate.status = 200;
+                res.json(candidate);
+              }
+            });
+          }
+        });
+      }
+    });
+  };
+
+  this.updateCandidate = function (req, res) {
+    let candidate = JSON.parse(req._body);
+    let query = "UPDATE `candidate` SET " +
+      "`first_name` = '" + candidate.name+"'"+
+      ", `last_name` = '" + candidate.lastName+"'"+
+      ", `salary` = " + candidate.salary+
+      ", `job_title` = '" + candidate.position+"'"+
+      ", `phone` = '" + candidate.phone+"'"+
+      ", `email` = '" + candidate.email+"'"+
+      ", `address` = '" + candidate.address+"'"+
+      ", `date_publishing` ='" + candidate.datePublishing+"'"+
+      "  WHERE `id`=" + req.params.id;
+
+    connection.query(query, function (err, data) {
+      if (err) throw err;
+      else {
+        entity.status = 200;
+        res.json(entity);
+      }
+    });
+  };
+
+ function addFilter(filter) {
     filter = filter.split("&");
 
     let state = filter[0].substring(filter[0].indexOf("="), filter[0].length).replace("=", "");
