@@ -131,6 +131,37 @@ function candidateController() {
     });
   };
 
+  this.addSkill = function (req,res) {
+    let query = "INSERT INTO `hr_application`.`skill` (`name`, `candidate_id`)" +
+      " VALUES ('"+req._body+"', '"+req.params.id+"')";
+
+    connection.query(query, function (err, data) {
+      if (err) throw err;
+      else {
+        entity.status = 200;
+        res.json(entity);
+      }
+    });
+  };
+
+  this.addExperience = function (req, res) {
+    console.log(req._body);
+    let experience = JSON.parse(req._body);
+    let query = "INSERT INTO `hr_application`.`experience` " +
+      "(`name`, `period`, `position`, `location`, `company`, `description`, `candidate_id`)" +
+      " VALUES ('"+experience.company+"', '"+experience.period+"', '"+experience.position+
+      "', '"+experience.location+"', '"+experience.company+
+      "', '"+experience.description+"', '"+req.params.id+"')";
+
+    connection.query(query, function (err, data) {
+      if (err) throw err;
+      else {
+        entity.status = 200;
+        res.json(entity);
+      }
+    });
+  };
+
  function addFilter(filter) {
     filter = filter.split("&");
 
@@ -179,3 +210,4 @@ function candidateController() {
 }
 
 module.exports = new candidateController();
+

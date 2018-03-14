@@ -89,9 +89,11 @@
           <div class="skill-developer">
             <div class="profile-header">
               <p class="text-muted title-name-skill">Skills</p>
-              <button class="profile-button" data-toggle="modal" data-target="#experienceModal">Add</button>
+              <button class="profile-button" data-toggle="modal" data-target="#skillModal">Add</button>
             </div>
+            <div class="skills">
 
+            </div>
           </div>
         </div>
       </div>
@@ -100,6 +102,64 @@
     </div>
   </div>
 </div>
+</div>
+<!-- Modal 'add experience' -->
+<div class="modal fade" id="experienceModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add experience</h4>
+      </div>
+      <div class="modal-body">
+          <label>
+            *Period:
+            <input type="text" class="exp-period">
+          </label>
+          <label>
+            Position:
+            <input type="text" class="exp-position">
+          </label>
+          <label>
+            Location:
+            <input type="text" class="exp-location">
+          </label>
+          <label>
+            *Company:
+            <input type="text" class="exp-company">
+          </label>
+          <label>
+            Description:
+            <input type="text" class="exp-description">
+          </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="profile-button button-experience" data-dismiss="modal">Save</button>
+        <button type="button" class="profile-button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 'add skill' -->
+<div class="modal fade" id="skillModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add skill</h4>
+      </div>
+      <div class="modal-body">
+        <label>
+          *Skill:
+          <input type="text" class="name-skill">
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="profile-button button-skill" data-dismiss="modal">Save</button>
+        <button type="button" class="profile-button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"
         integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="

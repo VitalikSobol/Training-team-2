@@ -4,9 +4,11 @@ function Profile() {
 
   let _self = this;
   let _$content = $('.candidates-information');
-  let _$skills = $('.skill-developer');
+  let _$skills = $('.skills');
   let _$experiences = $('.experience');
   let _$buttonEdit = $('.button-edit');
+  let _$buttonSkill = $('.button-skill');
+  let _$buttonExperience = $('.button-experience');
 
 
   $.urlParam = function(name){
@@ -16,6 +18,7 @@ function Profile() {
 
   $.extend(_$skills, {
     "addSkills": function (skills) {
+      this.empty();
       skills.forEach($.proxy(this, "addSkill"));
     },
     "addSkill": function (skill) {
@@ -28,6 +31,7 @@ function Profile() {
   $.extend(_$experiences, {
 
     "addExperiences": function (experiences) {
+      this.empty();
       experiences.forEach($.proxy(this, "addExperience"));
     },
 
@@ -50,6 +54,45 @@ function Profile() {
     }
   });
 
+
+  $.extend(_$buttonSkill, {
+    "addSkill": function () {
+      let name = $('.name-skill').val().trim();
+      if(name!== ""){
+        $.ajax({
+          url: "http://localhost:3001/candidates/skill/"+ $.urlParam("id"),
+          type: 'POST',
+          data: name,
+          success: function(data) {
+            _$content.loadInformation();
+          }
+        });
+      }
+    }
+  });
+
+
+  $.extend(_$buttonExperience, {
+    "addExperience": function () {
+      let model = {
+        "period": $('.exp-period').val().trim(),
+        "position": $('.exp-position').val().trim(),
+        "location": $('.exp-location').val().trim(),
+        "company": $('.exp-company').val().trim(),
+        "description": $('.exp-description').val().trim()
+      };
+      if(model.period!== "" && model.company !== "") {
+        $.ajax({
+          url: "http://localhost:3001/candidates/experience/" + $.urlParam("id"),
+          type: 'POST',
+          data: JSON.stringify(model),
+          success: function (data) {
+            _$content.loadInformation();
+          }
+        });
+      }
+    }
+  });
 
   $.extend(_$buttonEdit, {
 
@@ -160,6 +203,8 @@ function Profile() {
   _self.initHandler = function () {
     _$content.on("loadInformation", _$content.loadInformation);
     _$buttonEdit.on("click", _$buttonEdit.changeButton);
+    _$buttonSkill.on("click", _$buttonSkill.addSkill);
+    _$buttonExperience.on("click", _$buttonExperience.addExperience);
   };
 }
 
