@@ -148,12 +148,12 @@ function Candidates() {
 				"<div class='candidates-item'>"+
 				"<div class='candidates-image'>"+
 				"<span>" + item.status + "</span>"+
-				"<a href='#' class='thumbnail'>" +
+				"<a href='profile.html?id="+ item.id+"' class='thumbnail'>" +
 				"<img src='"+ item.image +"' alt='...'>"+ "</a></div>"+
 				"<div class='caption'>"+
 				"<p class='candidates-item-job-position'>" + item.position + "</p>"+
 				"<p class='candidates-item-name'>" + item.name + " "+ item.lastName +"</p>"+
-				"<p class='candidates-item-salary'>" + item.payment + "</p>"+
+				"<p class='candidates-item-salary'>" + item.payment + "\$" + "</p>"+
 				"<p class='candidates-item-time'>" + item.date + " day later</p></div></div></div>";
 				this.append(template);
 		},
