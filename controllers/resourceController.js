@@ -8,7 +8,8 @@ function ResourceController() {
 	const fs = require('fs');
 	
 	_self.loadResource = function (req, res, next) {
-		let url = req.url.replace("/", "");
+		let url = req.path().replace("/", "");
+				
 		fs.readFile(url, function (err, data) {
 			if (err) {
 				next(err);

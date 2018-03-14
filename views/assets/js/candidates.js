@@ -145,10 +145,10 @@ function Candidates() {
 			item = this.data("model").getModel(item);
 			
 			let template =  "<div class='col-xs-6 col-sm-4 col-md-3 content-candidates-card'>"+
-				"<div class='candidates-item'>"+
+				"<div id ='" + item.id + "'" + "  class='candidates-item'>"+
 				"<div class='candidates-image'>"+
 				"<span>" + item.status + "</span>"+
-				"<a href='profile.html?id="+ item.id+"' class='thumbnail'>" +
+				"<a href='#' class='thumbnail'>" +
 				"<img src='"+ item.image +"' alt='...'>"+ "</a></div>"+
 				"<div class='caption'>"+
 				"<p class='candidates-item-job-position'>" + item.position + "</p>"+
@@ -186,6 +186,13 @@ function Candidates() {
 			}).done(function () {
 				
 			});
+		},
+		"clickItem": function (event) {
+				event.stopPropagation();
+				event.preventDefault();
+				
+				$(location).attr('href','/views/profile.html?id=' + $(this).attr("id"));
+				return false;
 		}
 	});
 	
@@ -201,6 +208,7 @@ function Candidates() {
 		_$button.on("click", _$button.onPressed);
 		_$inputField.on("keyup",_$inputField.changeInputState);
 		_$content.on("loadItems", _$content.loadItems);
+		_$content.on("click", ".candidates-item", _$content.clickItem);
 	};
 }
 
