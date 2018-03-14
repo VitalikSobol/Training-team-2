@@ -1,5 +1,5 @@
 'use strict';
-function vacancyController() {
+function VacancyController() {
   const mysql = require('mysql');
   const config = require('../config');
   const connection = mysql.createConnection(config.database);
@@ -111,4 +111,4 @@ function vacancyController() {
   }
 }
 
-module.exports = new vacancyController();
+module.exports = new VacancyController();
