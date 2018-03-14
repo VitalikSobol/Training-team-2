@@ -1,5 +1,5 @@
 'use strict';
-function candidateController() {
+function CandidateController() {
   const mysql = require('mysql');
   const config = require('../config');
   const connection = mysql.createConnection(config.database);
@@ -114,4 +114,4 @@ function candidateController() {
   }
 }
 
-module.exports = new candidateController();
+module.exports = new CandidateController();

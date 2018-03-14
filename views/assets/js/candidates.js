@@ -174,7 +174,7 @@ function Candidates() {
 			query.page = _$button.data("model").page;
 			query.filter = ["state=" +_$filter.data("model").state, "name=" + _$inputField.data("model").fullName].join("&");
 			
-			$.getJSON("http://localhost:3001/candidates/", query, function (json) {
+			$.getJSON("/candidates/", query, function (json) {
 				_$content.clear();
 				
 				json.status === 200 && Array.isArray(json.data) && _$content.addItems(json.data);
