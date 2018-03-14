@@ -11,6 +11,7 @@ function candidateController() {
     range: ""
   };
 
+
   let candidate = {
     status: 0,
     contact: [],
@@ -73,6 +74,7 @@ function candidateController() {
       });
     }
   };
+
 
   this.getCandidateById = function (req, res) {
 
@@ -208,6 +210,7 @@ function candidateController() {
     }
   }
 }
+
 
 module.exports = new candidateController();
 

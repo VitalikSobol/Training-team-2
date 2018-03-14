@@ -16,7 +16,6 @@ server.use(plugins.acceptParser(server.acceptable));
 server.use(plugins.queryParser());
 server.use(plugins.fullResponse());
 
-
 function unknownMethodHandler(req, res) {
   if (req.method.toLowerCase() === 'options') {
     let allowHeaders = ['Accept', 'Accept-Version', 'Content-Type', 'Api-Version'];
