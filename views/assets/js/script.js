@@ -166,7 +166,7 @@ function Application() {
 			query.page = data.page || 1;
 			query.filter = _$filter.data("model").value.join("&");
 			
-			$.getJSON("http://localhost:3001/vacancies/", query, function (json) {
+			$.getJSON("/vacancies/", query, function (json) {
 				_$table.clear();
 				
 				json.status === 200 && Array.isArray(json.data) && _$table.addItems(json.data);
