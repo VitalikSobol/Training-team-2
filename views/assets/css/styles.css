@@ -392,11 +392,9 @@ div.filter > span {
 .page-profile-header p {
   padding: 4px 0 0 30px;
 }
-
 .page-profile-header a {
   color: #3f3f3f;
 }
-
 .profile-table-left-part {
   padding: 0;
 }
@@ -405,8 +403,6 @@ div.filter > span {
   height: 100%;
   padding: 0;
 }
-
-
 .candidates-information input {
   width: 100%;
   height: 22px;
@@ -420,26 +416,21 @@ div.filter > span {
   height: 14px;
   background: url(../images/sprite.png) 0 -5px;
 }
-
 .name-developer .dropdown-button {
   color: black;
   font-size: 13px;
   width: 100%;
   background: white;
 }
-
 .name-developer .dropdown-content {
   width: 100%;
 }
-
 .name-developer .dropdown-button:hover {
   background: #c0c0c0;
 }
-
 .name-developer img {
   margin-top: 10px;
 }
-
 .name-developer {
   display: flex;
   flex-direction: column;
@@ -479,19 +470,16 @@ div.filter > span {
   min-height: 70vh;
   padding: 10px 20px;
 }
-
 .experience {
   display: flex;
   flex-direction: column-reverse;
 }
-
 .experience-item {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 5px 0
 }
-
 .experience-info {
   display: flex;
   flex-direction: column;
@@ -499,66 +487,54 @@ div.filter > span {
   min-width: 150px;
 
 }
-
-.experience-info .text-muted{
+.experience-info .text-muted {
   font-size: 12px;
   margin: 0;
 }
-
 .experience-company {
   display: flex;
   flex-direction: row;
   width: 65%;
 }
-
 .info-period {
   padding: 3px 10px;
   margin-bottom: 0;
   border: 1px solid #c0c0c0;
   border-radius: 8px;
 }
-
 .company-info {
   border: 1px solid #c0c0c0;
   border-radius: 8px;
   padding: 10px;
 }
-
 .company-name {
   text-decoration: underline;
   font-weight: bold;
 }
-
 .title-name-experience {
   font-size: 20px;
 }
-
 .experience-map {
   margin: 0 20px;
 }
-
 .experience-point {
   border-radius: 50%;
   border: 2px solid #c0c0c0;
   height: 9px;
   width: 9px;
 }
-
 .experience-line {
   width: 2px;
   border: 1px solid #c0c0c0;
   height: 100%;
   margin-left: 4px;
 }
-
 .experience-item:nth-child(even) .experience-line {
   border-style: dashed;
 }
-
 .experience-item:first-child .experience-line {
   display: none;
 }
-
 .skill-developer {
   padding: 15px 0 0 15px;
   border-top: 1px solid #c0c0c0;
@@ -630,6 +606,153 @@ div.filter > span {
   background: #e8e8e8;
   box-shadow: 0 5px 8px #dcdcdc;
   font-size: 20px;
+}
+/*----CSS styles interview.html ---*/
+.page-interview {
+  min-height: calc(100vh - 50px);
+}
+.page-interview-header h1 {
+  font-size: 20px;
+  margin: 0;
+  padding: 25px 20px;
+}
+.page-interview-button .button-group .btn-link {
+  text-decoration: none;
+  color: #000000;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.page-interview-button .button-group > button:focus {
+  background: #b2b2b2;
+}
+.page-interview-button .button-group > button:hover,
+button.selected {
+  background: #b2b2b2;
+}
+.row-header {
+  margin: 30px 10px 0 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.row-header div {
+  height: 30px;
+  width: 100px;
+  text-align: center;
+}
+.column-hours {
+  margin-top: -1200px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  align-items: baseline;
+  width: 50px;
+}
+.column-hours div {
+  height: 50px;
+}
+.week {
+  margin: 0 10px 0 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.week .day {
+  border: 1px solid #c0c0c0;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+}
+/*-------CSS styles modal window------*/
+.page-interview-modal-window .head {
+  border-bottom: none;
+}
+.page-interview-modal-window .modal-window-body {
+  padding: 10px 0 10px 70px;
+}
+.page-interview-modal-window .modal-window-body .time {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  height: 28px;
+  color: #212121;
+}
+.page-interview-modal-window .modal-window-body .event {
+  width: 150px;
+  height: 30px;
+  margin-top: 10px;
+  color: #fff;
+  background-color: #4285f4;
+  border: 1px solid #4285f4;
+  border-radius: 12px;
+  padding: 0 8px;
+  font-weight: 600;
+
+}
+.modal-body-input {
+  margin: 20px 30px 0 -50px;
+}
+.modal-body-input .form-1,
+.modal-body-input .form-2 {
+  display: flex;
+  flex-direction: row;
+}
+.modal-body-input .form-1 .date,
+.modal-body-input .form-1 .date button,
+.modal-body-input .form-1 .date input,
+.modal-body-input .form-2 .select select {
+  background: #f5f5f5;
+}
+.modal-body-input .form-1 .date,
+.modal-body-input .form-2 .select,
+.modal-body-input .form-2 .select select {
+  width: 100%;
+}
+.modal-body-input .form-1 .date button {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #757575;
+}
+.modal-body-input .form-1 .date input {
+  border: none;
+}
+.modal-body-input .form-1 span,
+.modal-body-input .form-2 span {
+  padding: 0 30px 0 10px;
+}
+.modal-body-input .form-2 .select select {
+  border: none;
+  margin-top: 10px;
+  height: 100%;
+}
+.modal-body-input .form-2 span {
+  margin-top: 10px;
+}
+.modal-window-footer {
+  border-top: none;
+}
+.modal-window-footer button {
+  margin: 15px 15px 0 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+}
+.modal-window-footer .settings {
+  color: #757575;
+  background-color: #ffffff;
+}
+.modal-window-footer .settings:hover {
+  background-color: #e2e2e2;
+}
+.modal-window-footer .settings:focus {
+  background-color: #e2e2e2;
+}
+.modal-window-footer .save {
+  color: #ffffff;
+  background: #4285f4;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 /*---- Content footer vacancies and candidates----*/
 
@@ -764,15 +887,15 @@ div.filter > span {
   .profile-table-right-part {
     height: auto;
   }
-  .page-profile-table{
+  .page-profile-table {
     height: auto;
   }
 }
-  @media (min-width: 992px) {
-    .glyphicon-menu-hamburger {
-      display: none;
-    }
+@media (min-width: 992px) {
+  .glyphicon-menu-hamburger {
+    display: none;
   }
+}
   @media screen and (max-width: 767px) {
     .table-responsive {
       width: 100%;
@@ -846,9 +969,35 @@ div.filter > span {
       font-size: 10px;
     }
   }
-  @media screen and (max-width: 310px) {
-    .content-footer span {
-      padding: 0 5px;
-      font-size: 15px;
-    }
+  .search span {
+    padding: 8px;
   }
+  .button-nav button {
+    margin: 0 0;
+  }
+  .content-footer {
+    display: inline-flex;
+  }
+  .content-footer span {
+    padding: 0 25px;
+    font-size: 15px;
+  }
+  .button-add {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .content-footer span {
+    padding: 0 15px;
+    font-size: 15px;
+  }
+  .experience-info {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 310px) {
+  .content-footer span {
+    padding: 0 5px;
+    font-size: 15px;
+  }
+}
