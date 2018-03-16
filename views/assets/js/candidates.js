@@ -213,3 +213,25 @@ function Candidates() {
 }
 
 $(new Candidates().init);
+
+(function ($) {
+  $(document).ready(function () {
+
+    $('#nav-menu').on('click', function () {
+      $('.navigation').toggleClass('show');
+    });
+
+    $('.button-bell').on('click', function () {
+      $('.notification-block').toggleClass('hide-notification');
+    });
+
+    $('#all-candidates-notification').on('click', function () {
+      $('.notification-body-candidates').toggleClass('js-all-candidates');
+    });
+
+    $('#all-interview-natification').on('click', function () {
+      $('.notification-body-interview').toggleClass('js-all-interview');
+    });
+
+  });
+})(jQuery)
