@@ -144,7 +144,6 @@ form {
 nav.navigation {
   background: #e8e8e8;
   min-height: 100vh;
-  min-width: 140px;
   width: 13%;
   margin: 0;
   padding: 0;
@@ -241,7 +240,7 @@ nav.navigation .nav > li > a:hover,
   min-height: 70px; /*2-height in vacancies*/
 }
 .content-candidates-section {
-  min-height: 70px; /*2-height in candidates*/
+  min-height: 100px; /*2-height in candidates*/
 }
 .content-candidates-section h1,
 .content-vacancies-section h1 {
@@ -297,27 +296,18 @@ div.filter > span {
 .content-vacancies-table table {
   margin: 0;
   border-bottom: 1px solid #dcdcdc;
+
 }
 .content-vacancies-table table td a {
   text-decoration: none;
   color: #3f3f3f;
 }
-
-.content-vacancies-table table tr > th:first-child,
-.content-vacancies-table table tr > td:first-child {
-  padding-left: 30px;
-}
-
 .content-vacancies-table table tr > th,
 .content-vacancies-table table tr > td {
   height: 60px;
+  padding-left: 30px;
   vertical-align: middle;;
 }
-
-.content-vacancies-table table tr > td{
-  padding-left: 15px;
-}
-
 .button-add {
   position: fixed;
   right: 20px;
@@ -336,49 +326,10 @@ div.filter > span {
 .button-add:hover {
   background: #dcdcdc;
 }
+/*---- Content grid candidates----*/
 
-/*---- Content table and candidates----*/
-
-.content-candidates-main-div {
-  position: relative;
-  overflow: hidden;
-}
-
-.content-candidates-table {
-  min-height: calc(100vh - 170px); /*3-height in candidates*/
-}
-
-.content-candidates-table table tr > th:first-child,
-.content-candidates-table table tr > td:first-child{
-  padding: 0 30px ;
-}
-
-.content-candidates-table table tr > th,
-.content-candidates-table table tr > td {
-  height: 60px;
-  vertical-align: middle;;
-}
-
-.content-candidates-table table tr > td{
-  padding-left: 15px;
-}
-
-.content-candidates-table table tbody tr{
-  border-bottom: 1px solid #ddd;
-}
-
-.candidates-photo div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-}
-
-/*.content-candidates-cards {
-  min-height: calc(100vh - 200px); !*3-height in candidates*!
+.content-candidates-cards {
+  min-height: calc(100vh - 200px); /*3-height in candidates*/
 }
 .content-candidates-cards .row {
   margin-left: 0;
@@ -429,7 +380,7 @@ div.filter > span {
   padding-right: 30px;
   font-size: 14px;
   color: #dcdcdc;
-}*/
+}
 /* CSS Styles for profile.html page*/
 .page-profile {
   min-height: calc(100vh - 50px);
@@ -441,11 +392,9 @@ div.filter > span {
 .page-profile-header p {
   padding: 4px 0 0 30px;
 }
-
 .page-profile-header a {
   color: #3f3f3f;
 }
-
 .profile-table-left-part {
   padding: 0;
 }
@@ -493,7 +442,7 @@ div.filter > span {
   font-size: 14px;
 }
 
-.name-developer .name, .last-name {
+.name-developer .name, .last-name{
   font-size: 18px;
   color: black;
   font-weight: bold;
@@ -604,6 +553,7 @@ div.filter > span {
   border: 1px solid #c0c0c0;
   border-radius: 8px;
 }
+
 
 .modal input {
   height: 22px;
@@ -898,99 +848,6 @@ button.selected {
   background: url(../images/sprite.png) -290px -3px;
   outline: none;
 }
-
-/*----Notification block----*/
-
-.notification-block {
-  width: 250px;
-  border-left: 1px solid #ddd;
-  border-radius: 5px;
-  margin-right: -250px;
-  background: #fff;
-  position: absolute;
-  right: 250px;
-  top: 0;
-  animation: show-notification 1s forwards;
-}
-
-.hide-notification{
-  animation: hide-notification 1s forwards;
-}
-
-@keyframes hide-notification {
-  from {right: 250px;}
-  to {right: 0;}
-}
-
-@keyframes show-notification {
-  from {right: 0;}
-  to {right: 250px;}
-}
-
-.notification-block > div{
-  height: 320px;
-  border-bottom: 1px solid #ddd;
-  position: relative;
-}
-
-
-.notification-header{
-  height: 40px;
-}
-
-.notification-header h4{
-  line-height: 40px;
-  margin: 0;
-}
-
-.notification-body{
-  overflow: hidden;
-  height: 240px;
-}
-
-.js-all-candidates,
-.js-all-interview{
-  overflow: auto;
-}
-
-.notification-card-candidates{
-  display: flex;
-  margin-bottom: 15px;
-  height: 65px;
-}
-
-.notification-card-candidates > div{
-  margin-left: 25px;
-}
-
-.notification-card-candidates p{
-  margin: 0;
-}
-
-.notification-card-interview{
-  height: 65px;
-  margin-left: 25px;
-  margin-bottom: 15px;
-}
-
-
-.notification-footer{
-  height: 40px;
-  width: 100%;
-  border-top: 1px solid #ddd;;
-  line-height: 40px;
-  position: absolute;
-  bottom: 0;
-}
-
-.notification-footer span{
-  margin-left: 25px;
-}
-
-.notification-footer span:hover{
-  cursor: pointer;
-}
-
 /*---- media for vacancies----*/
 @media (max-width: 992px) {
   .content-header {
@@ -1033,21 +890,6 @@ button.selected {
   .page-profile-table {
     height: auto;
   }
-
-  .content-candidates-table table th:nth-child(1),
-  .content-candidates-table table td:nth-child(1),
-  .content-candidates-table table th:nth-child(3),
-  .content-candidates-table table td:nth-child(3){
-    display: none;
-  }
-
-  .notification-body{
-    height: 160px;
-  }
-
-  .notification-block > div{
-    height: 240px;
-  }
 }
 @media (min-width: 992px) {
   .glyphicon-menu-hamburger {
@@ -1066,84 +908,67 @@ button.selected {
       border-left: none;
     }
 
-  .name-developer .dropdown-content, .name-developer .dropdown-button {
-    width: 200px;
-  }
+    .name-developer .dropdown-content, .name-developer .dropdown-button {
+      width: 200px;
+    }
 
     .experience-info {
       min-width: 135px;
       font-size: 12px;
     }
 
-  .contact-developer {
-    border-bottom: 1px solid #c0c0c0;
+    .contact-developer {
+      border-bottom: 1px solid #c0c0c0;
+    }
   }
-}
+  @media screen and (max-width: 600px) {
+    .filter {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      /*Candidates page*/
+    }
+    .filter-item {
+      margin: 4px;
+    }
+    .search-input {
+      width: 100%;
+    }
+    .mobile-device {
+      display: none;
+    }
+    .header-button {
+      display: inline-flex;
+    }
+    .search span {
+      padding: 8px;
+    }
+    .button-nav button {
+      margin: 0 0;
+    }
 
-@media screen and (max-width: 600px) {
-  .filter {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    /*Candidates page*/
+    .content-footer {
+      display: inline-flex;
+    }
+    .content-footer span {
+      padding: 0 25px;
+      font-size: 15px;
+    }
+    .button-add {
+      display: none;
+    }
   }
+  @media screen and (max-width: 400px) {
+    .content-footer span {
+      padding: 0 15px;
+      font-size: 15px;
+    }
 
-  .filter-item {
-    margin: 4px;
-  }
+    .experience-info {
+      min-width: 90px;
+      font-size: 10px;
+    }
 
-  .search-input {
-    width: 100%;
-  }
-
-  .mobile-device {
-    display: none;
-  }
-
-  .header-button {
-    display: inline-flex;
-  }
-
-  .search span {
-    padding: 8px;
-  }
-
-  .button-nav button {
-    margin: 0 0;
-  }
-
-  .content-footer {
-    display: inline-flex;
-  }
-
-  .content-footer span {
-    padding: 0 25px;
-    font-size: 15px;
-  }
-
-  .button-add {
-    display: none;
-  }
-
-  .content-candidates-table table th:nth-child(4),
-  .content-candidates-table table td:nth-child(4),
-  .content-candidates-table table th:nth-child(5),
-  .content-candidates-table table td:nth-child(5){
-    display: none;
-  }
-
-}
-
-@media screen and (max-width: 400px) {
-  .content-footer span {
-    padding: 0 15px;
-    font-size: 15px;
-  }
-
-  .experience-info {
-    min-width: 90px;
-    font-size: 10px;
-  }
   .search span {
     padding: 8px;
   }
