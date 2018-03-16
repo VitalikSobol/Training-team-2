@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use strict';
 function candidateController() {
   const mysql = require('mysql');
