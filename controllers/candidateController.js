@@ -83,6 +83,7 @@ function candidateController() {
       " job_title as position," +
       " salary as payment, status.name as status,	" +
       " DATEDIFF(CURRENT_DATE(), date_publishing) as date,"	+
+      " DATE_FORMAT(`date_publishing`, \"%M %d %Y\") as date_publishing,"	+
       " image_url as image" +
       " FROM candidate " +
       "JOIN status on candidate.status_id = status.id WHERE candidate.id="+ req.params.id;
@@ -147,7 +148,6 @@ function candidateController() {
   };
 
   this.addExperience = function (req, res) {
-    console.log(req._body);
     let experience = JSON.parse(req._body);
     let query = "INSERT INTO `hr_application`.`experience` " +
       "(`name`, `period`, `position`, `location`, `company`, `description`, `candidate_id`)" +
@@ -159,6 +159,35 @@ function candidateController() {
       if (err) throw err;
       else {
         entity.status = 200;
+        res.json(entity);
+      }
+    });
+  };
+
+  this.addReview = function (req, res) {
+    let review = JSON.parse(req._body);
+    let query = "INSERT INTO `hr_application`.`review` " +
+      "(`content`, `candidate_id`, `user_id`)" +
+      " VALUES ('"+review.content+"', '"+req.params.id+"', '"+review.user_id+"')";
+
+    connection.query(query, function (err, data) {
+      if (err) throw err;
+      else {
+        entity.status = 200;
+        res.json(entity);
+      }
+    });
+  };
+
+  this.getReview = function (req, res) {
+    let query = "SELECT review.id, review.content, user.first_name, user.last_name " +
+      "FROM hr_application.review JOIN user on user.id = review.user_id";
+
+    connection.query(query, function (err, data) {
+      if (err) throw err;
+      else {
+        entity.status = 200;
+        entity.data = data;
         res.json(entity);
       }
     });

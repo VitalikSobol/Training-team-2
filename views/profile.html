@@ -38,9 +38,12 @@
     </header>
     <div class="page-profile">
       <div class="page-profile-header">
-        <p class="text-muted"><a href="candidates.html"> Candidates</a> <span
-            class="glyphicon glyphicon-chevron-right"></span>
-          <a href="#" class="profile-fullName"></a></p>
+        <div class="breadcrumbs">
+          <p class="text-muted"><a href="candidates.html"> Candidates</a> <span
+              class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#" class="profile-fullName"></a></p>
+        </div>
+        <button class="profile-button review" data-toggle="modal" data-target="#reviewModal">Review</button>
       </div>
       <div class="page-profile-table clearfix">
         <div class="col-sm-3 profile-table-left-part candidates-information">
@@ -158,6 +161,34 @@
       <div class="modal-footer">
         <button type="button" class="profile-button button-skill" data-dismiss="modal">Save</button>
         <button type="button" class="profile-button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal 'review' -->
+<div class="modal fade modal-review" id="reviewModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <span class="candidate-date">date</span>
+        <h4 class="modal-title profile-fullName">Review</h4>
+      </div>
+      <div class="modal-body">
+        <div class="information">
+          <span class="information-label">Position: </span>
+          <span class="position-profile"></span>
+        </div>
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home">Add review</a></li>
+        </ul>
+        <div class="tab-content">
+          <div id="home" class="tab-pane fade in active">
+            <label>
+              <textarea class="review-text" placeholder="Write..."></textarea>
+            </label>
+            <button type="button" class="review-button" data-dismiss="modal">Send</button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
