@@ -435,6 +435,10 @@ div.filter > span {
   min-height: calc(100vh - 50px);
 }
 .page-profile-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #c0c0c0;
   height: 30px;
 }
@@ -446,6 +450,10 @@ div.filter > span {
   color: #3f3f3f;
 }
 
+.page-profile-header .profile-button {
+  height: 25px;
+}
+
 .profile-table-left-part {
   padding: 0;
 }
@@ -454,6 +462,15 @@ div.filter > span {
   height: 100%;
   padding: 0;
 }
+.candidates-information input {
+  width: 100%;
+  height: 22px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  border: 1px solid #c0c0c0;
+}
+
+
 .candidates-information input {
   width: 100%;
   height: 22px;
@@ -624,7 +641,84 @@ div.filter > span {
   justify-content: center;
 }
 
-.profile-button {
+.modal-review .modal-header {
+  border-bottom: none;
+}
+
+.modal-review .modal-title {
+  float: left;
+}
+
+.modal-review .candidate-date {
+  float:right;
+}
+
+.information-label {
+  font-weight: bold;
+}
+
+.information {
+  margin-bottom: 20px;
+}
+
+.modal-review .modal-footer {
+  border-top: none;
+  text-align: left;
+}
+
+.modal-review button {
+  border-radius: 2px;
+  margin: 0;
+  width: 150px;
+}
+
+.modal-review .review-text {
+  border: 1px solid #dcdcdc;
+  resize: none;
+  height: 200px;
+  padding: 15px;
+}
+
+.modal-review .review-text::-webkit-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+::-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+:-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+:-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.review-text {
+  margin-bottom: 10px;
+}
+
+.review-text:focus {
+  outline: none;
+}
+
+.modal-review .nav-tabs>li.active>a {
+  background: #dcdcdc;
+  font-weight: bold;
+}
+
+.modal-review .nav-tabs>li>a {
+  font-weight: bold;
+  color: #555;
+}
+
+.modal-review .tab-pane p {
+  margin-top: 20px;
+}
+
+.profile-button, .review-button {
   padding-left: 10px;
   padding-right: 10px;
   background: #dcdcdc;
@@ -634,7 +728,7 @@ div.filter > span {
   height: 30px;
 }
 
-.profile-button:hover {
+.profile-button:hover, .review-button:hover{
   background: #c0c0c0;
 }
 
