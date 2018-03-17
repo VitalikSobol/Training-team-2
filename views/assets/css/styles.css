@@ -11,7 +11,7 @@ form {
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .form-login {
-  display: block;
+  display: block; /*TODO: div will be displayed as block by default*/
   margin: auto;
   width: 300px;
 }
@@ -518,7 +518,7 @@ div.filter > span {
   font-weight: bold;
 }
 .experience-developer {
-  min-height: 70vh;
+  min-height: 70vh; /*TODO: better use px or % here*/
   padding: 10px 20px;
 }
 .experience {
@@ -692,7 +692,7 @@ button.selected {
   text-align: center;
 }
 .column-hours {
-  margin-top: -1200px;
+  margin-top: -1200px; /*TODO: looks hackish*/
   display: flex;
   flex-direction: column;
   margin-left: 20px;
@@ -791,7 +791,7 @@ button.selected {
 }
 .modal-window-footer .settings {
   color: #757575;
-  background-color: #ffffff;
+  background-color: #ffffff;/*TODO: #fff*/
 }
 .modal-window-footer .settings:hover {
   background-color: #e2e2e2;
@@ -800,7 +800,7 @@ button.selected {
   background-color: #e2e2e2;
 }
 .modal-window-footer .save {
-  color: #ffffff;
+  color: #ffffff;/*TODO: #fff*/
   background: #4285f4;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
@@ -1177,3 +1177,5 @@ button.selected {
     font-size: 15px;
   }
 }
+
+/*TODO: slit that file into multiple. CSS file of almost 1200 lines will always be treated by other developers as a trashcan. No one will read it to see if the styles he have to add is already added and will duplicate them. Plus everybody will put their styles in the end messing up the structure of the file. Always remember that there are no more lazy creature in the universe other than a programmer.*/
