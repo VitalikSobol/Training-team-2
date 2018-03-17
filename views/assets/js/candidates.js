@@ -145,7 +145,7 @@ function Candidates() {
 			item = this.data("model").getModel(item);
 			
 			let template =  "<div class='col-xs-6 col-sm-4 col-md-3 content-candidates-card'>"+
-				"<div class='candidates-item'>"+
+				"<div id ='" + item.id + "'" + "  class='candidates-item'>"+
 				"<div class='candidates-image'>"+
 				"<span>" + item.status + "</span>"+
 				"<a href='profile.html?id="+ item.id+"' class='thumbnail'>" +
@@ -174,7 +174,7 @@ function Candidates() {
 			query.page = _$button.data("model").page;
 			query.filter = ["state=" +_$filter.data("model").state, "name=" + _$inputField.data("model").fullName].join("&");
 			
-			$.getJSON("http://localhost:3001/candidates/", query, function (json) {
+			$.getJSON("/candidates/", query, function (json) {
 				_$content.clear();
 				
 				json.status === 200 && Array.isArray(json.data) && _$content.addItems(json.data);
@@ -186,6 +186,13 @@ function Candidates() {
 			}).done(function () {
 				
 			});
+		},
+		"clickItem": function (event) {
+				event.stopPropagation();
+				event.preventDefault();
+				
+				$(location).attr('href','/views/profile.html?id=' + $(this).attr("id"));
+				return false;
 		}
 	});
 	
@@ -201,7 +208,30 @@ function Candidates() {
 		_$button.on("click", _$button.onPressed);
 		_$inputField.on("keyup",_$inputField.changeInputState);
 		_$content.on("loadItems", _$content.loadItems);
+		_$content.on("click", ".candidates-item", _$content.clickItem);
 	};
 }
 
 $(new Candidates().init);
+
+(function ($) {
+  $(document).ready(function () {
+
+    $('#nav-menu').on('click', function () {
+      $('.navigation').toggleClass('show');
+    });
+
+    $('.button-bell').on('click', function () {
+      $('.notification-block').toggleClass('hide-notification');
+    });
+
+    $('#all-candidates-notification').on('click', function () {
+      $('.notification-body-candidates').toggleClass('js-all-candidates');
+    });
+
+    $('#all-interview-natification').on('click', function () {
+      $('.notification-body-interview').toggleClass('js-all-interview');
+    });
+
+  });
+})(jQuery)

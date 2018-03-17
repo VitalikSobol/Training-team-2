@@ -144,6 +144,7 @@ form {
 nav.navigation {
   background: #e8e8e8;
   min-height: 100vh;
+  min-width: 140px;
   width: 13%;
   margin: 0;
   padding: 0;
@@ -240,7 +241,7 @@ nav.navigation .nav > li > a:hover,
   min-height: 70px; /*2-height in vacancies*/
 }
 .content-candidates-section {
-  min-height: 100px; /*2-height in candidates*/
+  min-height: 70px; /*2-height in candidates*/
 }
 .content-candidates-section h1,
 .content-vacancies-section h1 {
@@ -296,18 +297,27 @@ div.filter > span {
 .content-vacancies-table table {
   margin: 0;
   border-bottom: 1px solid #dcdcdc;
-
 }
 .content-vacancies-table table td a {
   text-decoration: none;
   color: #3f3f3f;
 }
+
+.content-vacancies-table table tr > th:first-child,
+.content-vacancies-table table tr > td:first-child {
+  padding-left: 30px;
+}
+
 .content-vacancies-table table tr > th,
 .content-vacancies-table table tr > td {
   height: 60px;
-  padding-left: 30px;
   vertical-align: middle;;
 }
+
+.content-vacancies-table table tr > td{
+  padding-left: 15px;
+}
+
 .button-add {
   position: fixed;
   right: 20px;
@@ -326,10 +336,49 @@ div.filter > span {
 .button-add:hover {
   background: #dcdcdc;
 }
-/*---- Content grid candidates----*/
 
-.content-candidates-cards {
-  min-height: calc(100vh - 200px); /*3-height in candidates*/
+/*---- Content table and candidates----*/
+
+.content-candidates-main-div {
+  position: relative;
+  overflow: hidden;
+}
+
+.content-candidates-table {
+  min-height: calc(100vh - 170px); /*3-height in candidates*/
+}
+
+.content-candidates-table table tr > th:first-child,
+.content-candidates-table table tr > td:first-child{
+  padding: 0 30px ;
+}
+
+.content-candidates-table table tr > th,
+.content-candidates-table table tr > td {
+  height: 60px;
+  vertical-align: middle;;
+}
+
+.content-candidates-table table tr > td{
+  padding-left: 15px;
+}
+
+.content-candidates-table table tbody tr{
+  border-bottom: 1px solid #ddd;
+}
+
+.candidates-photo div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/*.content-candidates-cards {
+  min-height: calc(100vh - 200px); !*3-height in candidates*!
 }
 .content-candidates-cards .row {
   margin-left: 0;
@@ -380,7 +429,7 @@ div.filter > span {
   padding-right: 30px;
   font-size: 14px;
   color: #dcdcdc;
-}
+}*/
 /* CSS Styles for profile.html page*/
 .page-profile {
   min-height: calc(100vh - 50px);
@@ -405,6 +454,13 @@ div.filter > span {
   height: 100%;
   padding: 0;
 }
+.candidates-information input {
+  width: 100%;
+  height: 22px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  border: 1px solid #c0c0c0;
+}
 
 
 .candidates-information input {
@@ -420,26 +476,21 @@ div.filter > span {
   height: 14px;
   background: url(../images/sprite.png) 0 -5px;
 }
-
 .name-developer .dropdown-button {
   color: black;
   font-size: 13px;
   width: 100%;
   background: white;
 }
-
 .name-developer .dropdown-content {
   width: 100%;
 }
-
 .name-developer .dropdown-button:hover {
   background: #c0c0c0;
 }
-
 .name-developer img {
   margin-top: 10px;
 }
-
 .name-developer {
   display: flex;
   flex-direction: column;
@@ -451,7 +502,7 @@ div.filter > span {
   font-size: 14px;
 }
 
-.name-developer .name, .last-name{
+.name-developer .name, .last-name {
   font-size: 18px;
   color: black;
   font-weight: bold;
@@ -479,19 +530,16 @@ div.filter > span {
   min-height: 70vh;
   padding: 10px 20px;
 }
-
 .experience {
   display: flex;
   flex-direction: column-reverse;
 }
-
 .experience-item {
   display: flex;
   flex-direction: row;
   justify-content: center;
   margin: 5px 0
 }
-
 .experience-info {
   display: flex;
   flex-direction: column;
@@ -499,66 +547,54 @@ div.filter > span {
   min-width: 150px;
 
 }
-
-.experience-info .text-muted{
+.experience-info .text-muted {
   font-size: 12px;
   margin: 0;
 }
-
 .experience-company {
   display: flex;
   flex-direction: row;
   width: 65%;
 }
-
 .info-period {
   padding: 3px 10px;
   margin-bottom: 0;
   border: 1px solid #c0c0c0;
   border-radius: 8px;
 }
-
 .company-info {
   border: 1px solid #c0c0c0;
   border-radius: 8px;
   padding: 10px;
 }
-
 .company-name {
   text-decoration: underline;
   font-weight: bold;
 }
-
 .title-name-experience {
   font-size: 20px;
 }
-
 .experience-map {
   margin: 0 20px;
 }
-
 .experience-point {
   border-radius: 50%;
   border: 2px solid #c0c0c0;
   height: 9px;
   width: 9px;
 }
-
 .experience-line {
   width: 2px;
   border: 1px solid #c0c0c0;
   height: 100%;
   margin-left: 4px;
 }
-
 .experience-item:nth-child(even) .experience-line {
   border-style: dashed;
 }
-
 .experience-item:first-child .experience-line {
   display: none;
 }
-
 .skill-developer {
   padding: 15px 0 0 15px;
   border-top: 1px solid #c0c0c0;
@@ -577,7 +613,6 @@ div.filter > span {
   border: 1px solid #c0c0c0;
   border-radius: 8px;
 }
-
 
 .modal input {
   height: 22px;
@@ -630,6 +665,153 @@ div.filter > span {
   background: #e8e8e8;
   box-shadow: 0 5px 8px #dcdcdc;
   font-size: 20px;
+}
+/*----CSS styles interview.html ---*/
+.page-interview {
+  min-height: calc(100vh - 50px);
+}
+.page-interview-header h1 {
+  font-size: 20px;
+  margin: 0;
+  padding: 25px 20px;
+}
+.page-interview-button .button-group .btn-link {
+  text-decoration: none;
+  color: #000000;
+  padding: 0 15px;
+  font-size: 16px;
+  border-radius: 5px;
+}
+.page-interview-button .button-group > button:focus {
+  background: #b2b2b2;
+}
+.page-interview-button .button-group > button:hover,
+button.selected {
+  background: #b2b2b2;
+}
+.row-header {
+  margin: 30px 10px 0 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.row-header div {
+  height: 30px;
+  width: 100px;
+  text-align: center;
+}
+.column-hours {
+  margin-top: -1200px;
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  align-items: baseline;
+  width: 50px;
+}
+.column-hours div {
+  height: 50px;
+}
+.week {
+  margin: 0 10px 0 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.week .day {
+  border: 1px solid #c0c0c0;
+  height: 50px;
+  width: 100%;
+  text-align: center;
+}
+/*-------CSS styles modal window------*/
+.page-interview-modal-window .head {
+  border-bottom: none;
+}
+.page-interview-modal-window .modal-window-body {
+  padding: 10px 0 10px 70px;
+}
+.page-interview-modal-window .modal-window-body .time {
+  width: 100%;
+  outline: none;
+  border: none;
+  font-size: 24px;
+  height: 28px;
+  color: #212121;
+}
+.page-interview-modal-window .modal-window-body .event {
+  width: 150px;
+  height: 30px;
+  margin-top: 10px;
+  color: #fff;
+  background-color: #4285f4;
+  border: 1px solid #4285f4;
+  border-radius: 12px;
+  padding: 0 8px;
+  font-weight: 600;
+
+}
+.modal-body-input {
+  margin: 20px 30px 0 -50px;
+}
+.modal-body-input .form-1,
+.modal-body-input .form-2 {
+  display: flex;
+  flex-direction: row;
+}
+.modal-body-input .form-1 .date,
+.modal-body-input .form-1 .date button,
+.modal-body-input .form-1 .date input,
+.modal-body-input .form-2 .select select {
+  background: #f5f5f5;
+}
+.modal-body-input .form-1 .date,
+.modal-body-input .form-2 .select,
+.modal-body-input .form-2 .select select {
+  width: 100%;
+}
+.modal-body-input .form-1 .date button {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #757575;
+}
+.modal-body-input .form-1 .date input {
+  border: none;
+}
+.modal-body-input .form-1 span,
+.modal-body-input .form-2 span {
+  padding: 0 30px 0 10px;
+}
+.modal-body-input .form-2 .select select {
+  border: none;
+  margin-top: 10px;
+  height: 100%;
+}
+.modal-body-input .form-2 span {
+  margin-top: 10px;
+}
+.modal-window-footer {
+  border-top: none;
+}
+.modal-window-footer button {
+  margin: 15px 15px 0 0;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 600;
+}
+.modal-window-footer .settings {
+  color: #757575;
+  background-color: #ffffff;
+}
+.modal-window-footer .settings:hover {
+  background-color: #e2e2e2;
+}
+.modal-window-footer .settings:focus {
+  background-color: #e2e2e2;
+}
+.modal-window-footer .save {
+  color: #ffffff;
+  background: #4285f4;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 /*---- Content footer vacancies and candidates----*/
 
@@ -725,6 +907,99 @@ div.filter > span {
   background: url(../images/sprite.png) -290px -3px;
   outline: none;
 }
+
+/*----Notification block----*/
+
+.notification-block {
+  width: 250px;
+  border-left: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: -250px;
+  background: #fff;
+  position: absolute;
+  right: 250px;
+  top: 0;
+  animation: show-notification 1s forwards;
+}
+
+.hide-notification{
+  animation: hide-notification 1s forwards;
+}
+
+@keyframes hide-notification {
+  from {right: 250px;}
+  to {right: 0;}
+}
+
+@keyframes show-notification {
+  from {right: 0;}
+  to {right: 250px;}
+}
+
+.notification-block > div{
+  height: 320px;
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+
+.notification-header{
+  height: 40px;
+}
+
+.notification-header h4{
+  line-height: 40px;
+  margin: 0;
+}
+
+.notification-body{
+  overflow: hidden;
+  height: 240px;
+}
+
+.js-all-candidates,
+.js-all-interview{
+  overflow: auto;
+}
+
+.notification-card-candidates{
+  display: flex;
+  margin-bottom: 15px;
+  height: 65px;
+}
+
+.notification-card-candidates > div{
+  margin-left: 25px;
+}
+
+.notification-card-candidates p{
+  margin: 0;
+}
+
+.notification-card-interview{
+  height: 65px;
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+
+.notification-footer{
+  height: 40px;
+  width: 100%;
+  border-top: 1px solid #ddd;;
+  line-height: 40px;
+  position: absolute;
+  bottom: 0;
+}
+
+.notification-footer span{
+  margin-left: 25px;
+}
+
+.notification-footer span:hover{
+  cursor: pointer;
+}
+
 /*---- media for vacancies----*/
 @media (max-width: 992px) {
   .content-header {
@@ -764,15 +1039,30 @@ div.filter > span {
   .profile-table-right-part {
     height: auto;
   }
-  .page-profile-table{
+  .page-profile-table {
     height: auto;
   }
-}
-  @media (min-width: 992px) {
-    .glyphicon-menu-hamburger {
-      display: none;
-    }
+
+  .content-candidates-table table th:nth-child(1),
+  .content-candidates-table table td:nth-child(1),
+  .content-candidates-table table th:nth-child(3),
+  .content-candidates-table table td:nth-child(3){
+    display: none;
   }
+
+  .notification-body{
+    height: 160px;
+  }
+
+  .notification-block > div{
+    height: 240px;
+  }
+}
+@media (min-width: 992px) {
+  .glyphicon-menu-hamburger {
+    display: none;
+  }
+}
   @media screen and (max-width: 767px) {
     .table-responsive {
       width: 100%;
@@ -785,70 +1075,114 @@ div.filter > span {
       border-left: none;
     }
 
-    .name-developer .dropdown-content, .name-developer .dropdown-button {
-      width: 200px;
-    }
+  .name-developer .dropdown-content, .name-developer .dropdown-button {
+    width: 200px;
+  }
 
     .experience-info {
       min-width: 135px;
       font-size: 12px;
     }
 
-    .contact-developer {
-      border-bottom: 1px solid #c0c0c0;
-    }
+  .contact-developer {
+    border-bottom: 1px solid #c0c0c0;
   }
-  @media screen and (max-width: 600px) {
-    .filter {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      /*Candidates page*/
-    }
-    .filter-item {
-      margin: 4px;
-    }
-    .search-input {
-      width: 100%;
-    }
-    .mobile-device {
-      display: none;
-    }
-    .header-button {
-      display: inline-flex;
-    }
-    .search span {
-      padding: 8px;
-    }
-    .button-nav button {
-      margin: 0 0;
-    }
+}
 
-    .content-footer {
-      display: inline-flex;
-    }
-    .content-footer span {
-      padding: 0 25px;
-      font-size: 15px;
-    }
-    .button-add {
-      display: none;
-    }
+@media screen and (max-width: 600px) {
+  .filter {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /*Candidates page*/
   }
-  @media screen and (max-width: 400px) {
-    .content-footer span {
-      padding: 0 15px;
-      font-size: 15px;
-    }
 
-    .experience-info {
-      min-width: 90px;
-      font-size: 10px;
-    }
+  .filter-item {
+    margin: 4px;
   }
-  @media screen and (max-width: 310px) {
-    .content-footer span {
-      padding: 0 5px;
-      font-size: 15px;
-    }
+
+  .search-input {
+    width: 100%;
   }
+
+  .mobile-device {
+    display: none;
+  }
+
+  .header-button {
+    display: inline-flex;
+  }
+
+  .search span {
+    padding: 8px;
+  }
+
+  .button-nav button {
+    margin: 0 0;
+  }
+
+  .content-footer {
+    display: inline-flex;
+  }
+
+  .content-footer span {
+    padding: 0 25px;
+    font-size: 15px;
+  }
+
+  .button-add {
+    display: none;
+  }
+
+  .content-candidates-table table th:nth-child(4),
+  .content-candidates-table table td:nth-child(4),
+  .content-candidates-table table th:nth-child(5),
+  .content-candidates-table table td:nth-child(5){
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .content-footer span {
+    padding: 0 15px;
+    font-size: 15px;
+  }
+
+  .experience-info {
+    min-width: 90px;
+    font-size: 10px;
+  }
+  
+  .search span {
+    padding: 8px;
+  }
+  .button-nav button {
+    margin: 0 0;
+  }
+  .content-footer {
+    display: inline-flex;
+  }
+  .content-footer span {
+    padding: 0 25px;
+    font-size: 15px;
+  }
+  .button-add {
+    display: none;
+  }
+}
+@media screen and (max-width: 400px) {
+  .content-footer span {
+    padding: 0 15px;
+    font-size: 15px;
+  }
+  .experience-info {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 310px) {
+  .content-footer span {
+    padding: 0 5px;
+    font-size: 15px;
+  }
+}

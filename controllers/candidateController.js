@@ -164,7 +164,7 @@ function candidateController() {
     });
   };
 
- function addFilter(filter) {
+  function addFilter(filter) {
     filter = filter.split("&");
 
     let state = filter[0].substring(filter[0].indexOf("="), filter[0].length).replace("=", "");

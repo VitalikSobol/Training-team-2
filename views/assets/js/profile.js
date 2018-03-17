@@ -60,7 +60,7 @@ function Profile() {
       let name = $('.name-skill').val().trim();
       if(name!== ""){
         $.ajax({
-          url: "http://localhost:3001/candidates/skill/"+ $.urlParam("id"),
+          url: "/candidates/skill/"+ $.urlParam("id"),
           type: 'POST',
           data: name,
           success: function(data) {
@@ -83,7 +83,7 @@ function Profile() {
       };
       if(model.period!== "" && model.company !== "") {
         $.ajax({
-          url: "http://localhost:3001/candidates/experience/" + $.urlParam("id"),
+          url: "/candidates/experience/" + $.urlParam("id"),
           type: 'POST',
           data: JSON.stringify(model),
           success: function (data) {
@@ -152,11 +152,10 @@ function Profile() {
       };
 
       $.ajax({
-        url: "http://localhost:3001/candidates/"+ $.urlParam("id"),
+        url: "/candidates/"+ $.urlParam("id"),
         type: 'PUT',
         data: JSON.stringify(model),
         success: function(data) {
-
         }
       });
     }
@@ -186,7 +185,7 @@ function Profile() {
     },
 
     "loadInformation": function () {
-      $.getJSON("http://localhost:3001/candidates/"+$.urlParam("id"), function (json) {
+      $.getJSON("/candidates/"+$.urlParam("id"), function (json) {
         if (json.status === 200)
           _$content.showInformation(json.contact[0], json.experience, json.skills);
       }).done(function () {
