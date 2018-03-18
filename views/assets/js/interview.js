@@ -77,7 +77,6 @@ function Calendar() {
 		minTime: '08:00:00',
 		maxTime: '17:00:00',
 		timezone:'local',
-		
 		slotLabelFormat : 'h(:mm)a',
 		buttonText: {
 			month:    'month',
@@ -92,6 +91,7 @@ function Calendar() {
 		},
 		firstDay: 1,
 		theme : false,
+		height: "auto",
 		weekends: false,
 		dayClick: function (date) {
 			_$modal.modal('show');

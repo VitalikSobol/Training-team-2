@@ -1050,7 +1050,6 @@ button.selected {
   display: flex;
   flex-direction: row;
 }
-
 .notification-header h4{
   line-height: 40px;
   margin: 0;
