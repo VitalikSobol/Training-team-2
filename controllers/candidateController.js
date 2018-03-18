@@ -20,13 +20,15 @@ function candidateController() {
   };
 
   this.getCandidates = function (req, res) {
-
-    if(req.query.filter === 'state=Empty&name=none') {
+    let defaultFilter = "name=none&email=none&position=none&date=none&status=none";
+    
+    if(req.query.filter === defaultFilter) {
 
       let candidatesQuery = "SELECT (SELECT COUNT(*) FROM candidate) as total,candidate.id as id, first_name as name," +
         " last_name as lastName, job_title as position, salary as payment, status.name as status," +
         " DATEDIFF(CURRENT_DATE(), date_publishing) as date," +
-        " image_url as image" +
+        " image_url as image," +
+        " email as email"  +
         " FROM candidate JOIN status on candidate.status_id = status.id LIMIT " + req.query.begin + "," + req.query.rows;
 
       connection.query(candidatesQuery, function (err, data) {
@@ -42,18 +44,20 @@ function candidateController() {
 
     }
     else {
-      let complexQuery = "SELECT (SELECT COUNT(*) FROM candidate  ? ) as total, candidate.id as id, " +
-        " first_name as name, last_name as lastName," +
-        " job_title as position," +
-        " salary as payment, status.name as status,	" +
-        " DATEDIFF(CURRENT_DATE(), date_publishing) as date,"	+
-        " image_url as image" +
-        " FROM candidate JOIN status on candidate.status_id = status.id ? LIMIT " + req.query.begin + "," + req.query.rows;
-
+      
+      let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM "+
+        "(SELECT first_name, email, job_title," +
+        " date_publishing, status.name as status," +
+        " DATEDIFF(CURRENT_DATE(), date_publishing) as date "+
+        " FROM candidate JOIN status ON candidate.status_id = status.id ?  ) as rows_number ) as total, " +
+        " candidate.id as id, first_name as name, last_name as lastName, job_title as position, salary as payment, " +
+        " status.name as status, DATEDIFF(CURRENT_DATE(), date_publishing) as date, email as email, " +
+        " image_url as image FROM candidate JOIN status on candidate.status_id = status.id ? LIMIT " +
+        req.query.begin + "," + req.query.rows;
+     
       let criteria = addFilter(req.query.filter);
-
+     
       complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
-
       connection.query(complexQuery, function (err, data) {
         if (err) throw err;
         else {
@@ -195,27 +199,43 @@ function candidateController() {
 
   function addFilter(filter) {
     filter = filter.split("&");
-
-    let state = filter[0].substring(filter[0].indexOf("="), filter[0].length).replace("=", "");
-    let name = filter[1].substring(filter[1].indexOf("="), filter[1].length).replace("=", "");
-
-    let query = 'WHERE ';
-
-    if (state !== "Empty") {
-      query += 'status.name = ';
-      query += '\'' + state + '\'';
-      query += ' AND ';
-    }
+  
+    let name = filter[0].substring(filter[0].indexOf("="), filter[0].length).replace("=", "");
+    let email = filter[1].substring(filter[1].indexOf("="), filter[1].length).replace("=", "");
+    let position = filter[2].substring(filter[2].indexOf("="), filter[2].length).replace("=", "");
+    let date = filter[3].substring(filter[3].indexOf("="), filter[3].length).replace("=", "");
+    let status = filter[4].substring(filter[4].indexOf("="), filter[4].length).replace("=", "");
+    
+    
+    let query = 'HAVING ';
+  
     if (name !== "none") {
-      query += '(first_name LIKE ';
+      query += 'first_name LIKE ';
       query += '\'%' + name + '%\'';
-      query += ' OR last_name LIKE ';
-      query += '\'%' + name + '%\')';
       query += ' AND ';
     }
-
+    if (position !== "none") {
+      query += 'job_title LIKE ';
+      query += '\'%' + position + '%\'';
+      query += ' AND ';
+    }
+    if (email !== "none") {
+      query += 'email LIKE ';
+      query += '\'%' + email + '%\'';
+      query += ' AND ';
+    }
+    if (date !== "none") {
+      query += 'date =';
+      query += '\'' + date + '\'';
+      query += ' AND ';
+    }
+    if (status !== "none") {
+      query += 'status LIKE';
+      query += '\'%' + status + '%\'';
+      query += ' AND ';
+    }
     query = query.substring(0, (query.length - 4));
-
+  
     return query;
   }
 

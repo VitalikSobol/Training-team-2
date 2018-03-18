@@ -14,10 +14,10 @@ function EventController() {
 	};
 	
 	self.getEvents = function (req, res, next) {
-		let start = req.query.from.substring(0, req.query.from.indexOf("T"));
-		let end = req.query.till.substring(0, req.query.till.indexOf("T"));
-		connection.query("SELECT ID as id, TITLE as title, START as start, END as end, ALL_DAY as allDay" +
-										" FROM event WHERE START >= '"+ start + "'" + "AND END <= '" + end + "'", function (err, data) {
+		let start = req.query.from;
+		let end = req.query.till;
+		connection.query("SELECT id, title, start, end, allDay" +
+										" FROM event WHERE start >= '"+ start + "'" + "AND end <= '" + end + "'", function (err, data) {
 			if(err){
 				next(err);
 				return;
@@ -33,7 +33,8 @@ function EventController() {
 	
 	self.createEvent = function (req,res,next) {
 		let event = JSON.parse(req.body);
-		let query = "INSERT INTO `event` (`TITLE`, `START`, `END`, `ALL_DAY`) VALUE(" +
+		console.log(event);
+		let query = "INSERT INTO event (`title`, `start`, `end`, `allDay`) VALUE(" +
 								"'" + event.title + "' ," +
 								"'" + event.start + "' ," +
 								"'" + event.end + "' ," +

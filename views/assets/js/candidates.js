@@ -6,7 +6,7 @@
 function Candidates() {
 	let _self = this;
 	
-	let _$content = $('#cards').data({
+	let _$content = $('#candidates').data({
 		"model": {
 			"getModel": function(item) {
 				item = item || {};
@@ -93,29 +93,95 @@ function Candidates() {
 		}
 	});
 	
-	let _$filter = $('.filter').data({
+	// let _$filter = $('.filter').data({
+	// 	"model": {
+	// 		"state": "Empty",
+	// 	}
+	// });
+	let _$filter = $(".filters").data({
 		"model": {
-			"state": "Empty",
+			"value": ["name=none", "email=none", "position=none", "date=none", "status=none"]
 		}
 	});
 	
-	
-	$.extend(_$filter,{
-		"changeFilterState": function (event) {
+	$.extend(_$filter, {
+		"onKeyUp": function (event) {
 			event.stopPropagation();
 			event.preventDefault();
 			
-			_$filter.data('model').state = this.text;
-			$('#current-state').html(	_$filter.data('model').state);
+			let element = $(event.target).attr("id");
 			
-			_$button.data('model').current = 0;
-			_$button.data('model').page = 1;
-		
+			_$filter.addFilter(_$filter.getInputValue(element), element);
+			
+			_$button.data("model").current = 0;
+			_$button.data("model").page = 1;
+			
 			_$content.loadItems();
 			
 			return false;
+		},
+		"addFilter": function (value, id) {
+			switch (id){
+				case ("name"):{
+					_$filter.data("model").value[0] = "name=" + value;
+					break;
+				}
+				case ("email") :{
+					_$filter.data("model").value[1] = "email=" + value;
+					break;
+				}
+				case ("position"):{
+					_$filter.data("model").value[2] = "position=" + value;
+					break;
+				}
+				case ("date"):{
+					_$filter.data("model").value[3] = "date=" + value;
+					break;
+				}
+				case ("status"):{
+					_$filter.data("model").value[4] = "status=" + value;
+					break;
+				}
+			}
+			// if (id === "position") {
+			//
+			// 	_$filter.data("model").value[0] = "position=" + value;
+			//
+			// } else if (id === "description") {
+			//
+			// 	_$filter.data("model").value[1] = "description=" + value;
+			//
+			// } else if (id === "salary") {
+			//
+			// 	_$filter.data("model").value[2] = "salary=" + value;
+			//
+			// }
+		},
+		"getInputValue": function (elementId) {
+			let id = "#" + elementId;
+			/*replace with template for regexp*/
+			if ($(id).val() === "") {
+				return "none";
+			}
+			return $(id).val();
 		}
 	});
+	// $.extend(_$filter,{
+	// 	"changeFilterState": function (event) {
+	// 		event.stopPropagation();
+	// 		event.preventDefault();
+	//
+	// 		_$filter.data('model').state = this.text;
+	// 		$('#current-state').html(	_$filter.data('model').state);
+	//
+	// 		_$button.data('model').current = 0;
+	// 		_$button.data('model').page = 1;
+	//
+	// 		_$content.loadItems();
+	//
+	// 		return false;
+	// 	}
+	// });
 	
 	
 	$.extend(_$rows, {
@@ -143,28 +209,43 @@ function Candidates() {
 		},
 		"addItem": function (item) {
 			item = this.data("model").getModel(item);
-			
-			let template =  "<div class='col-xs-6 col-sm-4 col-md-3 content-candidates-card'>"+
-				"<div id ='" + item.id + "'" + "  class='candidates-item'>"+
-				"<div class='candidates-image'>"+
-				"<span>" + item.status + "</span>"+
-				"<a href='profile.html?id="+ item.id+"' class='thumbnail'>" +
-				"<img src='"+ item.image +"' alt='...'>"+ "</a></div>"+
-				"<div class='caption'>"+
-				"<p class='candidates-item-job-position'>" + item.position + "</p>"+
-				"<p class='candidates-item-name'>" + item.name + " "+ item.lastName +"</p>"+
-				"<p class='candidates-item-salary'>" + item.payment + "\$" + "</p>"+
-				"<p class='candidates-item-time'>" + item.date + " day later</p></div></div></div>";
+			let template  = "<tr id='" + item.id + "'>" +
+											"<td class='candidates-photo'>"+
+											"<div><img src='"+item.image + "'alt='' ></div>"+
+											"</td>"+
+											"<td class='candidates-name'>" + item.name +"</td>"+
+											"<td class='candidates-mail'>" + item.email +"</td>" +
+											"<td class='candidates-position'>" + item.position +"</td>"+
+											"<td class='candidates-date'>"+ item.date + " day ago</td>"+
+											"<td class='candidates-stage'>" + item.status + "</td>" +
+											"<td><a href='/views/profile.html?id="+ item.id+"'>Show Profile</a></td></tr>";
+			// let template =  "<div class='col-xs-6 col-sm-4 col-md-3 content-candidates-card'>"+
+			// 	"<div id ='" + item.id + "'" + "  class='candidates-item'>"+
+			// 	"<div class='candidates-image'>"+
+			// 	"<span>" + item.status + "</span>"+
+			// 	"<a href='profile.html?id="+ item.id+"' class='thumbnail'>" +
+			// 	"<img src='"+ item.image +"' alt='...'>"+ "</a></div>"+
+			// 	"<div class='caption'>"+
+			// 	"<p class='candidates-item-job-position'>" + item.position + "</p>"+
+			// 	"<p class='candidates-item-name'>" + item.name + " "+ item.lastName +"</p>"+
+			// 	"<p class='candidates-item-salary'>" + item.payment + "\$" + "</p>"+
+			// 	"<p class='candidates-item-time'>" + item.date + " day later</p></div></div></div>";
 				this.append(template);
 		},
 		"isEmpty": function () {
-			if (!$("div", this).length) {
-				this.append($('<div class=" text-center">' +
-					'No result found</div>'));
+			// if (!$("div", this).length) {
+			// 	this.append($('<div class=" text-center">' +
+			// 		'No result found</div>'));
+			// }
+			if (!$("tr td", this).length) {
+				this.append($('<tr class="no-result text-center">' +
+					'<td colspan="' + $('.filters th').length + '">' +
+					'No result found</td></tr>'));
 			}
 		},
 		"clear": function () {
-			this.empty();
+			// this.empty();
+			this.find("tbody").empty();
 		},
 		"loadItems": function () {
 			
@@ -172,7 +253,7 @@ function Candidates() {
 			query.rows = _$rows.data("model").currentRowsNumber;
 			query.begin = _$button.data("model").current;
 			query.page = _$button.data("model").page;
-			query.filter = ["state=" +_$filter.data("model").state, "name=" + _$inputField.data("model").fullName].join("&");
+			query.filter = _$filter.data("model").value.join("&");
 			
 			$.getJSON("/candidates/", query, function (json) {
 				_$content.clear();
@@ -190,11 +271,20 @@ function Candidates() {
 		"clickItem": function (event) {
 				event.stopPropagation();
 				event.preventDefault();
-				
 				$(location).attr('href','/views/profile.html?id=' + $(this).attr("id"));
 				return false;
 		}
 	});
+		let _$buttonBell = $('.button-bell');
+		
+		$.extend(_$buttonBell, {
+			"clickButton": function (event) {
+				event.stopPropagation();
+				event.preventDefault();
+				
+				$('.notification-block').toggleClass('hide-notification');
+			}
+		});
 	
 	
 	_self.init = function () {
@@ -204,11 +294,14 @@ function Candidates() {
 	
 	_self.initHandler = function () {
 		_$rows.on("click", ".dropdown-content a", _$rows.changeRowsNumber);
-		_$filter.on("click",".dropdown-content a", _$filter.changeFilterState);
+		// _$filter.on("click",".dropdown-content a", _$filter.changeFilterState);
+		_$filter.on("keyup", "input", _$filter.onKeyUp);
 		_$button.on("click", _$button.onPressed);
 		_$inputField.on("keyup",_$inputField.changeInputState);
 		_$content.on("loadItems", _$content.loadItems);
 		_$content.on("click", ".candidates-item", _$content.clickItem);
+		_$buttonBell.on('click', _$buttonBell.clickButton);
+		
 	};
 }
 

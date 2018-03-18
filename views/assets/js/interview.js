@@ -23,11 +23,7 @@ function Calendar() {
 		timeFormat: 'H:i:s',
 		modalBackdrop: true,
 	});
-	$('#participant').multiselect({
-		buttonWidth: '100%'
-	});
-	
-	console.log($(".date"));
+
 	let _$modal = $("#myModal").data({
 		"elements":{
 			"participants": []
@@ -47,12 +43,15 @@ function Calendar() {
 		"selectTime": function (event) {
 			event.stopPropagation();
 			event.preventDefault();
+			
 			$('.bootstrap-timepicker').toggle( "show" );
+			
 			return false;
 		},
 		"saveEvent": function (event) {
 			event.stopPropagation();
 			event.preventDefault();
+			
 			let currentEvent  ={
 				start: _$modal.find("#start").val() + " " + _timeStart.val(),
 				end: 	_$modal.find("#end").val() +  " " + _timeEnd.val(),
@@ -61,15 +60,16 @@ function Calendar() {
 			};
 			
 			$.ajax({
-				url : "http://localhost:3001/events/",
+				url : "/events/",
 				type : 'POST',
 				data : JSON.stringify(currentEvent),
 				success: function () {
 					$('#calendar').fullCalendar('refetchEvents');
+					_$modal.modal('hide');
 				}
 			});
 			
-			_$modal.modal('hide');
+		
 			return false;
 		}
 	});
@@ -102,7 +102,7 @@ function Calendar() {
 		},
 		events: function(start, end, timezone, callback){
 			$.ajax({
-				url: 'http://localhost:3001/events/',
+				url: '/events/',
 				type: 'GET',
 				dataType: 'json',
 				data: {
