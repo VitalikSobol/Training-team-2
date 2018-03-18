@@ -24,16 +24,30 @@ function EventController() {
 			}else {
 				entity.events = data;
 				entity.status = 200;
-				res.setHeader("Access-Control-Allow-Origin", "*");
 				res.json(entity);
 				next();
 			}
 		});
 	};
 	
+	self.getNotification = function (req,res, next) {
+		let query = "SELECT id, title, date_format(start, '%H:%i') as start FROM event" +
+								" WHERE current_timestamp() <= start";
+		connection.query(query, function (err, data) {
+			if(err){
+				next(err);
+				return;
+			}
+			entity.events = data;
+			entity.status = 200;
+			res.json(entity);
+			next();
+			
+		});
+	};
+	
 	self.createEvent = function (req,res,next) {
 		let event = JSON.parse(req.body);
-		console.log(event);
 		let query = "INSERT INTO event (`title`, `start`, `end`, `allDay`) VALUE(" +
 								"'" + event.title + "' ," +
 								"'" + event.start + "' ," +
@@ -45,7 +59,6 @@ function EventController() {
 				next(err);
 				return;
 			}else {
-				res.setHeader("Access-Control-Allow-Origin", "*");
 				res.end();
 				next();
 			}

@@ -1045,15 +1045,19 @@ button.selected {
   border-bottom: 1px solid #ddd;
   position: relative;
 }
-
-
 .notification-header{
   height: 40px;
+  display: flex;
+  flex-direction: row;
 }
 
 .notification-header h4{
   line-height: 40px;
   margin: 0;
+}
+.notification-header span{
+  margin-top: 3%;
+  padding: 2%;
 }
 
 .notification-body{

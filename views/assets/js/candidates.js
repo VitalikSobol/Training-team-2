@@ -5,6 +5,149 @@
 
 function Candidates() {
 	let _self = this;
+	let _$navMenu = $("#nav-menu");
+	
+	$.extend(_$navMenu, {
+		"onClick": function () {
+			$('.navigation').toggleClass('show');
+		}
+	});
+	
+	let _$buttonShowNotifBlock = $("#interview-show-element");
+	
+	$.extend(_$buttonShowNotifBlock, {
+		"onClick": function (event) {
+			event.stopPropagation();
+			event.preventDefault();
+			$(".notification-block-interview").toggle();
+		}
+	});
+	
+	let _$buttonShowCandidateBlock = $("#candidates-show-element");
+	$.extend(_$buttonShowCandidateBlock, {
+		"onClick": function (event) {
+			event.stopPropagation();
+			event.preventDefault();
+			$(".notification-block-candidates").toggle();
+		}
+	});
+	
+	let _$notificationEvent = $('.notification-body-interview').data({
+		"model":{
+			"getModel" : function (item) {
+				item = item || {};
+				item.title = item.title || "";
+				item.start = item.start || "";
+				
+				return item;
+			}
+		}
+	});
+	
+	$.extend(_$notificationEvent, {
+		"addEvents": function (items) {
+			items.forEach($.proxy(this, "addEvent"));
+		},
+		"addEvent": function (item) {
+			item = this.data("model").getModel(item);
+			
+			let template = "<div class='notification-card-interview'>" +
+											"<p>"+ item.title +"</p>" +
+											"<span>" + item.start + "</span></div>";
+			
+			this.append(template);
+		},
+		"isEmpty": function () {
+		},
+		"clear": function () {
+			this.html("");
+		},
+		"loadEvents": function () {
+			$.ajax({
+				url: "/notification/",
+				type: 'GET',
+				success: function (json) {
+					_$notificationEvent.clear();
+					
+					json.status === 200 && Array.isArray(json.events) && _$notificationEvent.addEvents(json.events);
+					
+					_$notificationEvent.isEmpty();
+				}
+			});
+		}
+	});
+	
+	let _$showAllEvent = $('#all-interview-natification');
+	
+	$.extend(_$showAllEvent, {
+		"onClick": function (event) {
+			event.stopPropagation();
+			event.preventDefault();
+			
+			_$notificationEvent.toggleClass('js-all-interview');
+		}
+	});
+	
+	let _$notificationCandidates = $('.notification-body-candidates').data({
+			"model":{
+				"getModel" : function (item) {
+					item = item || {};
+					item.name = item.name || "";
+					item.email = item.email || "";
+					item.poition = item.position || "";
+					item.image = item.image || "";
+					return item;
+				}
+			}
+	});
+	
+	let _$showAllCandidates = $('#all-candidates-notification');
+	
+	$.extend(_$showAllCandidates, {
+		"onClick": function (event) {
+			event.stopPropagation();
+			event.preventDefault();
+			_$notificationCandidates.toggleClass('js-all-candidates');
+			return false;
+		}
+	});
+	
+	$.extend(_$notificationCandidates, {
+		"addCandidates": function (items) {
+			items.forEach($.proxy(this, "addCandidate"));
+		},
+		"addCandidate": function (item) {
+			item = this.data("model").getModel(item);
+			let template = "<div class='notification-card-candidates'>" +
+										 "<div class='candidates-photo'>" +
+			               "<div><img src='"+ item.image +"' alt=''></div>" +
+				             "</div><div>" +
+										 "<p>" + item.name + "</p>" +
+										 "<p>"+ item.email + "</p>" +
+				             "<p>" + item.position + "</p></div></div>";
+			
+			this.append(template);
+		},
+		"isEmpty": function () {
+		},
+		"clear": function () {
+			this.html("");
+		},
+		"loadCandidates": function () {
+			let query = {};
+			query.status = 'New';
+			$.ajax({
+				url: "/candidates/status/" + query.status,
+				type: 'GET',
+				success: function (json) {
+					_$notificationCandidates.clear();
+					
+					json.status === 200 && Array.isArray(json.data) && _$notificationCandidates.addCandidates(json.data);
+					_$notificationCandidates.isEmpty();
+				}
+			});
+		}
+	});
 	
 	let _$content = $('#candidates').data({
 		"model": {
@@ -93,11 +236,6 @@ function Candidates() {
 		}
 	});
 	
-	// let _$filter = $('.filter').data({
-	// 	"model": {
-	// 		"state": "Empty",
-	// 	}
-	// });
 	let _$filter = $(".filters").data({
 		"model": {
 			"value": ["name=none", "email=none", "position=none", "date=none", "status=none"]
@@ -143,19 +281,6 @@ function Candidates() {
 					break;
 				}
 			}
-			// if (id === "position") {
-			//
-			// 	_$filter.data("model").value[0] = "position=" + value;
-			//
-			// } else if (id === "description") {
-			//
-			// 	_$filter.data("model").value[1] = "description=" + value;
-			//
-			// } else if (id === "salary") {
-			//
-			// 	_$filter.data("model").value[2] = "salary=" + value;
-			//
-			// }
 		},
 		"getInputValue": function (elementId) {
 			let id = "#" + elementId;
@@ -166,24 +291,6 @@ function Candidates() {
 			return $(id).val();
 		}
 	});
-	// $.extend(_$filter,{
-	// 	"changeFilterState": function (event) {
-	// 		event.stopPropagation();
-	// 		event.preventDefault();
-	//
-	// 		_$filter.data('model').state = this.text;
-	// 		$('#current-state').html(	_$filter.data('model').state);
-	//
-	// 		_$button.data('model').current = 0;
-	// 		_$button.data('model').page = 1;
-	//
-	// 		_$content.loadItems();
-	//
-	// 		return false;
-	// 	}
-	// });
-	
-	
 	$.extend(_$rows, {
 		"changeRowsNumber": function (event) {
 			event.stopPropagation();
@@ -219,24 +326,9 @@ function Candidates() {
 											"<td class='candidates-date'>"+ item.date + " day ago</td>"+
 											"<td class='candidates-stage'>" + item.status + "</td>" +
 											"<td><a href='/views/profile.html?id="+ item.id+"'>Show Profile</a></td></tr>";
-			// let template =  "<div class='col-xs-6 col-sm-4 col-md-3 content-candidates-card'>"+
-			// 	"<div id ='" + item.id + "'" + "  class='candidates-item'>"+
-			// 	"<div class='candidates-image'>"+
-			// 	"<span>" + item.status + "</span>"+
-			// 	"<a href='profile.html?id="+ item.id+"' class='thumbnail'>" +
-			// 	"<img src='"+ item.image +"' alt='...'>"+ "</a></div>"+
-			// 	"<div class='caption'>"+
-			// 	"<p class='candidates-item-job-position'>" + item.position + "</p>"+
-			// 	"<p class='candidates-item-name'>" + item.name + " "+ item.lastName +"</p>"+
-			// 	"<p class='candidates-item-salary'>" + item.payment + "\$" + "</p>"+
-			// 	"<p class='candidates-item-time'>" + item.date + " day later</p></div></div></div>";
 				this.append(template);
 		},
 		"isEmpty": function () {
-			// if (!$("div", this).length) {
-			// 	this.append($('<div class=" text-center">' +
-			// 		'No result found</div>'));
-			// }
 			if (!$("tr td", this).length) {
 				this.append($('<tr class="no-result text-center">' +
 					'<td colspan="' + $('.filters th').length + '">' +
@@ -244,7 +336,6 @@ function Candidates() {
 			}
 		},
 		"clear": function () {
-			// this.empty();
 			this.find("tbody").empty();
 		},
 		"loadItems": function () {
@@ -290,6 +381,8 @@ function Candidates() {
 	_self.init = function () {
 		_self.initHandler();
 		_$content.trigger("loadItems");
+		_$notificationCandidates.trigger("loadCandidates");
+		_$notificationEvent.trigger("loadEvents");
 	};
 	
 	_self.initHandler = function () {
@@ -301,6 +394,13 @@ function Candidates() {
 		_$content.on("loadItems", _$content.loadItems);
 		_$content.on("click", ".candidates-item", _$content.clickItem);
 		_$buttonBell.on('click', _$buttonBell.clickButton);
+		_$notificationCandidates.on("loadCandidates", _$notificationCandidates.loadCandidates);
+		_$notificationEvent.on("loadEvents", _$notificationEvent.loadEvents);
+		_$showAllCandidates.on("click", _$showAllCandidates.onClick);
+		_$showAllEvent.on("click", _$showAllEvent.onClick);
+		_$navMenu.on("click", _$navMenu.onClick);
+		_$buttonShowCandidateBlock.on("click", _$buttonShowCandidateBlock.onClick);
+		_$buttonShowNotifBlock.on("click", _$buttonShowNotifBlock.onClick);
 		
 	};
 }
@@ -309,15 +409,6 @@ $(new Candidates().init);
 
 // (function ($) {
 //   $(document).ready(function () {
-//
-//     $('#nav-menu').on('click', function () {
-//       $('.navigation').toggleClass('show');
-//     });
-//
-//     $('.button-bell').on('click', function () {
-//       $('.notification-block').toggleClass('hide-notification');
-//     });
-//
 //     $('#all-candidates-notification').on('click', function () {
 //       $('.notification-body-candidates').toggleClass('js-all-candidates');
 //     });

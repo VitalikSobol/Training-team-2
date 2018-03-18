@@ -34,7 +34,6 @@ function Calendar() {
 		"selectParticipants": function (event) {
 			event.stopPropagation();
 			event.preventDefault();
-			console.log(this.target);
 			return false;
 		},
 		"loadParticipants": function () {
@@ -77,6 +76,7 @@ function Calendar() {
 	let _$calendar = $('#calendar').fullCalendar({
 		minTime: '08:00:00',
 		maxTime: '17:00:00',
+		timezone:'local',
 		
 		slotLabelFormat : 'h(:mm)a',
 		buttonText: {
@@ -116,7 +116,7 @@ function Calendar() {
 							events.push({
 								id: item.id,
 								title: item.title,
-								start: item.start,
+								start: item.start ,
 								end: item.end
 							});
 						});

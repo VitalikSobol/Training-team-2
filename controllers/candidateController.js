@@ -79,7 +79,20 @@ function candidateController() {
     }
   };
 
-
+  this.getCandidateByStatus = function(req, res, next){
+    let query  = "SELECT first_name as name, image_url as image, email, job_title as position FROM candidate " +
+        " JOIN status on candidate.status_id = status.id WHERE status.name = '" + req.params.name + "'";
+    connection.query(query, function (err, data) {
+      if(err){
+        next(err);
+        return;
+      }
+      entity.data = data;
+      entity.status = 200;
+      res.json(entity);
+      next();
+    });
+  };
   this.getCandidateById = function (req, res) {
 
     let query = "SELECT candidate.id as id, " +

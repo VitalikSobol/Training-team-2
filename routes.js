@@ -10,6 +10,8 @@ module.exports = function(server) {
   server.get("/vacancies", vacancy.getVacancies);
 	server.post("/events", events.createEvent);
 	
+	server.get("/notification", events.getNotification);
+	server.get("/candidates/status/:name", candidate.getCandidateByStatus);
   server.get("/candidates", candidate.getCandidates);
 	server.get(/\/views\/?.*/,resources.loadResource);
 	server.get('/', login.getLoginPage);
