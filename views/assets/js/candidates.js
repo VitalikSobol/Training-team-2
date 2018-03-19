@@ -120,7 +120,7 @@ function Candidates() {
 			item = this.data("model").getModel(item);
 			let template = "<div class='notification-card-candidates'>" +
 										 "<div class='candidates-photo'>" +
-			               "<div><img src='"+ item.image +"' alt=''></div>" +
+			               "<div><img src='"+ item.image +"' alt='' width='100'></div>" +
 				             "</div><div>" +
 										 "<p>" + item.name + "</p>" +
 										 "<p>"+ item.email + "</p>" +
@@ -318,7 +318,7 @@ function Candidates() {
 			item = this.data("model").getModel(item);
 			let template  = "<tr id='" + item.id + "'>" +
 											"<td class='candidates-photo'>"+
-											"<div><img src='"+item.image + "'alt='' ></div>"+
+											"<div><img src='"+item.image + "'alt='' width='100'></div>"+
 											"</td>"+
 											"<td class='candidates-name'>" + item.name +"</td>"+
 											"<td class='candidates-mail'>" + item.email +"</td>" +
