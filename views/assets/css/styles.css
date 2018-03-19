@@ -839,9 +839,20 @@ button.selected {
   margin: 20px 30px 0 -50px;
 }
 .modal-body-input .form-1,
-.modal-body-input .form-2 {
+.modal-body-input .form-2,
+.modal-body-input .form-3{
   display: flex;
   flex-direction: row;
+  margin-bottom: 3%;
+}
+.modal-body-input .form-3 .date input{
+  width: 100%;
+  font-size: 20px;
+  height: 45%;
+}
+.modal-body-input .form-3 .date label{
+  margin-bottom: 3%;
+  text-transform: uppercase;
 }
 .modal-body-input .form-1 .date,
 .modal-body-input .form-1 .date button,
@@ -850,6 +861,7 @@ button.selected {
   background: #f5f5f5;
 }
 .modal-body-input .form-1 .date,
+.modal-body-input .form-3 .date,
 .modal-body-input .form-2 .select,
 .modal-body-input .form-2 .select select {
   width: 100%;
@@ -863,16 +875,23 @@ button.selected {
   border: none;
 }
 .modal-body-input .form-1 span,
-.modal-body-input .form-2 span {
+/*.modal-body-input .form-2 span,*/
+.modal-body-input .form-3 span{
   padding: 0 30px 0 10px;
+}
+.caret{
+  float: right;
+  margin: 8px 0;
 }
 .modal-body-input .form-2 .select select {
   border: none;
-  margin-top: 10px;
+  margin-top: 3%;
   height: 100%;
+  width: 100%;
 }
-.modal-body-input .form-2 span {
+.modal-body-input .form-2 .span-image {
   margin-top: 10px;
+  padding: 0 30px 0 10px;
 }
 .modal-window-footer {
   border-top: none;
@@ -1026,15 +1045,18 @@ button.selected {
   border-bottom: 1px solid #ddd;
   position: relative;
 }
-
-
 .notification-header{
   height: 40px;
+  display: flex;
+  flex-direction: row;
 }
-
 .notification-header h4{
   line-height: 40px;
   margin: 0;
+}
+.notification-header span{
+  margin-top: 3%;
+  padding: 2%;
 }
 
 .notification-body{
