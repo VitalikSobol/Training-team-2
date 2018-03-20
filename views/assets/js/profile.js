@@ -9,6 +9,10 @@ function Profile() {
   let _$buttonEdit = $('.button-edit');
   let _$buttonSkill = $('.button-skill');
   let _$buttonExperience = $('.button-experience');
+  let _$buttonSendReview = $('.review-button');
+  let _$buttonReview = $('.review');
+  let _$reviewContent = $('.modal-review .tab-content');
+  let _$reviewTab = $('.modal-review .nav-tabs');
 
 
   $.urlParam = function(name){
@@ -17,16 +21,75 @@ function Profile() {
   };
 
   $.extend(_$skills, {
+
     "addSkills": function (skills) {
       this.empty();
       skills.forEach($.proxy(this, "addSkill"));
     },
+
     "addSkill": function (skill) {
       let template = "<span>" + skill.name + "</span>";
       this.append(template);
     }
   });
 
+  $.extend(_$buttonSendReview,{
+    "sendReview": function () {
+      let model = {
+        "content": $('.review-text').val().trim(),
+        // get id of author
+        "user_id": "1"
+      };
+      if(model.content!== "") {
+        $.ajax({
+          url: "/candidates/review/" + $.urlParam("id"),
+          type: 'POST',
+          data: JSON.stringify(model),
+          success: function (data) {
+            _$buttonReview.getReview();
+          }
+        });
+      }
+    }
+  });
+
+  $.extend(_$buttonReview, {
+    "getReview": function () {
+      $.getJSON("/candidates/review/"+$.urlParam("id"), function (json) {
+        if (json.status === 200)
+          _$buttonReview.showReview(json.data);
+      }).done(function () {  });
+    },
+
+    "showReview": function (reviews) {
+      _$buttonReview.emptyContent();
+      reviews.forEach($.proxy(this, "addReview"));
+    },
+
+    "addReview": function (review) {
+      let templateTab = "<li><a data-toggle=\"tab\" href=\"#review" + review.id + "\">" +
+        review.last_name + "</a></li>";
+      _$reviewTab.append(templateTab);
+
+      let templateContent = "<div id=\"review" + review.id + "\" class=\"tab-pane fade\">" +
+        "<p>" + review.content + "</p></div>";
+      _$reviewContent.append(templateContent);
+    },
+
+    "emptyContent": function () {
+      _$reviewContent.empty();
+      _$reviewTab.empty();
+
+      let contentHomeTab = "<li class=\"active\"><a data-toggle=\"tab\" href=\"#home\">Add review</a></li>";
+      _$reviewTab.append(contentHomeTab);
+
+      let contentHomeContent = "<div id=\"home\" class=\"tab-pane fade in active\"><label>" +
+        "<textarea class=\"review-text\" placeholder=\"Write...\"></textarea></label>" +
+        "<button type=\"button\" class=\"review-button\">Send</button></div>";
+      _$reviewContent.append(contentHomeContent);
+      $('.review-button').on("click", _$buttonSendReview.sendReview);
+    }
+  });
 
   $.extend(_$experiences, {
 
@@ -103,8 +166,7 @@ function Profile() {
 
       if (_$buttonSpan.hasClass('glyphicon-pencil')) {
         _$buttonSpan.removeClass('glyphicon-pencil').addClass('glyphicon-ok');
-        let fields = [$('.name'), $('.last-name'), $('.position'), $('.salary'), $('.number-info'), $('.email'), $('.address')];
-        _$buttonEdit.startEdit(fields);
+        _$buttonEdit.startEdit();
       }
       else {
         let fields = [$('.name'), $('.last-name'), $('.position'), $('.salary'), $('.number-info'), $('.email'), $('.address')];
@@ -123,7 +185,8 @@ function Profile() {
       });
     },
 
-    "startEdit": function (fields) {
+    "startEdit": function () {
+      let fields = [$('.name'), $('.last-name'), $('.position'), $('.salary'), $('.number-info'), $('.email'), $('.address')];
       fields.forEach($.proxy(this, "changeField", 'input'));
     },
 
@@ -172,10 +235,12 @@ function Profile() {
       $(".candidates-information .status").text(candidate.status);
       $(".candidates-information .img-responsive").attr("src",candidate.image);
       $(".position").text(candidate.position);
+      $(".position-profile").text(candidate.position);
       $(".name").text(candidate.name);
       $(".last-name").text(candidate.lastName);
       $(".salary").text(candidate.payment+"$");
       $(".change-date").text(candidate.date +" day later");
+      $(".candidate-date").text(candidate.date_publishing);
       $(".number-info").text(candidate.phone);
       $(".email").text(candidate.email);
       $(".address").text(candidate.address);
@@ -204,6 +269,8 @@ function Profile() {
     _$buttonEdit.on("click", _$buttonEdit.changeButton);
     _$buttonSkill.on("click", _$buttonSkill.addSkill);
     _$buttonExperience.on("click", _$buttonExperience.addExperience);
+    _$buttonSendReview.on("click", _$buttonSendReview.sendReview);
+    _$buttonReview.on("click", _$buttonReview.getReview);
   };
 }
 

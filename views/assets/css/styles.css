@@ -11,7 +11,6 @@ form {
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 .form-login {
-  display: block;
   margin: auto;
   width: 300px;
 }
@@ -435,6 +434,10 @@ div.filter > span {
   min-height: calc(100vh - 50px);
 }
 .page-profile-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   border-bottom: 1px solid #c0c0c0;
   height: 30px;
 }
@@ -444,6 +447,11 @@ div.filter > span {
 .page-profile-header a {
   color: #3f3f3f;
 }
+
+.page-profile-header .profile-button {
+  height: 25px;
+}
+
 .profile-table-left-part {
   padding: 0;
 }
@@ -452,6 +460,15 @@ div.filter > span {
   height: 100%;
   padding: 0;
 }
+.candidates-information input {
+  width: 100%;
+  height: 22px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  border: 1px solid #c0c0c0;
+}
+
+
 .candidates-information input {
   width: 100%;
   height: 22px;
@@ -516,7 +533,7 @@ div.filter > span {
   font-weight: bold;
 }
 .experience-developer {
-  min-height: 70vh;
+  min-height: 70vh; /*TODO: better use px or % here*/
   padding: 10px 20px;
 }
 .experience {
@@ -622,7 +639,84 @@ div.filter > span {
   justify-content: center;
 }
 
-.profile-button {
+.modal-review .modal-header {
+  border-bottom: none;
+}
+
+.modal-review .modal-title {
+  float: left;
+}
+
+.modal-review .candidate-date {
+  float:right;
+}
+
+.information-label {
+  font-weight: bold;
+}
+
+.information {
+  margin-bottom: 20px;
+}
+
+.modal-review .modal-footer {
+  border-top: none;
+  text-align: left;
+}
+
+.modal-review button {
+  border-radius: 2px;
+  margin: 0;
+  width: 150px;
+}
+
+.modal-review .review-text {
+  border: 1px solid #dcdcdc;
+  resize: none;
+  height: 200px;
+  padding: 15px;
+}
+
+.modal-review .review-text::-webkit-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+::-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+:-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+:-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.review-text {
+  margin-bottom: 10px;
+}
+
+.review-text:focus {
+  outline: none;
+}
+
+.modal-review .nav-tabs>li.active>a {
+  background: #dcdcdc;
+  font-weight: bold;
+}
+
+.modal-review .nav-tabs>li>a {
+  font-weight: bold;
+  color: #555;
+}
+
+.modal-review .tab-pane p {
+  margin-top: 20px;
+}
+
+.profile-button, .review-button {
   padding-left: 10px;
   padding-right: 10px;
   background: #dcdcdc;
@@ -632,7 +726,7 @@ div.filter > span {
   height: 30px;
 }
 
-.profile-button:hover {
+.profile-button:hover, .review-button:hover{
   background: #c0c0c0;
 }
 
@@ -690,7 +784,7 @@ button.selected {
   text-align: center;
 }
 .column-hours {
-  margin-top: -1200px;
+  margin-top: -1200px; /*TODO: looks hackish*/
   display: flex;
   flex-direction: column;
   margin-left: 20px;
@@ -789,7 +883,7 @@ button.selected {
 }
 .modal-window-footer .settings {
   color: #757575;
-  background-color: #ffffff;
+  background-color: #fff;
 }
 .modal-window-footer .settings:hover {
   background-color: #e2e2e2;
@@ -798,7 +892,7 @@ button.selected {
   background-color: #e2e2e2;
 }
 .modal-window-footer .save {
-  color: #ffffff;
+  color: #fff;
   background: #4285f4;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
@@ -1174,3 +1268,5 @@ button.selected {
     font-size: 15px;
   }
 }
+
+/*TODO: slit that file into multiple. CSS file of almost 1200 lines will always be treated by other developers as a trashcan. No one will read it to see if the styles he have to add is already added and will duplicate them. Plus everybody will put their styles in the end messing up the structure of the file. Always remember that there are no more lazy creature in the universe other than a programmer.*/

@@ -148,7 +148,7 @@ function Candidates() {
 				"<div id ='" + item.id + "'" + "  class='candidates-item'>"+
 				"<div class='candidates-image'>"+
 				"<span>" + item.status + "</span>"+
-				"<a href='#' class='thumbnail'>" +
+				"<a href='profile.html?id="+ item.id+"' class='thumbnail'>" +
 				"<img src='"+ item.image +"' alt='...'>"+ "</a></div>"+
 				"<div class='caption'>"+
 				"<p class='candidates-item-job-position'>" + item.position + "</p>"+

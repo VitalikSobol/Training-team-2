@@ -14,5 +14,7 @@ module.exports = function(server) {
   server.put("/candidates/:id", candidate.updateCandidate);
   server.post("/candidates/skill/:id", candidate.addSkill);
   server.post("/candidates/experience/:id", candidate.addExperience);
+  server.post("/candidates/review/:id", candidate.addReview);
+  server.get("/candidates/review/:id", candidate.getReview);
 
 };
