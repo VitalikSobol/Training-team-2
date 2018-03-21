@@ -127,7 +127,15 @@ function Calendar() {
 		}
 		
 	});
-	
+
+	let _$navMenu = $("#nav-menu");
+
+	$.extend(_$navMenu,{
+		"Onclick": function () {
+			$('.navigation').toggleClass('show');
+		}
+	});
+
 	_self.init = function(){
 		 _self.initHandlers();
 	};
@@ -136,6 +144,7 @@ function Calendar() {
 		_$modal.on("loadParticipants", _$modal.loadParticipants);
 		_$modal.on("click", "#save", _$modal.saveEvent);
 		_$modal.on("click", "#participants", _$modal.selectParticipants);
+		_$navMenu.on("click",_$navMenu.Onclick);
 	};
 	
 }
