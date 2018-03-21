@@ -1,0 +1,52 @@
+@import "dropdown.css";
+
+.page-items .dropdown-button {
+  font-size: 12px;
+  background-color: #fff;
+  width: 30px;
+}
+
+.page-items .dropdown-content {
+  font-size: 12px;
+  bottom: 100%;
+  box-shadow: 0 4px 16px 0 #dcdcdc;
+  width: 30px;
+}
+
+.page-items span {
+  padding: 0;
+}
+
+.page-items .dropdown-button {
+  justify-content: space-around;
+}
+
+.page-items .dropdown-arrow {
+  width: 10px;
+  height: 14px;
+  background: url(../../images/sprite.png) -355px -5px;
+}
+
+.button-nav button {
+  width: 20px;
+  height: 20px;
+  margin: 0 15px;
+  border: none;
+  vertical-align: middle;
+}
+
+.button-prev {
+  background: url(../../images/sprite.png) -232px -2px;
+  outline: none;
+}
+
+.button-next {
+  background: url(../../images/sprite.png) -290px -3px;
+  outline: none;
+}
+
+@media screen and (max-width: 600px) {
+  .button-nav button {
+    margin: 0 0;
+  }
+}
