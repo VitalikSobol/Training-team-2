@@ -12,6 +12,7 @@
   <title>Candidates</title>
 </head>
 <body>
+<!--TODO: try to add a few empty lines between same level wrappers to visually split the logical pieces of code and improve readability-->
 
 <div class="main-div">
   <nav class="navigation">
@@ -42,7 +43,7 @@
         <h1>Candidates</h1>
       </section>
       <main class="content-candidates-table table-responsive">
-        <table class="table">
+        <table id="candidates" class="table">
           <thead>
           <tr class="filters">
             <th>Photo</th>
@@ -50,31 +51,31 @@
             <th>
               <label>
                 Name
-                <input type="text" class="form-control">
+                <input id="name" type="text" class="form-control">
               </label>
             </th>
             <th>
               <label>
                 E-mail
-                <input type="text" class="form-control">
+                <input id="email" type="text" class="form-control">
               </label>
             </th>
             <th>
               <label>
                 Position
-                <input type="text" class="form-control">
+                <input id="position" type="text" class="form-control">
               </label>
             </th>
             <th>
               <label>
                 Date
-                <input type="text" class="form-control">
+                <input id="date" type="text" class="form-control">
               </label>
             </th>
             <th>
               <label>
                 Stage
-                <input type="text" class="form-control">
+                <input id="status" type="text" class="form-control">
               </label>
             </th>
           </tr>
@@ -165,6 +166,7 @@
         <div class="notification-block-candidates">
           <div class="notification-header">
             <h4 class="text-center">New candidates</h4>
+            <span id="candidates-show-element" class ="glyphicon glyphicon-chevron-up"></span>
           </div>
           <div class="notification-body notification-body-candidates">
             <div class="notification-card-candidates">
@@ -225,6 +227,7 @@
         <div class="notification-block-interview">
           <div class="notification-header">
             <h4 class="text-center">New interview</h4>
+            <span id="interview-show-element" class ="glyphicon glyphicon-chevron-up"></span>
           </div>
           <div class="notification-body notification-body-interview">
             <div class="notification-card-interview">
