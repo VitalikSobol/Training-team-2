@@ -8,7 +8,8 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
         integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-  <link rel="stylesheet" type="text/css" href="/views/assets/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="/views/assets/css/general/layout.css">
+  <link rel="stylesheet" type="text/css" href="/views/assets/css/candidates.css">
   <title>Candidates</title>
 </head>
 <body>
@@ -39,9 +40,11 @@
       </div>
     </header>
     <div class="content-candidates-main-div">
+
       <section class="content-candidates-section">
         <h1>Candidates</h1>
       </section>
+
       <main class="content-candidates-table table-responsive">
         <table id="candidates" class="table">
           <thead>
@@ -144,6 +147,7 @@
           </tbody>
         </table>
       </main>
+
       <footer id="count-items" class="content-footer">
         <span>Rows per page:</span>
         <div class="dropdown page-items">
@@ -162,99 +166,105 @@
           <button class="button-next"></button>
         </div>
       </footer>
+
       <aside class="notification-block" id="notification-block">
-        <div class="notification-block-candidates">
+        <div>
           <div class="notification-header">
             <h4 class="text-center">New candidates</h4>
             <span id="candidates-show-element" class ="glyphicon glyphicon-chevron-up"></span>
           </div>
-          <div class="notification-body notification-body-candidates">
-            <div class="notification-card-candidates">
-              <div class="candidates-photo">
-                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+          <div class="notification-block-candidates">
+            <div class="notification-body notification-body-candidates">
+              <div class="notification-card-candidates">
+                <div class="candidates-photo">
+                  <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+                </div>
+                <div>
+                  <p>Name</p>
+                  <p>E-mail</p>
+                  <p>Position</p>
+                </div>
               </div>
-              <div>
-                <p>Name</p>
-                <p>E-mail</p>
-                <p>Position</p>
+              <div class="notification-card-candidates">
+                <div class="candidates-photo">
+                  <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+                </div>
+                <div>
+                  <p>Name</p>
+                  <p>E-mail</p>
+                  <p>Position</p>
+                </div>
+              </div>
+              <div class="notification-card-candidates">
+                <div class="candidates-photo">
+                  <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+                </div>
+                <div>
+                  <p>Name</p>
+                  <p>E-mail</p>
+                  <p>Position</p>
+                </div>
+              </div>
+              <div class="notification-card-candidates">
+                <div class="candidates-photo">
+                  <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+                </div>
+                <div>
+                  <p>Name</p>
+                  <p>E-mail</p>
+                  <p>Position</p>
+                </div>
+              </div>
+              <div class="notification-card-candidates">
+                <div class="candidates-photo">
+                  <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+                </div>
+                <div>
+                  <p>Name</p>
+                  <p>E-mail</p>
+                  <p>Position</p>
+                </div>
               </div>
             </div>
-            <div class="notification-card-candidates">
-              <div class="candidates-photo">
-                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-              </div>
-              <div>
-                <p>Name</p>
-                <p>E-mail</p>
-                <p>Position</p>
-              </div>
+            <div class="notification-footer" id="notif-footer-cand">
+              <span id="all-candidates-notification">View All</span>
             </div>
-            <div class="notification-card-candidates">
-              <div class="candidates-photo">
-                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-              </div>
-              <div>
-                <p>Name</p>
-                <p>E-mail</p>
-                <p>Position</p>
-              </div>
-            </div>
-            <div class="notification-card-candidates">
-              <div class="candidates-photo">
-                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-              </div>
-              <div>
-                <p>Name</p>
-                <p>E-mail</p>
-                <p>Position</p>
-              </div>
-            </div>
-            <div class="notification-card-candidates">
-              <div class="candidates-photo">
-                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-              </div>
-              <div>
-                <p>Name</p>
-                <p>E-mail</p>
-                <p>Position</p>
-              </div>
-            </div>
-          </div>
-          <div class="notification-footer">
-            <span id="all-candidates-notification">View All</span>
           </div>
         </div>
-        <div class="notification-block-interview">
+        <div>
           <div class="notification-header">
             <h4 class="text-center">New interview</h4>
             <span id="interview-show-element" class ="glyphicon glyphicon-chevron-up"></span>
           </div>
-          <div class="notification-body notification-body-interview">
-            <div class="notification-card-interview">
-              <p>Name</p>
-              <span>Time</span>
+          <div class="notification-block-interview">
+            <div class="notification-body notification-body-interview">
+              <div class="notification-card-interview">
+                <p>Name</p>
+                <span>Time</span>
+              </div>
+              <div class="notification-card-interview">
+                <p>Name</p>
+                <span>Time</span>
+              </div>
+              <div class="notification-card-interview">
+                <p>Name</p>
+                <span>Time</span>
+              </div>
+              <div class="notification-card-interview">
+                <p>Name</p>
+                <span>Time</span>
+              </div>
+              <div class="notification-card-interview">
+                <p>Name</p>
+                <span>Time</span>
+              </div>
             </div>
-            <div class="notification-card-interview">
-              <p>Name</p>
-              <span>Time</span>
+            <div class="notification-footer" id="notif-footer-inter">
+              <span id="all-interview-natification">View All</span>
             </div>
-            <div class="notification-card-interview">
-              <p>Name</p>
-              <span>Time</span>
-            </div>
-            <div class="notification-card-interview">
-              <p>Name</p>
-              <span>Time</span>
-            </div>
-            <div class="notification-card-interview">
-              <p>Name</p>
-              <span>Time</span>
-            </div>
-          </div>
-          <div class="notification-footer">
-            <span id="all-interview-natification">View All</span>
           </div>
         </div>
+
       </aside>
     </div>
   </div>
