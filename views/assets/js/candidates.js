@@ -20,7 +20,8 @@ function Candidates() {
 			event.stopPropagation();
 			event.preventDefault();
 			$(".notification-block-interview").toggle();
-		}
+      $("#interview-show-element").toggleClass("invert");
+    }
 	});
 	
 	let _$buttonShowCandidateBlock = $("#candidates-show-element");
@@ -28,7 +29,8 @@ function Candidates() {
 		"onClick": function (event) {
 			event.stopPropagation();
 			event.preventDefault();
-			$(".notification-block-candidates").toggle();
+      $(".notification-block-candidates").toggle();
+      $("#candidates-show-element").toggleClass("invert");
 		}
 	});
 	
