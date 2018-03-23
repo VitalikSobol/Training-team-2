@@ -33,7 +33,7 @@
 
 .profile-table-right-part {
   border-left: 1px solid #c0c0c0;
-  height: 100%;
+  min-height: calc(100vh - 80px);
   padding: 0;
 }
 
@@ -141,8 +141,7 @@
   display: flex;
   flex-direction: column;
   text-align: right;
-  min-width: 150px;
-
+  width: 150px;
 }
 
 .experience-info .text-muted {
@@ -282,7 +281,7 @@
   }
 
   .experience-info {
-    min-width: 135px;
+    width: 135px;
     font-size: 12px;
   }
 
@@ -293,13 +292,7 @@
 
 @media screen and (max-width: 400px) {
   .experience-info {
-    min-width: 90px;
-    font-size: 10px;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .experience-info {
+    width: 90px;
     font-size: 12px;
   }
 }
