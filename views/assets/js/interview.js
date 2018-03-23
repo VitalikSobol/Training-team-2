@@ -136,6 +136,49 @@ function Calendar() {
 		}
 	});
 
+  // Candidates
+
+	let _$butShowSelectCand = $("#show-body-select");
+
+	$.extend(_$butShowSelectCand,{
+    "onClick": function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+      $(".select-candidates-block").toggle();
+      $("#show-body-select").toggleClass("turn");
+    }
+	});
+
+	let _$buttonHideCandidates = $("#all-candidates-select");
+
+	$.extend(_$buttonHideCandidates,{
+		"onClick": function () {
+      $("#select-block-candidates").toggleClass("js-select-hide-candidates");
+		}
+	});
+
+	//Interviewers
+
+  let _$butShowSelectInt = $("#show-body-select-2");
+
+  $.extend(_$butShowSelectInt,{
+    "onClick": function (event) {
+      event.stopPropagation();
+      event.preventDefault();
+      $(".select-interviewers-block").toggle();
+      $("#show-body-select-2").toggleClass("turn");
+    }
+  });
+
+  let _$buttonHideInterviewers = $("#all-interviewers-select");
+
+  $.extend(_$buttonHideInterviewers,{
+    "onClick": function () {
+      $("#select-block-interviewers").toggleClass("js-select-hide-interviewers");
+    }
+  });
+
+
 	_self.init = function(){
 		 _self.initHandlers();
 	};
@@ -145,6 +188,11 @@ function Calendar() {
 		_$modal.on("click", "#save", _$modal.saveEvent);
 		_$modal.on("click", "#participants", _$modal.selectParticipants);
 		_$navMenu.on("click",_$navMenu.Onclick);
+    _$butShowSelectCand.on("click",_$butShowSelectCand.onClick);
+    _$butShowSelectInt.on("click",_$butShowSelectInt.onClick);
+    _$buttonHideCandidates.on("click",_$buttonHideCandidates.onClick);
+    _$buttonHideInterviewers.on("click", _$buttonHideInterviewers.onClick);
+
 	};
 	
 }

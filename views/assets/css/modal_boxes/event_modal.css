@@ -1,11 +1,9 @@
 .page-interview-modal-window .head {
   border-bottom: none;
 }
-
 .page-interview-modal-window .modal-window-body {
   padding: 10px 0 10px 70px;
 }
-
 .page-interview-modal-window .modal-window-body .time {
   width: 100%;
   outline: none;
@@ -14,7 +12,6 @@
   height: 28px;
   color: #212121;
 }
-
 .page-interview-modal-window .modal-window-body .event {
   width: 150px;
   height: 30px;
@@ -27,11 +24,9 @@
   font-weight: 600;
 
 }
-
 .modal-body-input {
   margin: 20px 30px 0 -50px;
 }
-
 .modal-body-input .form-1,
 .modal-body-input .form-2,
 .modal-body-input .form-3 {
@@ -39,90 +34,122 @@
   flex-direction: row;
   margin-bottom: 3%;
 }
-
-.modal-body-input .form-3 .date input {
-  width: 100%;
-  font-size: 20px;
-  height: 45%;
-}
-
-.modal-body-input .form-3 .date label {
-  margin-bottom: 3%;
-  text-transform: uppercase;
-}
-
+/*.modal-body-input .form-3 .date input {*/
+  /*width: 100%;*/
+  /*font-size: 20px;*/
+  /*height: 45%;*/
+/*}*/
+/*.modal-body-input .form-3 .date label {*/
+  /*margin-bottom: 3%;*/
+  /*text-transform: uppercase;*/
+/*}*/
 .modal-body-input .form-1 .date,
 .modal-body-input .form-1 .date button,
 .modal-body-input .form-1 .date input,
 .modal-body-input .form-2 .select select {
   background: #f5f5f5;
 }
-
 .modal-body-input .form-1 .date,
 .modal-body-input .form-3 .date,
 .modal-body-input .form-2 .select,
-.modal-body-input .form-2 .select select {
+.modal-body-input .form-3 .select-2{
   width: 100%;
 }
-
 .modal-body-input .form-1 .date button {
   text-transform: uppercase;
   font-weight: 600;
   color: #757575;
 }
-
 .modal-body-input .form-1 .date input {
   border: none;
 }
-
-.modal-body-input .form-1 span,
-.modal-body-input .form-3 span {
+.modal-body-input .form-1 > span,
+.modal-body-input .form-3 > span {
   padding: 0 30px 0 10px;
 }
-
 .caret {
   float: right;
   margin: 8px 0;
-}
-
-.modal-body-input .form-2 .select select {
-  border: none;
-  margin-top: 3%;
-  height: 100%;
-  width: 100%;
 }
 
 .modal-body-input .form-2 .span-image {
   margin-top: 10px;
   padding: 0 30px 0 10px;
 }
-
 .modal-window-footer {
   border-top: none;
 }
-
 .modal-window-footer button {
   margin: 15px 15px 0 0;
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 600;
 }
-
 .modal-window-footer .settings {
   color: #757575;
   background-color: #fff;
 }
-
 .modal-window-footer .settings:hover {
   background-color: #e2e2e2;
 }
-
 .modal-window-footer .settings:focus {
   background-color: #e2e2e2;
 }
-
 .modal-window-footer .save {
   color: #fff;
   background: #4285f4;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.form-3 .select-2 .select-header-2,
+.form-2 .select .select-header{
+  display: flex;
+  flex-direction: row-reverse;
+  background: #f5f5f5;
+  height: 35px;
+}
+.form-3 .select-2 .select-header-2 span,
+.form-2 .select .select-header span {
+  margin: 10px 10px 10px 0;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #757575;
+}
+.form-3 .select-2 .select-interviewers-block,
+.form-2 .select .select-candidates-block {
+  display: none;
+}
+.turn {
+  transform: rotate(180deg);
+}
+
+.select-body-2,
+.select-body {
+  overflow: hidden;
+  height: 100px;
+}
+
+.js-select-hide-interviewers,
+.js-select-hide-candidates {
+  overflow: auto;
+}
+.select-body-interviewers span,
+.select-body-candidates span {
+  margin-left:10px;
+}
+.form-3-footer,
+.form-2-footer {
+  margin-top: 10px;
+}
+.form-3-footer span,
+.form-2-footer span  {
+  padding: 5px 10px 5px 10px;
+  border: 1px solid #b2b2b2;
+  border-radius: 5px;
+}
+.form-3-footer span:hover,
+.form-2-footer span:hover {
+  cursor: pointer;
 }
