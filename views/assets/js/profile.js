@@ -15,6 +15,12 @@ function Profile() {
   let _$reviewTab = $('.modal-review .nav-tabs');
   let _$navMenu = $("#nav-menu");
 
+  let _$status = $('.status-items').data({
+    "model": {
+      "state": "New"
+    }
+  });
+
   $.urlParam = function(name){
     let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     return results[1] || 0;
@@ -30,6 +36,15 @@ function Profile() {
     "addSkill": function (skill) {
       let template = "<span>" + skill.name + "</span>";
       this.append(template);
+    }
+  });
+
+  $.extend(_$status, {
+    "changeStatusState": function () {
+
+      _$status.data('model').state = this.text;
+      $('.status').text( _$status.data('model').state);
+
     }
   });
 
@@ -188,11 +203,17 @@ function Profile() {
     "startEdit": function () {
       let fields = [$('.name'), $('.last-name'), $('.position'), $('.salary'), $('.number-info'), $('.email'), $('.address')];
       fields.forEach($.proxy(this, "changeField", 'input'));
+
+      $('.dropdown').show();
+      $('.status-name').hide();
     },
 
     "endEdit": function (fields) {
       fields.forEach($.proxy(this, "changeField", 'span'));
       $('.button-edit span').removeClass('glyphicon-ok').addClass('glyphicon-pencil');
+
+      $('.dropdown').hide();
+      $('.status-name').show();
     },
 
     "sendChanges": function (fields) {
@@ -211,7 +232,8 @@ function Profile() {
         "phone": $('.number-info').val(),
         "email": $('.email').val(),
         "address": $('.address').val(),
-        "datePublishing": getDate()
+        "datePublishing": getDate(),
+        "status": _$status.data('model').state
       };
 
       $.ajax({
@@ -278,6 +300,7 @@ function Profile() {
     _$buttonSendReview.on("click", _$buttonSendReview.sendReview);
     _$buttonReview.on("click", _$buttonReview.getReview);
     _$navMenu.on("click",_$navMenu.Onclick);
+    _$status.on("click",".dropdown-content a", _$status.changeStatusState);
   };
 }
 

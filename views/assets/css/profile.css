@@ -53,6 +53,10 @@
   border: 1px solid #c0c0c0;
 }
 
+.name-developer .dropdown {
+  display: none;
+}
+
 .name-developer .dropdown-arrow {
   width: 20px;
   height: 14px;
