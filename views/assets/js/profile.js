@@ -13,7 +13,7 @@ function Profile() {
   let _$buttonReview = $('.review');
   let _$reviewContent = $('.modal-review .tab-content');
   let _$reviewTab = $('.modal-review .nav-tabs');
-
+  let _$navMenu = $("#nav-menu");
 
   $.urlParam = function(name){
     let results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
@@ -259,6 +259,12 @@ function Profile() {
     }
   });
 
+ $.extend(_$navMenu,{
+   "Onclick": function () {
+     $('.navigation').toggleClass('show');
+   }
+ });
+
   _self.init = function () {
     _self.initHandler();
     _$content.trigger("loadInformation");
@@ -271,6 +277,7 @@ function Profile() {
     _$buttonExperience.on("click", _$buttonExperience.addExperience);
     _$buttonSendReview.on("click", _$buttonSendReview.sendReview);
     _$buttonReview.on("click", _$buttonReview.getReview);
+    _$navMenu.on("click",_$navMenu.Onclick);
   };
 }
 
