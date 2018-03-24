@@ -301,10 +301,7 @@ function Profile() {
     _$buttonSendReview.on("click", _$buttonSendReview.sendReview);
     _$buttonReview.on("click", _$buttonReview.getReview);
     _$navMenu.on("click",_$navMenu.Onclick);
-<<<<<<< HEAD
-=======
     _$status.on("click",".dropdown-content a", _$status.changeStatusState);
->>>>>>> d5d0ea6a32c3659cb97ffa2d5e775cdf3ea9cee4
   };
 }
 

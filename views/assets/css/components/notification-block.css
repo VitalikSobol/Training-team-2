@@ -153,3 +153,9 @@
   }
 
 }
+
+@media (max-width: 992px) {
+  .notification-block{
+    top: 0;
+  }
+}
