@@ -5,9 +5,9 @@
   margin-right: -250px;
   background: #fff;
   position: absolute;
-  right: 250px;
-  top: 0;
-  animation: show-notification 1s forwards;
+  right: 0;
+  top: 50px;
+  z-index: 5;
 }
 
 .notification-block-candidates,
@@ -17,6 +17,10 @@
 
 .hide-notification {
   animation: hide-notification 1s forwards;
+}
+
+.show-notification{
+  animation: show-notification 1s forwards;
 }
 
 @keyframes hide-notification {
@@ -54,6 +58,7 @@
 }
 
 .notification-header h4 {
+  padding-left: 10px;
   line-height: 40px;
   margin: 0;
 }
@@ -66,6 +71,16 @@
 .notification-body {
   overflow: hidden;
   height: 240px;
+}
+
+.candidates-notif-photo div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 .js-all-candidates,
@@ -127,7 +142,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 992px) {
+@media (max-width: 1024px) {
   .notification-body {
     height: 160px;
   }
