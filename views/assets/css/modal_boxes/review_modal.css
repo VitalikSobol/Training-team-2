@@ -77,3 +77,8 @@
 .modal-review .tab-pane p {
   margin-top: 20px;
 }
+
+.modal-review .close {
+  width: 10px;
+  margin-left: 10px;
+}

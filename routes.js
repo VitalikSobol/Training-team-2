@@ -5,11 +5,14 @@ module.exports = function(server) {
 	let resources = require('./controllers/resourceController');
 	let login = require('./controllers/loginController');
 	let events = require('./controllers/eventController');
+	let users = require('./controllers/userController');
 	
 	server.get("/events", events.getEvents);
   server.get("/vacancies", vacancy.getVacancies);
 	server.post("/events", events.createEvent);
 	
+	server.get("/interviewee", candidate.getCandidatesForInterview);
+	server.get("/interviewers", users.getAll);
 	server.get("/notification", events.getNotification);
 	server.get("/candidates/status/:name", candidate.getCandidateByStatus);
   server.get("/candidates", candidate.getCandidates);

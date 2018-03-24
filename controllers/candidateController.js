@@ -93,6 +93,7 @@ function candidateController() {
       next();
     });
   };
+  
   this.getCandidateById = function (req, res) {
 
     let query = "SELECT candidate.id as id, " +
@@ -140,6 +141,7 @@ function candidateController() {
       ", `email` = '" + candidate.email+"'"+
       ", `address` = '" + candidate.address+"'"+
       ", `date_publishing` ='" + candidate.datePublishing+"'"+
+      ", `status_id`= (SELECT id FROM status WHERE status.name = '" + candidate.status +"') "+
       "  WHERE `id`=" + req.params.id;
 
     connection.query(query, function (err, data) {
@@ -209,7 +211,20 @@ function candidateController() {
       }
     });
   };
-
+  
+  this.getCandidatesForInterview = function (req, res, next) {
+    let query = "SELECT id, first_name as name, last_name as lastName FROM candidate";
+    connection.query(query, function (err, data) {
+      if(err){
+        next(err);
+        return;
+      }
+      entity.data = data;
+      entity.status = 200;
+      res.json(entity);
+      next();
+    });
+  };
   function addFilter(filter) {
     filter = filter.split("&");
   
