@@ -9,11 +9,6 @@
   margin: 0;
 }
 
-.content-candidates-main-div {
-  position: relative;
-  overflow: hidden;
-}
-
 .content-candidates-table {
   min-height: calc(100vh - 170px);
 }

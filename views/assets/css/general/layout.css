@@ -9,6 +9,8 @@
 
 .content {
   width: 87%;
+  position: relative;
+  overflow: hidden;
 }
 
 .content-header {

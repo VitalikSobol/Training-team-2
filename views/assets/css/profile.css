@@ -78,6 +78,10 @@
   background: #c0c0c0;
 }
 
+.status{
+  height: 20px;
+}
+
 .name-developer img {
   margin-top: 10px;
 }
