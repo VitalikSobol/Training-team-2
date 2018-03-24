@@ -140,6 +140,7 @@ function candidateController() {
       ", `email` = '" + candidate.email+"'"+
       ", `address` = '" + candidate.address+"'"+
       ", `date_publishing` ='" + candidate.datePublishing+"'"+
+      ", `status_id`= (SELECT id FROM status WHERE status.name = '" + candidate.status +"') "+
       "  WHERE `id`=" + req.params.id;
 
     connection.query(query, function (err, data) {
