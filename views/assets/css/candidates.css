@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 .content-candidates-section {
   min-height: 70px;
 }
@@ -7,11 +11,6 @@
   font-weight: lighter;
   padding: 20px 30px 20px;
   margin: 0;
-}
-
-.content-candidates-main-div {
-  position: relative;
-  overflow: hidden;
 }
 
 .content-candidates-table {
@@ -48,10 +47,10 @@
 }
 
 @media (max-width: 992px) {
-  .content-candidates-table table th:nth-child(1),
-  .content-candidates-table table td:nth-child(1),
   .content-candidates-table table th:nth-child(3),
-  .content-candidates-table table td:nth-child(3){
+  .content-candidates-table table td:nth-child(3),
+  .content-candidates-table table th:nth-child(5),
+  .content-candidates-table table td:nth-child(5){
     display: none;
   }
 }
@@ -59,8 +58,8 @@
 @media screen and (max-width: 600px) {
   .content-candidates-table table th:nth-child(4),
   .content-candidates-table table td:nth-child(4),
-  .content-candidates-table table th:nth-child(5),
-  .content-candidates-table table td:nth-child(5){
+  .content-candidates-table table th:nth-child(6),
+  .content-candidates-table table td:nth-child(6){
     display: none;
   }
 }

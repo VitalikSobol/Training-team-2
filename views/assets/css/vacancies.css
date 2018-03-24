@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 .content-vacancies-section {
   min-height: 70px;
 }
