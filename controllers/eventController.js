@@ -16,7 +16,7 @@ function EventController() {
 	self.getEvents = function (req, res, next) {
 		let start = req.query.from;
 		let end = req.query.till;
-		connection.query("SELECT id, title, start, end, allDay" +
+		connection.query("SELECT id, title, start, end, allDay, description, color, place" +
 										" FROM event WHERE start >= '"+ start + "'" + "AND end <= '" + end + "'", function (err, data) {
 			if(err){
 				next(err);
@@ -96,13 +96,16 @@ function EventController() {
 			});
 		}).then(
 			result => {
-				let query = "INSERT INTO event (`id`, `title`, `start`, `end`, `allDay`) " +
+				let query = "INSERT INTO event (`id`, `title`, `start`, `end`, `allDay`, `place`, `color`, `description`) " +
 					"VALUES(" +
 					"'" + result + "',"+
 					"'" + event.title + "'," +
 					"'" + event.start+ "'," +
 					"'" + event.end+ "'," +
-					"'" + 0 + "')";
+					"'" + 0 + "'," +
+					"'" + event.place + "'," +
+					"'" + event.color + "'," +
+					"'" + event.description + "')";
 				connection.query(query, function (err, data) {
 					if(err){
 						throw new Error(err);
