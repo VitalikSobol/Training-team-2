@@ -1,3 +1,7 @@
+html {
+  overflow-y: scroll;
+}
+
 .content-candidates-section {
   min-height: 70px;
 }

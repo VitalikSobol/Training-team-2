@@ -3,55 +3,14 @@
 .page-interview {
   min-height: calc(100vh - 50px);
 }
+html {
+  overflow-y: scroll;
+}
 
 .page-interview-header h1 {
   font-size: 20px;
   margin: 0;
-  padding: 25px 20px;
-}
-
-.page-interview-button .button-group .btn-link {
-  text-decoration: none;
-  color: #000000;
-  padding: 0 15px;
-  font-size: 16px;
-  border-radius: 5px;
-}
-
-.page-interview-button .button-group > button:focus {
-  background: #b2b2b2;
-}
-
-.page-interview-button .button-group > button:hover,
-button.selected {
-  background: #b2b2b2;
-}
-
-.row-header {
-  margin: 30px 10px 0 80px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.row-header div {
-  height: 30px;
-  width: 100px;
-  text-align: center;
-}
-
-.week {
-  margin: 0 10px 0 80px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-}
-
-.week .day {
-  border: 1px solid #c0c0c0;
-  height: 50px;
-  width: 100%;
-  text-align: center;
+  padding: 20px 30px 20px;
 }
 
 @media screen and (min-width:100px) and (max-width:400px) {
