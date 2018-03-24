@@ -30,6 +30,8 @@ function EventController() {
 		});
 	};
 	
+
+	
 	self.getNotification = function (req,res, next) {
 		let query = "SELECT id, title, date_format(start, '%H:%i') as start FROM event" +
 								" WHERE current_timestamp() <= start";
@@ -46,23 +48,76 @@ function EventController() {
 		});
 	};
 	
-	self.createEvent = function (req,res,next) {
-		let event = JSON.parse(req.body);
-		let query = "INSERT INTO event (`title`, `start`, `end`, `allDay`) VALUE(" +
-								"'" + event.title + "' ," +
-								"'" + event.start + "' ," +
-								"'" + event.end + "' ," +
-								"'" + 0 + "')";
-		
-		connection.query(query, function (err, data) {
-			if(err){
-				next(err);
-				return;
-			}else {
-				res.end();
-				next();
-			}
+	let insertUserAndCandidate = function (event, user, candidate) {
+		return new Promise((resolve, reject) => {
+			let query = "INSERT INTO user_has_event (`event_id`, `user_id`, `candidate_id`) VALUES (" +
+					"'" + event + "'," +
+					"'" + user + "'," +
+					"'" + candidate + "')";
+			connection.query(query, function (err, data) {
+				if(err){
+					reject(err);
+				}
+				resolve();
+			});
 		});
+	};
+	
+	let createSubTaskForInsert = function (interviewer, candidates, event) {
+		let promises = [];
+		candidates.forEach(function (candidate) {
+			promises.push(insertUserAndCandidate(event,interviewer,candidate));
+		});
+		
+		Promise.all(promises).then()
+			.catch(function (err) {
+				console.log(err);
+			});
+	};
+	
+	let createTaskForInsert = function (interwiers, candidates, event) {
+		interwiers.forEach(function (item) {
+			createSubTaskForInsert(item, candidates, event);
+		});
+	};
+	
+		
+	self.createEvent = function (req,res,next) {
+		
+		let event = JSON.parse(req.body);
+		
+		new Promise((resolve, reject) => {
+			let query = "SELECT MAX(id) as lastId FROM event";
+			connection.query(query, function (err, data) {
+				if (err) {
+					reject(new Error(err));
+				}
+				resolve(data[0].lastId + 1);
+			});
+		}).then(
+			result => {
+				let query = "INSERT INTO event (`id`, `title`, `start`, `end`, `allDay`) " +
+					"VALUES(" +
+					"'" + result + "',"+
+					"'" + event.title + "'," +
+					"'" + event.start+ "'," +
+					"'" + event.end+ "'," +
+					"'" + 0 + "')";
+				connection.query(query, function (err, data) {
+					if(err){
+						throw new Error(err);
+					}
+				});
+				return result;
+			}).
+			then(result => {
+			 	createTaskForInsert(event.interviewers, event.candidates, result);
+			})
+			.catch(function (err) {
+				console.log(err);
+		});
+		res.end();
+		next();
 		
 	};
 }

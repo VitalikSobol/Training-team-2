@@ -40,7 +40,6 @@ function Candidates() {
 				item = item || {};
 				item.title = item.title || "";
 				item.start = item.start || "";
-				
 				return item;
 			}
 		}
