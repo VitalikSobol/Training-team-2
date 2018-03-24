@@ -26,7 +26,8 @@ function Calendar() {
 
 	let _$modal = $("#myModal").data({
 		"elements":{
-			"participants": []
+			"candidates": new Set(),
+			"interviewers": new Set()
 		}
 	});
 	
@@ -37,7 +38,8 @@ function Calendar() {
 			return false;
 		},
 		"loadParticipants": function () {
-			
+			_$candidates.loadCandidates();
+			_$interviewers.loadInterviewers();
 		},
 		"selectTime": function (event) {
 			event.stopPropagation();
@@ -55,15 +57,25 @@ function Calendar() {
 				start: _$modal.find("#start").val() + " " + _timeStart.val(),
 				end: 	_$modal.find("#end").val() +  " " + _timeEnd.val(),
 				title: _$modal.find("#title-event").val(),
+				interviewers: Array.from(_$modal.data("elements").interviewers),
+				candidates: Array.from(_$modal.data("elements").candidates),
 				allDay: false
 			};
+			
 			
 			$.ajax({
 				url : "/events/",
 				type : 'POST',
 				data : JSON.stringify(currentEvent),
 				success: function () {
+					_$modal.data("elements").interviewers.clear();
+					_$modal.data("elements").candidates.clear();
+					_$interviewers.find("input").prop('checked',false);
+					_$candidates.find("input").prop('checked',false);
+					
+					
 					$('#calendar').fullCalendar('refetchEvents');
+					
 					_$modal.modal('hide');
 				}
 			});
@@ -150,7 +162,116 @@ function Calendar() {
 	});
 
 	let _$buttonHideCandidates = $("#all-candidates-select");
-
+	
+	let _$candidates = $("#select-block-candidates").data({
+		"model":{
+			"getModel": function (item) {
+					item = item || {};
+					item.id = item.id || "";
+					item.name = item.name + " " + item.lastName || "";
+					return item;
+			}
+		}
+	});
+	
+	
+	$.extend(_$candidates, {
+		"selectCandidate":function (event) {
+			event.stopPropagation();
+			event.preventDefault();
+			
+			if(this.checked){
+				_$modal.data("elements").candidates.add($(this).attr("id"));
+			}else {
+				_$modal.data("elements").candidates.delete($(this).attr("id"));
+			}
+			
+		},
+		"addCandidates": function (items) {
+			items.forEach($.proxy(this, "addCandidate"));
+		},
+		"addCandidate": function (item) {
+			item = this.data("model").getModel(item);
+			let template = "<div class='select-body-candidates'>" +
+				"<input type='checkbox' id='" + item.id + "'>" +
+				"<label for='" + item.id + "'> <span>" +
+				item.name + "</span> </label></div>";
+			
+			this.append(template);
+		},
+		"isEmpty": function () {
+		},
+		"clear": function () {
+			this.html("");
+		},
+		"loadCandidates": function () {
+			$.ajax({
+				url: "/interviewee",
+				type: 'GET',
+				success: function (json) {
+					_$candidates.clear();
+					console.log(json);
+					json.status === 200 && Array.isArray(json.data) && _$candidates.addCandidates(json.data);
+					
+				}
+			});
+		}
+	});
+	
+	let _$interviewers = $("#select-block-interviewers").data({
+		"model":{
+			"getModel": function (item) {
+				item = item || {};
+				item.id = item.id || "";
+				item.name = item.name + " " + item.lastName || "";
+				return item;
+			}
+		}
+	});
+	
+	$.extend(_$interviewers, {
+		"selectInterviewer":function (event) {
+			event.stopPropagation();
+			event.preventDefault();
+			
+			if(this.checked){
+				_$modal.data("elements").interviewers.add($(this).attr("id"));
+			}else {
+				_$modal.data("elements").interviewers.add($(this).attr("id"));
+			}
+		},
+		"addInterviewers": function (items) {
+			items.forEach($.proxy(this, "addInterviewer"));
+		},
+		"addInterviewer": function (item) {
+			item = this.data("model").getModel(item);
+			let template = "<div class='select-body-interviewers'>" +
+				"<input type='checkbox' id='" + item.id + "'>" +
+				"<label for='" + item.id + "'> <span>" +
+				item.name + "</span> </label></div>";
+			
+			this.append(template);
+		},
+		"isEmpty": function () {
+		},
+		"clear": function () {
+			this.html("");
+		},
+		"loadInterviewers": function () {
+			$.ajax({
+				url: "/interviewers",
+				type: 'GET',
+				success: function (json) {
+					_$interviewers.clear();
+					console.log(json);
+					json.status === 200 && Array.isArray(json.data) && _$interviewers.addInterviewers(json.data);
+					
+				}
+			});
+		}
+	});
+	
+	
 	$.extend(_$buttonHideCandidates,{
 		"onClick": function () {
       $("#select-block-candidates").toggleClass("js-select-hide-candidates");
@@ -181,6 +302,7 @@ function Calendar() {
 
 	_self.init = function(){
 		 _self.initHandlers();
+		 _$modal.trigger("loadParticipants");
 	};
 	_self.initHandlers = function () {
 		_$modal.on("click", "#addTime", _$modal.selectTime);
@@ -192,6 +314,8 @@ function Calendar() {
     _$butShowSelectInt.on("click",_$butShowSelectInt.onClick);
     _$buttonHideCandidates.on("click",_$buttonHideCandidates.onClick);
     _$buttonHideInterviewers.on("click", _$buttonHideInterviewers.onClick);
+		_$interviewers.on("change", "input", _$interviewers.selectInterviewer);
+		_$candidates.on("change", "input", _$candidates.selectCandidate);
 
 	};
 	

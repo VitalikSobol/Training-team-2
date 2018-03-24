@@ -53,3 +53,36 @@ button.selected {
   width: 100%;
   text-align: center;
 }
+
+@media screen and (min-width:100px) and (max-width:400px) {
+  #calendar .fc-today-button{
+    display: none;
+  }
+  .fc-toolbar button {
+    position: relative;
+    width: min-content;
+  }
+  #calendar .fc-toolbar .fc-right {
+    float: left;
+  }
+  #calendar .fc-toolbar .fc-left{
+    margin-right: 2%;
+  }
+}
+
+@media screen and (min-width:100px) and (max-width:350px) {
+  #calendar .fc-today-button{
+    display: none;
+  }
+  .fc-toolbar button {
+    width: fit-content;
+  }
+  #calendar .fc-toolbar .fc-right {
+    float: left;
+    margin-left: 2%;
+  }
+  #calendar .fc-toolbar .fc-left{
+    margin-right: 2%;
+    margin-bottom: 2%;
+  }
+}

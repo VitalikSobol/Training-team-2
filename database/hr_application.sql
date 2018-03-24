@@ -248,6 +248,36 @@ INSERT INTO `vacancy` VALUES (1,'Big Data Developer',1500,'Extensive experience 
 UNLOCK TABLES;
 
 --
+-- Table structure for table `user_has_event`
+--
+
+DROP TABLE IF EXISTS `user_has_event`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user_has_event` (
+  `event_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `candidate_id` int(11) NOT NULL,
+  PRIMARY KEY (`event_id`,`user_id`,`candidate_id`),
+  KEY `FK_user_has_event_event` (`event_id`),
+  KEY `FK_user_has_event_candidate` (`candidate_id`),
+  KEY `FK_user_has_event_user` (`user_id`),
+  CONSTRAINT `FK_user_has_event_candidate` FOREIGN KEY (`candidate_id`) REFERENCES `candidate` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_user_has_event_event` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `FK_user_has_event_user` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `user_has_event`
+--
+
+LOCK TABLES `user_has_event` WRITE;
+/*!40000 ALTER TABLE `user_has_event` DISABLE KEYS */;
+/*!40000 ALTER TABLE `user_has_event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `vacancy_has_candidate`
 --
 
