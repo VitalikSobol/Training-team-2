@@ -141,7 +141,7 @@ function Application() {
 			
 			this.append(
 				"<tr><td>" + item.position + "</td>" +
-				"<td>" + item.description + "</td>" +
+				"<td class='mobile-device'>" + item.description + "</td>" +
 				"<td class='mobile-device'>" + item.salary + "</td>" +
 				"<td><a href='#'>View Candidates</a></td></tr>"
 			);
