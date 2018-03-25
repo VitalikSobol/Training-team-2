@@ -24,6 +24,21 @@ function Calendar() {
 		modalBackdrop: true,
 	});
 
+  let _$color = $('.color').data({
+    "model": {
+      "code": "1D3557"
+    }
+  });
+
+  $.extend(_$color, {
+    "setColor": function () {
+
+      _$color.data('model').code = this.id;
+      $('.button-color a').attr( "class", this.className);
+
+    }
+  });
+
 	let _$modal = $("#myModal").data({
 		"elements":{
 			"candidates": new Set(),
@@ -45,7 +60,7 @@ function Calendar() {
 			event.stopPropagation();
 			event.preventDefault();
 			
-			$('.bootstrap-timepicker').toggle( "show" );
+			$('.bootstrap-timepicker').toggle( "show" ).css('display', 'flex');
 			
 			return false;
 		},
@@ -59,7 +74,10 @@ function Calendar() {
 				title: _$modal.find("#title-event").val(),
 				interviewers: Array.from(_$modal.data("elements").interviewers),
 				candidates: Array.from(_$modal.data("elements").candidates),
-				allDay: false
+				allDay: false,
+        description: _$modal.find("#description").val(),
+        place: _$modal.find("#place").val(),
+        color: _$color.data('model').code
 			};
 			
 			
@@ -112,6 +130,11 @@ function Calendar() {
 			_$modal.find('#start').val(currentDate);
 			_$modal.find('#end').val(currentDate);
 		},
+    eventRender: function(event, element) {
+      element.bind('dblclick', function() {
+        $(location).attr('href', '/views/event.html?id=' + event.id);
+      });
+    },
 		events: function(start, end, timezone, callback){
 			$.ajax({
 				url: '/events/',
@@ -129,7 +152,8 @@ function Calendar() {
 								id: item.id,
 								title: item.title,
 								start: item.start ,
-								end: item.end
+								end: item.end,
+                color: "#"+ item.color
 							});
 						});
 					}
@@ -147,6 +171,15 @@ function Calendar() {
 			$('.navigation').toggleClass('show');
 		}
 	});
+
+	let _$buttonShowOtherOptions = $("#other-options");
+
+	$.extend(_$buttonShowOtherOptions,{
+	  "showOtherOptions": function () {
+
+      $(".other-options").toggle('slow').css('display', 'flex');
+    }
+  });
 
   // Candidates
 
@@ -312,11 +345,12 @@ function Calendar() {
 		_$navMenu.on("click",_$navMenu.Onclick);
     _$butShowSelectCand.on("click",_$butShowSelectCand.onClick);
     _$butShowSelectInt.on("click",_$butShowSelectInt.onClick);
+    _$buttonShowOtherOptions.on("click", _$buttonShowOtherOptions.showOtherOptions);
     _$buttonHideCandidates.on("click",_$buttonHideCandidates.onClick);
     _$buttonHideInterviewers.on("click", _$buttonHideInterviewers.onClick);
 		_$interviewers.on("change", "input", _$interviewers.selectInterviewer);
 		_$candidates.on("change", "input", _$candidates.selectCandidate);
-
+    _$color.on("click",".dropdown-menu a", _$color.setColor);
 	};
 	
 }
