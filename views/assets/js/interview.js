@@ -60,7 +60,7 @@ function Calendar() {
 			event.stopPropagation();
 			event.preventDefault();
 			
-			$('.bootstrap-timepicker').toggle( "show" );
+			$('.bootstrap-timepicker').toggle( "show" ).css('display', 'flex');
 			
 			return false;
 		},
@@ -130,6 +130,11 @@ function Calendar() {
 			_$modal.find('#start').val(currentDate);
 			_$modal.find('#end').val(currentDate);
 		},
+    eventRender: function(event, element) {
+      element.bind('dblclick', function() {
+        $(location).attr('href', '/views/event.html?id=' + event.id);
+      });
+    },
 		events: function(start, end, timezone, callback){
 			$.ajax({
 				url: '/events/',
