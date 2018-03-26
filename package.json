@@ -2,6 +2,9 @@
   "name": "HR_REST_APPLICATION",
   "version": "1.0.0",
   "description": "REST_API with MySQL",
+  "engines"{
+	"node": "8.9.3"
+  },
   "scripts": {
     "start": "node server.js"
   },
@@ -10,6 +13,10 @@
     "npm": "^5.7.1",
     "restify": "^5.2.1",
     "restify-plugins": "^1.6.0"
+  },
+  "repository":{
+	"type": "git",
+	"url":"https://github.com/AlexKolonitsky/Training-team-2"
   },
   "author": "Yellow Team",
   "license": "ISC"
