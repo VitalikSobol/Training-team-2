@@ -7,13 +7,13 @@ module.exports = function(server) {
 	let events = require('./controllers/eventController');
 	let users = require('./controllers/userController');
 
-  server.get("/vacancies", vacancy.getVacancies);
+	server.get("/vacancies", vacancy.getVacancies);
 
-  server.get("/events", events.getEvents);
-  server.get("/events/:id", events.getEventById);
-  server.put("/events/:id", events.updateEventById);
+	server.get("/events", events.getEvents);
+	server.get("/events/:id", events.getEventById);
+	server.put("/events/:id", events.updateEventById);
 	server.post("/events", events.createEvent);
-	
+
 	server.get("/interviewee", candidate.getCandidatesForInterview);
 	server.get("/interviewers", users.getAll);
 

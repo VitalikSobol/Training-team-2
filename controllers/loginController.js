@@ -8,7 +8,7 @@ function LoginController() {
 	const fs = require('fs');
 	
 	_self.getLoginPage = function (req, res, next) {
-		const url  = 'views/login.html';
+		const url  = 'views/candidates.html';
 		fs.readFile(url, function (err, data) {
 			if (err) {
 				next(err);
