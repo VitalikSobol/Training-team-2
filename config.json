@@ -1,9 +1,9 @@
 {
   "database": {
-    "host": "127.0.0.1",
-    "user": "root",
-    "password": "root",
-    "database": "hr_application",
+    "host": "us-cdbr-iron-east-05.cleardb.net",
+    "user": "b9658916cf75fb",
+    "password": "5bf6b8cc",
+    "database": "heroku_8fe992d711bfa8b",
     "debug": false
   }
 }
