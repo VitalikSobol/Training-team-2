@@ -9,7 +9,9 @@ module.exports = function(server) {
 	let authorization = require('./filter/authorization');
 
 	server.get("/vacancies", vacancy.getVacancies);
+
 	server.post("/login", login.login);
+  server.post("/registration", login.registration);
 
 	server.get("/events", events.getEvents);
 	server.get("/events/:id", events.getEventById);

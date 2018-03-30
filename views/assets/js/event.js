@@ -18,6 +18,8 @@ function Event() {
     },
 
     "setColorByCode": function (code) {
+      _$color.data('model').code = code;
+
       let idColor = "#" + code;
       $('.button-color a').attr("class", $(idColor).attr('class'));
     }

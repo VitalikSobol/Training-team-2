@@ -1,7 +1,10 @@
 form {
-  border: 1px solid #e8e8e8;
+  border: 1px solid #c0c0c0;
   border-radius: 5px;
   font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: auto;
+  background: white;
+  width: 300px;
 }
 
 .account-info {
@@ -14,6 +17,7 @@ form {
   color: #636466;
   text-align: center;
   margin-bottom: 40px;
+  text-transform: uppercase;
 }
 
 .account-info .form-field {
@@ -82,4 +86,8 @@ form {
 
 .tooltip:hover .tooltip-text {
   visibility: visible;
+}
+
+.body-form {
+  background: #e8e8e8;
 }
