@@ -6,14 +6,16 @@ module.exports = function(server) {
 	let login = require('./controllers/loginController');
 	let events = require('./controllers/eventController');
 	let users = require('./controllers/userController');
+	let authorization = require('./filter/authorization');
 
-  server.get("/vacancies", vacancy.getVacancies);
+	server.get("/vacancies", vacancy.getVacancies);
+	server.post("/login", login.login);
 
-  server.get("/events", events.getEvents);
-  server.get("/events/:id", events.getEventById);
-  server.put("/events/:id", events.updateEventById);
+	server.get("/events", events.getEvents);
+	server.get("/events/:id", events.getEventById);
+	server.put("/events/:id", events.updateEventById);
 	server.post("/events", events.createEvent);
-	
+
 	server.get("/interviewee", candidate.getCandidatesForInterview);
 	server.get("/interviewers", users.getAll);
 
@@ -23,7 +25,7 @@ module.exports = function(server) {
 	server.get('/', login.getLoginPage);
 
   server.get("/candidates/status/:name", candidate.getCandidateByStatus);
-  server.get("/candidates", candidate.getCandidates);
+  server.get("/candidates", authorization, candidate.getCandidates);
   server.get("/candidates/:id", candidate.getCandidateById);
   server.get("/candidates/review/:id", candidate.getReview);
   server.put("/candidates/:id", candidate.updateCandidate);

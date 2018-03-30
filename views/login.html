@@ -1,8 +1,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <base href="//localhost:3001/" />
+<head>  
   <meta charset="UTF-8">
   <link rel="stylesheet" type="text/css" href="/views/assets/css/general/form.css">
   <link rel="stylesheet" type="text/css" href="/views/assets/css/login.css">
@@ -16,28 +15,34 @@
     <div class="form-field">
       Name
       <div class="tooltip">
-        <input type="text" name="name" placeholder="Full name" required>
+        <input id="name" type="text" name="name" placeholder="Full name" required pattern="[a-zA-z]{3,100}">
         <span class="tooltip-text">Enter your name</span>
       </div>
     </div>
     <div class="form-field">
       Email
       <div class="tooltip">
-        <input type="email" name="email" placeholder="Email address" required>
+        <input id="email" type="email" name="email" placeholder="Email address" required
+               pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
         <span class="tooltip-text">email@example.com</span>
       </div>
     </div>
     <div class="form-field">
       Password
       <div class="tooltip">
-        <input type="password" name="password" placeholder="Password" required>
+        <input id="password" type="password" name="password" placeholder="Password" required
+               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,24}">
         <span class="tooltip-text">Enter your password</span>
       </div>
     </div>
-    <input class="btn" type="submit" name="submit" value="Login">
-    <a href="/views/register.html">Create profile</a>
+    <span class="error">Error</span>
+    <input id="login" class="btn" type="submit" name="submit" value="Login">
+    <a id="profile" href="/views/register.html">Create profile</a>
   </fieldset>
 </form>
-
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+<script src="/views/assets/js/login.js"></script>
 </body>
 </html>
