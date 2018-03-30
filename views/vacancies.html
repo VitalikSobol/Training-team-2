@@ -69,7 +69,7 @@
         <tbody>
         </tbody>
       </table>
-      <button class="button-add">+</button>
+      <button class="button-add" data-toggle="modal" data-target="#vacanciesModal">+</button>
     </main>
     <footer id="count-items" class="content-footer">
       <span>Rows per page:</span>
@@ -192,6 +192,37 @@
     </aside>
   </div>
 </div>
+
+<!-- Modal 'Add vacancies' -->
+<div class="modal fade" id="vacanciesModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add vacancies</h4>
+      </div>
+      <div class="modal-body">
+        <label>
+          *Vacancy:
+          <input type="text" class="add-vacancy">
+        </label>
+        <label>
+          *Description:
+          <input type="text" class="add-description">
+        </label>
+        <label>
+          Salary:
+          <input type="text" class="add-salary">
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="vacancies-button button-save-vacancies" data-dismiss="modal">Save</button>
+        <button type="button" class="vacancies-button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"
         integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
         crossorigin="anonymous"></script>

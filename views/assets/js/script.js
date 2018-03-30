@@ -7,6 +7,8 @@ function Application() {
 	let _$navMenu = $("#nav-menu");
 	
 	let _$totalRows = $("#total");
+
+	let _$buttonVacancies = $(".button-save-vacancies");
 	
 	let _$rows = $("#count-items").data({
 		"model": {
@@ -176,12 +178,33 @@ function Application() {
 				_$table.isEmpty();
 				
 				$("#range").html(json.range);
-				
+
 			}).done(function () {
 				
 				
 			});
 		}
+	});
+
+	$.extend(_$buttonVacancies, {
+		"addVacancies": function () {
+			let model = {
+				"position": $('.add-vacancy').val().trim(),
+				"salary": $('.add-salary').val().trim(),
+				"description": $('.add-description').val().trim()
+			};
+			if(model.position !== "" && model.description !== ""){
+				$.ajax({
+					url: "/vacancies",
+					type: 'POST',
+					data: JSON.stringify(model),
+          success: function (data) {
+            _$table.loadItems();
+            console.log("all good");
+          }
+				});
+			}
+    }
 	});
 	
 	$.extend(_$rows, {

@@ -8,6 +8,7 @@ module.exports = function(server) {
 	let users = require('./controllers/userController');
 
 	server.get("/vacancies", vacancy.getVacancies);
+  server.post("/vacancies", vacancy.addVacancies);
 
 	server.get("/events", events.getEvents);
 	server.get("/events/:id", events.getEventById);
