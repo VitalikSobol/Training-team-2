@@ -154,16 +154,13 @@ function PasswordController() {
     try {
       let token = jwt.verify(data.token, config.JWT_KEY);
       let connection = mysql.createConnection(config.database);
-      console.log(token.id);
       connection.connect();
-      let query = "UPDATE `user` SET " +
-        "`password` = '" + hashingPassword(data.password)+"'"+
+      let query = "UPDATE `user` SET `password` = '" + hashingPassword(data.password)+"'"+
         "  WHERE `id`=" + token.id;
       connection.query(query, function (err, data) {
         if (err){
-          console.log("after query" + err.message);
           connection.end();
-          next(err);
+          next();
         }
         else {
           connection.end();
@@ -177,7 +174,6 @@ function PasswordController() {
       res.json({
         message: error.message
       });
-      res.end();
       next();
     }
   };

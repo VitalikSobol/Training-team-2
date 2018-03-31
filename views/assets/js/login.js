@@ -51,7 +51,7 @@ function LoginPage(){
           success: (json, textStatus, xhr) =>{
             let token = xhr.getResponseHeader('Authorization');
             localStorage.setItem("token", token);
-            window.location.href = 'interview.html';
+            window.location.href = 'cabinet.html';
           },
           error : (xhr) =>{
             _$error.html(	xhr.responseJSON.message);

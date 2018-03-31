@@ -56,7 +56,7 @@ function Password() {
       }
     },
 
-    "setPassword": function () {
+    "setPassword": function (event) {
       event.stopPropagation();
       event.preventDefault();
 

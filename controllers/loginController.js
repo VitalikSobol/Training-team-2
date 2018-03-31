@@ -195,8 +195,7 @@ function LoginController() {
           reject(new Error(err));
         }
         connection.end();
-        console.log("insertData" + data);
-        resolve(data);
+        resolve(data.insertId);
       });
     });
   };
@@ -233,7 +232,7 @@ function LoginController() {
       }
     ).then(
       result => {
-        dbUser = result;
+        dbUser.id = result;
         return generateWebToken(dbUser);
       }
     ).then(
