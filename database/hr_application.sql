@@ -47,7 +47,7 @@ CREATE TABLE `candidate` (
 
 LOCK TABLES `candidate` WRITE;
 /*!40000 ALTER TABLE `candidate` DISABLE KEYS */;
-INSERT INTO `candidate` VALUES (1,'Ivan','Ivanov',1000,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(25)739-00-02','ivanov@gmail.com','27 Old Gloucester Street, London','2018-03-17',1),(2,'Ward','Jayme',500,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(25)859-25-87','ward@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-02',2),(3,'Augustine','Gaetana',450,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','aug@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-03',3),(4,'Colombina','Marty',1000,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(29)200-85-96','gae@gmail.com','70 Bowman St. South Windsor, CT 06074','2018-03-03',4),(5,'Arseni','Balfour',400,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(33)154-90-90','balf@gmail.com','4 Goldfield Rd. Honolulu, HI 96815','2018-03-01',1),(6,'Dove','Lexia',700,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(44)300-85-96','lex@gmail.com','44 Shirley Ave.,West Chicago, IL 60185','2018-03-03',2),(7,'Arianna','Venceslao',850,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','vansen@gmail.com','514 S. Magnolia St., Orlando, FL 32806','2018-03-02',3),(8,'Star','Dorofey',2000,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(29)200-85-96','dorof@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-01',4),(9,'Drina','Vladlen',300,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','vladlen@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-03',1),(10,'Dafne','Nellie',650,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(33)154-85-96','nellie@gmail.com','44 Shirley Ave.,West Chicago, IL 60185','2018-03-01',2),(11,'Meade','Corrine',1000,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(29)200-85-96','corrine@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-01',3),(12,'Costanzo','Aydan',850,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(33)154-85-96','avdan@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-03',4),(13,'Ustinya','Zinovi',900,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(29)200-85-96','zinoviv@gmail.com','70 Bowman St. South Windsor, CT 06074','2018-03-01',4);
+INSERT INTO `candidate` VALUES (1,'Ivan','Ivanov',1000,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(25)739-00-02','ivanov@gmail.com','27 Old Gloucester Street, London','2018-03-24',1),(2,'Ward','Jayme',500,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(25)859-25-87','ward@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-02',2),(3,'Augustine','Gaetana',450,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','aug@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-03',3),(4,'Colombina','Marty',1000,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(29)200-85-96','gae@gmail.com','70 Bowman St. South Windsor, CT 06074','2018-03-03',4),(5,'Arseni','Balfour',400,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(33)154-90-90','balf@gmail.com','4 Goldfield Rd. Honolulu, HI 96815','2018-03-01',1),(6,'Dove','Lexia',700,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(44)300-85-96','lex@gmail.com','44 Shirley Ave.,West Chicago, IL 60185','2018-03-03',2),(7,'Arianna','Venceslao',850,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','vansen@gmail.com','514 S. Magnolia St., Orlando, FL 32806','2018-03-02',3),(8,'Star','Dorofey',2000,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(29)200-85-96','dorof@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-01',4),(9,'Drina','Vladlen',300,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','vladlen@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-03',1),(10,'Dafne','Nellie',650,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(33)154-85-96','nellie@gmail.com','44 Shirley Ave.,West Chicago, IL 60185','2018-03-01',2),(11,'Meade','Corrine',1000,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(29)200-85-96','corrine@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-01',3),(12,'Costanzo','Aydan',850,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(33)154-85-96','avdan@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-03',4),(13,'Ustinya','Zinovi',900,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(29)200-85-96','zinoviv@gmail.com','70 Bowman St. South Windsor, CT 06074','2018-03-01',4);
 /*!40000 ALTER TABLE `candidate` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -64,8 +64,11 @@ CREATE TABLE `event` (
   `start` timestamp NULL DEFAULT NULL,
   `end` timestamp NULL DEFAULT NULL,
   `allDay` tinyint(4) DEFAULT NULL,
+  `color` varchar(45) DEFAULT NULL,
+  `description` text,
+  `place` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -74,6 +77,7 @@ CREATE TABLE `event` (
 
 LOCK TABLES `event` WRITE;
 /*!40000 ALTER TABLE `event` DISABLE KEYS */;
+INSERT INTO `event` VALUES (1,'','2018-03-06 05:00:00','2018-03-06 05:00:00',0,NULL,NULL,NULL),(2,'','2018-03-06 05:00:00','2018-03-06 05:00:00',0,NULL,NULL,NULL),(3,'','2018-03-06 05:00:00','2018-03-06 07:00:00',0,NULL,NULL,NULL),(4,'','2018-03-07 05:00:00','2018-03-07 05:00:00',0,'D90429','test','test');
 /*!40000 ALTER TABLE `event` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -221,33 +225,6 @@ INSERT INTO `user` VALUES (1,'testName','testSurname','testEmail@gmail.com','tes
 UNLOCK TABLES;
 
 --
--- Table structure for table `vacancy`
---
-
-DROP TABLE IF EXISTS `vacancy`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `vacancy` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `position` varchar(255) NOT NULL,
-  `salary` int(11) DEFAULT NULL,
-  `description` varchar(700) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `id_UNIQUE` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `vacancy`
---
-
-LOCK TABLES `vacancy` WRITE;
-/*!40000 ALTER TABLE `vacancy` DISABLE KEYS */;
-INSERT INTO `vacancy` VALUES (1,'Big Data Developer',1500,'Extensive experience with Hadoop v2, MapReduce, HDFS, Hive, Ambari'),(2,'Senior Java Developer',1000,'Significant Java, Javascript & AWS experience'),(3,'Full Stack Developer',2000,'Working knowledge of at least one JavaScript web application framework (E.g. Angular, React,'),(4,'React Native Developer',1000,'Extensive native mobile application development experience'),(5,'JavaScript Developer',1300,'Commercial Javascript development experience.'),(6,'Big Data Developer',1000,'Extensive experience with Hadoop v2, MapReduce, HDFS, Hive, Ambari'),(7,'Senior Java Developer',1500,'Significant Java, Javascript & AWS experience'),(8,'React Native Developer',800,'Experience with MySQL is preferable'),(9,'Big Data Developer',450,'Extensive experience with Hadoop v2, MapReduce, HDFS, Hive, Ambari'),(10,'Senior Java Developer',2000,'Experience with MySQL is preferable'),(11,'Full Stack Developer',850,'Experience with designing and maintaining web-enabled business reporting tools and portals.'),(12,'React Native Developer',900,'Experience with designing and maintaining web-enabled business reporting tools and portals.'),(13,'Senior Java Developer',1000,'Significant Java, Javascript & AWS experience'),(14,'Full Stack Developer',1000,'Experience with MySQL is preferable'),(15,'React Native Developer',950,'Experience with designing and maintaining web-enabled business reporting tools and portals.'),(16,'JavaScript Developer',1000,'Commercial Javascript development experience.'),(17,'Full Stack Developer',400,'Experience with designing and maintaining web-enabled business reporting tools and portals.'),(18,'JavaScript Developer',450,'Commercial Javascript development experience.'),(19,'Senior .NET Developer',1000,'10+ years experience  & a solid understanding of .NET (both Visual Basic and C#) ');
-/*!40000 ALTER TABLE `vacancy` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `user_has_event`
 --
 
@@ -274,7 +251,35 @@ CREATE TABLE `user_has_event` (
 
 LOCK TABLES `user_has_event` WRITE;
 /*!40000 ALTER TABLE `user_has_event` DISABLE KEYS */;
+INSERT INTO `user_has_event` VALUES (1,1,1),(1,1,2),(1,1,3);
 /*!40000 ALTER TABLE `user_has_event` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `vacancy`
+--
+
+DROP TABLE IF EXISTS `vacancy`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `vacancy` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `position` varchar(255) NOT NULL,
+  `salary` int(11) DEFAULT NULL,
+  `description` varchar(700) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_UNIQUE` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `vacancy`
+--
+
+LOCK TABLES `vacancy` WRITE;
+/*!40000 ALTER TABLE `vacancy` DISABLE KEYS */;
+INSERT INTO `vacancy` VALUES (1,'Big Data Developer',1500,'Extensive experience with Hadoop v2, MapReduce, HDFS, Hive, Ambari'),(2,'Senior Java Developer',1000,'Significant Java, Javascript & AWS experience'),(3,'Full Stack Developer',2000,'Working knowledge of at least one JavaScript web application framework (E.g. Angular, React,'),(4,'React Native Developer',1000,'Extensive native mobile application development experience'),(5,'JavaScript Developer',1300,'Commercial Javascript development experience.'),(6,'Big Data Developer',1000,'Extensive experience with Hadoop v2, MapReduce, HDFS, Hive, Ambari'),(7,'Senior Java Developer',1500,'Significant Java, Javascript & AWS experience'),(8,'React Native Developer',800,'Experience with MySQL is preferable'),(9,'Big Data Developer',450,'Extensive experience with Hadoop v2, MapReduce, HDFS, Hive, Ambari'),(10,'Senior Java Developer',2000,'Experience with MySQL is preferable'),(11,'Full Stack Developer',850,'Experience with designing and maintaining web-enabled business reporting tools and portals.'),(12,'React Native Developer',900,'Experience with designing and maintaining web-enabled business reporting tools and portals.'),(13,'Senior Java Developer',1000,'Significant Java, Javascript & AWS experience'),(14,'Full Stack Developer',1000,'Experience with MySQL is preferable'),(15,'React Native Developer',950,'Experience with designing and maintaining web-enabled business reporting tools and portals.'),(16,'JavaScript Developer',1000,'Commercial Javascript development experience.'),(17,'Full Stack Developer',400,'Experience with designing and maintaining web-enabled business reporting tools and portals.'),(18,'JavaScript Developer',450,'Commercial Javascript development experience.'),(19,'Senior .NET Developer',1000,'10+ years experience  & a solid understanding of .NET (both Visual Basic and C#) ');
+/*!40000 ALTER TABLE `vacancy` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -313,4 +318,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-03-18  0:18:03
+-- Dump completed on 2018-03-25  2:36:32
