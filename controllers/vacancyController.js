@@ -72,6 +72,31 @@ function VacancyController() {
     }
   };
 
+  this.addVacancies = function (req, res, next) {
+    let vacancy = JSON.parse(req._body);
+
+    let connection = mysql.createConnection(config.database);
+    connection.connect();
+    let query = "INSERT INTO `vacancy` " +
+      "(`position`,`salary`,`description`)" +
+      " VALUES ('"+vacancy.position+"', '"+vacancy.salary+"', '"+vacancy.description+
+      "')";
+
+    connection.query(query, function (err, data) {
+      if (err){
+        connection.end();
+        console.log(err);
+        next(err);
+      }
+      else {
+        entity.status = 200;
+        connection.end();
+        res.json(entity);
+        next();
+      }
+    });
+  };
+
   function addFilter(filter) {
     filter = filter.split("&");
 

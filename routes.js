@@ -10,7 +10,7 @@ module.exports = function(server) {
 	let authorization = require('./filter/authorization');
 
 	server.get("/vacancies", vacancy.getVacancies);
-
+  server.post("/vacancies", vacancy.addVacancies);
 	server.post("/login", login.login);
   server.post("/registration", login.registration);
 

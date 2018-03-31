@@ -210,6 +210,7 @@ function candidateController() {
 
   this.addExperience = function (req, res, next) {
     let experience = JSON.parse(req._body);
+
     let connection = mysql.createConnection(config.database);
     connection.connect();
     let query = "INSERT INTO `experience` " +

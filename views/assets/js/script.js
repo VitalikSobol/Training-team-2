@@ -7,6 +7,8 @@ function Application() {
 	let _$navMenu = $("#nav-menu");
 	
 	let _$totalRows = $("#total");
+
+	let _$buttonVacancies = $(".button-save-vacancies");
 	
 	let _$rows = $("#count-items").data({
 		"model": {
@@ -176,12 +178,32 @@ function Application() {
 				_$table.isEmpty();
 				
 				$("#range").html(json.range);
-				
+
 			}).done(function () {
 				
 				
 			});
 		}
+	});
+
+	$.extend(_$buttonVacancies, {
+		"addVacancies": function () {
+			let model = {
+				"position": $('.add-vacancy').val().trim(),
+				"salary": $('.add-salary').val().trim(),
+				"description": $('.add-description').val().trim()
+			};
+			if(model.position !== "" && model.description !== ""){
+				$.ajax({
+					url: "/vacancies",
+					type: 'POST',
+					data: JSON.stringify(model),
+          success: function (data) {
+            _$table.loadItems();
+          }
+				});
+			}
+    }
 	});
 	
 	$.extend(_$rows, {
@@ -203,7 +225,11 @@ function Application() {
 	
 	$.extend(_$navMenu, {
 		"onClick": function () {
-			$('.navigation').toggleClass('show');
+      if ($('.navigation').hasClass('show')){
+        $('.navigation').removeClass('show');
+      }else {
+        $('.navigation').addClass('show');
+      }
 		}
 	});
 	
@@ -215,6 +241,7 @@ function Application() {
 	_self.setEvent = function () {
 		_$table.on("loadItems", _$table.loadItems);
 		_$table.on("click", _$table.onClick);
+    _$buttonVacancies.on("click", _$buttonVacancies.addVacancies);
 		_$rows.on("click", ".dropdown-content a", _$rows.changeRowsNumber);
 		_$filter.on("keyup", "input", _$filter.onKeyUp);
 		_$buttonGroup.on("click", _$buttonGroup.onPressed);
