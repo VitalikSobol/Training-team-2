@@ -200,7 +200,6 @@ function Application() {
 					data: JSON.stringify(model),
           success: function (data) {
             _$table.loadItems();
-            console.log("all good");
           }
 				});
 			}
@@ -238,6 +237,7 @@ function Application() {
 	_self.setEvent = function () {
 		_$table.on("loadItems", _$table.loadItems);
 		_$table.on("click", _$table.onClick);
+    _$buttonVacancies.on("click", _$buttonVacancies.addVacancies);
 		_$rows.on("click", ".dropdown-content a", _$rows.changeRowsNumber);
 		_$filter.on("keyup", "input", _$filter.onKeyUp);
 		_$buttonGroup.on("click", _$buttonGroup.onPressed);
