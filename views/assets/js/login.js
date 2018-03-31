@@ -21,7 +21,6 @@ function LoginPage(){
 					url: "/login",
 					type: "POST",
 					data: JSON.stringify({
-						"name": _$name.val(),
 						"email": _$email.val(),
 						"password": _$password.val()
 					}),

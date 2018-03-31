@@ -6,5 +6,13 @@
     "database": "heroku_cd3d760cc3ef8cd",
     "debug": false
   },
-  "JWT_KEY" : "yellowTeam"
+
+  "JWT_KEY" : "yellowTeam",
+
+  "mailer": {
+    "service": "Gmail",
+    "username": "mifort.hr.app@gmail.com",
+    "password": "Pass!123",
+    "sendAddr": "mifort.hr.app@gmail.com"
+  }
 }

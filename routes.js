@@ -6,12 +6,17 @@ module.exports = function(server) {
 	let login = require('./controllers/loginController');
 	let events = require('./controllers/eventController');
 	let users = require('./controllers/userController');
+	let password = require('./controllers/passwordController');
 	let authorization = require('./filter/authorization');
 
 	server.get("/vacancies", vacancy.getVacancies);
 
 	server.post("/login", login.login);
   server.post("/registration", login.registration);
+
+  server.post("/email", password.sendInstruction);
+  server.get("/password/:token", password.checkToken);
+  server.post("/password", password.setPassword);
 
 	server.get("/events", events.getEvents);
 	server.get("/events/:id", events.getEventById);
