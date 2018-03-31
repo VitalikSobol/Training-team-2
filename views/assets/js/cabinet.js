@@ -28,6 +28,7 @@ function Cabinet() {
   //не уверен в этой функции
   let _$butSave = $(".save");
 
+
   $.extend(_$butSave, {
     "onClick": function () {
       $(location).attr('href', '/views/interview.html');
