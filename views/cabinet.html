@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>  
+<head>
+  <base href="//localhost:3001/"/>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
@@ -8,356 +9,200 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
         integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" href="/views/assets/css/general/layout.css">
-  <link rel="stylesheet" type="text/css" href="/views/assets/css/candidates.css">
-  <title>Candidates</title>
+  <link rel="stylesheet" type="text/css" href="/views/assets/css/cabinet.css">
+  <title>Users Cabinet</title>
 </head>
-
 <body>
-
 <div class="main-div">
   <nav class="navigation">
     <h2 class="logo">hr app</h2>
-
     <ul class="nav nav-pills nav-stacked menu-list">
       <li class="menu-item"><a href="/views/interview.html">Interview</a></li>
       <li class="menu-item"><a href="/views/vacancies.html">Vacancies</a></li>
-      <li class="menu-item selected"><a href="/views/candidates.html">Candidates</a></li>
+      <li class="menu-item"><a href="/views/candidates.html">Candidates</a></li>
       <li class="menu-item"><a href="#">Management</a></li>
     </ul>
-
   </nav>
-
   <div class="reset-padding content">
     <header class="content-header">
       <form class="search">
-
         <span class="glyphicon glyphicon-menu-hamburger" id="nav-menu"></span>
         <span class="search-image"></span>
-
         <label>
           <input class="search-input" type="search" name="search" placeholder="Search for vacancies, candidates...">
         </label>
-
       </form>
-
       <div class="header-button">
         <button class="button-bell"></button>
         <button class="button-enter"></button>
       </div>
-
     </header>
-
-    <div class="content-candidates-main-div">
-
-      <section class="content-candidates-section">
-        <h1>Candidates</h1>
-      </section>
-
-      <main class="content-candidates-table table-responsive">
-        <table id="candidates" class="table">
-          <thead>
-
-          <tr class="filters">
-
-            <th>Photo</th>
-            <!-- class="mobile-device" can change  with table in mobile version-->
-            <th>
-              <label>
-                Name
-                <input id="name" type="text" class="form-control">
-              </label>
-            </th>
-
-            <th>
-              <label>
-                E-mail
-                <input id="email" type="text" class="form-control">
-              </label>
-            </th>
-
-            <th>
-              <label>
-                Position
-                <input id="position" type="text" class="form-control">
-              </label>
-            </th>
-
-            <th>
-              <label>
-                Date
-                <input id="date" type="text" class="form-control">
-              </label>
-            </th>
-
-            <th>
-              <label>
-                Stage
-                <input id="status" type="text" class="form-control">
-              </label>
-            </th>
-
-            <th></th>
-
-          </tr>
-          </thead>
-
-          <tbody>
-          <tr>
-
-            <td class="candidates-photo">
-              <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-            </td>
-
-            <td class="candidates-name">Vitalik</td>
-            <td class="candidates-mail">vitalik@gmail.com</td>
-            <td class="candidates-position">Java Developer</td>
-            <td class="candidates-date">12.06.2018</td>
-            <td class="candidates-stage">New</td>
-
-          </tr>
-          <tr>
-
-            <td class="candidates-photo">
-              <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-            </td>
-
-            <td class="candidates-name">Vitalik</td>
-            <td class="candidates-mail">vitalik@gmail.com</td>
-            <td class="candidates-position">Java Developer</td>
-            <td class="candidates-date">12.06.2018</td>
-            <td class="candidates-stage">New</td>
-
-          </tr>
-          <tr>
-
-            <td class="candidates-photo">
-              <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-            </td>
-
-            <td class="candidates-name">Vitalik</td>
-            <td class="candidates-mail">vitalik@gmail.com</td>
-            <td class="candidates-position">Java Developer</td>
-            <td class="candidates-date">12.06.2018</td>
-            <td class="candidates-stage">New</td>
-
-          </tr>
-          <tr>
-
-            <td class="candidates-photo">
-              <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-            </td>
-
-            <td class="candidates-name">Vitalik</td>
-            <td class="candidates-mail">vitalik@gmail.com</td>
-            <td class="candidates-position">Java Developer</td>
-            <td class="candidates-date">12.06.2018</td>
-            <td class="candidates-stage">New</td>
-
-          </tr>
-          <tr>
-
-            <td class="candidates-photo">
-              <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-            </td>
-
-            <td class="candidates-name">Vitalik</td>
-            <td class="candidates-mail">vitalik@gmail.com</td>
-            <td class="candidates-position">Java Developer</td>
-            <td class="candidates-date">12.06.2018</td>
-            <td class="candidates-stage">New</td>
-
-          </tr>
-          <tr>
-
-            <td class="candidates-photo">
-              <div><img src="http://via.placeholder.com/100x100" alt=""></div>
-            </td>
-
-            <td class="candidates-name">Vitalik</td>
-            <td class="candidates-mail">vitalik@gmail.com</td>
-            <td class="candidates-position">Java Developer</td>
-            <td class="candidates-date">12.06.2018</td>
-            <td class="candidates-stage">New</td>
-
-          </tr>
-
-          </tbody>
-        </table>
-      </main>
-
-      <footer id="count-items" class="content-footer">
-        <span>Rows per page:</span>
-
-        <div class="dropdown page-items">
-
-          <div class="dropdown-button">
-            <span id="current-items">10</span>
-            <div class="dropdown-arrow"></div>
+    <div class="cabinet-page">
+      <form class="cabinet-form" action="#">
+        <fieldset class="cabinet-info">
+          <div class="header">
+            <h3 class="form-header">User's cabinet</h3>
+            <div class="form-image">
+              <div class="form-photo"></div>
+              <input type="file" name="photo" id="photo" class="input-file" required>
+              <label for="photo">Choose a photo...</label>
+            </div>
           </div>
+          <div class="registration-info">
+            <div class="form-info">
+              <div class="form-field">
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required>
+              </div>
+              <div class="form-field">
+                <span>Surname</span>
+                <input type="text" name="name" placeholder="Your surname" required>
+              </div>
+              <div class="form-field">
+                <div class="form-select">
+                  <span>Role</span>
+                  <div class="select">
+                    <div class="select-header">
+                      <span id="show-body-select" class="glyphicon glyphicon-triangle-bottom "></span>
+                      <span id="role">Choose a role </span>
+                    </div>
 
-          <div class="dropdown-content">
-            <a href="#">10</a>
-            <a href="#">20</a>
+                    <div class="select-role-block hide-block">
+                      <div><input name="role" type="radio" id="manager" value="manager"><label for="manager">Manager</label></div>
+                      <div><input name="role" type="radio" id="developer"><label for="developer">Developer</label></div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+              <div class="form-field">
+                <span>Email</span>
+                <input type="text" name="name" placeholder="abs@abc.com" required>
+              </div>
+              <div class="form-field">
+                <span>Phone</span>
+                <input type="text" name="name"
+                       placeholder="+375(__)___-__-__" pattern="^\+375\(\d{2}\)\d{3}-\d{2}-\d{2}$" required>
+              </div>
+            </div>
           </div>
+              <div class="footer">
+                <input class="btn save" type="submit" name="submit" value="save">
+                <input class="btn" type="submit" name="submit" value="edit">
+              </div>
 
-        </div>
 
-        <span id="range">1-10</span> of <span id="total"> 100</span>
-
-        <div id="control" class="button-nav">
-          <button class="button-prev"></button>
-          <button class="button-next"></button>
-        </div>
-
-      </footer>
+        </fieldset>
+      </form>
     </div>
-
-
     <!--Notification block-->
     <aside class="notification-block" id="notification-block">
       <div>
-
         <div class="notification-header">
           <h4 class="text-center">New candidates</h4>
-          <span id="candidates-show-element" class ="glyphicon glyphicon-chevron-up"></span>
+          <span id="candidates-show-element" class="glyphicon glyphicon-chevron-up"></span>
         </div>
-
         <div class="notification-block-candidates">
           <div class="notification-body notification-body-candidates">
             <div class="notification-card-candidates">
-
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
-
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
-
             </div>
-
             <div class="notification-card-candidates">
-
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
-
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
-
             </div>
-
             <div class="notification-card-candidates">
-
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
-
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
-
             </div>
-
             <div class="notification-card-candidates">
-
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
-
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
-
             </div>
-
             <div class="notification-card-candidates">
-
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
-
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
-
             </div>
           </div>
-
           <div class="notification-footer" id="notif-footer-cand">
             <span id="all-candidates-notification">View All</span>
           </div>
-
         </div>
       </div>
-
       <div>
-
         <div class="notification-header">
           <h4 class="text-center">New interview</h4>
-          <span id="interview-show-element" class ="glyphicon glyphicon-chevron-up"></span>
+          <span id="interview-show-element" class="glyphicon glyphicon-chevron-up"></span>
         </div>
-
         <div class="notification-block-interview">
           <div class="notification-body notification-body-interview">
-
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
-
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
-
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
-
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
-
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
-
           </div>
-
           <div class="notification-footer" id="notif-footer-inter">
             <span id="all-interview-natification">View All</span>
           </div>
-
         </div>
       </div>
-
     </aside>
   </div>
 </div>
-
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"
         integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
         crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
-<script src="/views/assets/js/candidates.js"></script>
 <script src="/views/assets/js/general/notification.js"></script>
-
+<script src="/views/assets/js/cabinet.js"></script>
 </body>
 </html>

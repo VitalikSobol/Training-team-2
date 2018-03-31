@@ -203,7 +203,11 @@ function Application() {
 	
 	$.extend(_$navMenu, {
 		"onClick": function () {
-			$('.navigation').toggleClass('show');
+      if ($('.navigation').hasClass('show')){
+        $('.navigation').removeClass('show');
+      }else {
+        $('.navigation').addClass('show');
+      }
 		}
 	});
 	
