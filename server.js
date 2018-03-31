@@ -5,6 +5,7 @@
 const restify = require('restify');
 const mysql = require('mysql');
 const plugins = require('restify-plugins');
+const PORT = process.env.PORT || 5000;
 
 const server = restify.createServer({
 	name: "test",
@@ -33,8 +34,8 @@ function unknownMethodHandler(req, res) {
 
 server.on('MethodNotAllowed', unknownMethodHandler);
 
-server.listen(3001, function () {
-	console.log('%s listening at %s', server.name, server.url);
+server.listen(PORT, function () {
+	console.log(`Listening on ${ PORT }`);
 });
 
 let routes = require('./routes')(server);

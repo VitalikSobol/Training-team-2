@@ -12,12 +12,16 @@ function ResourceController() {
 				
 		fs.readFile(url, function (err, data) {
 			if (err) {
+				console.log(err);
 				next(err);
-				return;
 			}
 			let fileType = url.substring(url.indexOf("."), url.length);
 			switch (fileType){
 				case ('.css') : {
+					res.setHeader('Content-Type', 'text/css');
+					break;
+				}
+				case ('.min.css'):{
 					res.setHeader('Content-Type', 'text/css');
 					break;
 				}

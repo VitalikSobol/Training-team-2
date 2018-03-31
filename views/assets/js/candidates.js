@@ -210,18 +210,34 @@ function Candidates() {
       query.begin = _$button.data("model").current;
       query.page = _$button.data("model").page;
       query.filter = _$filter.data("model").value.join("&");
-
-      $.getJSON("/candidates/", query, function (json) {
-        _$content.clear();
-
-        json.status === 200 && Array.isArray(json.data) && _$content.addItems(json.data);
-
-        $("#total").html(json.total);
-        $("#range").html(json.range);
-        _$content.isEmpty();
-
-      }).done(function () {
-
+  
+      $.ajax({
+        url: "/candidates/",
+        data: {
+          rows : query.rows,
+          begin : query.begin,
+          page : query.page,
+          filter : query.filter
+        },
+        type: 'GET',
+        headers: {
+          "Authorization" : window.localStorage.getItem("token")
+        },
+        success: (json) => {
+          _$content.clear();
+      
+          json.status === 200 && Array.isArray(json.data) && _$content.addItems(json.data);
+      
+          $("#total").html(json.total);
+          $("#range").html(json.range);
+      
+          _$content.isEmpty();
+        },
+        error : (xhr) => {
+          if(xhr.status === 401){
+            window.location.href = '/';
+          }
+        }
       });
     },
     "clickItem": function (event) {
