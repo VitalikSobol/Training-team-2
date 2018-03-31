@@ -1,10 +1,11 @@
 @import "modal_boxes/event_modal.css";
 
-.page-interview {
-  min-height: calc(100vh - 50px);
-}
 html {
   overflow-y: scroll;
+}
+
+.page-interview {
+  min-height: calc(100vh - 50px);
 }
 
 .page-interview-header h1 {

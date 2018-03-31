@@ -140,9 +140,17 @@
   color: #757575;
 }
 
-.form-3 .select-2 .select-interviewers-block,
-.form-2 .select .select-candidates-block {
+/*.form-3 .select-2 .select-interviewers-block,*/
+/*.form-2 .select .select-candidates-block {*/
+  /*display: none;*/
+/*}*/
+
+.hide-block {
   display: none;
+}
+
+.show-block{
+  display:block;
 }
 
 .turn {
@@ -181,7 +189,6 @@
 .form-2-footer span:hover {
   cursor: pointer;
 }
-
 
 .other-options {
   display: flex;

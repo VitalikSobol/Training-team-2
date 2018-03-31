@@ -284,7 +284,11 @@ function Profile() {
 
  $.extend(_$navMenu,{
    "Onclick": function () {
-     $('.navigation').toggleClass('show');
+     if ($('.navigation').hasClass('show')){
+       $('.navigation').removeClass('show');
+     }else {
+       $('.navigation').addClass('show');
+     }
    }
  });
 

@@ -90,7 +90,6 @@ function VacancyController() {
       }
       else {
         entity.status = 200;
-        console.log(req._body);
         connection.end();
         res.json(entity);
         next();
