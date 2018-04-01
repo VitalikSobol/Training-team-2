@@ -35,7 +35,8 @@ function UserController() {
 
 	_self.getUser = (req, res, next) => {
     try {
-      let data = jwt.verify(req.params.token, config.JWT_KEY);
+      let token = req.headers.authorization.split(" ")[1];
+      let data = jwt.verify(token, config.JWT_KEY);
       let connection = mysql.createConnection(config.database);
       connection.connect();
       let query = "SELECT user.id as id, first_name, last_name, email, phone, role.name as role FROM user " +
