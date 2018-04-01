@@ -11,32 +11,40 @@
   <link rel="stylesheet" type="text/css" href="/views/assets/css/candidates.css">
   <title>Candidates</title>
 </head>
+
 <body>
-<!--TODO: try to add a few empty lines between same level wrappers to visually split the logical pieces of code and improve readability-->
 
 <div class="main-div">
   <nav class="navigation">
     <h2 class="logo">hr app</h2>
+
     <ul class="nav nav-pills nav-stacked menu-list">
       <li class="menu-item"><a href="/views/interview.html">Interview</a></li>
       <li class="menu-item"><a href="/views/vacancies.html">Vacancies</a></li>
       <li class="menu-item selected"><a href="/views/candidates.html">Candidates</a></li>
       <li class="menu-item"><a href="#">Management</a></li>
     </ul>
+
   </nav>
+
   <div class="reset-padding content">
     <header class="content-header">
       <form class="search">
+
         <span class="glyphicon glyphicon-menu-hamburger" id="nav-menu"></span>
         <span class="search-image"></span>
+
         <label>
           <input class="search-input" type="search" name="search" placeholder="Search for vacancies, candidates...">
         </label>
+
       </form>
+
       <div class="header-button">
         <button class="button-bell"></button>
-        <button class="button-enter"></button>
+        <a href="/views/cabinet.html"><button class="button-enter"></button></a>
       </div>
+
     </header>
 
     <div class="content-candidates-main-div">
@@ -48,7 +56,9 @@
       <main class="content-candidates-table table-responsive">
         <table id="candidates" class="table">
           <thead>
+
           <tr class="filters">
+
             <th>Photo</th>
             <!-- class="mobile-device" can change  with table in mobile version-->
             <th>
@@ -57,220 +67,289 @@
                 <input id="name" type="text" class="form-control">
               </label>
             </th>
+
             <th>
               <label>
                 E-mail
                 <input id="email" type="text" class="form-control">
               </label>
             </th>
+
             <th>
               <label>
                 Position
                 <input id="position" type="text" class="form-control">
               </label>
             </th>
+
             <th>
               <label>
                 Date
                 <input id="date" type="text" class="form-control">
               </label>
             </th>
+
             <th>
               <label>
                 Stage
                 <input id="status" type="text" class="form-control">
               </label>
             </th>
+
             <th></th>
+
           </tr>
           </thead>
+
           <tbody>
           <tr>
+
             <td class="candidates-photo">
               <div><img src="http://via.placeholder.com/100x100" alt=""></div>
             </td>
+
             <td class="candidates-name">Vitalik</td>
             <td class="candidates-mail">vitalik@gmail.com</td>
             <td class="candidates-position">Java Developer</td>
             <td class="candidates-date">12.06.2018</td>
             <td class="candidates-stage">New</td>
+
           </tr>
           <tr>
+
             <td class="candidates-photo">
               <div><img src="http://via.placeholder.com/100x100" alt=""></div>
             </td>
+
             <td class="candidates-name">Vitalik</td>
             <td class="candidates-mail">vitalik@gmail.com</td>
             <td class="candidates-position">Java Developer</td>
             <td class="candidates-date">12.06.2018</td>
             <td class="candidates-stage">New</td>
+
           </tr>
           <tr>
+
             <td class="candidates-photo">
               <div><img src="http://via.placeholder.com/100x100" alt=""></div>
             </td>
+
             <td class="candidates-name">Vitalik</td>
             <td class="candidates-mail">vitalik@gmail.com</td>
             <td class="candidates-position">Java Developer</td>
             <td class="candidates-date">12.06.2018</td>
             <td class="candidates-stage">New</td>
+
           </tr>
           <tr>
+
             <td class="candidates-photo">
               <div><img src="http://via.placeholder.com/100x100" alt=""></div>
             </td>
+
             <td class="candidates-name">Vitalik</td>
             <td class="candidates-mail">vitalik@gmail.com</td>
             <td class="candidates-position">Java Developer</td>
             <td class="candidates-date">12.06.2018</td>
             <td class="candidates-stage">New</td>
+
           </tr>
           <tr>
+
             <td class="candidates-photo">
               <div><img src="http://via.placeholder.com/100x100" alt=""></div>
             </td>
+
             <td class="candidates-name">Vitalik</td>
             <td class="candidates-mail">vitalik@gmail.com</td>
             <td class="candidates-position">Java Developer</td>
             <td class="candidates-date">12.06.2018</td>
             <td class="candidates-stage">New</td>
+
           </tr>
           <tr>
+
             <td class="candidates-photo">
               <div><img src="http://via.placeholder.com/100x100" alt=""></div>
             </td>
+
             <td class="candidates-name">Vitalik</td>
             <td class="candidates-mail">vitalik@gmail.com</td>
             <td class="candidates-position">Java Developer</td>
             <td class="candidates-date">12.06.2018</td>
             <td class="candidates-stage">New</td>
+
           </tr>
+
           </tbody>
         </table>
       </main>
 
       <footer id="count-items" class="content-footer">
         <span>Rows per page:</span>
+
         <div class="dropdown page-items">
+
           <div class="dropdown-button">
             <span id="current-items">10</span>
             <div class="dropdown-arrow"></div>
           </div>
+
           <div class="dropdown-content">
             <a href="#">10</a>
             <a href="#">20</a>
           </div>
+
         </div>
+
         <span id="range">1-10</span> of <span id="total"> 100</span>
+
         <div id="control" class="button-nav">
           <button class="button-prev"></button>
           <button class="button-next"></button>
         </div>
-      </footer>
 
+      </footer>
     </div>
+
+
     <!--Notification block-->
     <aside class="notification-block" id="notification-block">
       <div>
+
         <div class="notification-header">
           <h4 class="text-center">New candidates</h4>
           <span id="candidates-show-element" class ="glyphicon glyphicon-chevron-up"></span>
         </div>
+
         <div class="notification-block-candidates">
           <div class="notification-body notification-body-candidates">
             <div class="notification-card-candidates">
+
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
+
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
+
             </div>
+
             <div class="notification-card-candidates">
+
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
+
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
+
             </div>
+
             <div class="notification-card-candidates">
+
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
+
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
+
             </div>
+
             <div class="notification-card-candidates">
+
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
+
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
+
             </div>
+
             <div class="notification-card-candidates">
+
               <div class="candidates-notif-photo">
                 <div><img src="http://via.placeholder.com/100x100" alt=""></div>
               </div>
+
               <div>
                 <p>Name</p>
                 <p>E-mail</p>
                 <p>Position</p>
               </div>
+
             </div>
           </div>
+
           <div class="notification-footer" id="notif-footer-cand">
             <span id="all-candidates-notification">View All</span>
           </div>
+
         </div>
       </div>
+
       <div>
+
         <div class="notification-header">
           <h4 class="text-center">New interview</h4>
           <span id="interview-show-element" class ="glyphicon glyphicon-chevron-up"></span>
         </div>
+
         <div class="notification-block-interview">
           <div class="notification-body notification-body-interview">
+
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
+
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
+
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
+
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
+
             <div class="notification-card-interview">
               <p>Name</p>
               <span>Time</span>
             </div>
+
           </div>
+
           <div class="notification-footer" id="notif-footer-inter">
             <span id="all-interview-natification">View All</span>
           </div>
+
         </div>
       </div>
 
     </aside>
   </div>
 </div>
+
 <script src="https://code.jquery.com/jquery-3.1.0.min.js"
         integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
         crossorigin="anonymous"></script>
@@ -279,5 +358,6 @@
         crossorigin="anonymous"></script>
 <script src="/views/assets/js/candidates.js"></script>
 <script src="/views/assets/js/general/notification.js"></script>
+
 </body>
 </html>
