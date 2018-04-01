@@ -4,7 +4,7 @@
   border-radius: 5px;
   margin-right: -250px;
   background: #fff;
-  position: fixed;
+  position: absolute;
   right: 0;
   top: 50px;
   z-index: 5;
@@ -157,5 +157,6 @@
 @media (max-width: 992px) {
   .notification-block{
     top: 50px;
+    position: fixed;
   }
 }
