@@ -39,10 +39,12 @@ function Cabinet() {
   $.extend(_$cabinetInfo, {
     "loadInformation": function () {
       if (typeof localStorage.token !== "undefined") {
-        let token = (localStorage.token.replace('Bearer ', ''));
         $.ajax({
-          url: "/user/" + token,
+          url: "/user",
           type: "GET",
+          headers: {
+            "Authorization" : window.localStorage.getItem("token")
+          },
           success: (json) => {
             user = json;
             _$cabinetInfo.showInformation(user);

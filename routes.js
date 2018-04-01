@@ -40,7 +40,7 @@ module.exports = function(server) {
   server.post("/candidates/experience/:id", candidate.addExperience);
   server.post("/candidates/review/:id", candidate.addReview);
 
-  server.get("/user/:token", users.getUser);
+  server.get("/user", users.getUser);
   server.put("/user/:id", users.updateUser);
 
 };
