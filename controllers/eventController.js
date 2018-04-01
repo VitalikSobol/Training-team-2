@@ -32,10 +32,11 @@ function EventController() {
         connection.end();
         next(err);
       } else {
-        entity.events = data;
-        entity.status = 200;
         connection.end();
-        res.json(entity);
+        res.json(200,{
+          events: data,
+          status: 200
+        });
         next();
       }
       

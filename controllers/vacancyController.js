@@ -73,8 +73,9 @@ function VacancyController() {
   };
 
   function addFilter(filter) {
+    
     filter = filter.split("&");
-
+    
     let position = filter[0].substring(filter[0].indexOf("="), filter[0].length).replace("=", "");
     let description = filter[1].substring(filter[1].indexOf("="), filter[1].length).replace("=", "");
     let salary = filter[2].substring(filter[2].indexOf("="), filter[2].length).replace("=", "");
