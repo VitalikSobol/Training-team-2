@@ -20,29 +20,30 @@ function EventController() {
     users: []
   };
   
-  self.getEvents = function (req, res, next) {
+  self.getEvents =  (req, res, next) => {
     let start = req.query.from;
     let end = req.query.till;
     let connection = mysql.createConnection(config.database);
     connection.connect();
     connection.query("SELECT id, title, start, end, allDay, description, color, place" +
-      " FROM event WHERE start >= '" + start + "'" + "AND end <= '" + end + "'", function (err, data) {
+      " FROM event WHERE start >= '" + start + "'" + "AND end <= '" + end + "'",  (err, data) => {
       if (err) {
         console.log(err);
         connection.end();
         next(err);
       } else {
-        entity.events = data;
-        entity.status = 200;
         connection.end();
-        res.json(entity);
+        res.json(200,{
+          events: data,
+          status: 200
+        });
         next();
       }
       
     });
   };
   
-  self.updateEventById = function (req, res, next) {
+  self.updateEventById =  (req, res, next)  => {
     let event = JSON.parse(req.body);
     let connection = mysql.createConnection(config.database);
     connection.connect();
@@ -56,7 +57,7 @@ function EventController() {
       "`place`='" + event.place + "' " +
       "WHERE `id`='" + req.params.id + "';";
     
-    connection.query(query, function (err, data) {
+    connection.query(query,  (err, data)  =>{
       if (err) {
         console.log(err);
         connection.end();
@@ -71,14 +72,14 @@ function EventController() {
   };
   
   
-  self.getEventById = function (req, res, next) {
+  self.getEventById =  (req, res, next) => {
     
     new Promise((resolve, reject) => {
       let query = "SELECT id, title, start, end, description, color, place" +
         " FROM event WHERE id = '" + req.params.id + "'";
       let connection = mysql.createConnection(config.database);
       connection.connect();
-      connection.query(query, function (err, data) {
+      connection.query(query,  (err, data) => {
         if (err) {
           connection.end();
           reject(new Error(err));
@@ -94,7 +95,7 @@ function EventController() {
       let connection = mysql.createConnection(config.database);
       connection.connect();
       
-      connection.query(query, function (err, data) {
+      connection.query(query,  (err, data) => {
         if (err) {
           connection.end();
           throw new Error(err);
@@ -110,7 +111,7 @@ function EventController() {
       let connection = mysql.createConnection(config.database);
       connection.connect();
       
-      connection.query(query, function (err, data) {
+      connection.query(query,  (err, data) => {
         if (err) {
           connection.end();
           throw new Error(err);
@@ -121,18 +122,18 @@ function EventController() {
         res.json(event);
       });
       return event;
-    }).catch(function (err) {
+    }).catch( (err) => {
       console.log(err);
     });
     next();
   };
   
-  self.getNotification = function (req, res, next) {
+  self.getNotification =  (req, res, next) => {
     let query = "SELECT id, title, date_format(start, '%H:%i') as start FROM event" +
       " WHERE current_timestamp() <= start";
     let connection = mysql.createConnection(config.database);
     connection.connect();
-    connection.query(query, function (err, data) {
+    connection.query(query,  (err, data) => {
       if (err) {
         console.log(err);
         connection.end();
@@ -147,7 +148,7 @@ function EventController() {
     });
   };
   
-  let insertUserAndCandidate = function (event, user, candidate) {
+  let insertUserAndCandidate =  (event, user, candidate) => {
     return new Promise((resolve, reject) => {
       let query = "INSERT INTO user_has_event (`event_id`, `user_id`, `candidate_id`) VALUES (" +
         "'" + event + "'," +
@@ -155,7 +156,7 @@ function EventController() {
         "'" + candidate + "')";
       let connection = mysql.createConnection(config.database);
       connection.connect();
-      connection.query(query, function (err, data) {
+      connection.query(query,  (err, data) => {
         if (err) {
           connection.end();
           reject(new Error(err));
@@ -166,23 +167,23 @@ function EventController() {
     });
   };
   
-  let createSubTaskForInsert = function (interviewer, candidates, event) {
+  let createSubTaskForInsert =  (interviewer, candidates, event) => {
     let promises = [];
-    candidates.forEach(function (candidate) {
+    candidates.forEach( (candidate) => {
       promises.push(insertUserAndCandidate(event, interviewer, candidate));
     });
     return promises;
   };
   
-  let createTaskForInsert = function (interviewers, candidates, event) {
+  let createTaskForInsert =  (interviewers, candidates, event) => {
     let promise = [];
-    interviewers.forEach(function (item) {
+    interviewers.forEach( (item) => {
      promise.push(createSubTaskForInsert(item, candidates, event));
     });
     return promise;
   };
   
-  let insertEvent = function (id, event) {
+  let insertEvent =  (id, event) => {
     return new Promise((resolve, reject) => {
      let query = "INSERT INTO event (`id`, `title`, `start`, `end`, `allDay`, `place`, `color`, `description`) " +
             "VALUES(" +
@@ -209,7 +210,7 @@ function EventController() {
     });
   };
   
-  let findLastEvent = function () {
+  let findLastEvent =  () => {
     return new Promise((resolve, reject)=>{
   
       let query = "SELECT MAX(id) as lastId FROM event";
@@ -228,7 +229,7 @@ function EventController() {
     });
   };
   
-  self.createEvent = function (req, res, next) {
+  self.createEvent =  (req, res, next) => {
     let event = JSON.parse(req.body);
     
     findLastEvent()

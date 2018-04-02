@@ -8,7 +8,7 @@ const plugins = require('restify-plugins');
 const PORT = process.env.PORT || 5000;
 
 const server = restify.createServer({
-	name: "test",
+	name: "HR_Application server",
 	version: "1.0.0",
 });
 
