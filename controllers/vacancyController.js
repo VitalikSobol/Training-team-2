@@ -2,6 +2,7 @@
 function VacancyController() {
   const mysql = require('mysql');
   const config = require('../config');
+  const util = require('./utilController');
 
   let entity = {
     data: [],
@@ -28,7 +29,7 @@ function VacancyController() {
           entity.data = data;
           entity.status = 200;
           entity.total = data[0].total || 0;
-          entity.range = computeRange(req.query.rows, req.query.page, entity.total);
+          entity.range = util.computeRange(req.query.rows, req.query.page, entity.total);
           connection.end();
           res.json(entity);
           next();
@@ -54,7 +55,7 @@ function VacancyController() {
             entity.data = [];
             entity.status = 200;
             entity.total = 0;
-            entity.range = computeRange(req.query.rows, req.query.page, entity.total);
+            entity.range = util.computeRange(req.query.rows, req.query.page, entity.total);
             connection.end();
             res.json(entity);
             next();
@@ -62,7 +63,7 @@ function VacancyController() {
             entity.data = data;
             entity.status = 200;
             entity.total = data[0].total || 0;
-            entity.range = computeRange(req.query.rows, req.query.page, entity.total);
+            entity.range = util.computeRange(req.query.rows, req.query.page, entity.total);
             connection.end();
             res.json(entity);
             next();
@@ -125,27 +126,6 @@ function VacancyController() {
     query = query.substring(0, (query.length - 4));
 
     return query;
-  }
-
-  function computeRange(rows, page, total) {
-    if (total % rows === 0) {
-      if (page === 1) {
-        return page + "-" + page * rows;
-      }
-      else {
-        return (page * rows - rows + 1) + "-" + page * rows;
-      }
-    } else {
-      let delta = total % rows;
-      let diff = rows - delta;
-
-      if (page * rows > total) {
-        return ((page * rows - rows + 1) + "-" + (page * rows - diff));
-      } else {
-        return (page * rows - rows + 1) + "-" + (page * rows);
-      }
-
-    }
   }
 }
 
