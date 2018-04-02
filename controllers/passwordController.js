@@ -27,12 +27,12 @@ function PasswordController() {
         html: "Hi, " + user.name + ".<br> You recently requested to reset your password for your 'HR App' account." +
         " Use the link below to reset it. This password reset is only valid for the next 2 hours.<br>" +
         " http://localhost:5000/password/" + token
-      }, function (error, response) {
+      },  (error, response) => {
         if (error) {
           reject(new Error(error));
         }
         resolve(response.message);
-      })
+      });
     });
   };
 
@@ -157,7 +157,7 @@ function PasswordController() {
       connection.connect();
       let query = "UPDATE `user` SET `password` = '" + hashingPassword(data.password)+"'"+
         "  WHERE `id`=" + token.id;
-      connection.query(query, function (err, data) {
+      connection.query(query,  (err, data) => {
         if (err){
           connection.end();
           next();

@@ -102,7 +102,11 @@ function Candidates() {
 
   let _$filter = $(".filters").data({
     "model": {
-      "value": ["name=none", "email=none", "position=none", "date=none", "status=none"]
+      "name" : "none",
+      "email" : "none",
+      "position" : "none",
+      "date" : "none",
+      "status" : "none"
     }
   });
 
@@ -125,23 +129,23 @@ function Candidates() {
     "addFilter": function (value, id) {
       switch (id) {
         case ("name"): {
-          _$filter.data("model").value[0] = "name=" + value;
+          _$filter.data("model").name = value;
           break;
         }
         case ("email") : {
-          _$filter.data("model").value[1] = "email=" + value;
+          _$filter.data("model").email = value;
           break;
         }
         case ("position"): {
-          _$filter.data("model").value[2] = "position=" + value;
+          _$filter.data("model").position = value;
           break;
         }
         case ("date"): {
-          _$filter.data("model").value[3] = "date=" + value;
+          _$filter.data("model").date = value;
           break;
         }
         case ("status"): {
-          _$filter.data("model").value[4] = "status=" + value;
+          _$filter.data("model").status = value;
           break;
         }
       }
@@ -209,7 +213,6 @@ function Candidates() {
       query.rows = _$rows.data("model").currentRowsNumber;
       query.begin = _$button.data("model").current;
       query.page = _$button.data("model").page;
-      query.filter = _$filter.data("model").value.join("&");
   
       $.ajax({
         url: "/candidates/",
@@ -217,7 +220,13 @@ function Candidates() {
           rows : query.rows,
           begin : query.begin,
           page : query.page,
-          filter : query.filter
+          filter : {
+            name : _$filter.data("model").name,
+            email : _$filter.data("model").email,
+            position : _$filter.data("model").position,
+            date : _$filter.data("model").date,
+            status : _$filter.data("model").status
+          }
         },
         type: 'GET',
         headers: {
