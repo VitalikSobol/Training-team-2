@@ -5,7 +5,7 @@
 function UtilController() {
 	let _self = this;
 	
-	_self.computeRange = (rows, page, total)=>{
+	_self.computeRange = (rows, page, total) => {
 		if (total % rows === 0) {
 			if (page === 1) {
 				return page + "-" + page * rows;
@@ -24,6 +24,66 @@ function UtilController() {
 			}
 		}
 	};
+	
+	_self.addFilterForCandidate = (filter) => {
+		let query = 'HAVING ';
+		
+		if (filter.name !== "none") {
+			query += 'first_name LIKE ';
+			query += '\'%' + filter.name + '%\'';
+			query += ' AND ';
+		}
+		if (filter.position !== "none") {
+			query += 'job_title LIKE ';
+			query += '\'%' + filter.position + '%\'';
+			query += ' AND ';
+		}
+		if (filter.email !== "none") {
+			query += 'email LIKE ';
+			query += '\'%' + filter.email + '%\'';
+			query += ' AND ';
+		}
+		if (filter.date !== "none") {
+			query += 'date =';
+			query += '\'' + filter.date + '\'';
+			query += ' AND ';
+		}
+		if (filter.status !== "none") {
+			query += 'status LIKE';
+			query += '\'%' + filter.status + '%\'';
+			query += ' AND ';
+		}
+		
+		query = query.substring(0, (query.length - 'AND '.length));
+		
+		return (query === 'HAV') ? ' ': query;
+	
+	};
+	
+	_self.addFilterForVacancies = (filter) => {
+				
+		let query = 'WHERE ';
+		
+		if (filter.position !== "none") {
+			query += 'position LIKE ';
+			query += '\'%' + filter.position + '%\'';
+			query += ' AND ';
+		}
+		if (filter.description !== "none") {
+			query += 'description LIKE ';
+			query += '\'%' + filter.description + '%\'';
+			query += ' AND ';
+		}
+		if (filter.salary !== "none") {
+			query += 'salary LIKE ';
+			query += '\'%' + filter.salary + '%\'';
+			query += ' AND ';
+		}
+		query = query.substring(0, (query.length - 'AND '.length));
+		
+		return (query === 'WH') ? ' ': query;
+	};
+	
 }
 
 module.exports = new UtilController();

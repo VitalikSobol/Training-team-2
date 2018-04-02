@@ -15,11 +15,11 @@ function UserController() {
 		status: 0,
 	};
 	
-	_self.getAll = function (req, res, next) {
+	_self.getAll =  (req, res, next) => {
 		let connection = mysql.createConnection(config.database);
 		connection.connect();
 		let query = "SELECT id, first_name as name, last_name as lastName FROM user";
-		connection.query(query, function (err, data) {
+		connection.query(query,  (err, data) => {
 			if(err){
 				console.log(err);
 				connection.end();
@@ -41,7 +41,7 @@ function UserController() {
       connection.connect();
       let query = "SELECT user.id as id, first_name, last_name, email, phone, role.name as role FROM user " +
         " JOIN role ON role.id = role_id WHERE user.`id`=" + data.id;
-      connection.query(query, function (err, data) {
+      connection.query(query,  (err, data) => {
         if (err){
           connection.end();
           next(err);

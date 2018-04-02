@@ -199,7 +199,6 @@ function LoginController() {
       });
     });
   };
-
   _self.registration = (req, res, next) => {
     let data = JSON.parse(req.body);
 
@@ -250,7 +249,6 @@ function LoginController() {
       }
     );
   };
-
 }
 
 module.exports = new LoginController();

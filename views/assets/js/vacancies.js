@@ -36,7 +36,9 @@ function Application() {
 	
 	let _$filter = $(".filters").data({
 		"model": {
-			"value": ["position=none", "description=none", "salary=none"]
+			"position":"none",
+			"description":"none",
+			"salary":"none"
 		}
 	});
 	
@@ -108,16 +110,13 @@ function Application() {
 		"addFilter": function (value, id) {
 			
 			if (id === "position") {
-				
-				_$filter.data("model").value[0] = "position=" + value;
+				_$filter.data("model").position = value;
 				
 			} else if (id === "description") {
-				
-				_$filter.data("model").value[1] = "description=" + value;
+				_$filter.data("model").description = value;
 				
 			} else if (id === "salary") {
-				
-				_$filter.data("model").value[2] = "salary=" + value;
+				_$filter.data("model").salary = value;
 				
 			}
 		},
@@ -166,22 +165,31 @@ function Application() {
 			query.rows = _$rows.data("model").getCurrentRowsNumber();
 			query.begin = data.begin || 0;
 			query.page = data.page || 1;
-			query.filter = _$filter.data("model").value.join("&");
 			
-			$.getJSON("/vacancies/", query, function (json) {
-				_$table.clear();
-				
-				json.status === 200 && Array.isArray(json.data) && _$table.addItems(json.data);
-				
-				_$totalRows.html(json.total);
-				
-				_$table.isEmpty();
-				
-				$("#range").html(json.range);
+			$.ajax({
+				type: 'GET',
+				url: "/vacancies/",
+				data: {
+					rows: query.rows,
+					begin: query.begin,
+					page: query.page,
+					filter: {
+						position: _$filter.data("model").position,
+						description: _$filter.data("model").description,
+						salary: _$filter.data("model").salary
+					}
+				},
+				success: (json) => {
+					_$table.clear();
+					
+					json.status === 200 && Array.isArray(json.data) && _$table.addItems(json.data);
 
-			}).done(function () {
-				
-				
+					_$totalRows.html(json.total);
+
+					_$table.isEmpty();
+
+					$("#range").html(json.range);
+				}
 			});
 		}
 	});
