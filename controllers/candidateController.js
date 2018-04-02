@@ -3,6 +3,7 @@ function candidateController() {
   let self = this;
   const mysql = require('mysql');
   const config = require('../config');
+  const util = require('./utilController');
   
   let candidate = {
     status: 0,
@@ -13,38 +14,7 @@ function candidateController() {
   
   self.getCandidates = (req, res, next) => {
     let connection = mysql.createConnection(config.database);
-    connection.connect();
-    let defaultFilter = "name=none&email=none&position=none&date=none&status=none";
-    
-    if(req.query.filter === defaultFilter) {
-
-      let candidatesQuery = "SELECT (SELECT COUNT(*) FROM candidate) as total,candidate.id as id, first_name as name," +
-        " last_name as lastName, job_title as position, salary as payment, status.name as status," +
-        " DATEDIFF(CURRENT_DATE(), date_publishing) as date," +
-        " image_url as image," +
-        " email as email"  +
-        " FROM candidate JOIN status on candidate.status_id = status.id LIMIT " + req.query.begin + "," + req.query.rows;
-
-      connection.query(candidatesQuery, (err, data) => {
-        if (err) {
-          connection.end();
-          next(err);
-        }
-        else {
-          connection.end();
-          res.json(200,{
-            data: data,
-            status: 200,
-            total: data[0].total || 0,
-            range: computeRange(req.query.rows, req.query.page, data[0].total)
-          });
-          next();
-        }
-      });
-
-    }
-    else {
-      
+        
       let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM "+
         "(SELECT first_name, email, job_title," +
         " date_publishing, status.name as status," +
@@ -55,7 +25,7 @@ function candidateController() {
         " image_url as image FROM candidate JOIN status on candidate.status_id = status.id ? LIMIT " +
         req.query.begin + "," + req.query.rows;
      
-      let criteria = addFilter(req.query.filter);
+      let criteria = util.addFilterForCandidates(req.query.filter);
      
       complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
       connection.query(complexQuery, (err, data) => {
@@ -65,26 +35,15 @@ function candidateController() {
         }
         else {
           connection.end();
-          if(!data.length){
-            res.json(200, {
-              data: data,
-              status: 200,
-              total: 0,
-              range: computeRange(req.query.rows, req.query.page, 0)
-            });
-            next();
-          }else{
-            res.json(200, {
-              data: data,
-              status: 200,
-              total: data[0].total || 0,
-              range: computeRange(req.query.rows, req.query.page, data[0].total || 0)
-            });
-            next();
+          res.json(200,{
+            data : data,
+            status: 200,
+            total: (data.length) ? data[0].total: 0,
+            range: util.computeRange(req.query.rows, req.query.page ,this.total)
+          });
+          next();
           }
-        }
       });
-    }
   };
   
   self.getCandidateByStatus = (req, res, next) =>{
@@ -128,7 +87,7 @@ function candidateController() {
       else {
         candidate.contact = data;
         query = "SELECT name FROM skill WHERE candidate_id="+ req.params.id;
-        connection.query(query, function (err, data) {
+        connection.query(query,  (err, data) => {
           if (err) {
             connection.end();
             next(err);
@@ -136,7 +95,7 @@ function candidateController() {
           else {
             candidate.skills = data;
             query = "SELECT * FROM experience WHERE candidate_id="+ req.params.id;
-            connection.query(query, function (err, data) {
+            connection.query(query,  (err, data) => {
               if (err) {
                 connection.end();
                 next(err);
@@ -300,68 +259,7 @@ function candidateController() {
       next();
     });
   };
-  
-  function addFilter(filter) {
-    filter = filter.split("&");
-  
-    let name = filter[0].substring(filter[0].indexOf("="), filter[0].length).replace("=", "");
-    let email = filter[1].substring(filter[1].indexOf("="), filter[1].length).replace("=", "");
-    let position = filter[2].substring(filter[2].indexOf("="), filter[2].length).replace("=", "");
-    let date = filter[3].substring(filter[3].indexOf("="), filter[3].length).replace("=", "");
-    let status = filter[4].substring(filter[4].indexOf("="), filter[4].length).replace("=", "");
-    
-    
-    let query = 'HAVING ';
-  
-    if (name !== "none") {
-      query += 'first_name LIKE ';
-      query += '\'%' + name + '%\'';
-      query += ' AND ';
-    }
-    if (position !== "none") {
-      query += 'job_title LIKE ';
-      query += '\'%' + position + '%\'';
-      query += ' AND ';
-    }
-    if (email !== "none") {
-      query += 'email LIKE ';
-      query += '\'%' + email + '%\'';
-      query += ' AND ';
-    }
-    if (date !== "none") {
-      query += 'date =';
-      query += '\'' + date + '\'';
-      query += ' AND ';
-    }
-    if (status !== "none") {
-      query += 'status LIKE';
-      query += '\'%' + status + '%\'';
-      query += ' AND ';
-    }
-    query = query.substring(0, (query.length - 4));
-  
-    return query;
-  }
-
-  function computeRange(rows, page, total) {
-    if (total % rows === 0) {
-      if (page === 1) {
-        return page + "-" + page * rows;
-      }
-      else {
-        return (page * rows - rows + 1) + "-" + page * rows;
-      }
-    } else {
-      let delta = total % rows;
-      let diff = rows - delta;
-
-      if (page * rows > total) {
-        return ((page * rows - rows + 1) + "-" + (page * rows - diff));
-      } else {
-        return (page * rows - rows + 1) + "-" + (page * rows);
-      }
-    }
-  }
+ 
 }
 
 
