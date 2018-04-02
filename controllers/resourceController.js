@@ -7,7 +7,7 @@ function ResourceController() {
 	let _self = this;
 	const fs = require('fs');
 	
-	_self.loadResource = (req, res, next) => {
+	_self.loadResource =  (req, res, next) => {
 		let url = req.path().replace("/", "");
 				
 		fs.readFile(url, (err, data) => {

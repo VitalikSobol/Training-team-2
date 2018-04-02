@@ -36,9 +36,9 @@ function Application() {
 	
 	let _$filter = $(".filters").data({
 		"model": {
-			"position":"none",
-			"description":"none",
-			"salary":"none"
+			"position": "none",
+			"description": "none",
+			"salary": "none"
 		}
 	});
 	
@@ -117,7 +117,6 @@ function Application() {
 				
 			} else if (id === "salary") {
 				_$filter.data("model").salary = value;
-				
 			}
 		},
 		"getInputValue": function (elementId) {
@@ -168,27 +167,27 @@ function Application() {
 			
 			$.ajax({
 				type: 'GET',
-				url: "/vacancies/",
+				url : '/vacancies/',
 				data: {
-					rows: query.rows,
+					rows : query.rows,
 					begin: query.begin,
 					page: query.page,
 					filter: {
-						position: _$filter.data("model").position,
-						description: _$filter.data("model").description,
-						salary: _$filter.data("model").salary
+							position: _$filter.data("model").position,
+							description: _$filter.data("model").description,
+							salary: _$filter.data("model").salary
 					}
 				},
-				success: (json) => {
-					_$table.clear();
-					
-					json.status === 200 && Array.isArray(json.data) && _$table.addItems(json.data);
+				success : (json) => {
+						_$table.clear();
 
-					_$totalRows.html(json.total);
+						json.status === 200 && Array.isArray(json.data) && _$table.addItems(json.data);
 
-					_$table.isEmpty();
+						_$totalRows.html(json.total);
 
-					$("#range").html(json.range);
+						_$table.isEmpty();
+
+						$("#range").html(json.range);
 				}
 			});
 		}

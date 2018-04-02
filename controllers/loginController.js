@@ -164,9 +164,9 @@ function LoginController() {
     );
   };
 
-  _self.getLoginPage = function (req, res, next) {
+  _self.getLoginPage =  (req, res, next) =>{
     const url = 'views/login.html';
-    fs.readFile(url, function (err, data) {
+    fs.readFile(url,  (err, data) => {
       if (err) {
         next(err);
         return;

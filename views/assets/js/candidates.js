@@ -102,11 +102,11 @@ function Candidates() {
 
   let _$filter = $(".filters").data({
     "model": {
-      "name":"none",
-      "email": "none",
-      "position":"none",
-      "date":"none",
-      "status":"none"
+      "name" : "none",
+      "email" : "none",
+      "position" : "none",
+      "date" : "none",
+      "status" : "none"
     }
   });
 
@@ -221,11 +221,11 @@ function Candidates() {
           begin : query.begin,
           page : query.page,
           filter : {
-              name: _$filter.data("model").name,
-              email: _$filter.data("model").email,
-              position: _$filter.data("model").position,
-              date: _$filter.data("model").date,
-              status: _$filter.data("model").status
+            name : _$filter.data("model").name,
+            email : _$filter.data("model").email,
+            position : _$filter.data("model").position,
+            date : _$filter.data("model").date,
+            status : _$filter.data("model").status
           }
         },
         type: 'GET',
@@ -264,6 +264,7 @@ function Candidates() {
 
   _self.initHandler = function () {
     _$rows.on("click", ".dropdown-content a", _$rows.changeRowsNumber);
+    // _$filter.on("click",".dropdown-content a", _$filter.changeFilterState);
     _$filter.on("keyup", "input", _$filter.onKeyUp);
     _$button.on("click", _$button.onPressed);
     _$inputField.on("keyup", _$inputField.changeInputState);

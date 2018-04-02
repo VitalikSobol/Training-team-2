@@ -5,7 +5,7 @@
 function UtilController() {
 	let _self = this;
 	
-	_self.computeRange = (rows, page, total) => {
+	_self.computeRange = (rows, page, total) =>{
 		if (total % rows === 0) {
 			if (page === 1) {
 				return page + "-" + page * rows;
@@ -22,10 +22,11 @@ function UtilController() {
 			} else {
 				return (page * rows - rows + 1) + "-" + (page * rows);
 			}
+			
 		}
 	};
 	
-	_self.addFilterForCandidate = (filter) => {
+	_self.addFilterForCandidates = (filter) =>{
 		let query = 'HAVING ';
 		
 		if (filter.name !== "none") {
@@ -53,15 +54,13 @@ function UtilController() {
 			query += '\'%' + filter.status + '%\'';
 			query += ' AND ';
 		}
-		
 		query = query.substring(0, (query.length - 'AND '.length));
 		
-		return (query === 'HAV') ? ' ': query;
-	
+		return (query === 'HAV')? ' ' : query;
 	};
 	
-	_self.addFilterForVacancies = (filter) => {
-				
+	_self.addFilterForVacancies = (filter) =>{
+		
 		let query = 'WHERE ';
 		
 		if (filter.position !== "none") {
@@ -81,9 +80,9 @@ function UtilController() {
 		}
 		query = query.substring(0, (query.length - 'AND '.length));
 		
-		return (query === 'WH') ? ' ': query;
+		return (query === 'WH')? ' ' : query;
+		
 	};
-	
 }
 
 module.exports = new UtilController();

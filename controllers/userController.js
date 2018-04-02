@@ -71,7 +71,7 @@ function UserController() {
       ", `role_id`= (SELECT id FROM role WHERE role.name = '" + user.role +"') "+
       "  WHERE `id`=" + req.params.id;
 
-    connection.query(query, function (err, data) {
+    connection.query(query,  (err, data) => {
       if (err){
         connection.end();
         res.status(400);

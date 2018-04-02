@@ -11,7 +11,7 @@ function VacancyController() {
     range: ""
   };
 
-  this.getVacancies = (req, res, next) => {
+  this.getVacancies =  (req, res, next) => {
     let connection = mysql.createConnection(config.database);
     connection.connect();
       let complexQuery = "SELECT (SELECT COUNT(*) FROM vacancy  ? ) as total, id, position, description" +
@@ -22,25 +22,26 @@ function VacancyController() {
 
       complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
 
-      connection.query(complexQuery, (err, data) => {
+      connection.query(complexQuery,  (err, data) => {
         if (err) {
           connection.end();
           next(err);
         }
         else {
-          connection.end();
-          res.json(200,{
-            data : data,
-            status : 200,
-            total: (data.length)? data[0].total: 0,
-            range: util.computeRange(req.query.rows, req.query.page, this.total)
-          });
-          next();
+            connection.end();
+            res.json(200,{
+              data : data,
+              status: 200,
+              total: (data.length) ? data[0].total: 0,
+              range: util.computeRange(req.query.rows, req.query.page ,this.total)
+            });
+            next();
+          
         }
       });
   };
 
-  this.addVacancies = (req, res, next) => {
+  this.addVacancies =  (req, res, next) => {
     let vacancy = JSON.parse(req._body);
 
     let connection = mysql.createConnection(config.database);
@@ -50,7 +51,7 @@ function VacancyController() {
       " VALUES ('"+vacancy.position+"', '"+vacancy.salary+"', '"+vacancy.description+
       "')";
 
-    connection.query(query, (err, data) => {
+    connection.query(query,  (err, data) => {
       if (err){
         connection.end();
         console.log(err);
@@ -64,6 +65,7 @@ function VacancyController() {
       }
     });
   };
+  
 }
 
 module.exports = new VacancyController();
