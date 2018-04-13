@@ -1,0 +1,65 @@
+@import "modal_boxes/vacancies_modal.css";
+
+html {
+  overflow-y: scroll;
+}
+
+.content-vacancies-section {
+  min-height: 70px;
+}
+
+.content-vacancies-section h1 {
+  font-size: 20px;
+  font-weight: lighter;
+  padding: 20px 30px 20px;
+  margin: 0;
+}
+
+.content-vacancies-table {
+  min-height: calc(100vh - 170px); /*3-height in vacancies*/
+}
+
+.content-vacancies-table table {
+  margin: 0;
+  border-bottom: 1px solid #dcdcdc;
+}
+
+.content-vacancies-table table td a {
+  text-decoration: none;
+  color: #3f3f3f;
+}
+
+.content-vacancies-table table tr > th:first-child,
+.content-vacancies-table table tr > td:first-child {
+  padding-left: 30px;
+}
+
+.content-vacancies-table table tr > th,
+.content-vacancies-table table tr > td {
+  height: 60px;
+  vertical-align: middle;;
+}
+
+.content-vacancies-table table tr > td {
+  padding-left: 15px;
+}
+
+.button-add {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: none;
+  color: #636466;
+  background: #e8e8e8;
+  box-shadow: 0 5px 8px #dcdcdc;
+  font-size: 30px;
+  font-weight: inherit;
+  outline: none;
+}
+
+.button-add:hover {
+  background: #dcdcdc;
+}

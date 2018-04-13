@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css"/>
+  <link rel="stylesheet" type="text/css" href="/server/views/assets/css/event.css">
+  <title>Event</title>
+</head>
+<body>
+<div class="event">
+  <div class="header">
+    <button id="exit" class="header-button">x</button>
+
+    <input class="event-title" type="text" id="title" placeholder="Event title">
+    <button class="btn btn-primary save-button" id="save">Save</button>
+  </div>
+
+  <div class="event-date">
+    <input class="date-start date-event" type="date">
+    <div class="bootstrap-timepicker timepicker">
+      <div class="event-time">
+        <input class="time-start time-event" type="text" value="08:00">
+        <span class="glyphicon glyphicon-minus"></span>
+        <input class="time-end time-event" type="text" value="08:00">
+      </div>
+    </div>
+    <input class="date-end date-event" type="date">
+  </div>
+
+
+  <div class="content">
+    <ul class="nav nav-tabs">
+      <li class="active"><a data-toggle="tab" href="#information">Information</a></li>
+      <li><a data-toggle="tab" href="#time">Time</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div id="information" class="tab-pane fade in active">
+
+        <div class="information-part participants candidate">
+          <span class="glyphicon glyphicon-user span-image"></span>
+          <div class="group">
+            <span class="group-name">Candidates</span>
+            <div class="candidates group-items">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="information-part participants interview">
+          <span class="glyphicon glyphicon-user span-image"></span>
+          <div class="group">
+            <span class="group-name">Interviewers</span>
+            <div class="users group-items">
+
+            </div>
+          </div>
+        </div>
+
+        <div class="information-part place">
+          <span class="glyphicon glyphicon-map-marker"></span>
+          <input id="place" type="text" placeholder="Place">
+        </div>
+
+        <div class="information-part color">
+          <span class="glyphicon glyphicon-tint"></span>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle button-color" type="button" id="colorList"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              <a class="blue" title="1D3557"></a>
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="colorList">
+              <li><a class="red" id="D90429"></a></li>
+              <li><a class="blue" id="1D3557"></a></li>
+              <li><a class="green" id="02C39A"></a></li>
+              <li><a class="lavender" id="7B506F"></a></li>
+              <li><a class="brown" id="280004"></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="information-part event-description">
+          <span class="glyphicon glyphicon-align-left"></span>
+          <textarea class="description-text" id="description" placeholder="Description"></textarea>
+        </div>
+
+      </div>
+      <div id="time" class="tab-pane fade">
+
+        <div class="information-part">
+          <span class="glyphicon glyphicon-calendar "></span>
+          <div class="date">
+            <input class="date-start date-event" id="start" type="date">
+            <span class="glyphicon glyphicon-minus"></span>
+            <input class="date-end date-event" id="end" type="date">
+          </div>
+        </div>
+
+        <div class="information-part ">
+          <span class="glyphicon glyphicon-time "></span>
+          <div class="date bootstrap-timepicker timepicker">
+            <input class="time-start time-event" type="text" value="08:00">
+            <span class="glyphicon glyphicon-minus"></span>
+            <input class="time-end time-event" type="text" value="08:00">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.js"></script>
+<script src="/server/views/assets/js/lib/moment.min.js"></script>
+<script src="/server/views/assets/js/event.js"></script>
+</body>
+</html>

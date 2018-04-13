@@ -1,0 +1,84 @@
+.modal-review .modal-header {
+  border-bottom: none;
+}
+
+.modal-review .modal-title {
+  float: left;
+}
+
+.modal-review .candidate-date {
+  float: right;
+}
+
+.information-label {
+  font-weight: bold;
+}
+
+.information {
+  margin-bottom: 20px;
+}
+
+.modal-review .modal-footer {
+  border-top: none;
+  text-align: left;
+}
+
+.modal-review button {
+  border-radius: 2px;
+  margin: 0;
+  width: 150px;
+}
+
+.modal-review .review-text {
+  border: 1px solid #dcdcdc;
+  resize: none;
+  height: 200px;
+  padding: 15px;
+}
+
+.modal-review .review-text::-webkit-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+::-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+:-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+:-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.review-text {
+  margin-bottom: 10px;
+}
+
+.review-text:focus {
+  outline: none;
+}
+
+.modal-review .nav-tabs > li.active > a {
+  background: #dcdcdc;
+  font-weight: bold;
+}
+
+.modal-review .nav-tabs > li > a {
+  font-weight: bold;
+  color: #555;
+}
+
+.modal-review .tab-pane p {
+  margin-top: 20px;
+}
+
+.modal-review .close {
+  width: 10px;
+  margin-left: 10px;
+}

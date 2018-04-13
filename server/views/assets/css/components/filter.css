@@ -1,0 +1,53 @@
+.filter {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter span {
+  font-size: 14px;
+  padding: 2px 15px;
+}
+
+div.filter > span {
+  padding: 0 15px 0 30px;
+}
+
+.filter-items .dropdown-arrow {
+  width: 20px;
+  height: 14px;
+  background: url(../../images/sprite.png) 0 -5px;
+}
+
+/*.filter-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: white;
+  border: 1px solid #dcdcdc;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #636466;
+  min-width: 100px;
+  margin: 0 15px;
+}
+
+.button-delete {
+  margin-right: 3px;
+  border: none;
+  width: 15px;
+  height: 15px;
+  background: url(../images/sprite.png) -58px -4px;
+}*/
+@media screen and (max-width: 600px) {
+  .filter {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .filter-item {
+    margin: 4px;
+  }
+}
