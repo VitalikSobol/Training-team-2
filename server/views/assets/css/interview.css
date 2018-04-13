@@ -1,0 +1,48 @@
+@import "modal_boxes/event_modal.css";
+
+html {
+  overflow-y: scroll;
+}
+
+.page-interview {
+  min-height: calc(100vh - 50px);
+}
+
+.page-interview-header h1 {
+  font-size: 20px;
+  margin: 0;
+  padding: 20px 30px 20px;
+}
+
+@media screen and (min-width:100px) and (max-width:400px) {
+  #calendar .fc-today-button{
+    display: none;
+  }
+  .fc-toolbar button {
+    position: relative;
+    width: min-content;
+  }
+  #calendar .fc-toolbar .fc-right {
+    float: left;
+  }
+  #calendar .fc-toolbar .fc-left{
+    margin-right: 2%;
+  }
+}
+
+@media screen and (min-width:100px) and (max-width:350px) {
+  #calendar .fc-today-button{
+    display: none;
+  }
+  .fc-toolbar button {
+    width: fit-content;
+  }
+  #calendar .fc-toolbar .fc-right {
+    float: left;
+    margin-left: 2%;
+  }
+  #calendar .fc-toolbar .fc-left{
+    margin-right: 2%;
+    margin-bottom: 2%;
+  }
+}

@@ -1,0 +1,119 @@
+html {
+  overflow-y: scroll;
+}
+
+.content-candidates-section {
+  min-height: 70px;
+}
+
+.content-candidates-section h1 {
+  font-size: 20px;
+  font-weight: lighter;
+  padding: 20px 30px 20px;
+  margin: 0;
+}
+
+.content-candidates-table {
+  min-height: calc(100vh - 170px);
+}
+
+.content-candidates-table table tr > th:first-child,
+.content-candidates-table table tr > td:first-child{
+  padding: 0 30px ;
+}
+
+.content-candidates-table table tr > th,
+.content-candidates-table table tr > td {
+  height: 60px;
+  vertical-align: middle;;
+}
+
+.content-candidates-table table tr > td{
+  padding-left: 15px;
+}
+
+.content-candidates-table table tbody tr{
+  border-bottom: 1px solid #ddd;
+}
+
+.candidates-photo div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+@media (max-width: 992px) {
+  .content-candidates-table table th:nth-child(3),
+  .content-candidates-table table td:nth-child(3),
+  .content-candidates-table table th:nth-child(5),
+  .content-candidates-table table td:nth-child(5){
+    display: none;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .content-candidates-table table th:nth-child(4),
+  .content-candidates-table table td:nth-child(4),
+  .content-candidates-table table th:nth-child(6),
+  .content-candidates-table table td:nth-child(6){
+    display: none;
+  }
+}
+
+/*.content-candidates-cards {
+  min-height: calc(100vh - 200px); !*3-height in candidates*!
+}
+.content-candidates-cards .row {
+  margin-left: 0;
+  margin-right: 0;
+}
+.content-candidates-card {
+  padding-right: 0;
+}
+.thumbnail {
+  border: none;
+  padding: 0;
+}
+.candidates-item {
+  border: 1px solid #e8e8e8;
+  box-shadow: 0 3px 7px rgba(150, 150, 150, 0.5);
+  margin-top: 15px;
+}
+.candidates-image {
+  max-height: 280px;
+  overflow: hidden;
+  position: relative;
+}
+.candidates-image > span {
+  position: absolute;
+  top: 15px;
+  left: 20px;
+  background: #e8e8e8;
+  padding: 0 5px;
+  font-weight: bolder;
+
+}
+.caption {
+  padding-left: 30px;
+}
+.candidates-item-job-position {
+  color: #dcdcdc;
+  font-size: 16px;
+}
+.candidates-item-name {
+  font-weight: bolder;
+  font-size: 20px;
+}
+.candidates-item-salary {
+  font-size: 20px;
+}
+.candidates-item-time {
+  text-align: right;
+  padding-right: 30px;
+  font-size: 14px;
+  color: #dcdcdc;
+}*/
