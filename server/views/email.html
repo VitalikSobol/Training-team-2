@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="/server/views/assets/css/general/form.css">
+  <link rel="stylesheet" type="text/css" href="/server/views/assets/css/password.css">
+  <title>Password reset</title>
+</head>
+<body class="body-form">
+
+<form class="form-password" action="#">
+  <div class="account-info">
+
+    <h2>Forgot your password?</h2>
+
+    <div class="form-field">
+      Enter your email, please
+      <div class="tooltip">
+        <input id="email" type="email" name="email" placeholder="Email" required
+               pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+        <span class="tooltip-text">email@example.com</span>
+      </div>
+    </div>
+
+    <span class="error">Error</span>
+    <span class="success">Instruction send on email!</span>
+
+    <input id="sendInstruction" class="btn" type="submit" name="submit" value="Send instruction">
+
+  </div>
+</form>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+<script src="/server/views/assets/js/password.js"></script>
+</body>
+</html>

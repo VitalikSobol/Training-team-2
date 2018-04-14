@@ -1,0 +1,117 @@
+@import "../components/navigation.css";
+@import "../components/search.css";
+@import "../components/notification-block.css";
+@import "../components/pagination.css";
+
+.main-div {
+  display: flex;
+}
+
+.content {
+  width: 87%;
+  position: relative;
+  overflow: hidden;
+}
+
+.content-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: #e8e8e8;
+  height: 50px;
+  box-shadow: inset 2px -2px 7px rgba(150, 150, 150, 0.5);
+  padding: 0 15px;
+  position: relative;
+  z-index: 5;
+}
+
+.reset-padding {
+  padding: 0;
+}
+
+.content-footer {
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.content-footer span {
+  font-size: 11px;
+  padding: 0 30px;
+}
+
+@media (max-width: 992px) {
+  .content-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-shadow: 2px -2px 7px rgba(150, 150, 150, 0.5);
+  }
+
+  .content {
+    position: relative;
+    width: 100%;
+    margin-top: 50px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .table-responsive {
+    width: 100%;
+    margin-bottom: 0;
+    overflow-y: hidden;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    border: none;
+  }
+
+  .mobile-device {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+
+  .header-button {
+    display: inline-flex;
+  }
+
+  .content-footer {
+    display: inline-flex;
+  }
+
+  .content-footer span {
+    padding: 0 25px;
+    font-size: 15px;
+  }
+
+  .button-add {
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  .content-footer span {
+    padding: 0 15px;
+    font-size: 15px;
+  }
+
+  .content-footer {
+    display: inline-flex;
+  }
+
+  .button-add {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 310px) {
+  .content-footer span {
+    padding: 0 5px;
+  }
+}
