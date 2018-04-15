@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/server/views/assets/css/general/layout.css">
+  <link rel="stylesheet" type="text/css" href="/server/views/assets/css/profile.css">
+  <title>Profile</title>
+</head>
+<body>
+
+<div class="main-div">
+  <nav class="navigation">
+    <h2 class="logo">hr app</h2>
+
+    <ul class="nav nav-pills nav-stacked menu-list">
+      <li class="menu-item"><a href="/server/views/interview.html">Interview</a></li>
+      <li class="menu-item"><a href="/server/views/vacancies.html">Vacancies</a></li>
+      <li class="menu-item selected"><a href="/server/views/candidates.html">Candidates</a></li>
+      <li class="menu-item"><a href="#">Management</a></li>
+    </ul>
+
+  </nav>
+
+  <div class="reset-padding content">
+    <header class="content-header">
+      <form class="search">
+
+        <span class="glyphicon glyphicon-menu-hamburger" id="nav-menu"></span>
+        <span class="search-image"></span>
+
+        <label>
+          <input class="search-input" type="search" name="search" placeholder="Search for vacancies, candidates...">
+        </label>
+
+      </form>
+
+      <div class="header-button">
+        <button class="button-bell"></button>
+        <a href="/server/views/cabinet.html"><button class="button-enter"></button></a>
+      </div>
+
+    </header>
+
+    <div class="page-profile">
+      <div class="page-profile-header">
+
+        <div class="breadcrumbs">
+          <p class="text-muted"><a href="/server/views/candidates.html"> Candidates</a> <span
+              class="glyphicon glyphicon-chevron-right"></span>
+            <a href="#" class="profile-fullName"></a></p>
+        </div>
+
+        <button class="profile-button review" data-toggle="modal" data-target="#reviewModal">Review</button>
+      </div>
+
+      <div class="page-profile-table clearfix">
+        <div class="col-sm-3 profile-table-left-part candidates-information">
+          <div class="name-developer">
+            <span class="status status-name"></span>
+
+            <div class="dropdown status-items">
+
+              <div class="dropdown-button">
+                <span class="status"></span>
+                <div class="dropdown-arrow"></div>
+              </div>
+
+              <div class="dropdown-content">
+                <a>New</a>
+                <a>Accepted for Interview</a>
+                <a>CV-Rejected</a>
+                <a>CV-Accepted</a>
+              </div>
+
+            </div>
+            <img class="img-responsive" src="http://via.placeholder.com/500x350/66bfff" alt="resume">
+            <span class="text-muted position">Job position</span>
+
+            <div class="full-nam ie">
+              <span class="name"></span>
+              <span class="last-name"></span>
+            </div>
+
+            <span class="salary">Salary</span>
+            <span class="text-right text-muted change-date">When it was</span>
+
+          </div>
+
+          <div class="contact-developer">
+            <span class="text-muted title-info">Contact information:</span>
+            <span class="text-muted number-title">Telephone:</span>
+            <span class="number-info"></span>
+            <p></p>
+            <span class="text-muted">Email:</span>
+            <span class="email"></span>
+            <p></p>
+            <span class="text-muted">Address:</span>
+            <span class="address"></span>
+          </div>
+        </div>
+
+        <div class="col-sm-9 profile-table-right-part">
+          <div class="experience-developer">
+
+            <div class="profile-header">
+              <p class="text-muted title-name-experience">Experience</p>
+              <button class="profile-button" data-toggle="modal" data-target="#experienceModal">Add</button>
+            </div>
+
+            <div class="experience">
+
+            </div>
+          </div>
+
+          <div class="skill-developer">
+
+            <div class="profile-header">
+              <p class="text-muted title-name-skill">Skills</p>
+              <button class="profile-button" data-toggle="modal" data-target="#skillModal">Add</button>
+            </div>
+
+            <div class="skills">
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="button-edit btn btn-default btn-sm">
+        <span class="glyphicon glyphicon-pencil"></span></button>
+    </div>
+
+    <!--Notification block-->
+    <aside class="notification-block" id="notification-block">
+
+      <div>
+
+        <div class="notification-header">
+          <h4 class="text-center">New candidates</h4>
+          <span id="candidates-show-element" class ="glyphicon glyphicon-chevron-up"></span>
+        </div>
+
+        <div class="notification-block-candidates">
+          <div class="notification-body notification-body-candidates">
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+
+            </div>
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+
+            </div>
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+
+            </div>
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+
+            </div>
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+
+            </div>
+
+          </div>
+
+          <div class="notification-footer" id="notif-footer-cand">
+            <span id="all-candidates-notification">View All</span>
+          </div>
+
+        </div>
+      </div>
+      <div>
+
+        <div class="notification-header">
+          <h4 class="text-center">New interview</h4>
+          <span id="interview-show-element" class ="glyphicon glyphicon-chevron-up"></span>
+        </div>
+
+        <div class="notification-block-interview">
+          <div class="notification-body notification-body-interview">
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+
+          </div>
+
+          <div class="notification-footer" id="notif-footer-inter">
+            <span id="all-interview-natification">View All</span>
+          </div>
+
+        </div>
+      </div>
+
+    </aside>
+
+  </div>
+</div>
+
+<!-- Modal 'add experience' -->
+<div class="modal fade" id="experienceModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add experience</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <label>
+          *Period:
+          <input type="text" class="exp-period">
+        </label>
+
+        <label>
+          Position:
+          <input type="text" class="exp-position">
+        </label>
+
+        <label>
+          Location:
+          <input type="text" class="exp-location">
+        </label>
+
+        <label>
+          *Company:
+          <input type="text" class="exp-company">
+        </label>
+
+        <label>
+          Description:
+          <input type="text" class="exp-description">
+        </label>
+
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="profile-button button-experience" data-dismiss="modal">Save</button>
+        <button type="button" class="profile-button" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Modal 'add skill' -->
+<div class="modal fade" id="skillModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add skill</h4>
+      </div>
+
+      <div class="modal-body">
+        <label>
+          *Skill:
+          <input type="text" class="name-skill">
+        </label>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="profile-button button-skill" data-dismiss="modal">Save</button>
+        <button type="button" class="profile-button" data-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- Modal 'review' -->
+<div class="modal fade modal-review" id="reviewModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <span class="candidate-date">date</span>
+        <h4 class="modal-title profile-fullName">Review</h4>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="information">
+          <span class="information-label">Position: </span>
+          <span class="position-profile"></span>
+        </div>
+
+        <ul class="nav nav-tabs">
+          <li class="active"><a data-toggle="tab" href="#home">Add review</a></li>
+        </ul>
+
+        <div class="tab-content">
+
+          <div id="home" class="tab-pane fade in active">
+            <label>
+              <textarea class="review-text" placeholder="Write..."></textarea>
+            </label>
+            <button type="button" class="review-button" data-dismiss="modal">Send</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+<script src="/server/views/assets/js/profile.js"></script>
+<script src="/server/views/assets/js/general/notification.js"></script>
+
+</body>
+</html>
