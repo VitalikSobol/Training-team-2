@@ -3,10 +3,12 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { ProfileComponent }   from './profile/profile.component';
 import { AppComponent }      from './app.component';
+import {InterviewComponent} from "./interview/interview.component";
 
 const routes: Routes = [
   { path: 'profile/:id', component: ProfileComponent },
-  { path: '', component: AppComponent, pathMatch: 'full' }
+  {path: 'interview', component: InterviewComponent }
+  // { path: '', component: AppComponent, pathMatch: 'full' },
 ];
 
 @NgModule({
