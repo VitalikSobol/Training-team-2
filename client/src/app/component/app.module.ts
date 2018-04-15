@@ -12,6 +12,9 @@ import { NotificationBlockComponent } from './notification-block/notification-bl
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ModalModule } from 'ngx-bootstrap';
 import { VacanciesComponent } from './vacancies/vacancies.component';
+import { InterviewComponent } from './interview/interview.component';
+import { FullCalendarModule } from 'ng-fullcalendar';
+import {EventService} from "../service/event/event.service";
 
 
 @NgModule({
@@ -22,15 +25,17 @@ import { VacanciesComponent } from './vacancies/vacancies.component';
     MenuComponent,
     NotificationBlockComponent,
     SearchInputComponent,
-    VacanciesComponent
+    VacanciesComponent,
+    InterviewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    FullCalendarModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
