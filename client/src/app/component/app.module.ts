@@ -10,6 +10,9 @@ import { MenuComponent } from './menu/menu.component';
 import { NotificationBlockComponent } from './notification-block/notification-block.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ModalModule } from 'ngx-bootstrap';
+import { InterviewComponent } from './interview/interview.component';
+import { FullCalendarModule } from 'ng-fullcalendar';
+import {EventService} from "../service/event/event.service";
 
 
 @NgModule({
@@ -19,14 +22,16 @@ import { ModalModule } from 'ngx-bootstrap';
     DropdowsStatusComponent,
     MenuComponent,
     NotificationBlockComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    InterviewComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FullCalendarModule,
     ModalModule.forRoot()
   ],
-  providers: [],
+  providers: [EventService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

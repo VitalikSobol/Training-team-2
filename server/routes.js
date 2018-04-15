@@ -32,7 +32,7 @@ module.exports = function(server) {
 	server.get('/', login.getLoginPage);
 
   server.get("/candidates/status/:name", candidate.getCandidateByStatus);
-  server.get("/candidates", authorization, candidate.getCandidates);
+  server.get("/candidates", candidate.getCandidates);
   server.get("/candidates/:id", candidate.getCandidateById);
   server.get("/candidates/review/:id", candidate.getReview);
   server.put("/candidates/:id", candidate.updateCandidate);

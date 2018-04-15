@@ -22,11 +22,17 @@
     "@angular/platform-browser-dynamic": "^5.2.0",
     "@angular/router": "^5.2.0",
     "@ng-bootstrap/ng-bootstrap": "^1.1.2",
+    "@types/fullcalendar": "^3.5.0",
+    "@types/jquery": "^3.3.0",
     "bootstrap": "^3.3.7",
     "core-js": "^2.4.1",
     "ngx-bootstrap": "^2.0.3",
     "rxjs": "^5.5.6",
-    "zone.js": "^0.8.19"
+    "zone.js": "^0.8.19",
+    "fullcalendar": "3.6.1",
+    "jquery": "^3.2.1",
+    "moment": "^2.20.1",
+    "ng-fullcalendar": "1.5.2"
   },
   "devDependencies": {
     "@angular/cli": "~1.7.3",
