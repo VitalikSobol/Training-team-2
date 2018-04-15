@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule }   from '@angular/forms';
 import { NgModule } from '@angular/core';
 
 
@@ -10,6 +11,7 @@ import { MenuComponent } from './menu/menu.component';
 import { NotificationBlockComponent } from './notification-block/notification-block.component';
 import { SearchInputComponent } from './search-input/search-input.component';
 import { ModalModule } from 'ngx-bootstrap';
+import { VacanciesComponent } from './vacancies/vacancies.component';
 
 
 @NgModule({
@@ -19,11 +21,13 @@ import { ModalModule } from 'ngx-bootstrap';
     DropdowsStatusComponent,
     MenuComponent,
     NotificationBlockComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    VacanciesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     ModalModule.forRoot()
   ],
   providers: [],
