@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'HR_APPLICATION';
+  isVisibleNotification: boolean = false;
+
+  changeShowStatus() {
+    this.isVisibleNotification = !this.isVisibleNotification;
+  }
+
 }
