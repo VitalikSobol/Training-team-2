@@ -14,8 +14,8 @@ import { ModalModule } from 'ngx-bootstrap';
 import { VacanciesComponent } from './vacancies/vacancies.component';
 import { InterviewComponent } from './interview/interview.component';
 import { FullCalendarModule } from 'ng-fullcalendar';
-import {EventService} from "../service/event/event.service";
-import { FooterComponent } from './footer/footer.component';
+import { EventService } from "../service/event/event.service";
+import { CandidatesComponent } from './candidates/candidates.component';
 
 
 @NgModule({
@@ -28,7 +28,7 @@ import { FooterComponent } from './footer/footer.component';
     SearchInputComponent,
     VacanciesComponent,
     InterviewComponent,
-    FooterComponent
+    CandidatesComponent,
   ],
   imports: [
     BrowserModule,
