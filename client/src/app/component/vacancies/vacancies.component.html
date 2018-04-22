@@ -1,0 +1,81 @@
+<section class="content-vacancies-section">
+  <h1>Vacancies</h1>
+</section>
+
+<main class="content-vacancies-table table-responsive filterable">
+  <table class="table">
+    <thead>
+
+    <tr class="filters">
+
+      <th>
+        <label>
+          Vacancy
+          <input id="position" type="text" class="form-control">
+        </label>
+      </th>
+      <!-- class="mobile-device" can change  with table in mobile version-->
+      <th class="mobile-device">
+        <label>
+          Description
+          <input id="description" type="text" class="form-control">
+        </label>
+      </th>
+
+      <th class="mobile-device">
+        <label>
+          Salary
+          <input id="salary" type="text" class="form-control">
+        </label>
+      </th>
+
+      <th>Candidates</th>
+
+    </tr>
+    </thead>
+
+    <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{item.vacancy}}</td>
+      <td>{{item.description}}</td>
+      <td>{{item.salary}}</td>
+      <td>{{item.candidates}}</td>
+    </tr>
+    </tbody>
+
+  </table>
+
+  <button class="button-add"  (click)="openModal(vacanciesModal)">+</button>
+</main>
+
+<app-footer></app-footer>
+
+<!-- Modal 'Add vacancies' -->
+<ng-template #vacanciesModal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+        <h4 class="modal-title">Add vacancies</h4>
+      </div>
+      <div class="modal-body">
+        <label>
+          *Vacancy:
+          <input type="text" class="add-vacancy">
+        </label>
+        <label>
+          *Description:
+          <input type="text" class="add-description">
+        </label>
+        <label>
+          Salary:
+          <input type="text" class="add-salary">
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="vacancies-button button-save-vacancies" data-dismiss="modal">Save</button>
+        <button type="button" class="vacancies-button" (click)="modalRef.hide()" >Close</button>
+      </div>
+    </div>
+</ng-template>
+
+  
