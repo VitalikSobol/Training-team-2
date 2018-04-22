@@ -4,9 +4,8 @@ function candidateController() {
   const mysql = require('mysql');
   const config = require('../config');
   const util = require('./utilController');
-  
+
   let candidate = {
-    status: 0,
     contact: [],
     experience: [],
     skills: []
@@ -67,6 +66,7 @@ function candidateController() {
   };
   
   self.getCandidateById = (req, res, next) => {
+    let user;
     let connection = mysql.createConnection(config.database);
     connection.connect();
     let query = "SELECT candidate.id as id, " +
@@ -85,7 +85,7 @@ function candidateController() {
         next(err);
       }
       else {
-        candidate.contact = data;
+        user = data[0];
         query = "SELECT name FROM skill WHERE candidate_id="+ req.params.id;
         connection.query(query,  (err, data) => {
           if (err) {
@@ -93,7 +93,7 @@ function candidateController() {
             next(err);
           }
           else {
-            candidate.skills = data;
+            user.skills = data;
             query = "SELECT * FROM experience WHERE candidate_id="+ req.params.id;
             connection.query(query,  (err, data) => {
               if (err) {
@@ -101,10 +101,9 @@ function candidateController() {
                 next(err);
               }
               else {
-                candidate.experience = data;
-                candidate.status = 200;
+                user.experiences = data;
                 connection.end();
-                res.json(200,candidate);
+                res.json(200,user);
                 next();
               }
             });

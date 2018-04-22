@@ -31,10 +31,10 @@
           <input class="last-name" placeholder="Last Name" value="{{user.lastName}}" *ngIf="isEdit">
         </div>
 
-        <span class="salary" *ngIf="!isEdit">{{user.salary}}$</span>
-        <input class="salary" placeholder="salary" value="{{user.salary}}" *ngIf="isEdit">
+        <span class="salary" *ngIf="!isEdit">{{user.payment}}$</span>
+        <input class="salary" placeholder="salary" value="{{user.payment}}" *ngIf="isEdit">
 
-        <span class="text-right text-muted change-date">When it was</span>
+        <span class="text-right text-muted change-date">{{user.date}} days ago</span>
 
       </div>
 
@@ -92,7 +92,7 @@
 
         <div class="skills">
           <span *ngFor="let skill of user.skills">
-            {{skill}}
+            {{skill.name}}
           </span>
         </div>
 
