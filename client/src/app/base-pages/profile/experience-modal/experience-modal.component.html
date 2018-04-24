@@ -1,0 +1,42 @@
+<div class="modal-content modal-experience">
+
+  <div class="modal-header">
+    <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+    <h4 class="modal-title">Add experience</h4>
+  </div>
+
+  <div class="modal-body">
+
+    <label>
+      *Period:
+      <input type="text" class="exp-period">
+    </label>
+
+    <label>
+      Position:
+      <input type="text" class="exp-position">
+    </label>
+
+    <label>
+      Location:
+      <input type="text" class="exp-location">
+    </label>
+
+    <label>
+      *Company:
+      <input type="text" class="exp-company">
+    </label>
+
+    <label>
+      Description:
+      <input type="text" class="exp-description">
+    </label>
+
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="profile-button button-experience" data-dismiss="modal">Save</button>
+    <button type="button" class="profile-button" (click)="modalRef.hide()">Close</button>
+  </div>
+
+</div>

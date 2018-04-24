@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { CalendarComponent } from 'ng-fullcalendar';
 import { Options } from 'fullcalendar';
-import {EventService} from "../../service/event/event.service";
-import {Event} from "../../service/event/event"
+import {EventService} from "../event/event.service";
+import {Event} from "../event/event"
 
 @Component({
   selector: 'app-interview',

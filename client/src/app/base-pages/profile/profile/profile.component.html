@@ -106,105 +106,14 @@
   </button>
 </div>
 
-<!-- Modal 'add experience' -->
 <ng-template #experienceModal>
-  <div class="modal-content modal-experience">
-
-    <div class="modal-header">
-      <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
-      <h4 class="modal-title">Add experience</h4>
-    </div>
-
-    <div class="modal-body">
-
-      <label>
-        *Period:
-        <input type="text" class="exp-period">
-      </label>
-
-      <label>
-        Position:
-        <input type="text" class="exp-position">
-      </label>
-
-      <label>
-        Location:
-        <input type="text" class="exp-location">
-      </label>
-
-      <label>
-        *Company:
-        <input type="text" class="exp-company">
-      </label>
-
-      <label>
-        Description:
-        <input type="text" class="exp-description">
-      </label>
-
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="profile-button button-experience" data-dismiss="modal">Save</button>
-      <button type="button" class="profile-button" (click)="modalRef.hide()">Close</button>
-    </div>
-
-  </div>
+  <app-experience-modal></app-experience-modal>
 </ng-template>
-<!-- Modal 'add skill' -->
+
 <ng-template #skillModal>
-  <div class="modal-content modal-skill">
-
-    <div class="modal-header">
-      <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
-      <h4 class="modal-title">Add skill</h4>
-    </div>
-
-    <div class="modal-body">
-      <label>
-        *Skill:
-        <input type="text" class="name-skill">
-      </label>
-    </div>
-
-    <div class="modal-footer">
-      <button type="button" class="profile-button button-skill" data-dismiss="modal">Save</button>
-      <button type="button" class="profile-button" (click)="modalRef.hide()">Close</button>
-    </div>
-
-  </div>
+  <app-skill-modal></app-skill-modal>
 </ng-template>
-<!-- Modal 'review' -->
+
 <ng-template #reviewModal>
-  <div class="modal-content modal-review">
-
-    <div class="modal-header">
-      <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
-      <span class="candidate-date">date</span>
-      <h4 class="modal-title profile-fullName">{{user.name}} {{user.lastName}}</h4>
-    </div>
-
-    <div class="modal-body">
-
-      <div class="information">
-        <span class="information-label">Position: </span>
-        <span class="position-profile">{{user.position}}</span>
-      </div>
-
-      <ul class="nav nav-tabs">
-        <li class="active"><a data-toggle="tab" href="#home">Add review</a></li>
-      </ul>
-
-      <div class="tab-content">
-
-        <div id="home" class="tab-pane fade in active">
-          <label>
-            <textarea class="review-text" placeholder="Write..."></textarea>
-          </label>
-          <button type="button" class="review-button" data-dismiss="modal">Send</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
+  <app-review-modal></app-review-modal>
 </ng-template>

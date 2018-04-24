@@ -88,7 +88,7 @@
 .page-items .dropdown-arrow {
   width: 10px;
   height: 14px;
-  background: url(../../../../assets/images/sprite.png) -355px -5px;
+  background: url(../../../../../assets/images/sprite.png) -355px -5px;
 }
 
 .button-nav button {
@@ -100,12 +100,12 @@
 }
 
 .button-prev {
-  background: url(../../../../assets/images/sprite.png) -232px -2px;
+  background: url(../../../../../assets/images/sprite.png) -232px -2px;
   outline: none;
 }
 
 .button-next {
-  background: url(../../../../assets/images/sprite.png) -290px -3px;
+  background: url(../../../../../assets/images/sprite.png) -290px -3px;
   outline: none;
 }
 

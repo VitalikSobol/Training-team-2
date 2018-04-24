@@ -1,5 +1,5 @@
 .page-profile {
-  min-height: calc(100vh - 50px);
+  min-height: calc(100vh - 40px);
 }
 
 .page-profile-header {
@@ -12,7 +12,7 @@
 }
 
 .page-profile-header p {
-  padding: 4px 0 0 30px;
+  padding: 8px 0 0 30px;
 }
 
 .page-profile-header a {
@@ -29,7 +29,7 @@
 
 .profile-table-right-part {
   border-left: 1px solid #c0c0c0;
-  min-height: calc(100vh - 80px);
+  min-height: calc(100vh - 70px);
   padding: 0;
 }
 
@@ -274,6 +274,11 @@
   .page-profile-table {
     height: auto;
   }
+
+  .page-profile-header {
+    height: 30px;
+    padding: 0;
+  }
 }
 
 @media screen and (max-width: 767px) {
@@ -300,110 +305,4 @@
     width: 90px;
     font-size: 12px;
   }
-}
-
-/*-------------------------*/
-.modal input {
-  height: 22px;
-  margin-bottom: 2px;
-  border-radius: 5px;
-  border: 1px solid #c0c0c0;
-}
-
-.modal-body {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.modal-body label {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-/*------------------------------*/
-.modal-review .modal-header {
-  border-bottom: none;
-}
-
-.modal-review .modal-title {
-  float: left;
-}
-
-.modal-review .candidate-date {
-  float: right;
-}
-
-.information-label {
-  font-weight: bold;
-}
-
-.information {
-  margin-bottom: 20px;
-}
-
-.modal-review .modal-footer {
-  border-top: none;
-  text-align: left;
-}
-
-.modal-review button {
-  border-radius: 2px;
-  margin: 0;
-  width: 150px;
-}
-
-.modal-review .review-text {
-  border: 1px solid #dcdcdc;
-  resize: none;
-  height: 200px;
-  padding: 15px;
-}
-
-.modal-review .review-text::-webkit-input-placeholder {
-  font-size: 16px;
-  font-weight: lighter;
-}
-
-::-moz-placeholder {
-  font-size: 16px;
-  font-weight: lighter;
-}
-
-:-ms-input-placeholder {
-  font-size: 16px;
-  font-weight: lighter;
-}
-
-:-moz-placeholder {
-  font-size: 16px;
-  font-weight: lighter;
-}
-
-.review-text {
-  margin-bottom: 10px;
-}
-
-.review-text:focus {
-  outline: none;
-}
-
-.modal-review .nav-tabs > li.active > a {
-  background: #dcdcdc;
-  font-weight: bold;
-}
-
-.modal-review .nav-tabs > li > a {
-  font-weight: bold;
-  color: #555;
-}
-
-.modal-review .tab-pane p {
-  margin-top: 20px;
-}
-
-.modal-review .close {
-  width: 10px;
-  margin-left: 10px;
 }

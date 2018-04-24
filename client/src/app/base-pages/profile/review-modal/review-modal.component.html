@@ -1,0 +1,18 @@
+<div class="modal-content modal-review">
+
+  <div class="modal-header">
+    <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+    <span class="candidate-date">date</span>
+    <h4 class="modal-title profile-fullName">{{user.name}} {{user.lastName}}</h4>
+  </div>
+
+  <div class="modal-body">
+
+    <div class="information">
+      <span class="information-label">Position: </span>
+      <span class="position-profile">{{user.position}}</span>
+    </div>
+
+    <app-tab-panel></app-tab-panel>
+  </div>
+</div>

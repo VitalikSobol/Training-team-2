@@ -39,7 +39,7 @@ app-menu {
   justify-content: space-between;
   align-items: center;
   background: #e8e8e8;
-  height: 50px;
+  height: 40px;
   box-shadow: 1px 1px 5px rgba(150, 150, 150, 0.5);
   padding: 0 15px;
   position: relative;
@@ -79,7 +79,7 @@ app-menu {
   .content {
     position: relative;
     width: 100%;
-    margin-top: 50px;
+    margin-top: 40px;
   }
 }
 
