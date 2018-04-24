@@ -107,13 +107,13 @@
 </div>
 
 <ng-template #experienceModal>
-  <app-experience-modal></app-experience-modal>
+  <app-experience-modal [refModal]="modalRef"></app-experience-modal>
 </ng-template>
 
 <ng-template #skillModal>
-  <app-skill-modal></app-skill-modal>
+  <app-skill-modal [refModal]="modalRef"></app-skill-modal>
 </ng-template>
 
 <ng-template #reviewModal>
-  <app-review-modal></app-review-modal>
+  <app-review-modal [refModal]="modalRef" [user]="user"></app-review-modal>
 </ng-template>

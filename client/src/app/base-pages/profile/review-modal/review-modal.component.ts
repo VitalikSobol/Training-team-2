@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Candidate} from '../../service/candidate/candidate';
 
 @Component({
   selector: 'app-review-modal',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./review-modal.component.css']
 })
 export class ReviewModalComponent implements OnInit {
+
+  @Input()
+  refModal = " ";
+
+  @Input()
+  user:Candidate;
 
   constructor() { }
 

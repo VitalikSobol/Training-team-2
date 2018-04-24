@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
 })
 export class DropdowsStatusComponent {
   @Input()
-  status = " ";
+  status: String = " ";
 }

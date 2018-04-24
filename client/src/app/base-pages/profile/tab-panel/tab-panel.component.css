@@ -6,10 +6,12 @@ button {
 
 .review-text {
   border: 1px solid #dcdcdc;
+  border-top: none;
   resize: none;
   height: 200px;
   padding: 15px;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .review-text::-webkit-input-placeholder {
@@ -36,17 +38,15 @@ button {
   outline: none;
 }
 
-.nav-tabs > li.active > a {
-  background: #dcdcdc;
+::ng-deep .nav-item {
   font-weight: bold;
 }
 
-.nav-tabs > li > a {
-  font-weight: bold;
+::ng-deep .nav-link, ::ng-deep .nav-link:hover {
   color: #555;
 }
 
-.tab-pane p {
+tab p {
   margin-top: 20px;
 }
 
@@ -56,12 +56,10 @@ button {
 }
 
 .review-button {
-  padding-left: 10px;
-  padding-right: 10px;
+  padding: 0 10px;
   background: #dcdcdc;
   border: 1px solid #c0c0c0;
-  border-radius: 8px;
-  margin: 0 20px;
+  border-radius: 2px;
   height: 30px;
 }
 
