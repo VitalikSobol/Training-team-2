@@ -94,7 +94,7 @@ function candidateController() {
           }
           else {
             user.skills = data;
-            query = "SELECT * FROM experience WHERE candidate_id="+ req.params.id;
+            query = "SELECT period, position, location, company, description FROM experience WHERE candidate_id="+ req.params.id;
             connection.query(query,  (err, data) => {
               if (err) {
                 connection.end();

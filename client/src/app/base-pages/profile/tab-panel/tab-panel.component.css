@@ -1,0 +1,70 @@
+button {
+  border-radius: 2px;
+  margin: 0;
+  width: 150px;
+}
+
+.review-text {
+  border: 1px solid #dcdcdc;
+  resize: none;
+  height: 200px;
+  padding: 15px;
+  margin-bottom: 10px;
+}
+
+.review-text::-webkit-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+::-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+:-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+:-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.review-text:focus {
+  outline: none;
+}
+
+.nav-tabs > li.active > a {
+  background: #dcdcdc;
+  font-weight: bold;
+}
+
+.nav-tabs > li > a {
+  font-weight: bold;
+  color: #555;
+}
+
+.tab-pane p {
+  margin-top: 20px;
+}
+
+.close {
+  width: 10px;
+  margin-left: 10px;
+}
+
+.review-button {
+  padding-left: 10px;
+  padding-right: 10px;
+  background: #dcdcdc;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  margin: 0 20px;
+  height: 30px;
+}
+
+.review-button:hover {
+  background: #c0c0c0;
+}
