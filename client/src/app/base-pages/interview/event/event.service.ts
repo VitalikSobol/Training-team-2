@@ -1,12 +1,12 @@
-import { Inject, Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import {Event} from './event'
+import {Inject, Injectable} from '@angular/core';
+import {Observable} from 'rxjs/Observable';
+import {Event} from './event';
 
 import 'rxjs/add/observable/of';
 
 @Injectable()
 export class EventService {
-  public getEvents(): Observable<Event[]>{
+  public getEvents(): Observable<Event[]> {
     let events: Event[] = [
       {
         id: 1,

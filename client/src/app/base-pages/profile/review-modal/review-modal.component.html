@@ -13,6 +13,13 @@
       <span class="position-profile">{{user.position}}</span>
     </div>
 
-    <app-tab-panel></app-tab-panel>
+    <tabset>
+      <tab heading="Add review" id="tab1">
+        <textarea #content class="review-text" placeholder="Write..."></textarea>
+        <button type="button" class="review-button" (click)="addReview(content.value)">Send</button>
+      </tab>
+      <tab *ngFor="let review of reviews" heading={{review.last_name}}>{{review.content}}</tab>
+    </tabset>
+
   </div>
 </div>

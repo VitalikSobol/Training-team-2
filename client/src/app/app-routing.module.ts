@@ -3,9 +3,8 @@ import {RouterModule, Routes} from '@angular/router';
 
 
 const routes: Routes = [
-  // { path: 'vacancies', loadChildren: './base-pages/vacancies/vacancies.module#VacanciesModule' }
+  {path: 'auth', loadChildren: './authorization/authorization.module#AuthorizationModule'},
   {path: '', loadChildren: './base-pages/base.module#BaseModule'}
-  // { path: '', component: AppComponent, pathMatch: 'full' },
 ];
 
 @NgModule({

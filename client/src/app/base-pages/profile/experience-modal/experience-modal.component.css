@@ -30,3 +30,17 @@
 .profile-button:hover {
   background: #c0c0c0;
 }
+
+input.ng-valid[required], input.ng-valid.required {
+  border-left: 4px solid #42A948;
+}
+
+input.ng-invalid[required] {
+  border-left: 4px solid #a94442;
+}
+
+.alert-danger {
+  background: none;
+  font-style: italic;
+  font-size: 11px;
+}

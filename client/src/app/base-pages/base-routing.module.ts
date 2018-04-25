@@ -13,12 +13,11 @@ const routes: Routes = [
       {path: 'candidates', loadChildren: './candidates/candidates.module#CandidatesModule'}
     ]
   }
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class BaseRoutingModule {
 }

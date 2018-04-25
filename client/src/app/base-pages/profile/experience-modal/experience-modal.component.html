@@ -6,36 +6,47 @@
   </div>
 
   <div class="modal-body">
+    <form #experienceForm="ngForm">
 
-    <label>
-      *Period:
-      <input type="text" class="exp-period">
-    </label>
+      <label>
+        *Period
+        <input type="text" class="exp-period form-control" [(ngModel)]="experience.period" required name="period"
+               #period="ngModel">
+        <div [hidden]="period.valid || period.pristine" class="alert-danger">
+          Period is required
+        </div>
+      </label>
 
-    <label>
-      Position:
-      <input type="text" class="exp-position">
-    </label>
+      <label>
+        Position:
+        <input type="text" class="exp-position form-control" [(ngModel)]="experience.position">
+      </label>
 
-    <label>
-      Location:
-      <input type="text" class="exp-location">
-    </label>
+      <label>
+        Location:
+        <input type="text" class="exp-location form-control" [(ngModel)]="experience.location">
+      </label>
 
-    <label>
-      *Company:
-      <input type="text" class="exp-company">
-    </label>
+      <label>
+        *Company:
+        <input type="text" class="exp-company form-control" [(ngModel)]="experience.company" required name="company"
+               #company="ngModel">
+        <div [hidden]="company.valid || company.pristine" class="alert-danger">
+          Company is required
+        </div>
+      </label>
 
-    <label>
-      Description:
-      <input type="text" class="exp-description">
-    </label>
-
+      <label>
+        Description:
+        <input type="text" class="exp-description form-control" [(ngModel)]="experience.description">
+      </label>
+    </form>
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="profile-button button-experience" data-dismiss="modal">Save</button>
+    <button type="button" class="profile-button button-experience" (click)="addExperience(experience); refModal.hide()">
+      Save
+    </button>
     <button type="button" class="profile-button" (click)="refModal.hide()">Close</button>
   </div>
 

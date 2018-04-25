@@ -160,7 +160,7 @@
 }
 
 .info-period {
-  padding: 3px 10px;
+  padding: 3px 5px;
   margin-bottom: 0;
   border: 1px solid #c0c0c0;
   border-radius: 8px;
@@ -260,6 +260,30 @@
   background: #e8e8e8;
   box-shadow: 0 5px 8px #dcdcdc;
   font-size: 20px;
+}
+
+input.ng-valid[required], input.ng-valid.required {
+  border-left: 4px solid #42A948;
+}
+
+input.ng-invalid[required] {
+  border-left: 4px solid #a94442;
+}
+
+.alert-danger {
+  background: none;
+  font-style: italic;
+  font-size: 11px;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+.form-group {
+  margin-bottom: 3px;
 }
 
 @media (max-width: 992px) {

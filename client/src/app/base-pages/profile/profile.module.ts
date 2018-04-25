@@ -8,7 +8,8 @@ import {CandidateService} from '../service/candidate/candidate.service';
 import {SkillModalComponent} from './skill-modal/skill-modal.component';
 import {ExperienceModalComponent} from './experience-modal/experience-modal.component';
 import {ReviewModalComponent} from './review-modal/review-modal.component';
-import {TabPanelComponent} from './tab-panel/tab-panel.component';
+import {FormsModule} from '@angular/forms';
+import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 
 @NgModule({
   imports: [
@@ -16,15 +17,16 @@ import {TabPanelComponent} from './tab-panel/tab-panel.component';
     RouterModule.forChild([
       {path: '', component: ProfileComponent}
     ]),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    FormsModule,
+    BsDatepickerModule.forRoot()
   ],
   declarations: [
     ProfileComponent,
     DropdowsStatusComponent,
     SkillModalComponent,
     ExperienceModalComponent,
-    ReviewModalComponent,
-    TabPanelComponent
+    ReviewModalComponent
   ],
   providers: [
     CandidateService
