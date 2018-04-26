@@ -1,12 +1,6 @@
- export class Vacancies{
-  vacancy: string;
-  description: string;
-  salary: number;
-  candidates: string;
+ export class Vacancies {
+   position: string;
+   description: string;
+   salary: number;
+ }
 
-  constructor(vacancy: string, description: string,  candidates: string ) {
-    this.vacancy = vacancy;
-    this.description = description;
-    this.candidates = candidates;
-  }
-}

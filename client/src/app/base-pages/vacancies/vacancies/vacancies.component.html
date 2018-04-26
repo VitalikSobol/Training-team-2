@@ -36,15 +36,14 @@
 
     <tbody>
     <tr *ngFor="let item of items">
-      <td>{{item.vacancy}}</td>
+      <td>{{item.position}}</td>
       <td>{{item.description}}</td>
       <td>{{item.salary}}</td>
-      <td>{{item.candidates}}</td>
+      <td><a href="">View Candidates</a></td>
     </tr>
     </tbody>
 
   </table>
-
   <button class="button-add"  (click)="openModal(vacanciesModal)">+</button>
 </main>
 
@@ -71,10 +70,9 @@
         </label>
       </div>
       <div class="modal-footer">
-        <button type="button" class="vacancies-button button-save-vacancies" data-dismiss="modal">Save</button>
+        <button type="button" class="vacancies-button button-save-vacancies" data-dismiss="modal" (click)="addVacanies(position,description,salary)" >Save</button>
         <button type="button" class="vacancies-button" (click)="modalRef.hide()" >Close</button>
       </div>
     </div>
 </ng-template>
-
 
