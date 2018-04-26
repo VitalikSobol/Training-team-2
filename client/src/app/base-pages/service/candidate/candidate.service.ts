@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import {Candidate} from './candidate';
+import {CandidateBase} from './candidateBase';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {Experience} from './experience';
@@ -50,4 +51,8 @@ export class CandidateService {
     return this.http.post(url, content);
   }
 
+  getCandidates(): Observable<CandidateBase>{
+    const url = `candidates`;
+    return this.http.get<CandidateBase>(url);
+  }
 }
