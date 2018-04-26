@@ -1,6 +1,4 @@
-/**
- * Created by Denis on 17.03.2018.
- */
+
 'use strict';
 
 function Calendar() {

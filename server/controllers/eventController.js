@@ -25,18 +25,20 @@ function EventController() {
     let end = req.query.till;
     let connection = mysql.createConnection(config.database);
     connection.connect();
-    connection.query("SELECT id, title, start, end, allDay, description, color, place" +
-      " FROM event WHERE start >= '" + start + "'" + "AND end <= '" + end + "'",  (err, data) => {
+    let query_old = "SELECT id, title, start, end, allDay, description, color, place" +
+      " FROM event WHERE start >= '" + start + "'" + "AND end <= '" + end + "'";
+    let query = "SELECT id, title, start, end, allDay, description, color, place" +
+      " FROM event";
+    connection.query(query,  (err, data) => {
       if (err) {
         console.log(err);
         connection.end();
         next(err);
       } else {
         connection.end();
-        res.json(200,{
-          events: data,
-          status: 200
-        });
+        res.json(200,
+          data
+        );
         next();
       }
       
@@ -131,9 +133,10 @@ function EventController() {
   self.getNotification =  (req, res, next) => {
     let query = "SELECT id, title, date_format(start, '%H:%i') as start FROM event" +
       " WHERE current_timestamp() <= start";
+    let query_temp = "SELECT id, title, date_format(start, '%H:%i') as start FROM event";
     let connection = mysql.createConnection(config.database);
     connection.connect();
-    connection.query(query,  (err, data) => {
+    connection.query(query_temp,  (err, data) => {
       if (err) {
         console.log(err);
         connection.end();
@@ -142,7 +145,7 @@ function EventController() {
       entity.events = data;
       entity.status = 200;
       connection.end();
-      res.json(entity);
+      res.json(data);
       next();
       
     });

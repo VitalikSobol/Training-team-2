@@ -10,9 +10,33 @@
   z-index: 5;
 }
 
-.notification-block-candidates,
-.notification-block-interview {
+.candidate-name {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.candidate-email {
+  font-size: 12px;
+  color: #757575;
+}
+
+.event-title {
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+
+.event-start {
+  color: #757575;
+  font-size: 14px;
+}
+
+.notification-block-candidates {
   height: 280px;
+}
+
+.notification-block-interview {
+  height: 180px;
 }
 
 .hideNotification {
@@ -73,6 +97,10 @@
   height: 240px;
 }
 
+.notification-body-interview {
+  height: 140px;
+}
+
 .candidates-notif-photo div {
   display: flex;
   justify-content: center;
@@ -103,9 +131,8 @@
 }
 
 .notification-card-interview {
-  height: 65px;
   margin-left: 25px;
-  margin-bottom: 15px;
+  margin-bottom: 5px;
 }
 
 .notification-footer {

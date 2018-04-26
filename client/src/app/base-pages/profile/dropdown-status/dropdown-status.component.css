@@ -1,6 +1,7 @@
 .dropdown {
   position: relative;
   display: inline-block;
+  width: 100%;
 }
 
 .dropdown-arrow {
@@ -11,14 +12,18 @@
 
 .dropdown-button {
   padding-left: 10px;
-  color: black;
-  font-size: 13px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #e8e8e8;
+  color: #636466;
   width: 100%;
-  background: white;
-}
-
-.dropdown-content {
-  width: 100%;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  text-align: left;
 }
 
 .dropdown-button:hover {
@@ -33,31 +38,14 @@
   background-color: #dcdcdc;
 }
 
-.dropdown-button {
-  background-color: #e8e8e8;
-  color: #636466;
-  width: 150px;
-  font-size: 14px;
-  border: none;
-  cursor: pointer;
-  border-radius: 12px;
-  text-align: left;
-}
-
-.dropdown-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
 .dropdown-content {
   display: none;
   border-radius: 12px;
   position: absolute;
   background-color: #e8e8e8;
-  width: 150px;
   box-shadow: 0 8px 16px 0 #dcdcdc;
   z-index: 1;
+  width: 100%;
 }
 
 .dropdown-content a {

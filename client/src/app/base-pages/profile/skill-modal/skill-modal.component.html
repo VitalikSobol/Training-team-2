@@ -1,20 +1,25 @@
 <div class="modal-content modal-skill">
 
   <div class="modal-header">
-    <button type="button" class="close" (click)="modalRef.hide()">&times;</button>
+    <button type="button" class="close" (click)="refModal.hide()">&times;</button>
     <h4 class="modal-title">Add skill</h4>
   </div>
 
   <div class="modal-body">
-    <label>
-      *Skill:
-      <input type="text" class="name-skill">
-    </label>
+    <form #skillForm="ngForm">
+      <label>
+        *Skill:
+        <input type="text" class="name-skill form-control" [(ngModel)]="nameSkill" required name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.pristine" class="alert-danger">
+          Name is required
+        </div>
+      </label>
+    </form>
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="profile-button button-skill" data-dismiss="modal">Save</button>
-    <button type="button" class="profile-button" (click)="modalRef.hide()">Close</button>
+    <button type="button" class="profile-button button-skill" (click)="addSkill(); refModal.hide()">Save</button>
+    <button type="button" class="profile-button" (click)="refModal.hide()">Close</button>
   </div>
 
 </div>

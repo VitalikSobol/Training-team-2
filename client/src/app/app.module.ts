@@ -5,7 +5,7 @@ import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 import {AppComponent} from './app.component';
 import {AppRoutingModule} from './app-routing.module';
-import {ModalModule} from 'ngx-bootstrap';
+import {ModalModule, TabsModule} from 'ngx-bootstrap';
 
 import {ServerInterceptor} from './base-pages/service/server-interceptor';
 
@@ -18,7 +18,8 @@ import {ServerInterceptor} from './base-pages/service/server-interceptor';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    TabsModule.forRoot()
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ServerInterceptor, multi: true}

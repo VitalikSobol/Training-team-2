@@ -4,7 +4,7 @@
     <div class="breadcrumbs">
       <p class="text-muted"><a href="/candidates"> Candidates</a> <span
         class="glyphicon glyphicon-chevron-right"></span>
-        <a href="#" class="profile-fullName">{{user.name}} {{user.lastName}}</a></p>
+        <a href="#" class="profile-fullName">{{user?.name}} {{user?.lastName}}</a></p>
     </div>
 
     <button class="profile-button review" (click)="openModal(reviewModal)">Review</button>
@@ -12,46 +12,98 @@
 
   <div class="page-profile-table clearfix">
     <div class="col-sm-3 profile-table-left-part candidates-information">
-      <div class="name-developer">
+      <form #candidateForm="ngForm">
+        <div class="name-developer">
 
-        <app-dropdown-status [status]="user.status" *ngIf="isEdit"></app-dropdown-status>
-        <span class="status status-name" *ngIf="!isEdit">{{user.status}}</span>
+          <app-dropdown-status [status]="user.status" (change)="updateFromChild($event)"
+                               *ngIf="isEdit"></app-dropdown-status>
+          <span class="status status-name" *ngIf="!isEdit">{{user?.status}}</span>
 
-        <img class="img-responsive" src="http://via.placeholder.com/500x350/66bfff" alt="resume">
+          <img class="img-responsive" src="http://via.placeholder.com/500x350/66bfff" alt="resume">
 
-        <span class="text-muted position" *ngIf="!isEdit">{{user.position}}</span>
-        <input class="text-muted position" value="{{user.position}}" *ngIf="isEdit">
+          <span class="text-muted position" *ngIf="!isEdit">{{user?.position}}</span>
+          <div class="form-group" *ngIf="isEdit">
+            <input class="text-muted position form-control" name="position" placeholder="Position"
+                   [(ngModel)]="user.position" required #position="ngModel">
+            <div [hidden]="position.valid || position.pristine" class="alert-danger">
+              Position is required
+            </div>
+          </div>
 
-        <div class="full-name">
+          <div class="full-name">
 
-          <span class="name" *ngIf="!isEdit">{{user.name}}</span>
-          <input class="name" placeholder="Name" value="{{user.name}}" *ngIf="isEdit">
+            <span class="name" *ngIf="!isEdit">{{user?.name}}</span>
+            <div class="form-group" *ngIf="isEdit">
+              <input class="name form-control" placeholder="Name" [(ngModel)]="user.name" required name="name"
+                     #name="ngModel">
+              <div [hidden]="name.valid || name.pristine" class="alert-danger">
+                Name is required
+              </div>
+            </div>
 
-          <span class="last-name" *ngIf="!isEdit">{{user.lastName}}</span>
-          <input class="last-name" placeholder="Last Name" value="{{user.lastName}}" *ngIf="isEdit">
+            <span class="last-name" *ngIf="!isEdit">{{user?.lastName}}</span>
+            <div class="form-group" *ngIf="isEdit">
+              <input class="last-name form-control" placeholder="Last Name" [(ngModel)]="user.lastName" required
+                     name="lastName" #lastName="ngModel">
+              <div [hidden]="lastName.valid || lastName.pristine" class="alert-danger">
+                Last Name is required
+              </div>
+            </div>
+          </div>
+
+          <span class="salary" *ngIf="!isEdit">{{user?.payment}}$</span>
+          <div class="form-group" *ngIf="isEdit">
+            <input class="salary form-control" placeholder="salary" [(ngModel)]="user.payment" required name="salary"
+                   #salary="ngModel">
+            <div [hidden]="salary.valid || salary.pristine" class="alert-danger">
+              Salary is required
+            </div>
+          </div>
+
+          <span class="text-right text-muted change-date">{{user?.date}} days ago</span>
+
         </div>
 
-        <span class="salary" *ngIf="!isEdit">{{user.payment}}$</span>
-        <input class="salary" placeholder="salary" value="{{user.payment}}" *ngIf="isEdit">
+        <div class="contact-developer">
+          <div class="contact-item">
+            <span class="text-muted title-info">Contact information:</span>
+            <span class="text-muted number-title">Telephone:</span>
+            <span class="number-info" *ngIf="!isEdit">{{user?.phone}}</span>
+            <div class="form-group" *ngIf="isEdit">
+              <input class="number-info form-control" placeholder="phone" [(ngModel)]="user.phone" required name="phone"
+                     #phone="ngModel">
+              <div [hidden]="phone.valid || phone.pristine" class="alert-danger">
+                Phone is required
+              </div>
+            </div>
+          </div>
 
-        <span class="text-right text-muted change-date">{{user.date}} days ago</span>
+          <div class="contact-item">
+            <span class="text-muted">Email:</span>
+            <span class="email" *ngIf="!isEdit">{{user?.email}}</span>
+            <div class="form-group" *ngIf="isEdit">
+              <input class="email form-control" placeholder="E-mail" [(ngModel)]="user.email" required name="email"
+                     email #email="ngModel">
+              <div [hidden]="email.valid || email.pristine" class="alert-danger">
+                Email is required
+              </div>
+            </div>
+          </div>
 
-      </div>
+          <div class="contact-item">
+            <span class="text-muted">Address:</span>
+            <span class="address" *ngIf="!isEdit">{{user?.address}}</span>
+            <div class="form-group" *ngIf="isEdit">
+              <input class="address form-control" placeholder="address" [(ngModel)]="user.address" name="address"
+                     required #address="ngModel">
+              <div [hidden]="address.valid || address.pristine" class="alert-danger">
+                Address is required
+              </div>
+            </div>
+          </div>
 
-      <div class="contact-developer">
-        <span class="text-muted title-info">Contact information:</span>
-        <span class="text-muted number-title">Telephone:</span>
-        <span class="number-info" *ngIf="!isEdit">{{user.phone}}</span>
-        <input class="number-info" placeholder="phone" value="{{user.phone}}" *ngIf="isEdit">
-        <p></p>
-        <span class="text-muted">Email:</span>
-        <span class="email" *ngIf="!isEdit">{{user.email}}</span>
-        <input class="email" placeholder="E-mail" value="{{user.email}}" *ngIf="isEdit">
-        <p></p>
-        <span class="text-muted">Address:</span>
-        <span class="address" *ngIf="!isEdit">{{user.address}}</span>
-        <input class="address" placeholder="address" value="{{user.address}}" *ngIf="isEdit">
-      </div>
+        </div>
+      </form>
     </div>
 
     <div class="col-sm-9 profile-table-right-part">
@@ -63,7 +115,7 @@
         </div>
 
         <div class="experience">
-          <div class="experience-item" *ngFor="let experience of user.experiences">
+          <div class="experience-item" *ngFor="let experience of user?.experiences">
             <div class="experience-info">
               <p class="info-period"> {{experience.period}} </p>
               <p class="text-muted info-position">{{experience.position}}</p>
@@ -91,7 +143,7 @@
         </div>
 
         <div class="skills">
-          <span *ngFor="let skill of user.skills">
+          <span *ngFor="let skill of user?.skills">
             {{skill.name}}
           </span>
         </div>
@@ -102,18 +154,18 @@
 
   <button type="button" class="button-edit btn btn-default btn-sm" (click)="changeMode()">
     <span class="glyphicon glyphicon-pencil" *ngIf="!isEdit"></span>
-    <span class="glyphicon glyphicon-ok" *ngIf="isEdit"></span>
+    <span class="glyphicon glyphicon-ok" *ngIf="isEdit" (click)="saveChanges()"></span>
   </button>
 </div>
 
 <ng-template #experienceModal>
-  <app-experience-modal></app-experience-modal>
+  <app-experience-modal [refModal]="modalRef"></app-experience-modal>
 </ng-template>
 
 <ng-template #skillModal>
-  <app-skill-modal></app-skill-modal>
+  <app-skill-modal [refModal]="modalRef"></app-skill-modal>
 </ng-template>
 
 <ng-template #reviewModal>
-  <app-review-modal></app-review-modal>
+  <app-review-modal [refModal]="modalRef" [user]="user"></app-review-modal>
 </ng-template>

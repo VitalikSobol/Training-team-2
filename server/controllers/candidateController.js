@@ -10,10 +10,10 @@ function candidateController() {
     experience: [],
     skills: []
   };
-  
+
   self.getCandidates = (req, res, next) => {
     let connection = mysql.createConnection(config.database);
-        
+
       let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM "+
         "(SELECT first_name, email, job_title," +
         " date_publishing, status.name as status," +
@@ -23,9 +23,9 @@ function candidateController() {
         " status.name as status, DATEDIFF(CURRENT_DATE(), date_publishing) as date, email as email, " +
         " image_url as image FROM candidate JOIN status on candidate.status_id = status.id ? LIMIT " +
         req.query.begin + "," + req.query.rows;
-     
+
       let criteria = util.addFilterForCandidates(req.query.filter);
-     
+
       complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
       connection.query(complexQuery, (err, data) => {
         if (err) {
@@ -44,7 +44,7 @@ function candidateController() {
           }
       });
   };
-  
+
   self.getCandidateByStatus = (req, res, next) =>{
     let connection = mysql.createConnection(config.database);
     connection.connect();
@@ -64,7 +64,7 @@ function candidateController() {
       next();
     });
   };
-  
+
   self.getCandidateById = (req, res, next) => {
     let user;
     let connection = mysql.createConnection(config.database);
@@ -112,20 +112,20 @@ function candidateController() {
       }
     });
   };
-  
+
   self.updateCandidate = (req, res, next) => {
-    let candidate = JSON.parse(req._body);
+    let candidate = JSON.parse(req.body);
     let connection = mysql.createConnection(config.database);
     connection.connect();
     let query = "UPDATE `candidate` SET " +
       "`first_name` = '" + candidate.name+"'"+
       ", `last_name` = '" + candidate.lastName+"'"+
-      ", `salary` = " + candidate.salary+
+      ", `salary` = " + candidate.payment+
       ", `job_title` = '" + candidate.position+"'"+
       ", `phone` = '" + candidate.phone+"'"+
       ", `email` = '" + candidate.email+"'"+
       ", `address` = '" + candidate.address+"'"+
-      ", `date_publishing` ='" + candidate.datePublishing+"'"+
+      ", `date_publishing` = CURRENT_DATE() "+
       ", `status_id`= (SELECT id FROM status WHERE status.name = '" + candidate.status +"') "+
       "  WHERE `id`=" + req.params.id;
 
@@ -144,12 +144,12 @@ function candidateController() {
       }
     });
   };
-  
+
   self.addSkill = (req, res, next) => {
     let connection = mysql.createConnection(config.database);
     connection.connect();
     let query = "INSERT INTO `skill` (`name`, `candidate_id`)" +
-      " VALUES ('"+req._body+"', '"+req.params.id+"')";
+      " VALUES ('"+req.body+"', '"+req.params.id+"')";
 
     connection.query(query, (err, data) => {
       if (err){
@@ -166,9 +166,9 @@ function candidateController() {
       }
     });
   };
-  
+
   self.addExperience = (req, res, next) => {
-    let experience = JSON.parse(req._body);
+    let experience = JSON.parse(req.body);
 
     let connection = mysql.createConnection(config.database);
     connection.connect();
@@ -193,14 +193,14 @@ function candidateController() {
       }
     });
   };
-  
+
   self.addReview = (req, res, next) => {
-    let review = JSON.parse(req._body);
+    let review = req.body;
     let connection = mysql.createConnection(config.database);
     connection.connect();
     let query = "INSERT INTO `review` " +
       "(`content`, `candidate_id`, `user_id`)" +
-      " VALUES ('"+review.content+"', '"+req.params.id+"', '"+review.user_id+"')";
+      " VALUES ('"+review+"', '"+req.params.id+"', '"+ 1 +"')";
 
     connection.query(query, (err, data) => {
       if (err){
@@ -217,7 +217,7 @@ function candidateController() {
       }
     });
   };
-  
+
   self.getReview = (req, res, next) => {
     let query = "SELECT review.id, review.content, user.first_name, user.last_name " +
       "FROM review JOIN user on user.id = review.user_id";
@@ -231,15 +231,12 @@ function candidateController() {
       }
       else {
         connection.end();
-        res.json(200, {
-          status: 200,
-          data: data
-        });
+        res.json(200, data);
         next();
       }
     });
   };
-  
+
   self.getCandidatesForInterview = (req, res, next) => {
     let query = "SELECT id, first_name as name, last_name as lastName FROM candidate";
     let connection = mysql.createConnection(config.database);
@@ -258,7 +255,7 @@ function candidateController() {
       next();
     });
   };
- 
+
 }
 
 
