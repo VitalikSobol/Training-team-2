@@ -1,0 +1,45 @@
+.search {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 10px;
+}
+
+.search-image {
+  width: 20px;
+  height: 20px;
+  background: url(../../../../../assets/images/sprite.png) -116px 0;
+  margin: 0 5px;
+}
+
+.search-input {
+  width: 300px;
+  border: none;
+  background: #e8e8e8;
+}
+
+.search label {
+  margin: 0;
+}
+
+@media screen and (max-width: 600px) {
+  .search-input {
+    width: 100%;
+  }
+
+  .search span {
+    padding: 8px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .search span {
+    padding: 8px;
+  }
+}
+
+@media (min-width: 992px) {
+  .glyphicon-menu-hamburger {
+    display: none;
+  }
+}
