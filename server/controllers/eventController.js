@@ -25,18 +25,20 @@ function EventController() {
     let end = req.query.till;
     let connection = mysql.createConnection(config.database);
     connection.connect();
-    connection.query("SELECT id, title, start, end, allDay, description, color, place" +
-      " FROM event WHERE start >= '" + start + "'" + "AND end <= '" + end + "'",  (err, data) => {
+    let query_old = "SELECT id, title, start, end, allDay, description, color, place" +
+      " FROM event WHERE start >= '" + start + "'" + "AND end <= '" + end + "'";
+    let query = "SELECT id, title, start, end, allDay, description, color, place" +
+      " FROM event";
+    connection.query(query,  (err, data) => {
       if (err) {
         console.log(err);
         connection.end();
         next(err);
       } else {
         connection.end();
-        res.json(200,{
-          events: data,
-          status: 200
-        });
+        res.json(200,
+          data
+        );
         next();
       }
       

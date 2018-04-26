@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import {RouterModule} from '@angular/router';
 import {InterviewComponent} from './interview/interview.component';
 import {FullCalendarModule} from 'ng-fullcalendar';
-import {EventService} from './event/event.service';
+import {EventService} from '../service/event/event.service';
+import { EventAddModalComponent } from './event-add-modal/event-add-modal.component';
 
 @NgModule({
   imports: [
@@ -14,7 +15,8 @@ import {EventService} from './event/event.service';
     FullCalendarModule
   ],
   declarations: [
-    InterviewComponent
+    InterviewComponent,
+    EventAddModalComponent
   ],
   providers: [
     EventService
