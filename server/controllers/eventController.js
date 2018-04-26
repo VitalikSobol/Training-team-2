@@ -133,9 +133,10 @@ function EventController() {
   self.getNotification =  (req, res, next) => {
     let query = "SELECT id, title, date_format(start, '%H:%i') as start FROM event" +
       " WHERE current_timestamp() <= start";
+    let query_temp = "SELECT id, title, date_format(start, '%H:%i') as start FROM event";
     let connection = mysql.createConnection(config.database);
     connection.connect();
-    connection.query(query,  (err, data) => {
+    connection.query(query_temp,  (err, data) => {
       if (err) {
         console.log(err);
         connection.end();
@@ -144,7 +145,7 @@ function EventController() {
       entity.events = data;
       entity.status = 200;
       connection.end();
-      res.json(entity);
+      res.json(data);
       next();
       
     });

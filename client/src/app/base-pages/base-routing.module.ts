@@ -10,7 +10,8 @@ const routes: Routes = [
       {path: 'profile/:id', loadChildren: './profile/profile.module#ProfileModule'},
       {path: 'interview', loadChildren: './interview/interview.module#InterviewModule'},
       {path: 'vacancies', loadChildren: './vacancies/vacancies.module#VacanciesModule'},
-      {path: 'candidates', loadChildren: './candidates/candidates.module#CandidatesModule'}
+      {path: 'candidates', loadChildren: './candidates/candidates.module#CandidatesModule'},
+      {path: '**', redirectTo: 'interview'}
     ]
   }
 ];
