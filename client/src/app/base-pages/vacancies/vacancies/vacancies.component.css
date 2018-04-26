@@ -18,10 +18,10 @@
   border-bottom: 1px solid #dcdcdc;
 }
 
-.content-vacancies-table table td a {
-  text-decoration: none;
-  color: #3f3f3f;
-}
+/*.content-vacancies-table table td a {*/
+  /*text-decoration: none;*/
+  /*color: #3f3f3f;*/
+/*}*/
 
 .content-vacancies-table table tr > th:first-child,
 .content-vacancies-table table tr > td:first-child {
@@ -58,7 +58,6 @@
   background: #dcdcdc;
 }
 
-
 /* --- Modal window --- */
 
 .modal input {
@@ -93,4 +92,3 @@
 .vacancies-button:hover {
   background: #c0c0c0;
 }
-

@@ -14,13 +14,15 @@ function VacancyController() {
   this.getVacancies =  (req, res, next) => {
     let connection = mysql.createConnection(config.database);
     connection.connect();
-      let complexQuery = "SELECT (SELECT COUNT(*) FROM vacancy  ? ) as total, id, position, description" +
-        ", salary" +
-        " FROM vacancy ? LIMIT " + req.query.begin + "," + req.query.rows;
+      let complexQuery = "SELECT * FROM vacancy LIMIT  10";
+        // +
+        // "(SELECT COUNT(*) FROM vacancy  ? ) as total, id, position, description" +
+        // ", salary" +
+        // " FROM vacancy ? LIMIT " + req.query.begin + "," + req.query.rows;
 
-      let criteria = util.addFilterForVacancies(req.query.filter);
+      // let criteria = util.addFilterForVacancies(req.query.filter);
 
-      complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
+     // complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
 
       connection.query(complexQuery,  (err, data) => {
         if (err) {
