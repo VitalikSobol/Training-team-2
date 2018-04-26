@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {HttpClient} from '@angular/common/http';
 import {NotificationEvent} from './notification-event';
 import {NotificationCandidate} from './notification-candidate';
+import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class NotificationService {

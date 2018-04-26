@@ -14,7 +14,9 @@ function candidateController() {
   self.getCandidates = (req, res, next) => {
     let connection = mysql.createConnection(config.database);
 
-      let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM "+
+        let complexQuery = "SELECT * FROM candidate";
+
+      /*let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM "+
         "(SELECT first_name, email, job_title," +
         " date_publishing, status.name as status," +
         " DATEDIFF(CURRENT_DATE(), date_publishing) as date "+
@@ -26,7 +28,7 @@ function candidateController() {
 
       let criteria = util.addFilterForCandidates(req.query.filter);
 
-      complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
+      complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);*/
       connection.query(complexQuery, (err, data) => {
         if (err) {
           connection.end();
