@@ -1,11 +1,9 @@
-/**
- * Created by Denis on 04.03.2018.
- */
 'use strict';
 const restify = require('restify');
 const mysql = require('mysql');
 const plugins = require('restify-plugins');
 const PORT = process.env.PORT || 5000;
+const path = require('path');
 
 const server = restify.createServer({
 	name: "HR_Application server",
@@ -33,6 +31,10 @@ function unknownMethodHandler(req, res) {
 }
 
 server.on('MethodNotAllowed', unknownMethodHandler);
+
+server.get('*',(req,res)=>{
+  res.send(path.join(__dirname,'../client/dist/index.html'))
+});
 
 server.listen(PORT, function () {
 	console.log(`Listening on ${ PORT }`);
