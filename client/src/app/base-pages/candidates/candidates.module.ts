@@ -1,20 +1,12 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {FooterComponent} from '../common/components/footer/footer.component';
-import {CandidatesComponent} from './candidates/candidates.component';
-import {RouterModule} from '@angular/router';
+import {CandidateService} from '../service/candidate/candidate.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    RouterModule.forChild([
-      {path: '', component: CandidatesComponent}
-    ])
+    CommonModule
   ],
-  declarations: [
-    CandidatesComponent,
-    FooterComponent
-  ]
+  providers:[CandidateService]
 })
 export class CandidatesModule {
 }

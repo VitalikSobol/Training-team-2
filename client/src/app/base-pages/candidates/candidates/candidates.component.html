@@ -24,18 +24,18 @@
             <input id="position" type="text" class="form-control">
           </label>
         </th>
-        <th>
-          <label>
-            Date
-            <input id="date" type="text" class="form-control">
-          </label>
-        </th>
-        <th>
-          <label>
-            Stage
-            <input id="status" type="text" class="form-control">
-          </label>
-        </th>
+        <!--<th>-->
+          <!--<label>-->
+            <!--Date-->
+            <!--<input id="date" type="text" class="form-control">-->
+          <!--</label>-->
+        <!--</th>-->
+        <!--<th>-->
+          <!--<label>-->
+            <!--Stage-->
+            <!--<input id="status" type="text" class="form-control">-->
+          <!--</label>-->
+        <!--</th>-->
         <th></th>
       </tr>
     </thead>
@@ -47,9 +47,9 @@
         <td class='candidate-name'>{{candidate.first_name}}</td>
         <td class='candidate-mail'>{{candidate.email}}</td>
         <td class='candidate-position'>{{candidate.job_title}}</td>
-        <td class='candidate-date'>{{candidate.date}} day ago</td>
-        <td class='candidate-stage'>{{candidate.status_id}}</td>
-        <td><a href="">Show Profile</a></td>
+        <!--<td class='candidate-date'>{{candidate.date}} day ago</td>-->
+        <!--<td class='candidate-stage'>{{candidate.status_id}}</td>-->
+        <td><a [routerLink]="['/profile/', candidate.id]">Show Profile</a></td>
       </tr>
     </tbody>
   </table>

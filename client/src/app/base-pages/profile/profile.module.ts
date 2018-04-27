@@ -14,9 +14,6 @@ import {BsDatepickerModule} from 'ngx-bootstrap/datepicker';
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forChild([
-      {path: '', component: ProfileComponent}
-    ]),
     TabsModule.forRoot(),
     FormsModule,
     BsDatepickerModule.forRoot()
