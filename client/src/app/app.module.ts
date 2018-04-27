@@ -8,6 +8,8 @@ import {AppRoutingModule} from './app-routing.module';
 import {ModalModule, TabsModule} from 'ngx-bootstrap';
 
 import {ServerInterceptor} from './base-pages/service/server-interceptor';
+import {BaseModule} from './base-pages/base.module';
+import {BaseRoutingModule} from './base-pages/base-routing.module';
 
 @NgModule({
   declarations: [
@@ -19,7 +21,9 @@ import {ServerInterceptor} from './base-pages/service/server-interceptor';
     FormsModule,
     HttpClientModule,
     ModalModule.forRoot(),
-    TabsModule.forRoot()
+    TabsModule.forRoot(),
+    BaseModule,
+    BaseRoutingModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ServerInterceptor, multi: true}

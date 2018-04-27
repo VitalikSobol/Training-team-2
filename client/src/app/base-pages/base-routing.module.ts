@@ -1,16 +1,20 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import {BaseComponent} from './base/base.component';
+import {CandidatesComponent} from './candidates/candidates/candidates.component';
+import {VacanciesComponent} from './vacancies/vacancies/vacancies.component';
+import {InterviewComponent} from './interview/interview/interview.component';
+import {ProfileComponent} from './profile/profile/profile.component';
 
 
 const routes: Routes = [
   {
     path: '', component: BaseComponent,
     children: [
-      {path: 'profile/:id', loadChildren: './profile/profile.module#ProfileModule'},
-      {path: 'interview', loadChildren: './interview/interview.module#InterviewModule'},
-      {path: 'vacancies', loadChildren: './vacancies/vacancies.module#VacanciesModule'},
-      {path: 'candidates', loadChildren: './candidates/candidates.module#CandidatesModule'},
+      {path: 'profile/:id', component: ProfileComponent},
+      {path: 'interview', component: InterviewComponent},
+      {path: 'vacancies', component: VacanciesComponent},
+      {path: 'candidates', component: CandidatesComponent},
       {path: '**', redirectTo: 'interview'}
     ]
   }

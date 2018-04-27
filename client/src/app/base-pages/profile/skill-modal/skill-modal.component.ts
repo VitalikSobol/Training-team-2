@@ -27,7 +27,7 @@ export class SkillModalComponent implements OnInit {
     console.log(id);
     this.candidateService.addSkill(id, this.nameSkill).subscribe(
       error => console.log(error));
-    console.log(this.nameSkill);
+    window.location.reload();
   }
 
 }

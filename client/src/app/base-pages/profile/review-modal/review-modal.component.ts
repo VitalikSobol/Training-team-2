@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Candidate} from '../../service/candidate/candidate';
 import {CandidateService} from '../../service/candidate/candidate.service';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-review-modal',

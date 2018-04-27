@@ -26,6 +26,7 @@ export class ExperienceModalComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.candidateService.addExperience(id, experience).subscribe(
       error => console.log(error));
+    window.location.reload();
   }
 
 }
