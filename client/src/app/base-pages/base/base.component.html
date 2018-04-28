@@ -1,0 +1,22 @@
+<div class="main-div">
+
+  <app-menu></app-menu>
+
+  <div class="reset-padding content">
+    <header class="content-header">
+
+      <app-search-input></app-search-input>
+
+      <div class="header-button">
+        <button class="button-bell" (click)="changeShowStatus()"></button>
+        <a [routerLink]="['/cabinet']">
+          <button class="button-enter"></button>
+        </a>
+      </div>
+
+    </header>
+    <router-outlet></router-outlet>
+    <app-notification-block [ngClass]="{hideNotification: !isVisibleNotification}"></app-notification-block>
+
+  </div>
+</div>

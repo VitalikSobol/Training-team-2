@@ -1,0 +1,59 @@
+<aside class="notification-block" id="notification-block">
+
+  <div>
+
+    <div class="notification-header">
+      <h4 class="text-center">New candidates</h4>
+      <span id="candidates-show-element" class="glyphicon glyphicon-chevron-up"></span>
+    </div>
+
+    <div class="notification-block-candidates">
+      <div class="notification-body notification-body-candidates">
+
+        <div class="notification-card-candidates" *ngFor="let candidate of candidates">
+
+          <div class="candidates-notif-photo">
+            <div><img src={{candidate.image}} alt=""></div>
+          </div>
+
+          <div>
+            <p class="candidate-name">{{candidate.name}}</p>
+            <p class="candidate-email">{{candidate.email}}</p>
+            <p class="candidate-position">{{candidate.position}}</p>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="notification-footer" id="notif-footer-cand">
+        <span id="all-candidates-notification">View All</span>
+      </div>
+
+    </div>
+  </div>
+  <div>
+
+    <div class="notification-header">
+      <h4 class="text-center">Next interview</h4>
+      <span id="interview-show-element" class="glyphicon glyphicon-chevron-up"></span>
+    </div>
+
+    <div class="notification-block-interview">
+      <div class="notification-body notification-body-interview">
+
+        <div class="notification-card-interview" *ngFor="let event of events">
+          <p class="event-title">{{event.title}}</p>
+          <span class="event-start"> at {{event.start}}</span>
+        </div>
+
+      </div>
+
+      <div class="notification-footer" id="notif-footer-inter">
+        <span id="all-interview-notification">View All</span>
+      </div>
+
+    </div>
+  </div>
+
+</aside>

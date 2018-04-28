@@ -1,0 +1,140 @@
+.cabinet-form {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  max-width: 400px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+}
+
+.registration-info {
+  margin-top: 10px;
+}
+
+.registration-info input {
+  background: white;
+  border: none;
+  border-bottom: 2px solid #e8e8e8;
+  color: #636466;
+  padding: 6px;
+  margin-top: 6px;
+}
+
+.form-field {
+  color: #636466;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-field > span {
+  padding-right: 10px;
+  width: 80px;
+}
+.form-field > input {
+  width: 95%;
+}
+
+.select {
+  margin-left: 35px;
+}
+
+.select .select-header {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 10px;
+}
+
+.form-select {
+  display: flex;
+}
+
+.select .select-header #role {
+  padding-right: 20px;
+  padding-left: 5px;
+}
+
+.select .select-header span {
+  cursor: pointer;
+}
+
+.select-role-block div label {
+  margin-left: 10px;
+}
+
+.hide-block {
+  display: none;
+}
+
+.show-block {
+  display: block;
+}
+
+.turn {
+  transform: rotate(180deg);
+}
+
+.form-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-photo {
+  width: 100px;
+  height: 100px;
+  border: solid 2px #636466;
+}
+
+.form-image label {
+  margin: 10px;
+  font-weight: bold;
+  color: #636466;
+  background-color: #e8e8e8;
+  display: inline-block;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.input-file {
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.footer input {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #636466;
+  border: none;
+}
+
+.footer   a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #636466;
+}
+
+.cabinet-form input:invalid{
+  border-color: #d9271c;
+}
+
+.error{
+  color: #d9271c;
+  display: none;
+}
+

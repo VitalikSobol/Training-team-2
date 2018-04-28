@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="/server/views/assets/css/general/layout.css">
+  <link rel="stylesheet" type="text/css" href="/server/views/assets/css/vacancies.css">
+  <title>Vacancies</title>
+</head>
+
+<body>
+
+<div class="main-div">
+  <nav class="navigation">
+    <h2 class="logo">hr app</h2>
+
+    <ul class="nav nav-stacked menu-list">
+      <li class="menu-item"><a href="/server/views/interview.html">Interview</a></li>
+      <li class="menu-item selected"><a href="/server/views/vacancies.html">Vacancies</a></li>
+      <li class="menu-item"><a href="/server/views/candidates.html">Candidates</a></li>
+      <li class="menu-item"><a href="#">Management</a></li>
+    </ul>
+
+  </nav>
+
+  <div class="reset-padding content">
+    <header class="content-header">
+      <form class="search">
+
+        <span class="glyphicon glyphicon-menu-hamburger" id="nav-menu"></span>
+        <span class="search-image"></span>
+
+        <label>
+          <input class="search-input" type="search" name="search" placeholder="Search for vacancies, candidates...">
+        </label>
+
+      </form>
+
+      <div class="header-button">
+        <button class="button-bell"></button>
+        <a href="/server/views/cabinet.html"><button class="button-enter"></button></a>
+      </div>
+
+    </header>
+
+    <section class="content-vacancies-section">
+      <h1>Vacancies</h1>
+    </section>
+
+    <main class="content-vacancies-table table-responsive filterable">
+      <table class="table">
+        <thead>
+
+        <tr class="filters">
+
+          <th>
+            <label>
+              Vacancy
+              <input id="position" type="text" class="form-control">
+            </label>
+          </th>
+          <!-- class="mobile-device" can change  with table in mobile version-->
+          <th class="mobile-device">
+            <label>
+              Description
+              <input id="description" type="text" class="form-control">
+            </label>
+          </th>
+
+          <th class="mobile-device">
+            <label>
+              Salary
+              <input id="salary" type="text" class="form-control">
+            </label>
+          </th>
+
+          <th>Candidates</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        </tbody>
+
+      </table>
+      <button class="button-add" data-toggle="modal" data-target="#vacanciesModal">+</button>
+    </main>
+
+    <footer id="count-items" class="content-footer">
+      <span>Rows per page:</span>
+
+      <div class="dropdown page-items">
+
+        <div class="dropdown-button">
+          <span id="current-items-count">10</span>
+          <div class="dropdown-arrow"></div>
+        </div>
+
+        <div class="dropdown-content">
+          <a href="#">10</a>
+          <a href="#">20</a>
+          <a href="#">50</a>
+        </div>
+
+      </div>
+      <span id="range">1-10</span> of <span id="total">100</span>
+
+      <div id="table-control" class="button-nav">
+        <button class="button-prev"></button>
+        <button class="button-next"></button>
+      </div>
+
+    </footer>
+
+    <!--Notification block-->
+    <aside class="notification-block" id="notification-block">
+
+      <div>
+
+        <div class="notification-header">
+          <h4 class="text-center">New candidates</h4>
+          <span id="candidates-show-element" class ="glyphicon glyphicon-chevron-up"></span>
+        </div>
+
+        <div class="notification-block-candidates">
+          <div class="notification-body notification-body-candidates">
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+            </div>
+
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+            </div>
+
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+            </div>
+
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+            </div>
+
+            <div class="notification-card-candidates">
+
+              <div class="candidates-notif-photo">
+                <div><img src="http://via.placeholder.com/100x100" alt=""></div>
+              </div>
+
+              <div>
+                <p>Name</p>
+                <p>E-mail</p>
+                <p>Position</p>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="notification-footer" id="notif-footer-cand">
+            <span id="all-candidates-notification">View All</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div>
+        <div class="notification-header">
+          <h4 class="text-center">New interview</h4>
+          <span id="interview-show-element" class ="glyphicon glyphicon-chevron-up"></span>
+        </div>
+
+        <div class="notification-block-interview">
+          <div class="notification-body notification-body-interview">
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+
+            <div class="notification-card-interview">
+              <p>Name</p>
+              <span>Time</span>
+            </div>
+          </div>
+
+          <div class="notification-footer" id="notif-footer-inter">
+            <span id="all-interview-natification">View All</span>
+          </div>
+
+        </div>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- Modal 'Add vacancies' -->
+<div class="modal fade" id="vacanciesModal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Add vacancies</h4>
+      </div>
+      <div class="modal-body">
+        <label>
+          *Vacancy:
+          <input type="text" class="add-vacancy">
+        </label>
+        <label>
+          *Description:
+          <input type="text" class="add-description">
+        </label>
+        <label>
+          Salary:
+          <input type="text" class="add-salary">
+        </label>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="vacancies-button button-save-vacancies" data-dismiss="modal">Save</button>
+        <button type="button" class="vacancies-button" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
+
+<script src="/server/views/assets/js/vacancies.js"></script>
+<script src="/server/views/assets/js/general/notification.js"></script>
+
+</body>
+</html>

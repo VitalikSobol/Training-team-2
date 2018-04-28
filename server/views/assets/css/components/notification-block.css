@@ -1,0 +1,162 @@
+
+.notification-block {
+  width: 250px;
+  border-left: 1px solid #ddd;
+  border-radius: 5px;
+  margin-right: -250px;
+  background: #fff;
+  position: fixed;
+  right: 0;
+  top: 50px;
+  z-index: 5;
+}
+
+.notification-block-candidates,
+.notification-block-interview{
+  height: 280px;
+}
+
+.hide-notification {
+  animation: hide-notification 1s forwards;
+}
+
+.show-notification{
+  animation: show-notification 1s forwards;
+}
+
+@keyframes hide-notification {
+  from {
+    right: 250px;
+  }
+  to {
+    right: 0;
+  }
+}
+
+@keyframes show-notification {
+  from {
+    right: 0;
+  }
+  to {
+    right: 250px;
+  }
+}
+
+.notification-block > div {
+  border-bottom: 1px solid #ddd;
+  position: relative;
+}
+
+.invert{
+  transform: rotate(180deg);
+  padding-right: 15px;
+}
+
+.notification-header {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+}
+
+.notification-header h4 {
+  padding-left: 10px;
+  line-height: 40px;
+  margin: 0;
+}
+
+.notification-header span {
+  line-height: 40px;
+  padding-left: 15px;
+}
+
+.notification-body {
+  overflow: hidden;
+  height: 240px;
+}
+
+.candidates-notif-photo div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.js-all-candidates,
+.js-all-interview {
+  overflow: auto;
+}
+
+.notification-card-candidates {
+  display: flex;
+  margin-bottom: 15px;
+  height: 65px;
+}
+
+.notification-card-candidates > div {
+  margin-left: 25px;
+}
+
+.notification-card-candidates p {
+  margin: 0;
+}
+
+.notification-card-interview {
+  height: 65px;
+  margin-left: 25px;
+  margin-bottom: 15px;
+}
+
+.notification-footer {
+  height: 40px;
+  width: 100%;
+  border-top: 1px solid #ddd;;
+  line-height: 40px;
+  position: absolute;
+  bottom: 0;
+}
+
+.notification-footer span {
+  margin-left: 25px;
+}
+
+.notification-footer span:hover {
+  cursor: pointer;
+}
+
+.notification-footer {
+  height: 40px;
+  width: 100%;
+  border-top: 1px solid #ddd;;
+  line-height: 40px;
+  position: absolute;
+  bottom: 0;
+}
+
+.notification-footer span {
+  margin-left: 25px;
+}
+
+.notification-footer span:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .notification-body {
+    height: 160px;
+  }
+
+  .notification-block-candidates,
+  .notification-block-interview{
+    height: 200px;
+  }
+
+}
+
+@media (max-width: 992px) {
+  .notification-block{
+    top: 50px;
+  }
+}

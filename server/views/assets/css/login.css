@@ -1,0 +1,29 @@
+.form-login {
+  margin: auto;
+  width: 300px;
+}
+
+.form-login a {
+  display: block;
+  color: #636466;
+  font-style: italic;
+  text-decoration: none;
+  text-align: center;
+  margin-top: 10px;
+}
+
+.form-login a:hover {
+  color: #3f3f3f;
+  text-decoration: underline;
+}
+
+.form-login input:invalid{
+  border-color: #df4820;
+}
+.form-login input:valid{
+  border-color: #30df5b;
+}
+.error{
+  color: #d9271c;
+  display: none;
+}

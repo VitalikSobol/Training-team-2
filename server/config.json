@@ -1,0 +1,18 @@
+{
+  "database": {
+    "host": "127.0.0.1",
+    "user": "root",
+    "password": "root",
+    "database": "hr_application",
+    "debug": false
+  },
+
+  "JWT_KEY" : "yellowTeam",
+
+  "mailer": {
+    "service": "Gmail",
+    "username": "mifort.hr.app@gmail.com",
+    "password": "Pass!123",
+    "sendAddr": "mifort.hr.app@gmail.com"
+  }
+}

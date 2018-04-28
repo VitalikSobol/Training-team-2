@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="assets/css/general/form.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/login.css">
+  <title>Registration</title>
+</head>
+<body class="body-form">
+
+<form class="form-login" action="#">
+  <fieldset class="account-info">
+
+    <h2 class="form-header">hr app</h2>
+
+    <div class="form-field">
+      Email
+      <div class="tooltip">
+        <input id="email" type="email" name="email" placeholder="Email address" required
+               pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$">
+        <span class="tooltip-text">email@example.com</span>
+      </div>
+    </div>
+
+    <div class="form-field">
+      Password
+      <div class="tooltip">
+        <input id="password" type="password" name="password" placeholder="Password" required
+               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{6,24}">
+        <span class="tooltip-text">Contain:<br> 1.Uppercase letters, 2.Lowercase letters, 3.Numerals, 4.Symbols: @!%*?& </span>
+      </div>
+    </div>
+
+    <span class="error">Error</span>
+
+    <input id="registration" class="btn" type="submit" name="submit" value="Sign up">
+  </fieldset>
+</form>
+
+
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="
+        crossorigin="anonymous"></script>
+<script src="/server/views/assets/js/login.js"></script>
+
+</body>
+</html>

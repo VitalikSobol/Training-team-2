@@ -1,0 +1,15 @@
+<div class="dropdown status-items">
+
+  <div class="dropdown-button">
+    <span class="status">{{status}}</span>
+    <div class="dropdown-arrow"></div>
+  </div>
+
+  <div class="dropdown-content" (click)="setStatus($event)">
+    <a>New</a>
+    <a>Accepted for Interview</a>
+    <a>CV-Rejected</a>
+    <a>CV-Accepted</a>
+  </div>
+
+</div>

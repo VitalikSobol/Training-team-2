@@ -1,0 +1,124 @@
+.modal input {
+  height: 22px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  border: 1px solid #c0c0c0;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-body label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-review .modal-header {
+  border-bottom: none;
+}
+
+.modal-review .modal-title {
+  float: left;
+}
+
+.modal-review .candidate-date {
+  float: right;
+}
+
+.information-label {
+  font-weight: bold;
+}
+
+.information {
+  margin-bottom: 20px;
+}
+
+.modal-review .modal-footer {
+  border-top: none;
+  text-align: left;
+}
+
+.modal-review button {
+  border-radius: 2px;
+  margin: 0;
+  width: 150px;
+}
+
+.modal-review .close {
+  width: 10px;
+  margin-left: 10px;
+}
+
+button {
+  border-radius: 2px;
+  margin: 0;
+  width: 150px;
+}
+
+.review-text {
+  border: 1px solid #dcdcdc;
+  border-top: none;
+  resize: none;
+  height: 200px;
+  padding: 15px;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.review-text::-webkit-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+::-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+:-ms-input-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+:-moz-placeholder {
+  font-size: 16px;
+  font-weight: lighter;
+}
+
+.review-text:focus {
+  outline: none;
+}
+
+::ng-deep .nav-item {
+  font-weight: bold;
+}
+
+::ng-deep .nav-link, ::ng-deep .nav-link:hover {
+  color: #555;
+}
+
+tab p {
+  margin-top: 20px;
+}
+
+.close {
+  width: 10px;
+  margin-left: 10px;
+}
+
+.review-button {
+  padding: 0 10px;
+  background: #dcdcdc;
+  border: 1px solid #c0c0c0;
+  border-radius: 2px;
+  height: 30px;
+}
+
+.review-button:hover {
+  background: #c0c0c0;
+}
+

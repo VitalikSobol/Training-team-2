@@ -1,0 +1,53 @@
+<div class="modal-content modal-experience">
+
+  <div class="modal-header">
+    <button type="button" class="close" (click)="refModal.hide()">&times;</button>
+    <h4 class="modal-title">Add experience</h4>
+  </div>
+
+  <div class="modal-body">
+    <form #experienceForm="ngForm">
+
+      <label>
+        *Period
+        <input type="text" class="exp-period form-control" [(ngModel)]="experience.period" required name="period"
+               #period="ngModel">
+        <div [hidden]="period.valid || period.pristine" class="alert-danger">
+          Period is required
+        </div>
+      </label>
+
+      <label>
+        Position:
+        <input type="text" name="position" class="exp-position form-control" [(ngModel)]="experience.position">
+      </label>
+
+      <label>
+        Location:
+        <input type="text" name="location" class="exp-location form-control" [(ngModel)]="experience.location">
+      </label>
+
+      <label>
+        *Company:
+        <input type="text" class="exp-company form-control" [(ngModel)]="experience.company" required name="company"
+               #company="ngModel">
+        <div [hidden]="company.valid || company.pristine" class="alert-danger">
+          Company is required
+        </div>
+      </label>
+
+      <label>
+        Description:
+        <input type="text" name="description" class="exp-description form-control" [(ngModel)]="experience.description">
+      </label>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button type="button" class="profile-button button-experience" (click)="addExperience(experience); refModal.hide()">
+      Save
+    </button>
+    <button type="button" class="profile-button" (click)="refModal.hide()">Close</button>
+  </div>
+
+</div>
