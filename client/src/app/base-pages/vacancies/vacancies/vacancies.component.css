@@ -58,6 +58,24 @@
   background: #dcdcdc;
 }
 
+.button-edit {
+  position: fixed;
+  right: 80px;
+  bottom: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: none;
+  color: #636466;
+  background: #e8e8e8;
+  box-shadow: 0 5px 8px #dcdcdc;
+  font-size: 20px;
+}
+
+.button-edit:hover {
+  background: #dcdcdc;
+}
+
 /* --- Modal window --- */
 
 .modal input {
@@ -92,3 +110,23 @@
 .vacancies-button:hover {
   background: #c0c0c0;
 }
+/* ------- Validation ------ */
+input.ng-valid[required], input.ng-valid.required {
+  border-left: 4px solid #42A948;
+}
+
+input.ng-invalid[required] {
+  border-left: 4px solid #a94442;
+}
+ input.salary {
+   width: 50%;
+ }
+
+.alert-danger-salary{
+  color: #a94442;
+  background-color: #f2dede;
+  border-color: #ebccd1;
+  width: 50%;
+  background-image: linear-gradient(to bottom,#f2dede 0,#e7c3c3 100%);
+}
+
