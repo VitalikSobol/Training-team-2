@@ -15,7 +15,7 @@ import {Vacancies} from './vacancies';
 
 export class VacanciesComponent implements OnInit {
 
-  item : Vacancies;
+  items : Vacancies[];
   vacancies = {};
   isEdit: boolean = false;
 
@@ -34,25 +34,24 @@ export class VacanciesComponent implements OnInit {
 
   getVacancies() {
     this.vacanciesService.getVacancies().subscribe((data: any) => {
-      // console.log(data.data);
-      this.item = data.data
+      this.items = data.data
     });
   }
 
   addVacancies(vacancies) {
     this.vacanciesService.addVacancies(vacancies).subscribe(
       error => console.log(error));
-    window.location.reload();
+    this.items.unshift(vacancies);
   }
 
   changeMode() {
     this.isEdit = !this.isEdit;
   }
 
-  saveChanges() {
-    this.vacanciesService.updateVacancy(this.item).subscribe(
-      error => console.log(error));
-  }
+  // saveChanges() {
+  //   this.vacanciesService.updateVacancy(this.item).subscribe(
+  //     error => console.log(error));
+  // }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }

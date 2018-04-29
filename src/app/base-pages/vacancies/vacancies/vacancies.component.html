@@ -28,7 +28,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let item of item">
+    <tr *ngFor="let item of items">
       <td *ngIf="!isEdit">{{item?.position}}</td>
       <td *ngIf="isEdit">
           <input class="text-muted  form-control" name="position" placeholder="Position"
