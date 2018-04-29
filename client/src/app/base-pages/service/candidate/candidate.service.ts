@@ -1,11 +1,12 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpParams} from '@angular/common/http';
 import {Candidate} from './candidate';
 import {CandidateBase} from './candidateBase';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {Experience} from './experience';
+import {Filter} from "./filter";
 
 @Injectable()
 export class CandidateService {
@@ -51,8 +52,23 @@ export class CandidateService {
     return this.http.post(url, content);
   }
 
-  getCandidates(): Observable<CandidateBase>{
+  getCandidates(filter:Filter, pagination): Observable<CandidateBase>{
     const url = `candidates`;
-    return this.http.get<CandidateBase>(url);
+    let httpParams = new HttpParams()
+      .set('name', filter.name)
+      .set('position', filter.position)
+      .set('date', filter.date)
+      .set('status', filter.status)
+      .set('email', filter.email)
+      .set('rows', pagination.rows)
+      .set('begin', pagination.begin)
+      .set('page', pagination.page);
+
+    return this.http.get<CandidateBase>(url, {params : httpParams})
+      .catch((error: any) => {
+        console.log(error);
+        return Observable.throw(error);
+      });
   }
 }
+

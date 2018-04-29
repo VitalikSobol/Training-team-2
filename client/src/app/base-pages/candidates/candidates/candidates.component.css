@@ -17,6 +17,10 @@ html {
   min-height: calc(100vh - 170px);
 }
 
+.table{
+  margin-bottom: 0;
+}
+
 .candidates-table table tr > th:first-child,
 .candidates-table table tr > td:first-child{
   padding: 0 30px ;

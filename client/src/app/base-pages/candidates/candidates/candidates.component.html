@@ -9,49 +9,56 @@
         <th>
           <label>
             Name
-            <input id="name" type="text" class="form-control">
+            <input id="name" #name type="text" class="form-control"
+            (keyup)="filtering(name.id, name.value)">
           </label>
         </th>
         <th>
           <label>
             E-mail
-            <input id="email" type="text" class="form-control">
+            <input id="email" #email type="text" class="form-control"
+            (keyup)="filtering(email.id, email.value)">
           </label>
         </th>
         <th>
           <label>
             Position
-            <input id="position" type="text" class="form-control">
+            <input id="position" #position type="text" class="form-control"
+            (keyup)="filtering(position.id, position.value)">
           </label>
         </th>
-        <!--<th>-->
-          <!--<label>-->
-            <!--Date-->
-            <!--<input id="date" type="text" class="form-control">-->
-          <!--</label>-->
-        <!--</th>-->
-        <!--<th>-->
-          <!--<label>-->
-            <!--Stage-->
-            <!--<input id="status" type="text" class="form-control">-->
-          <!--</label>-->
-        <!--</th>-->
+        <th>
+          <label>
+            Date
+            <input id="date" #date type="text" class="form-control"
+            (keyup)="filtering(date.id, date.value)">
+          </label>
+        </th>
+        <th>
+          <label>
+            Stage
+            <input id="status" #status type="text" class="form-control"
+            (keyup)="filtering(status.id, status.value)">
+          </label>
+        </th>
         <th></th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let candidate of candidates">
         <td class='candidate-photo'>
-          <div><img src='{{candidate.image_url}}'alt='' width='100'></div>
+          <div><img src='{{candidate.image}}'alt='' width='100'></div>
         </td>
-        <td class='candidate-name'>{{candidate.first_name}}</td>
+        <td class='candidate-name'>{{candidate.name}}</td>
         <td class='candidate-mail'>{{candidate.email}}</td>
-        <td class='candidate-position'>{{candidate.job_title}}</td>
-        <!--<td class='candidate-date'>{{candidate.date}} day ago</td>-->
-        <!--<td class='candidate-stage'>{{candidate.status_id}}</td>-->
+        <td class='candidate-position'>{{candidate.position}}</td>
+        <td class='candidate-date'>{{candidate.date}} day ago</td>
+        <td class='candidate-stage'>{{candidate.status}}</td>
         <td><a [routerLink]="['/profile/', candidate.id]">Show Profile</a></td>
       </tr>
     </tbody>
   </table>
 </main>
-<app-footer></app-footer>
+
+<app-footer>/*[range]="range" [total]="total" [currentRows]="currentRows" (change)="changeRowsNumber($event)*/"</app-footer>
+
