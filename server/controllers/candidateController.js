@@ -13,38 +13,35 @@ function candidateController() {
 
   self.getCandidates = (req, res, next) => {
     let connection = mysql.createConnection(config.database);
+    let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM "+
+      "(SELECT first_name, email, job_title," +
+      " date_publishing, status.name as status," +
+      " DATEDIFF(CURRENT_DATE(), date_publishing) as date "+
+      " FROM candidate JOIN status ON candidate.status_id = status.id ?  ) as rows_number ) as total, " +
+      " candidate.id as id, first_name as name, last_name as lastName, job_title as position, salary as payment, " +
+      " status.name as status, DATEDIFF(CURRENT_DATE(), date_publishing) as date, email as email, " +
+      " image_url as image FROM candidate JOIN status on candidate.status_id = status.id ? LIMIT " +
+      req.query.begin + "," + req.query.rows;
 
-        let complexQuery = "SELECT * FROM candidate";
+    let criteria = util.addFilterForCandidates(req.query);
 
-      /*let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM "+
-        "(SELECT first_name, email, job_title," +
-        " date_publishing, status.name as status," +
-        " DATEDIFF(CURRENT_DATE(), date_publishing) as date "+
-        " FROM candidate JOIN status ON candidate.status_id = status.id ?  ) as rows_number ) as total, " +
-        " candidate.id as id, first_name as name, last_name as lastName, job_title as position, salary as payment, " +
-        " status.name as status, DATEDIFF(CURRENT_DATE(), date_publishing) as date, email as email, " +
-        " image_url as image FROM candidate JOIN status on candidate.status_id = status.id ? LIMIT " +
-        req.query.begin + "," + req.query.rows;
-
-      let criteria = util.addFilterForCandidates(req.query.filter);
-
-      complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);*/
-      connection.query(complexQuery, (err, data) => {
-        if (err) {
-          connection.end();
-          next(err);
+    complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
+    connection.query(complexQuery, (err, data) => {
+      if (err) {
+        connection.end();
+        next(err);
+      }
+      else {
+        connection.end();
+        res.json(200,{
+          data : data,
+          status: 200,
+          total: (data.length) ? data[0].total: 0,
+          range: util.computeRange(req.query.rows, req.query.page ,this.total)
+        });
+        next();
         }
-        else {
-          connection.end();
-          res.json(200,{
-            data : data,
-            status: 200,
-            total: (data.length) ? data[0].total: 0,
-            range: util.computeRange(req.query.rows, req.query.page ,this.total)
-          });
-          next();
-          }
-      });
+    });
   };
 
   self.getCandidateByStatus = (req, res, next) =>{

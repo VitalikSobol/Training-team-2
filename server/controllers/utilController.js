@@ -29,27 +29,27 @@ function UtilController() {
 	_self.addFilterForCandidates = (filter) =>{
 		let query = 'HAVING ';
 		
-		if (filter.name !== "none") {
+		if (filter.name !== "") {
 			query += 'first_name LIKE ';
 			query += '\'%' + filter.name + '%\'';
 			query += ' AND ';
 		}
-		if (filter.position !== "none") {
+		if (filter.position !== "") {
 			query += 'job_title LIKE ';
 			query += '\'%' + filter.position + '%\'';
 			query += ' AND ';
 		}
-		if (filter.email !== "none") {
+		if (filter.email !== "") {
 			query += 'email LIKE ';
 			query += '\'%' + filter.email + '%\'';
 			query += ' AND ';
 		}
-		if (filter.date !== "none") {
-			query += 'date =';
-			query += '\'' + filter.date + '\'';
+		if (filter.date !== "") {
+			query += 'date LIKE';
+			query += '\'' + filter.date + '%\'';
 			query += ' AND ';
 		}
-		if (filter.status !== "none") {
+		if (filter.status !== "") {
 			query += 'status LIKE';
 			query += '\'%' + filter.status + '%\'';
 			query += ' AND ';

@@ -14,11 +14,12 @@ function VacancyController() {
   this.getVacancies =  (req, res, next) => {
     let connection = mysql.createConnection(config.database);
     connection.connect();
-      let complexQuery = "SELECT * FROM vacancy LIMIT  10";
-        // +
-        // "(SELECT COUNT(*) FROM vacancy  ? ) as total, id, position, description" +
-        // ", salary" +
-        // " FROM vacancy ? LIMIT " + req.query.begin + "," + req.query.rows;
+
+    let complexQuery= "SELECT * FROM vacancy ORDER BY id DESC LIMIT 10 ";
+
+      // let complexQuery = "SELECT *(SELECT COUNT(*) FROM vacancy  ? ) as total, id, position, description" +
+      //   ", salary" +
+      //   " FROM vacancy ? LIMIT " + req.query.begin + "," + req.query.rows;
 
       // let criteria = util.addFilterForVacancies(req.query.filter);
 
@@ -53,6 +54,18 @@ function VacancyController() {
       " VALUES ('"+vacancy.position+"', '"+vacancy.salary+"', '"+vacancy.description+
       "')";
 
+    // this.updateVacancy = (req, res, next) => {
+    //   let vacancy = JSON.parse(req._body);
+    //   let connection = mysql.createConnection(config.database);
+    //   connection.connect();
+    //   let query = "UPDATE `vacancy` SET " +
+    //     "`position ` = '" + vacancy.position + "'" +
+    //     ", `description` = '" + vacancy.description+ "'" +
+    //   ", `salary` = '" + vacancy.salary + "'" + " WHERE `id` =" + req.params.id;
+    //     // ", `vacancy_id`= UPDATE id FROM vacancy WHERE `vacancy.id` =" + req.params.id;
+    //   // ", `vacancy_id`= (SELECT id FROM vacancy WHERE `id` = '" + user.role +"') "+
+    //   // "  WHERE `id`=" + req.params.id;
+    // };
     connection.query(query,  (err, data) => {
       if (err){
         connection.end();
