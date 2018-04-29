@@ -80,7 +80,7 @@
         *Vacancy:
         <input type="text" class="add-vacancy form-control" [(ngModel)]="vacancies.position" required name="position"
                #position="ngModel">
-        <div [hidden]="position.valid || position.pristine" class="alert-danger">
+        <div [hidden]="position.valid || position.untouched" class="alert-danger">
           Vacancy is required
         </div>
       </label>
@@ -89,24 +89,24 @@
         <input type="text" class="add-description form-control" [(ngModel)]="vacancies.description" required
                name="description"
                #description="ngModel">
-        <div [hidden]="description.valid || description.pristine" class="alert-danger">
+        <div [hidden]="description.valid || description.untouched" class="alert-danger">
           Description is required
         </div>
       </label>
       <label>
         *Salary:
         <input type="text" class="add-salary form-control" [(ngModel)]="vacancies.salary" required name="salary"
-               #salary="ngModel" pattern="\d{2,}" title="">
-        <div [hidden]="salary.valid || salary.pristine" class="alert-danger">
+               #salary="ngModel" pattern="\d{2,}" title="Salary is required.Please, enter a numbers">
+        <div [hidden]="salary.valid || salary.untouched" class="alert-danger">
           Salary is required.Please, enter a numbers
         </div>
       </label>
     </div>
     <div class="modal-footer ">
-      <button type="button" class="vacancies-button button-save-vacancies"
-              (click)="addVacancies(vacancies); modalRef.hide()">Save
+      <button type="button" class="button-save-vacancies btn btn-success"
+              [disabled]="position.invalid || description.invalid || salary.invalid" (click)="addVacancies(vacancies); modalRef.hide()">Save
       </button>
-      <button type="button" class="vacancies-button" (click)="modalRef.hide()">Close</button>
+      <button type="button" class="btn btn-danger" (click)="modalRef.hide()">Close</button>
     </div>
   </div>
 </ng-template>

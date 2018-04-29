@@ -22,4 +22,8 @@ export class VacanciesService {
     const url = `vacancies`;
     return this.http.put(url, JSON.stringify(item));
   }
+//   getFilter(filter.position:string, filter.description:string, filter.salary:number ):Observable<Vacancies>{
+//     const url=`Vacancies?filter.position=${filter.position}&filter.description=${filter.description}&filter.salary=${filter.salary}}`
+//     return this.http.
+//   }
 }

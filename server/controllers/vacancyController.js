@@ -54,6 +54,18 @@ function VacancyController() {
       " VALUES ('"+vacancy.position+"', '"+vacancy.salary+"', '"+vacancy.description+
       "')";
 
+    // this.updateVacancy = (req, res, next) => {
+    //   let vacancy = JSON.parse(req._body);
+    //   let connection = mysql.createConnection(config.database);
+    //   connection.connect();
+    //   let query = "UPDATE `vacancy` SET " +
+    //     "`position ` = '" + vacancy.position + "'" +
+    //     ", `description` = '" + vacancy.description+ "'" +
+    //   ", `salary` = '" + vacancy.salary + "'" + " WHERE `id` =" + req.params.id;
+    //     // ", `vacancy_id`= UPDATE id FROM vacancy WHERE `vacancy.id` =" + req.params.id;
+    //   // ", `vacancy_id`= (SELECT id FROM vacancy WHERE `id` = '" + user.role +"') "+
+    //   // "  WHERE `id`=" + req.params.id;
+    // };
     connection.query(query,  (err, data) => {
       if (err){
         connection.end();
