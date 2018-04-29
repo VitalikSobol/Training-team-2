@@ -1,0 +1,69 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.dropdown-arrow {
+  width: 20px;
+  height: 14px;
+  background: url(../../../../assets/images/sprite.png) 0 -5px;
+}
+
+.dropdown-button {
+  padding-left: 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: #e8e8e8;
+  color: #636466;
+  width: 100%;
+  font-size: 14px;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+  text-align: left;
+}
+
+.dropdown-button:hover {
+  background: #c0c0c0;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropdown-button {
+  background-color: #dcdcdc;
+}
+
+.dropdown-content {
+  display: none;
+  border-radius: 12px;
+  position: absolute;
+  background-color: #e8e8e8;
+  box-shadow: 0 8px 16px 0 #dcdcdc;
+  z-index: 1;
+  width: 100%;
+}
+
+.dropdown-content a {
+  color: #636466;
+  padding: 3px 10px;
+  font-size: 14px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #dcdcdc;
+}
+
+@media screen and (max-width: 767px) {
+
+  .dropdown-content, .dropdown-button {
+    width: 200px;
+  }
+
+}
