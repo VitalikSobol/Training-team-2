@@ -45,6 +45,18 @@ module.exports = function (server) {
   server.get("/api/user", users.getUser);
   server.put("/api/user/:id", users.updateUser);
 
+  function getClientPage(){
+    return restify.plugins.serveStatic({
+      directory: `${__dirname}/../dist`,
+      file: './index.html'
+    });
+  }
+
+  server.get('/vacancies', getClientPage());
+  server.get('/candidates', getClientPage());
+  server.get('/interview', getClientPage());
+  server.get('/profile/(.*)', getClientPage());
+
   server.get('/\\/(.*)?.*/', restify.plugins.serveStatic({
     directory: `${__dirname}/../dist`,
     default: './index.html',
