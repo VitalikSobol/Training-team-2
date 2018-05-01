@@ -4,7 +4,7 @@
 <main class="candidates-table table-responsive">
   <table id="candidates" class="table">
     <thead>
-      <tr class="filters">
+      <tr class="filters" #candidatesColumns>
         <th>Photo</th>
         <th>
           <label>
@@ -55,6 +55,9 @@
         <td class='candidate-date'>{{candidate.date}} day ago</td>
         <td class='candidate-stage'>{{candidate.status}}</td>
         <td><a [routerLink]="['/profile/', candidate.id]">Show Profile</a></td>
+      </tr>
+      <tr class="text-center" *ngIf="notFound()">
+        <td [attr.colspan]='numberColumns'>No result found</td>
       </tr>
     </tbody>
   </table>

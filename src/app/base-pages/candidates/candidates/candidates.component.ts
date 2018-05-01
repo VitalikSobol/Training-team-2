@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
 
 import {Candidate} from './candidate';
 import {CandidateService} from '../../service/candidate/candidate.service';
@@ -32,17 +32,19 @@ export class CandidatesComponent implements OnInit {
     page: 1
   }
 
+  @ViewChild("candidatesColumns")
+  numberColumns: ElementRef;
 
   constructor( private candidateService: CandidateService) {
   }
 
   ngOnInit() {
     this.getCandidates();
+    this.numberColumns = this.numberColumns.nativeElement.childElementCount;
   }
 
   getCandidates(){
       this.candidateService.getCandidates(this.filter, this.pagination).subscribe((data: any) => {
-      console.log(data);
       this.candidates = data.data;
       this.total = data.total;
       this.range = data.range;
@@ -67,14 +69,12 @@ export class CandidatesComponent implements OnInit {
     if(classDirection == "button-next" && this.hasNext()){
       this.pagination.begin += this.pagination.rows;
       this.pagination.page += 1;
-      console.log(this.pagination);
       this.getCandidates();
     }
 
     if(classDirection == "button-prev" && this.hasPrevious()){
       this.pagination.begin -= this.pagination.rows;
       this.pagination.page -= 1;
-      console.log(this.pagination);
       this.getCandidates();
     }
   }
@@ -86,4 +86,9 @@ export class CandidatesComponent implements OnInit {
   hasPrevious(){
     return this.pagination.begin - this.pagination.rows >= 0;
   }
+
+  notFound(){
+    return !this.total;
+  }
+
 }
