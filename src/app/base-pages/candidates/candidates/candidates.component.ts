@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 
 import {Candidate} from './candidate';
 import {CandidateService} from '../../service/candidate/candidate.service';
-import {Filter} from "../../service/candidate/filter";
+import {FilterCandidates} from "../../service/candidate/filterCandidates";
+import {Pagination} from "../../common/components/footer/pagination";
 
 @Component({
   moduleId: module.id,
@@ -14,7 +15,10 @@ import {Filter} from "../../service/candidate/filter";
 export class CandidatesComponent implements OnInit {
 
   candidates: Candidate[] = [];
-  filter: Filter = {
+  total:number;
+  range:string;
+
+  filter: FilterCandidates = {
     name:'',
     position:'',
     date:'',
@@ -22,15 +26,12 @@ export class CandidatesComponent implements OnInit {
     email:''
   }
 
-  pagination = {
-    rows:10,
-    begin:0,
-    page:1
+  pagination: Pagination = {
+    rows: 10,
+    begin: 0,
+    page: 1
   }
 
-  //total:number;
-  //range:string;
-  //currentRows: number = 10;
 
   constructor( private candidateService: CandidateService) {
   }
@@ -43,18 +44,46 @@ export class CandidatesComponent implements OnInit {
       this.candidateService.getCandidates(this.filter, this.pagination).subscribe((data: any) => {
       console.log(data);
       this.candidates = data.data;
-      //this.total = data.total;
-      //this.range = data.range;
+      this.total = data.total;
+      this.range = data.range;
      });
     }
 
   filtering(id,filterValue){
     this.filter[id] = filterValue;
+    this.pagination.page = 1;
+    this.pagination.begin = 0;
     this.getCandidates();
   }
 
-  /*changeRowsNumber($event){
-    this.currentRows = $event;
-    console.log($event);
-  }*/
+  changeRowsNumber(numberRows){
+    this.pagination.rows = +numberRows;
+    this.pagination.page = 1;
+    this.pagination.begin = 0;
+    this.getCandidates();
+  }
+
+  goToPage(classDirection){
+    if(classDirection == "button-next" && this.hasNext()){
+      this.pagination.begin += this.pagination.rows;
+      this.pagination.page += 1;
+      console.log(this.pagination);
+      this.getCandidates();
+    }
+
+    if(classDirection == "button-prev" && this.hasPrevious()){
+      this.pagination.begin -= this.pagination.rows;
+      this.pagination.page -= 1;
+      console.log(this.pagination);
+      this.getCandidates();
+    }
+  }
+
+  hasNext(){
+    return this.total - this.pagination.rows - this.pagination.begin > 0;
+  }
+
+  hasPrevious(){
+    return this.pagination.begin - this.pagination.rows >= 0;
+  }
 }

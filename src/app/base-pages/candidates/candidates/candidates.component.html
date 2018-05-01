@@ -47,7 +47,7 @@
     <tbody>
       <tr *ngFor="let candidate of candidates">
         <td class='candidate-photo'>
-          <div><img src='{{candidate.image}}'alt='' width='100'></div>
+          <div><img src='{{candidate.image}}' alt='' width='100'></div>
         </td>
         <td class='candidate-name'>{{candidate.name}}</td>
         <td class='candidate-mail'>{{candidate.email}}</td>
@@ -60,5 +60,5 @@
   </table>
 </main>
 
-<app-footer>/*[range]="range" [total]="total" [currentRows]="currentRows" (change)="changeRowsNumber($event)*/"</app-footer>
+<app-footer [range]="range" [total]="total" [currentRows]="pagination.rows" (changeRows)="changeRowsNumber($event)" (goToPage)="goToPage($event)"></app-footer>
 

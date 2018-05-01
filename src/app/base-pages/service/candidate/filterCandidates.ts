@@ -1,4 +1,4 @@
-export class Filter {
+export class FilterCandidates {
   name: string;
   position: string;
   date: string;
