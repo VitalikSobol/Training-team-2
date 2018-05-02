@@ -50,6 +50,53 @@ html {
   overflow: hidden;
 }
 
+.button-position,
+.button-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 34px;
+  margin-top: 15px;
+  background: none;
+  border: 1px solid #ccc;
+}
+
+.button-position{
+  width: 210px;
+}
+
+.button-status{
+  width: 170px;
+}
+
+.button-position > span,
+.button-status > span{
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.button-position > span{
+  max-width: 170px;
+}
+
+.button-status > span{
+  max-width: 130px;
+}
+
+.dropdown-position{
+  width: 210px;
+}
+
+.dropdown-status{
+  width: 170px;
+}
+
+.dropdown-position li a,
+.dropdown-status li a{
+  white-space: normal;
+  cursor: pointer;
+}
+
 @media (max-width: 992px) {
   .candidates-table table th:nth-child(3),
   .candidates-table table td:nth-child(3),
