@@ -6,7 +6,7 @@ import {CandidateBase} from './candidateBase';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {Experience} from './experience';
-import {Filter} from "./filter";
+import {FilterCandidates} from "./filterCandidates";
 
 @Injectable()
 export class CandidateService {
@@ -52,7 +52,7 @@ export class CandidateService {
     return this.http.post(url, content);
   }
 
-  getCandidates(filter:Filter, pagination): Observable<CandidateBase>{
+  getCandidates(filter:FilterCandidates, pagination): Observable<CandidateBase>{
     const url = `candidates`;
     let httpParams = new HttpParams()
       .set('name', filter.name)

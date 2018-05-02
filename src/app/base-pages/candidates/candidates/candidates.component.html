@@ -4,7 +4,7 @@
 <main class="candidates-table table-responsive">
   <table id="candidates" class="table">
     <thead>
-      <tr class="filters">
+      <tr class="filters" #candidatesColumns>
         <th>Photo</th>
         <th>
           <label>
@@ -47,7 +47,7 @@
     <tbody>
       <tr *ngFor="let candidate of candidates">
         <td class='candidate-photo'>
-          <div><img src='{{candidate.image}}'alt='' width='100'></div>
+          <div><img src='{{candidate.image}}' alt='' width='100'></div>
         </td>
         <td class='candidate-name'>{{candidate.name}}</td>
         <td class='candidate-mail'>{{candidate.email}}</td>
@@ -56,9 +56,12 @@
         <td class='candidate-stage'>{{candidate.status}}</td>
         <td><a [routerLink]="['/profile/', candidate.id]">Show Profile</a></td>
       </tr>
+      <tr class="text-center" *ngIf="notFound()">
+        <td [attr.colspan]='numberColumns'>No result found</td>
+      </tr>
     </tbody>
   </table>
 </main>
 
-<app-footer>/*[range]="range" [total]="total" [currentRows]="currentRows" (change)="changeRowsNumber($event)*/"</app-footer>
+<app-footer [range]="range" [total]="total" [currentRows]="pagination.rows" (changeRows)="changeRowsNumber($event)" (goToPage)="goToPage($event)"></app-footer>
 
