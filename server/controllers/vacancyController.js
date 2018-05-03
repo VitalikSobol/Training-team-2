@@ -15,15 +15,15 @@ function VacancyController() {
     let connection = mysql.createConnection(config.database);
     connection.connect();
 
-    let complexQuery= "SELECT * FROM vacancy ORDER BY id DESC LIMIT 10 ";
+    // let complexQuery= "SELECT * FROM vacancy ORDER BY id DESC LIMIT 10 ";
 
-      // let complexQuery = "SELECT *(SELECT COUNT(*) FROM vacancy  ? ) as total, id, position, description" +
-      //   ", salary" +
-      //   " FROM vacancy ? LIMIT " + req.query.begin + "," + req.query.rows;
+      let complexQuery = "SELECT (SELECT COUNT(*) FROM vacancy  ?) as total, id, position, description" +
+        ", salary" +
+        " FROM vacancy ?  ORDER BY id DESC LIMIT " + req.query.begin + "," + req.query.rows;
 
-      // let criteria = util.addFilterForVacancies(req.query.filter);
+      let criteria = util.addFilterForVacancies(req.query);
 
-     // complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
+     complexQuery = complexQuery.replace("\?", criteria).replace("\?", criteria);
 
       connection.query(complexQuery,  (err, data) => {
         if (err) {
@@ -39,7 +39,7 @@ function VacancyController() {
               range: util.computeRange(req.query.rows, req.query.page ,this.total)
             });
             next();
-          
+
         }
       });
   };
@@ -80,7 +80,7 @@ function VacancyController() {
       }
     });
   };
-  
+
 }
 
 module.exports = new VacancyController();

@@ -63,17 +63,17 @@ function UtilController() {
 
 		let query = 'WHERE ';
 
-		if (filter.position !== "none") {
+		if (filter.position !== "") {
 			query += 'position LIKE ';
 			query += '\'%' + filter.position + '%\'';
 			query += ' AND ';
 		}
-		if (filter.description !== "none") {
+		if (filter.description !== "") {
 			query += 'description LIKE ';
 			query += '\'%' + filter.description + '%\'';
 			query += ' AND ';
 		}
-		if (filter.salary !== "none") {
+		if (filter.salary !== "") {
 			query += 'salary LIKE ';
 			query += '\'%' + filter.salary + '%\'';
 			query += ' AND ';

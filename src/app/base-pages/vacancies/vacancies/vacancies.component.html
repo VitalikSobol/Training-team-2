@@ -4,24 +4,27 @@
 <main class="content-vacancies-table table-responsive filterable">
   <table class="table">
     <thead>
-    <tr class="filters">
+    <tr class="filters" #vacancyColumns>
       <th>
         <label>
           Vacancy
-          <input id="position" type="text" class="form-control">
+          <input id="position" #position type="text" class="form-control"
+                 (keyup)="filtering(position.id, position.value)">
         </label>
       </th>
       <!-- class="mobile-device" can change  with table in mobile version-->
       <th class="mobile-device">
         <label>
           Description
-          <input id="description" type="text" class="form-control">
+          <input id="description" #description type="text" class="form-control"
+                 (keyup)="filtering(description.id, description.value)">
         </label>
       </th>
       <th class="mobile-device">
         <label>
           Salary
-          <input id="salary" type="text" class="form-control salary ">
+          <input id="salary" #salary type="text" class="form-control salary "
+          (keyup)="filtering(salary.id,salary.value)">
         </label>
       </th>
       <th>Candidates</th>
@@ -29,26 +32,29 @@
     </thead>
     <tbody>
     <tr *ngFor="let item of items">
+
       <td *ngIf="!isEdit">{{item?.position}}</td>
+
       <td *ngIf="isEdit">
-          <input class="text-muted  form-control" name="position" placeholder="Position"
-                 [(ngModel)]="item.position" required #position="ngModel">
-          <div [hidden]="position.valid || position.pristine" class="alert-danger">
-            Vacancy is required
-          </div>
+        <input class="text-muted  form-control" name="position" placeholder="Position"
+               [(ngModel)]="item.position" required #position="ngModel">
+        <div [hidden]="position.valid || position.pristine" class="alert-danger">
+          Vacancy is required
+        </div>
       </td>
 
       <td *ngIf="!isEdit"> {{item?.description}}</td>
+
       <td *ngIf="isEdit">
         <input class="text-muted  form-control" name="position" placeholder="Description"
                [(ngModel)]="item.description" required #description="ngModel">
-          <div [hidden]="description.valid || description.pristine" class="alert-danger">
-            Description is required
-          </div>
+        <div [hidden]="description.valid || description.pristine" class="alert-danger">
+          Description is required
+        </div>
       </td>
 
-
       <td *ngIf="!isEdit">{{item?.salary}}</td>
+
       <td *ngIf="isEdit">
         <input class="text-muted salary  form-control" name="position" placeholder="Salary" pattern="\d{2,}"
                [(ngModel)]="item.salary" required #salary="ngModel">
@@ -59,15 +65,24 @@
 
       <td><a routerLink="">View Candidates</a></td>
     </tr>
+
+    <tr class="text-center" *ngIf="notFound()">
+      <td [attr.colspan]='numberColumns'>No result found</td>
+    </tr>
+
     </tbody>
   </table>
+
   <button class="button-add" (click)="openModal(vacanciesModal)">+</button>
   <button type="button" class="button-edit btn btn-default btn-sm" (click)="changeMode()">
     <span class="glyphicon glyphicon-pencil" *ngIf="!isEdit"></span>
     <span class="glyphicon glyphicon-ok" *ngIf="isEdit" (click)="saveChanges()"></span>
   </button>
 </main>
-<app-footer></app-footer>
+
+<app-footer [range]="range" [total]="total" [currentRows]="pagination.rows" (changeRows)="changeRowsNumber($event)" (goToPage)="goToPage($event)"></app-footer>
+
+
 <!-- Modal 'Add vacancies' -->
 <ng-template #vacanciesModal>
   <div class="modal-content">
@@ -76,6 +91,7 @@
       <h4 class="modal-title">Add vacancies</h4>
     </div>
     <div class="modal-body">
+
       <label>
         *Vacancy:
         <input type="text" class="add-vacancy form-control" [(ngModel)]="vacancies.position" required name="position"
@@ -84,6 +100,7 @@
           Vacancy is required
         </div>
       </label>
+
       <label>
         *Description:
         <input type="text" class="add-description form-control" [(ngModel)]="vacancies.description" required
@@ -93,6 +110,7 @@
           Description is required
         </div>
       </label>
+
       <label>
         *Salary:
         <input type="text" class="add-salary form-control" [(ngModel)]="vacancies.salary" required name="salary"
@@ -101,13 +119,17 @@
           Salary is required.Please, enter a numbers
         </div>
       </label>
+
     </div>
+
     <div class="modal-footer ">
       <button type="button" class="button-save-vacancies btn btn-success"
-              [disabled]="position.invalid || description.invalid || salary.invalid" (click)="addVacancies(vacancies); modalRef.hide()">Save
+              [disabled]="position.invalid || description.invalid || salary.invalid"
+              (click)="addVacancies(vacancies); modalRef.hide()">Save
       </button>
       <button type="button" class="btn btn-danger" (click)="modalRef.hide()">Close</button>
     </div>
+
   </div>
 </ng-template>
 
