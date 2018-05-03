@@ -14,6 +14,7 @@ import {ProfileModule} from './profile/profile.module';
 import {InterviewModule} from './interview/interview.module';
 import {VacanciesComponent} from './vacancies/vacancies/vacancies.component';
 import {CandidatesComponent} from './candidates/candidates/candidates.component';
+import {BsDropdownModule} from 'ngx-bootstrap';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {CandidatesComponent} from './candidates/candidates/candidates.component'
     VacanciesModule,
     CandidatesModule,
     ProfileModule,
-    InterviewModule
+    InterviewModule,
+    BsDropdownModule.forRoot()
   ],
   declarations: [
     BaseComponent,

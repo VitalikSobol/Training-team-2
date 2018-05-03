@@ -12,6 +12,9 @@ function candidateController() {
   };
 
   self.getCandidates = (req, res, next) => {
+    let candidates,
+        statusQuery,
+        vacanciesQuery;
     let connection = mysql.createConnection(config.database);
     let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM "+
       "(SELECT first_name, email, job_title," +
@@ -32,15 +35,38 @@ function candidateController() {
         next(err);
       }
       else {
-        connection.end();
-        res.json(200,{
-          data : data,
-          status: 200,
-          total: (data.length) ? data[0].total: 0,
-          range: util.computeRange(req.query.rows, req.query.page , (data.length) ? data[0].total: 0)
+        candidates = data;
+        statusQuery = 'SELECT name FROM status';
+        connection.query(statusQuery, (err,data) => {
+          if (err) {
+            connection.end();
+            next(err);
+          }
+          else{
+          candidates.statuses = data;
+          vacanciesQuery = 'SELECT DISTINCT position FROM vacancy';
+          connection.query(vacanciesQuery, (err,data) => {
+            if (err) {
+              connection.end();
+              next(err);
+            }
+            else {
+              candidates.vacancies = data;
+              connection.end();
+              res.json(200,{
+                candidates : candidates,
+                statuses: candidates.statuses,
+                vacancies: candidates.vacancies,
+                status: 200,
+                total: (candidates.length) ? candidates[0].total: 0,
+                range: util.computeRange(req.query.rows, req.query.page , (candidates.length) ? candidates[0].total: 0)
+              });
+              next();
+            }
+          });
+          }
         });
-        next();
-        }
+      }
     });
   };
 
@@ -138,6 +164,32 @@ function candidateController() {
         connection.end();
         res.json(200,{
           status: 200
+        });
+        next();
+      }
+    });
+  };
+
+  self.addCandidate = (req, res, next) => {
+    let candidate = JSON.parse(req.body);
+    candidate.status = 1;
+    let connection = mysql.createConnection(config.database);
+    connection.connect();
+    let query = "INSERT INTO `candidate` " +
+      "(`first_name`, `email`, `job_title`, `status_id`)" +
+      " VALUES ('"+candidate.name+"', '"+candidate.email+"', '"+candidate.position+
+      "', '"+candidate.status+"')";
+
+    connection.query(query, (err, data) => {
+      if (err){
+        connection.end();
+        console.log(err);
+        next(err);
+      }
+      else {
+        connection.end();
+        res.json(200,{
+          status:200
         });
         next();
       }

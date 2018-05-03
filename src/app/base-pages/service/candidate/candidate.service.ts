@@ -3,6 +3,7 @@ import {Observable} from 'rxjs/Observable';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Candidate} from './candidate';
 import {CandidateBase} from './candidateBase';
+import {NewCandidate} from './newCandidate'
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {Experience} from './experience';
@@ -69,6 +70,11 @@ export class CandidateService {
         console.log(error);
         return Observable.throw(error);
       });
+  }
+
+  addCandidate( newCandidate: NewCandidate) {
+    const url = `candidates`;
+    return this.http.post(url, JSON.stringify(newCandidate));
   }
 }
 
