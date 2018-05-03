@@ -170,6 +170,32 @@ function candidateController() {
     });
   };
 
+  self.addCandidate = (req, res, next) => {
+    let candidate = JSON.parse(req.body);
+    candidate.status = 1;
+    let connection = mysql.createConnection(config.database);
+    connection.connect();
+    let query = "INSERT INTO `candidate` " +
+      "(`first_name`, `email`, `job_title`, `status_id`)" +
+      " VALUES ('"+candidate.name+"', '"+candidate.email+"', '"+candidate.position+
+      "', '"+candidate.status+"')";
+
+    connection.query(query, (err, data) => {
+      if (err){
+        connection.end();
+        console.log(err);
+        next(err);
+      }
+      else {
+        connection.end();
+        res.json(200,{
+          status:200
+        });
+        next();
+      }
+    });
+  };
+
   self.addSkill = (req, res, next) => {
     let connection = mysql.createConnection(config.database);
     connection.connect();

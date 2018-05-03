@@ -1,3 +1,4 @@
+<script src="../../base.module.ts"></script>
 <section class="candidates-section">
   <h1>Candidates</h1>
 </section>
@@ -28,8 +29,10 @@
             <span>{{filterPosition}}</span>
             <span class="caret"></span>
           </button>
-          <ul id="dropdown-position" *dropdownMenu class="dropdown-menu dropdown-position"
-              role="menu" aria-labelledby="button-position" (click)="setFilterPosition($event)">
+          <ul id="dropdown-position" *dropdownMenu
+              class="dropdown-menu dropdown-position"
+              role="menu" aria-labelledby="button-position"
+              (click)="setFilterPosition($event)">
             <li role="menuitem" *ngFor="let vacancy of vacancies">
               <a class="dropdown-item">{{vacancy.position}}</a></li>
             <li class="divider dropdown-divider"></li>
@@ -47,8 +50,10 @@
             <span>{{filterStatus}}</span>
             <span class="caret"></span>
           </button>
-          <ul id="dropdown-status" *dropdownMenu class="dropdown-menu dropdown-status"
-              role="menu" aria-labelledby="button-status" (click)="setFilterStatus($event)">
+          <ul id="dropdown-status" *dropdownMenu
+              class="dropdown-menu dropdown-status"
+              role="menu" aria-labelledby="button-status"
+              (click)="setFilterStatus($event)">
             <li role="menuitem" *ngFor="let status of statuses">
               <a class="dropdown-item">{{status.name}}</a>
             </li>
@@ -78,8 +83,70 @@
     </tr>
     </tbody>
   </table>
+  <button class="button-add" (click)="openModal(candidateModal)">+</button>
 </main>
 
 <app-footer [range]="range" [total]="total" [currentRows]="pagination.rows" (changeRows)="changeRowsNumber($event)"
             (goToPage)="goToPage($event)"></app-footer>
 
+<!-- Modal 'Add candidates' -->
+<ng-template #candidateModal>
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <button type="button" class="close" (click)="clearNewCandidates()">&times;</button>
+      <h4 class="modal-title">Add candidate</h4>
+    </div>
+
+    <div class="modal-body">
+
+      <label>
+        *Name:
+        <input type="text" class="form-control" [(ngModel)]="newCandidate.name" required name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.untouched" class="alert-danger">
+          Name is required
+        </div>
+      </label>
+
+      <label>
+        *Email:
+        <input type="email" class="form-control" [(ngModel)]="newCandidate.email" required name="email" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <div [hidden]="email.valid || email.untouched" class="alert-danger">
+          Email is required
+        </div>
+      </label>
+
+      <span><b>*Position:</b></span>
+      <div class="btn-group new-position" dropdown>
+        <button [ngClass]="{ positionValid: positionValid}"
+                id="button-new-position" dropdownToggle type="button"
+                class="btn dropdown-toggle button-new-position"
+                aria-controls="dropdown-new-position">
+          <span>{{newCandidate.position}}</span>
+          <span class="caret"></span>
+        </button>
+        <ul id="dropdown-new-position" *dropdownMenu
+            class="dropdown-menu dropdown-position"
+            role="menu" aria-labelledby="button-new-position"
+            (click)="setPositionNewCandidate($event)">
+          <li role="menuitem" *ngFor="let vacancy of vacancies">
+            <a class="dropdown-item">{{vacancy.position}}</a></li>
+        </ul>
+      </div>
+
+      <label>
+        Status:
+        <input type="text" class="form-control" [(ngModel)]="newCandidate.status" required name="status" #status="ngModel" disabled>
+      </label>
+
+    </div>
+
+    <div class="modal-footer ">
+      <button type="button" class="btn btn-success"
+              [disabled]="name.invalid || email.invalid || !positionValid"
+              (click)="addCandidate(newCandidate)">Save
+      </button>
+      <button type="button" class="btn btn-danger" (click)="clearNewCandidates()">Close</button>
+    </div>
+  </div>
+</ng-template>

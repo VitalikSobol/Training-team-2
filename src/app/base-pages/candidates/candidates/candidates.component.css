@@ -92,9 +92,85 @@ html {
 }
 
 .dropdown-position li a,
+.dropdown-new-position li a,
 .dropdown-status li a{
   white-space: normal;
   cursor: pointer;
+}
+
+.button-add {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  height: 50px;
+  width: 50px;
+  border-radius: 100%;
+  border: none;
+  color: #636466;
+  background: #e8e8e8;
+  box-shadow: 0 5px 8px #dcdcdc;
+  font-size: 30px;
+  font-weight: inherit;
+}
+
+.button-add:hover {
+  background: #dcdcdc;
+}
+
+/* --- Modal window --- */
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.modal-body label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ------- Validation ------ */
+input.ng-valid[required], input.ng-valid.required {
+  border-left: 4px solid #42A948;
+}
+
+input.ng-invalid[required] {
+  border-left: 4px solid #a94442;
+}
+
+.btn-group.open.new-position{
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075),
+  0 0 8px rgba(102,175,233,.6);
+}
+
+.btn-group.open.new-position > button{
+  border-color: #66afe9;
+}
+
+.button-new-position{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 34px;
+  background: none;
+  border: 1px solid #ccc;
+  border-left: 4px solid #a94442;
+}
+
+.positionValid{
+  border-left: 4px solid #42A948;
+}
+
+.button-new-position > span{
+  overflow: hidden;
+  max-width: 85%;
+}
+
+.dropdown-position{
+  width: 100%;
 }
 
 @media (max-width: 992px) {

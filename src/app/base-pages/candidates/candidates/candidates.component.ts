@@ -1,9 +1,13 @@
-import {Component, OnInit, ViewChild, ElementRef} from '@angular/core';
+import {Component, OnInit, ViewChild, ElementRef, TemplateRef} from '@angular/core';
 
-import {Candidate} from './candidate';
+import {BsModalService} from "ngx-bootstrap/modal";
+import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {CandidateService} from '../../service/candidate/candidate.service';
+import {Candidate} from './candidate';
+import {NewCandidate} from '../../service/candidate/newCandidate'
 import {FilterCandidates} from "../../service/candidate/filterCandidates";
 import {Pagination} from "../../common/components/footer/pagination";
+
 
 @Component({
   moduleId: module.id,
@@ -21,6 +25,7 @@ export class CandidatesComponent implements OnInit {
   range: string;
   filterPosition: string = 'All positions';
   filterStatus: string = 'All statuses';
+  positionValid: boolean = false;
 
   filter: FilterCandidates = {
     name: '',
@@ -28,18 +33,32 @@ export class CandidatesComponent implements OnInit {
     date: '',
     status: '',
     email: ''
-  }
+  };
 
   pagination: Pagination = {
     rows: 10,
     begin: 0,
     page: 1
-  }
+  };
+
+  newCandidate: NewCandidate = {
+    name: '',
+    email: '',
+    position: '',
+    status: 'New'
+  };
 
   @ViewChild("candidatesColumns")
   numberColumns: ElementRef;
 
-  constructor(private candidateService: CandidateService) {
+  modalRef: BsModalRef;
+  config = {
+    keyboard: false,
+    ignoreBackdropClick: true
+  };
+
+  constructor(private modalService: BsModalService,
+              private candidateService: CandidateService) {
   }
 
   ngOnInit() {
@@ -64,7 +83,7 @@ export class CandidatesComponent implements OnInit {
 
   filtering(id, filterValue) {
     this.filter[id] = filterValue;
-    this.paginationStart()
+    this.paginationStart();
     this.getCandidates();
   }
 
@@ -72,7 +91,7 @@ export class CandidatesComponent implements OnInit {
     filterPosition = filterPosition.target.innerText;
 
     this.filterPosition = filterPosition;
-    this.paginationStart()
+    this.paginationStart();
 
     if (filterPosition !== 'All positions') {
       this.filter.position = filterPosition;
@@ -88,7 +107,7 @@ export class CandidatesComponent implements OnInit {
     filterStatus = filterStatus.target.innerText;
 
     this.filterStatus = filterStatus;
-    this.paginationStart()
+    this.paginationStart();
 
     if (filterStatus !== 'All statuses') {
       this.filter.status = filterStatus;
@@ -130,6 +149,32 @@ export class CandidatesComponent implements OnInit {
 
   notFound() {
     return !this.total;
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template, this.config);
+  }
+
+  setPositionNewCandidate(event){
+    this.newCandidate.position = event.target.innerText;
+    if(event !== ''){
+      this.positionValid = true;
+    }
+  }
+
+  clearNewCandidates(){
+    this.modalRef.hide();
+    this.newCandidate.position = '';
+    this.newCandidate.email = '';
+    this.newCandidate.name = '';
+    this.positionValid = false;
+  }
+
+  addCandidate(newCandidate){
+    this.candidateService.addCandidate(newCandidate).subscribe(
+      error => console.log(error));
+    this.clearNewCandidates();
+    this.getCandidates();
   }
 
 }
