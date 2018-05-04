@@ -199,6 +199,7 @@ function LoginController() {
       });
     });
   };
+
   _self.registration = (req, res, next) => {
     let data = JSON.parse(req.body);
 
