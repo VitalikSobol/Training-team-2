@@ -38,6 +38,7 @@ module.exports = function (server) {
   server.get("/api/candidates/:id", candidate.getCandidateById);
   server.get("/api/candidates/review/:id", candidate.getReview);
   server.put("/api/candidates/:id", candidate.updateCandidate);
+  server.post("/api/candidates", candidate.addCandidate);
   server.post("/api/candidates/skill/:id", candidate.addSkill);
   server.post("/api/candidates/experience/:id", candidate.addExperience);
   server.post("/api/candidates/review/:id", candidate.addReview);

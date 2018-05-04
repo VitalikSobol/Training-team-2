@@ -1,5 +1,6 @@
 .content-footer {
   height: 50px;
+  margin-top: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;

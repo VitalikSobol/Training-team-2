@@ -24,6 +24,7 @@ import {BaseRoutingModule} from './base-pages/base-routing.module';
     TabsModule.forRoot(),
     BaseModule,
     BaseRoutingModule
+
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ServerInterceptor, multi: true}
