@@ -9,7 +9,7 @@
     <form #skillForm="ngForm">
       <label>
         *Skill:
-        <input type="text" class="name-skill form-control" [(ngModel)]="nameSkill" required name="name" #name="ngModel">
+        <input type="text" class="name-skill form-control" [(ngModel)]="skill.name" required name="name" #name="ngModel">
         <div [hidden]="name.valid || name.pristine" class="alert-danger">
           Name is required
         </div>

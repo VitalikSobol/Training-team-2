@@ -30,9 +30,6 @@ module.exports = function (server) {
 
   server.get("/api/notification", events.getNotification);
 
-  // server.get(/\/views\/?.*/, resources.loadResource);
-  // server.get('/', login.getLoginPage);
-
   server.get("/api/candidates/status/:name", candidate.getCandidateByStatus);
   server.get("/api/candidates", candidate.getCandidates);
   server.get("/api/candidates/:id", candidate.getCandidateById);
@@ -40,11 +37,27 @@ module.exports = function (server) {
   server.put("/api/candidates/:id", candidate.updateCandidate);
   server.post("/api/candidates", candidate.addCandidate);
   server.post("/api/candidates/skill/:id", candidate.addSkill);
+  server.del("/api/candidates/skill/:id", candidate.deleteSkill);
+  server.put("/api/candidates/skill/:id", candidate.updateSkill);
   server.post("/api/candidates/experience/:id", candidate.addExperience);
+  server.del("/api/candidates/experience/:id", candidate.deleteExperience);
+  server.put("/api/candidates/experience/:id", candidate.updateExperience);
   server.post("/api/candidates/review/:id", candidate.addReview);
 
   server.get("/api/user", users.getUser);
   server.put("/api/user/:id", users.updateUser);
+
+  function getClientPage(){
+    return restify.plugins.serveStatic({
+      directory: `${__dirname}/../dist`,
+      file: './index.html'
+    });
+  }
+
+  server.get('/vacancies', getClientPage());
+  server.get('/candidates', getClientPage());
+  server.get('/interview', getClientPage());
+  server.get('/profile/(.*)', getClientPage());
 
   server.get('/\\/(.*)?.*/', restify.plugins.serveStatic({
     directory: `${__dirname}/../dist`,

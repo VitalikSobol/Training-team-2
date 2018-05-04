@@ -1,0 +1,142 @@
+input, textarea {
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  padding-left: 8px;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: 1px solid #3f3f3f;
+  border-radius: 8px;
+}
+
+textarea {
+  width: 100%;
+  resize: none;
+  height: 80px;
+}
+
+.experience {
+  display: flex;
+  flex-direction: column-reverse;
+}
+
+.experience-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 5px 0
+}
+
+.experience-info {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  width: 150px;
+}
+
+.experience-info .text-muted {
+  font-size: 12px;
+  margin: 0;
+}
+
+.experience-company {
+  display: flex;
+  flex-direction: row;
+  width: 65%;
+}
+
+.info-period {
+  padding: 3px 5px;
+  margin-bottom: 0;
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+}
+
+.company-info {
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  padding: 10px;
+  width: 95%;
+}
+
+.company-name {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+.experience-map {
+  margin: 0 20px;
+}
+
+.experience-point {
+  border-radius: 50%;
+  border: 2px solid #c0c0c0;
+  height: 9px;
+  width: 9px;
+}
+
+.experience-line {
+  width: 2px;
+  border: 1px solid #c0c0c0;
+  height: 100%;
+  margin-left: 4px;
+}
+
+.experience-item:nth-child(even) .experience-line {
+  border-style: dashed;
+}
+
+.company-info button {
+  border: none;
+  background: none;
+}
+
+.company-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.experience-info input {
+  width: 130px;
+}
+
+:host ::ng-deep dp-date-picker.dp-material .dp-picker-input {
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  padding-left: 8px;
+  width: 150px;
+}
+
+:host ::ng-deep dp-month-calendar{
+  width: 150px;
+}
+
+:host ::ng-deep dp-month-calendar .dp-calendar-month {
+  width: 35px;
+  height: 35px;
+}
+
+:host ::ng-deep dp-month-calendar.dp-material .dp-calendar-wrapper {
+  text-align: center;
+}
+
+.experience-item:first-child .experience-line {
+  display: none;
+}
+
+@media screen and (max-width: 767px) {
+  .experience-info {
+    width: 135px;
+    font-size: 12px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .experience-info {
+    width: 90px;
+    font-size: 12px;
+  }
+}
+

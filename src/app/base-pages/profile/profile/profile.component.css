@@ -129,85 +129,6 @@
   padding: 10px 20px;
 }
 
-.experience {
-  display: flex;
-  flex-direction: column-reverse;
-}
-
-.experience-item {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  margin: 5px 0
-}
-
-.experience-info {
-  display: flex;
-  flex-direction: column;
-  text-align: right;
-  width: 150px;
-}
-
-.experience-info .text-muted {
-  font-size: 12px;
-  margin: 0;
-}
-
-.experience-company {
-  display: flex;
-  flex-direction: row;
-  width: 65%;
-}
-
-.info-period {
-  padding: 3px 5px;
-  margin-bottom: 0;
-  border: 1px solid #c0c0c0;
-  border-radius: 8px;
-}
-
-.company-info {
-  border: 1px solid #c0c0c0;
-  border-radius: 8px;
-  padding: 10px;
-  width: 95%;
-}
-
-.company-name {
-  text-decoration: underline;
-  font-weight: bold;
-}
-
-.title-name-experience {
-  font-size: 20px;
-}
-
-.experience-map {
-  margin: 0 20px;
-}
-
-.experience-point {
-  border-radius: 50%;
-  border: 2px solid #c0c0c0;
-  height: 9px;
-  width: 9px;
-}
-
-.experience-line {
-  width: 2px;
-  border: 1px solid #c0c0c0;
-  height: 100%;
-  margin-left: 4px;
-}
-
-.experience-item:nth-child(even) .experience-line {
-  border-style: dashed;
-}
-
-.experience-item:first-child .experience-line {
-  display: none;
-}
-
 .skill-developer {
   padding: 15px 0 0 15px;
   border-top: 1px solid #c0c0c0;
@@ -218,14 +139,8 @@
   font-size: 20px;
 }
 
-.skill-developer span {
-  padding: 0 15px;
-  margin-bottom: 20px;
-  margin-right: 10px;
-  text-align: center;
-  display: inline-block;
-  border: 1px solid #c0c0c0;
-  border-radius: 8px;
+.title-name-experience {
+  font-size: 20px;
 }
 
 .profile-button, .review-button {
@@ -314,19 +229,7 @@ input.ng-invalid[required] {
     width: 200px;
   }
 
-  .experience-info {
-    width: 135px;
-    font-size: 12px;
-  }
-
   .contact-developer {
     border-bottom: 1px solid #c0c0c0;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .experience-info {
-    width: 90px;
-    font-size: 12px;
   }
 }

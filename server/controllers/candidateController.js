@@ -1,9 +1,11 @@
 'use strict';
+
 function candidateController() {
   let self = this;
   const mysql = require('mysql');
   const config = require('../config');
   const util = require('./utilController');
+  const moment = require('moment');
 
   let candidate = {
     contact: [],
@@ -13,13 +15,13 @@ function candidateController() {
 
   self.getCandidates = (req, res, next) => {
     let candidates,
-        statusQuery,
-        vacanciesQuery;
+      statusQuery,
+      vacanciesQuery;
     let connection = mysql.createConnection(config.database);
-    let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM "+
+    let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM " +
       "(SELECT first_name, email, job_title," +
       " date_publishing, status.name as status," +
-      " DATEDIFF(CURRENT_DATE(), date_publishing) as date "+
+      " DATEDIFF(CURRENT_DATE(), date_publishing) as date " +
       " FROM candidate JOIN status ON candidate.status_id = status.id ?  ) as rows_number ) as total, " +
       " candidate.id as id, first_name as name, last_name as lastName, job_title as position, salary as payment, " +
       " status.name as status, DATEDIFF(CURRENT_DATE(), date_publishing) as date, email as email, " +
@@ -37,52 +39,52 @@ function candidateController() {
       else {
         candidates = data;
         statusQuery = 'SELECT name FROM status';
-        connection.query(statusQuery, (err,data) => {
+        connection.query(statusQuery, (err, data) => {
           if (err) {
             connection.end();
             next(err);
           }
-          else{
-          candidates.statuses = data;
-          vacanciesQuery = 'SELECT DISTINCT position FROM vacancy';
-          connection.query(vacanciesQuery, (err,data) => {
-            if (err) {
-              connection.end();
-              next(err);
-            }
-            else {
-              candidates.vacancies = data;
-              connection.end();
-              res.json(200,{
-                candidates : candidates,
-                statuses: candidates.statuses,
-                vacancies: candidates.vacancies,
-                status: 200,
-                total: (candidates.length) ? candidates[0].total: 0,
-                range: util.computeRange(req.query.rows, req.query.page , (candidates.length) ? candidates[0].total: 0)
-              });
-              next();
-            }
-          });
+          else {
+            candidates.statuses = data;
+            vacanciesQuery = 'SELECT DISTINCT position FROM vacancy';
+            connection.query(vacanciesQuery, (err, data) => {
+              if (err) {
+                connection.end();
+                next(err);
+              }
+              else {
+                candidates.vacancies = data;
+                connection.end();
+                res.json(200, {
+                  candidates: candidates,
+                  statuses: candidates.statuses,
+                  vacancies: candidates.vacancies,
+                  status: 200,
+                  total: (candidates.length) ? candidates[0].total : 0,
+                  range: util.computeRange(req.query.rows, req.query.page, (candidates.length) ? candidates[0].total : 0)
+                });
+                next();
+              }
+            });
           }
         });
       }
     });
   };
 
-  self.getCandidateByStatus = (req, res, next) =>{
+  self.getCandidateByStatus = (req, res, next) => {
     let connection = mysql.createConnection(config.database);
     connection.connect();
-    let query  = "SELECT first_name as name, image_url as image, email, job_title as position FROM candidate " +
-        " JOIN status on candidate.status_id = status.id WHERE status.name = '" + req.params.name + "'";
-    connection.query(query,(err, data)=> {
-      if(err){
+    let query = "SELECT first_name as name, image_url as image, email, job_title as position FROM candidate " +
+      " JOIN status on candidate.status_id = status.id WHERE status.name = '" + req.params.name + "'";
+    connection.query(query, (err, data) => {
+      if (err) {
         connection.end();
         next(err);
         return;
       }
       connection.end();
-      res.json(200,{
+      res.json(200, {
         data: data,
         status: 200
       });
@@ -98,29 +100,31 @@ function candidateController() {
       " first_name as name, last_name as lastName, phone, address, email," +
       " job_title as position," +
       " salary as payment, status.name as status,	" +
-      " DATEDIFF(CURRENT_DATE(), date_publishing) as date,"	+
-      " DATE_FORMAT(`date_publishing`, \"%M %d %Y\") as date_publishing,"	+
+      " DATEDIFF(CURRENT_DATE(), date_publishing) as date," +
+      " DATE_FORMAT(`date_publishing`, \"%M %d %Y\") as date_publishing," +
       " image_url as image" +
       " FROM candidate " +
-      "JOIN status on candidate.status_id = status.id WHERE candidate.id="+ req.params.id;
+      "JOIN status on candidate.status_id = status.id WHERE candidate.id=" + req.params.id;
 
     connection.query(query, (err, data) => {
-      if (err){
+      if (err) {
         connection.end();
         next(err);
       }
       else {
         user = data[0];
-        query = "SELECT name FROM skill WHERE candidate_id="+ req.params.id;
-        connection.query(query,  (err, data) => {
+        query = "SELECT id, name FROM skill WHERE candidate_id=" + req.params.id;
+        connection.query(query, (err, data) => {
           if (err) {
             connection.end();
             next(err);
           }
           else {
             user.skills = data;
-            query = "SELECT period, position, location, company, description FROM experience WHERE candidate_id="+ req.params.id;
-            connection.query(query,  (err, data) => {
+            query = "SELECT id, DATE_FORMAT(`start`, \"%b %Y\") as start, DATE_FORMAT(`end`, \"%b %Y\") as end, " +
+              "position, location, company, description FROM experience" +
+              " WHERE candidate_id=" + req.params.id;
+            connection.query(query, (err, data) => {
               if (err) {
                 connection.end();
                 next(err);
@@ -128,7 +132,7 @@ function candidateController() {
               else {
                 user.experiences = data;
                 connection.end();
-                res.json(200,user);
+                res.json(200, user);
                 next();
               }
             });
@@ -143,26 +147,26 @@ function candidateController() {
     let connection = mysql.createConnection(config.database);
     connection.connect();
     let query = "UPDATE `candidate` SET " +
-      "`first_name` = '" + candidate.name+"'"+
-      ", `last_name` = '" + candidate.lastName+"'"+
-      ", `salary` = " + candidate.payment+
-      ", `job_title` = '" + candidate.position+"'"+
-      ", `phone` = '" + candidate.phone+"'"+
-      ", `email` = '" + candidate.email+"'"+
-      ", `address` = '" + candidate.address+"'"+
-      ", `date_publishing` = CURRENT_DATE() "+
-      ", `status_id`= (SELECT id FROM status WHERE status.name = '" + candidate.status +"') "+
+      "`first_name` = '" + candidate.name + "'" +
+      ", `last_name` = '" + candidate.lastName + "'" +
+      ", `salary` = " + candidate.payment +
+      ", `job_title` = '" + candidate.position + "'" +
+      ", `phone` = '" + candidate.phone + "'" +
+      ", `email` = '" + candidate.email + "'" +
+      ", `address` = '" + candidate.address + "'" +
+      ", `date_publishing` = CURRENT_DATE() " +
+      ", `status_id`= (SELECT id FROM status WHERE status.name = '" + candidate.status + "') " +
       "  WHERE `id`=" + req.params.id;
 
     connection.query(query, (err, data) => {
-      if (err){
+      if (err) {
         console.log(err);
         connection.end();
         next(err);
       }
       else {
         connection.end();
-        res.json(200,{
+        res.json(200, {
           status: 200
         });
         next();
@@ -177,19 +181,19 @@ function candidateController() {
     connection.connect();
     let query = "INSERT INTO `candidate` " +
       "(`first_name`, `email`, `job_title`, `status_id`)" +
-      " VALUES ('"+candidate.name+"', '"+candidate.email+"', '"+candidate.position+
-      "', '"+candidate.status+"')";
+      " VALUES ('" + candidate.name + "', '" + candidate.email + "', '" + candidate.position +
+      "', '" + candidate.status + "')";
 
     connection.query(query, (err, data) => {
-      if (err){
+      if (err) {
         connection.end();
         console.log(err);
         next(err);
       }
       else {
         connection.end();
-        res.json(200,{
-          status:200
+        res.json(200, {
+          status: 200
         });
         next();
       }
@@ -200,17 +204,17 @@ function candidateController() {
     let connection = mysql.createConnection(config.database);
     connection.connect();
     let query = "INSERT INTO `skill` (`name`, `candidate_id`)" +
-      " VALUES ('"+req.body+"', '"+req.params.id+"')";
+      " VALUES ('" + req.body + "', '" + req.params.id + "')";
 
     connection.query(query, (err, data) => {
-      if (err){
+      if (err) {
         connection.end();
         console.log(err);
         next(err);
       }
       else {
         connection.end();
-        res.json(200,{
+        res.json(200, {
           status: 200
         });
         next();
@@ -220,25 +224,25 @@ function candidateController() {
 
   self.addExperience = (req, res, next) => {
     let experience = JSON.parse(req.body);
-
     let connection = mysql.createConnection(config.database);
     connection.connect();
     let query = "INSERT INTO `experience` " +
-      "(`name`, `period`, `position`, `location`, `company`, `description`, `candidate_id`)" +
-      " VALUES ('"+experience.company+"', '"+experience.period+"', '"+experience.position+
-      "', '"+experience.location+"', '"+experience.company+
-      "', '"+experience.description+"', '"+req.params.id+"')";
+      "(`name`, `start`, `end`, `position`, `location`, `company`, `description`, `candidate_id`)" +
+      " VALUES ('" + experience.company + "', '" + moment(experience.start).format("YYYY-MM-DD HH:mm:ss") +
+      "', '" + moment(experience.end).format("YYYY-MM-DD HH:mm:ss") + "', '"
+      + experience.position + "', '" + experience.location + "', '" + experience.company +
+      "', '" + experience.description + "', '" + req.params.id + "')";
 
     connection.query(query, (err, data) => {
-      if (err){
+      if (err) {
         connection.end();
         console.log(err);
         next(err);
       }
       else {
         connection.end();
-        res.json(200,{
-          status:200
+        res.json(200, {
+          status: 200
         });
         next();
       }
@@ -251,18 +255,18 @@ function candidateController() {
     connection.connect();
     let query = "INSERT INTO `review` " +
       "(`content`, `candidate_id`, `user_id`)" +
-      " VALUES ('"+review+"', '"+req.params.id+"', '"+ 1 +"')";
+      " VALUES ('" + review + "', '" + req.params.id + "', '" + 1 + "')";
 
     connection.query(query, (err, data) => {
-      if (err){
+      if (err) {
         connection.end();
         console.log(err);
         next(err);
       }
       else {
         connection.end();
-        res.json(200,{
-          status:200
+        res.json(200, {
+          status: 200
         });
         next();
       }
@@ -270,12 +274,12 @@ function candidateController() {
   };
 
   self.getReview = (req, res, next) => {
-    let query = "SELECT review.id, review.content, user.first_name, user.last_name " +
+    let query = "SELECT review.id, review.content, user.first_name, user.last_name, review.date " +
       "FROM review JOIN user on user.id = review.user_id";
     let connection = mysql.createConnection(config.database);
     connection.connect();
     connection.query(query, (err, data) => {
-      if (err){
+      if (err) {
         console.log(err);
         connection.end();
         next(err);
@@ -293,7 +297,7 @@ function candidateController() {
     let connection = mysql.createConnection(config.database);
     connection.connect();
     connection.query(query, (err, data) => {
-      if(err){
+      if (err) {
         connection.end();
         console.log(err);
         next(err);
@@ -303,6 +307,79 @@ function candidateController() {
         data: data,
         status: 200
       });
+      next();
+    });
+  };
+
+  self.deleteSkill = (req, res, next) => {
+    let query = "DELETE FROM `skill` WHERE `id`='" + req.params.id + "'";
+    let connection = mysql.createConnection(config.database);
+    connection.connect();
+    connection.query(query, (err, data) => {
+      if (err) {
+        connection.end();
+        console.log(err);
+        next(err);
+      }
+      connection.end();
+      res.json(200);
+      next();
+    });
+  };
+
+  self.updateSkill = (req, res, next) => {
+    let skill = JSON.parse(req.body);
+    let query = "UPDATE `skill` SET `name`='" + skill.name + "' WHERE `id`='" + req.params.id + "'";
+    let connection = mysql.createConnection(config.database);
+    connection.connect();
+    connection.query(query, (err, data) => {
+      if (err) {
+        connection.end();
+        console.log(err);
+        next(err);
+      }
+      connection.end();
+      res.json(200);
+      next();
+    });
+  };
+
+  self.deleteExperience = (req, res, next) => {
+    let query = "DELETE FROM `experience` WHERE `id`='" + req.params.id + "'";
+    let connection = mysql.createConnection(config.database);
+    connection.connect();
+    connection.query(query, (err, data) => {
+      if (err) {
+        connection.end();
+        console.log(err);
+        next(err);
+      }
+      connection.end();
+      res.json(200);
+      next();
+    });
+  };
+
+  self.updateExperience = (req, res, next) => {
+    let experience = JSON.parse(req.body);
+    let query = "UPDATE `experience` SET " +
+      "`name`='" + experience.company + "', " +
+      "`position`='" + experience.position + "', " +
+      "`location`='" + experience.location + "', " +
+      "`company`='" + experience.company + "', " +
+      "`description`='" + experience.description + "', " +
+      "`start`='" + moment(experience.start).format("YYYY-MM-DD HH:mm:ss") + "', " +
+      "`end`='" + moment(experience.end).format("YYYY-MM-DD HH:mm:ss") + "' WHERE `id`='" + req.params.id + "'";
+    let connection = mysql.createConnection(config.database);
+    connection.connect();
+    connection.query(query, (err, data) => {
+      if (err) {
+        connection.end();
+        console.log(err);
+        next(err);
+      }
+      connection.end();
+      res.json(200);
       next();
     });
   };
