@@ -37,7 +37,7 @@ export class ExperienceComponent implements OnInit {
 
   deleteExperience(experience: Experience) {
     this.candidateService.deleteExperience(experience.id).subscribe(
-      data => this.experiences.splice(this.experiences.indexOf(experience)),
+      data => this.experiences.splice(this.experiences.indexOf(experience),1),
       error => console.log(error));
   }
 

@@ -15,8 +15,8 @@ function candidateController() {
 
   self.getCandidates = (req, res, next) => {
     let candidates,
-        statusQuery,
-        vacanciesQuery;
+      statusQuery,
+      vacanciesQuery;
     let connection = mysql.createConnection(config.database);
     let complexQuery = "SELECT ( SELECT COUNT(*) rows_number FROM " +
       "(SELECT first_name, email, job_title," +
@@ -39,33 +39,33 @@ function candidateController() {
       else {
         candidates = data;
         statusQuery = 'SELECT name FROM status';
-        connection.query(statusQuery, (err,data) => {
+        connection.query(statusQuery, (err, data) => {
           if (err) {
             connection.end();
             next(err);
           }
-          else{
-          candidates.statuses = data;
-          vacanciesQuery = 'SELECT DISTINCT position FROM vacancy';
-          connection.query(vacanciesQuery, (err,data) => {
-            if (err) {
-              connection.end();
-              next(err);
-            }
-            else {
-              candidates.vacancies = data;
-              connection.end();
-              res.json(200,{
-                candidates : candidates,
-                statuses: candidates.statuses,
-                vacancies: candidates.vacancies,
-                status: 200,
-                total: (candidates.length) ? candidates[0].total: 0,
-                range: util.computeRange(req.query.rows, req.query.page , (candidates.length) ? candidates[0].total: 0)
-              });
-              next();
-            }
-          });
+          else {
+            candidates.statuses = data;
+            vacanciesQuery = 'SELECT DISTINCT position FROM vacancy';
+            connection.query(vacanciesQuery, (err, data) => {
+              if (err) {
+                connection.end();
+                next(err);
+              }
+              else {
+                candidates.vacancies = data;
+                connection.end();
+                res.json(200, {
+                  candidates: candidates,
+                  statuses: candidates.statuses,
+                  vacancies: candidates.vacancies,
+                  status: 200,
+                  total: (candidates.length) ? candidates[0].total : 0,
+                  range: util.computeRange(req.query.rows, req.query.page, (candidates.length) ? candidates[0].total : 0)
+                });
+                next();
+              }
+            });
           }
         });
       }
@@ -181,19 +181,19 @@ function candidateController() {
     connection.connect();
     let query = "INSERT INTO `candidate` " +
       "(`first_name`, `email`, `job_title`, `status_id`)" +
-      " VALUES ('"+candidate.name+"', '"+candidate.email+"', '"+candidate.position+
-      "', '"+candidate.status+"')";
+      " VALUES ('" + candidate.name + "', '" + candidate.email + "', '" + candidate.position +
+      "', '" + candidate.status + "')";
 
     connection.query(query, (err, data) => {
-      if (err){
+      if (err) {
         connection.end();
         console.log(err);
         next(err);
       }
       else {
         connection.end();
-        res.json(200,{
-          status:200
+        res.json(200, {
+          status: 200
         });
         next();
       }
@@ -228,8 +228,8 @@ function candidateController() {
     connection.connect();
     let query = "INSERT INTO `experience` " +
       "(`name`, `start`, `end`, `position`, `location`, `company`, `description`, `candidate_id`)" +
-      " VALUES ('" + experience.company + "', '" +  moment(experience.start).format('YYYY-MM-DD h:mm:ss') +
-      "', '" +  moment(experience.end).format('YYYY-MM-DD h:mm:ss') + "', '"
+      " VALUES ('" + experience.company + "', '" + moment(experience.start).format("YYYY-MM-DD HH:mm:ss") +
+      "', '" + moment(experience.end).format("YYYY-MM-DD HH:mm:ss") + "', '"
       + experience.position + "', '" + experience.location + "', '" + experience.company +
       "', '" + experience.description + "', '" + req.params.id + "')";
 
@@ -368,8 +368,8 @@ function candidateController() {
       "`location`='" + experience.location + "', " +
       "`company`='" + experience.company + "', " +
       "`description`='" + experience.description + "', " +
-      "`start`='" + moment(experience.start).format('YYYY-MM-DD h:mm:ss') + "', " +
-      "`end`='" + moment(experience.end).format('YYYY-MM-DD h:mm:ss') + "' WHERE `id`='" + req.params.id + "'";
+      "`start`='" + moment(experience.start).format("YYYY-MM-DD HH:mm:ss") + "', " +
+      "`end`='" + moment(experience.end).format("YYYY-MM-DD HH:mm:ss") + "' WHERE `id`='" + req.params.id + "'";
     let connection = mysql.createConnection(config.database);
     connection.connect();
     connection.query(query, (err, data) => {

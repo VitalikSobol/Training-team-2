@@ -27,7 +27,7 @@ export class SkillsComponent implements OnInit {
 
   deleteSkill(skill: Skill) {
     this.candidateService.deleteSkill(skill.id).subscribe(
-      data => this.skills.splice(this.skills.indexOf(skill)),
+      data => this.skills.splice(this.skills.indexOf(skill),1),
       error => console.log(error));
   }
 

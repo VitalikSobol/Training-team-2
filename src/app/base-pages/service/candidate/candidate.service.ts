@@ -8,6 +8,7 @@ import 'rxjs/add/operator/catch';
 import 'rxjs/add/observable/throw';
 import {Experience} from './experience';
 import {FilterCandidates} from "./filterCandidates";
+import {Skill} from './skill';
 
 @Injectable()
 export class CandidateService {
@@ -53,7 +54,7 @@ export class CandidateService {
     return this.http.post(url, content);
   }
 
-  getCandidates(filter:FilterCandidates, pagination): Observable<CandidateBase>{
+  getCandidates(filter: FilterCandidates, pagination): Observable<CandidateBase> {
     const url = `candidates`;
     let httpParams = new HttpParams()
       .set('name', filter.name)
@@ -72,9 +73,45 @@ export class CandidateService {
       });
   }
 
-  addCandidate( newCandidate: NewCandidate) {
+  addCandidate(newCandidate: NewCandidate) {
     const url = `candidates`;
     return this.http.post(url, JSON.stringify(newCandidate));
+  }
+
+  deleteSkill(id: number) {
+    const url = `candidates/skill/${id}`;
+    return this.http.delete(url)
+      .catch((error: any) => {
+        console.log(error);
+        return Observable.throw(error);
+      });
+  }
+
+  editSkill(skill: Skill) {
+    const url = `candidates/skill/${skill.id}`;
+    return this.http.put(url, JSON.stringify(skill))
+      .catch((error: any) => {
+        console.log(error);
+        return Observable.throw(error);
+      });
+  }
+
+  deleteExperience(id: number) {
+    const url = `candidates/experience/${id}`;
+    return this.http.delete(url)
+      .catch((error: any) => {
+        console.log(error);
+        return Observable.throw(error);
+      });
+  }
+
+  editExperience(experience: Experience) {
+    const url = `candidates/experience/${experience.id}`;
+    return this.http.put(url, JSON.stringify(experience))
+      .catch((error: any) => {
+        console.log(error);
+        return Observable.throw(error);
+      });
   }
 }
 
