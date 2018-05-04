@@ -1,25 +1,25 @@
-<footer id="count-items" class="content-footer">
+<footer class="content-footer">
   <span>Rows per page:</span>
 
   <div class="dropdown page-items">
 
     <div class="dropdown-button">
-      <span id="current-items-count">10</span>
+      <span>{{currentRows}}</span>
       <div class="dropdown-arrow"></div>
     </div>
 
-    <div class="dropdown-content">
-      <a href="#">10</a>
-      <a href="#">20</a>
-      <a href="#">50</a>
+    <div class="dropdown-content" (click)="setCurrentRows($event)">
+      <a>10</a>
+      <a>20</a>
+      <a>50</a>
     </div>
 
   </div>
-  <span id="range">1-10</span> of <span id="total">100</span>
+  <span>{{range}}</span> of <span>{{total}}</span>
 
-  <div id="table-control" class="button-nav">
-    <button class="button-prev"></button>
-    <button class="button-next"></button>
+  <div class="button-nav">
+    <button class="button-prev" #prev (click)="setDirection(prev.className)"></button>
+    <button class="button-next" #next (click)="setDirection(next.className)"></button>
   </div>
 
 </footer>

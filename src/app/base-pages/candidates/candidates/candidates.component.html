@@ -1,64 +1,152 @@
+<script src="../../base.module.ts"></script>
 <section class="candidates-section">
   <h1>Candidates</h1>
 </section>
 <main class="candidates-table table-responsive">
   <table id="candidates" class="table">
     <thead>
-      <tr class="filters">
-        <th>Photo</th>
-        <th>
-          <label>
-            Name
-            <input id="name" #name type="text" class="form-control"
-            (keyup)="filtering(name.id, name.value)">
-          </label>
-        </th>
-        <th>
-          <label>
-            E-mail
-            <input id="email" #email type="text" class="form-control"
-            (keyup)="filtering(email.id, email.value)">
-          </label>
-        </th>
-        <th>
-          <label>
-            Position
-            <input id="position" #position type="text" class="form-control"
-            (keyup)="filtering(position.id, position.value)">
-          </label>
-        </th>
-        <th>
-          <label>
-            Date
-            <input id="date" #date type="text" class="form-control"
-            (keyup)="filtering(date.id, date.value)">
-          </label>
-        </th>
-        <th>
-          <label>
-            Stage
-            <input id="status" #status type="text" class="form-control"
-            (keyup)="filtering(status.id, status.value)">
-          </label>
-        </th>
-        <th></th>
-      </tr>
+    <tr class="filters" #candidatesColumns>
+      <th>Photo</th>
+      <th>
+        <label>
+          Name
+          <input id="name" #name type="text" class="form-control"
+                 (keyup)="filtering(name.id, name.value)">
+        </label>
+      </th>
+      <th>
+        <label>
+          E-mail
+          <input id="email" #email type="text" class="form-control"
+                 (keyup)="filtering(email.id, email.value)">
+        </label>
+      </th>
+      <th>
+        <div class="btn-group" dropdown>
+          <button id="button-position" dropdownToggle type="button"
+                  class="btn dropdown-toggle button-position"
+                  aria-controls="dropdown-position">
+            <span>{{filterPosition}}</span>
+            <span class="caret"></span>
+          </button>
+          <ul id="dropdown-position" *dropdownMenu
+              class="dropdown-menu dropdown-position"
+              role="menu" aria-labelledby="button-position"
+              (click)="setFilterPosition($event)">
+            <li role="menuitem" *ngFor="let vacancy of vacancies">
+              <a class="dropdown-item">{{vacancy.position}}</a></li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a class="dropdown-item">All positions</a>
+            </li>
+          </ul>
+        </div>
+      </th>
+      <th>
+        <div class="btn-group" dropdown>
+          <button id="button-status" dropdownToggle type="button"
+                  class="btn dropdown-toggle button-status"
+                  aria-controls="dropdown-status">
+            <span>{{filterStatus}}</span>
+            <span class="caret"></span>
+          </button>
+          <ul id="dropdown-status" *dropdownMenu
+              class="dropdown-menu dropdown-status"
+              role="menu" aria-labelledby="button-status"
+              (click)="setFilterStatus($event)">
+            <li role="menuitem" *ngFor="let status of statuses">
+              <a class="dropdown-item">{{status.name}}</a>
+            </li>
+            <li class="divider dropdown-divider"></li>
+            <li role="menuitem">
+              <a class="dropdown-item">All statuses</a>
+            </li>
+          </ul>
+        </div>
+      </th>
+      <th></th>
+    </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let candidate of candidates">
-        <td class='candidate-photo'>
-          <div><img src='{{candidate.image}}'alt='' width='100'></div>
-        </td>
-        <td class='candidate-name'>{{candidate.name}}</td>
-        <td class='candidate-mail'>{{candidate.email}}</td>
-        <td class='candidate-position'>{{candidate.position}}</td>
-        <td class='candidate-date'>{{candidate.date}} day ago</td>
-        <td class='candidate-stage'>{{candidate.status}}</td>
-        <td><a [routerLink]="['/profile/', candidate.id]">Show Profile</a></td>
-      </tr>
+    <tr *ngFor="let candidate of candidates">
+      <td class='candidate-photo'>
+        <div><img src='{{candidate.image}}' alt='' width='100'></div>
+      </td>
+      <td class='candidate-name'>{{candidate.name}}</td>
+      <td class='candidate-mail'>{{candidate.email}}</td>
+      <td class='candidate-position'>{{candidate.position}}</td>
+      <td class='candidate-stage'>{{candidate.status}}</td>
+      <td><a [routerLink]="['/profile/', candidate.id]">Show Profile</a></td>
+    </tr>
+    <tr class="text-center" *ngIf="notFound()">
+      <td [attr.colspan]='numberColumns'>No result found</td>
+    </tr>
     </tbody>
   </table>
+  <button class="button-add" (click)="openModal(candidateModal)">+</button>
 </main>
 
-<app-footer>/*[range]="range" [total]="total" [currentRows]="currentRows" (change)="changeRowsNumber($event)*/"</app-footer>
+<app-footer [range]="range" [total]="total" [currentRows]="pagination.rows" (changeRows)="changeRowsNumber($event)"
+            (goToPage)="goToPage($event)"></app-footer>
 
+<!-- Modal 'Add candidates' -->
+<ng-template #candidateModal>
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <button type="button" class="close" (click)="clearNewCandidates()">&times;</button>
+      <h4 class="modal-title">Add candidate</h4>
+    </div>
+
+    <div class="modal-body">
+
+      <label>
+        *Name:
+        <input type="text" class="form-control" [(ngModel)]="newCandidate.name" required name="name" #name="ngModel">
+        <div [hidden]="name.valid || name.untouched" class="alert-danger">
+          Name is required
+        </div>
+      </label>
+
+      <label>
+        *Email:
+        <input type="email" class="form-control" [(ngModel)]="newCandidate.email" required name="email" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
+        <div [hidden]="email.valid || email.untouched" class="alert-danger">
+          Email is required
+        </div>
+      </label>
+
+      <span><b>*Position:</b></span>
+      <div class="btn-group new-position" dropdown>
+        <button [ngClass]="{ positionValid: positionValid}"
+                id="button-new-position" dropdownToggle type="button"
+                class="btn dropdown-toggle button-new-position"
+                aria-controls="dropdown-new-position">
+          <span>{{newCandidate.position}}</span>
+          <span class="caret"></span>
+        </button>
+        <ul id="dropdown-new-position" *dropdownMenu
+            class="dropdown-menu dropdown-position"
+            role="menu" aria-labelledby="button-new-position"
+            (click)="setPositionNewCandidate($event)">
+          <li role="menuitem" *ngFor="let vacancy of vacancies">
+            <a class="dropdown-item">{{vacancy.position}}</a></li>
+        </ul>
+      </div>
+
+      <label>
+        Status:
+        <input type="text" class="form-control" [(ngModel)]="newCandidate.status" required name="status" #status="ngModel" disabled>
+      </label>
+
+    </div>
+
+    <div class="modal-footer ">
+      <button type="button" class="btn btn-success"
+              [disabled]="name.invalid || email.invalid || !positionValid"
+              (click)="addCandidate(newCandidate)">Save
+      </button>
+      <button type="button" class="btn btn-danger" (click)="clearNewCandidates()">Close</button>
+    </div>
+  </div>
+</ng-template>

@@ -1,5 +1,6 @@
 export class Candidate{
   id: number;
+  image: string;
 	photo: any;
 	name: string;
 	email: string;

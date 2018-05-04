@@ -25,14 +25,14 @@ DROP TABLE IF EXISTS `candidate`;
 CREATE TABLE `candidate` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
-  `salary` int(11) NOT NULL,
+  `last_name` varchar(100) DEFAULT NULL,
+  `salary` int(11) DEFAULT NULL,
   `image_url` varchar(200) DEFAULT NULL,
   `job_title` varchar(100) NOT NULL,
   `phone` varchar(45) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
-  `date_publishing` date NOT NULL,
+  `date_publishing` date DEFAULT NULL,
   `status_id` int(11) NOT NULL,
   PRIMARY KEY (`id`,`status_id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
@@ -47,7 +47,27 @@ CREATE TABLE `candidate` (
 
 LOCK TABLES `candidate` WRITE;
 /*!40000 ALTER TABLE `candidate` DISABLE KEYS */;
-INSERT INTO `candidate` VALUES (1,'Ivan','Ivanov',1000,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(25)739-00-02','ivanov@gmail.com','27 Old Gloucester Street, London','2018-03-24',1),(2,'Ward','Jayme',500,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(25)859-25-87','ward@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-02',2),(3,'Augustine','Gaetana',450,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','aug@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-03',3),(4,'Colombina','Marty',1000,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(29)200-85-96','gae@gmail.com','70 Bowman St. South Windsor, CT 06074','2018-03-03',4),(5,'Arseni','Balfour',400,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(33)154-90-90','balf@gmail.com','4 Goldfield Rd. Honolulu, HI 96815','2018-03-01',1),(6,'Dove','Lexia',700,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(44)300-85-96','lex@gmail.com','44 Shirley Ave.,West Chicago, IL 60185','2018-03-03',2),(7,'Arianna','Venceslao',850,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','vansen@gmail.com','514 S. Magnolia St., Orlando, FL 32806','2018-03-02',3),(8,'Star','Dorofey',2000,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(29)200-85-96','dorof@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-01',4),(9,'Drina','Vladlen',300,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','vladlen@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-03',1),(10,'Dafne','Nellie',650,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(33)154-85-96','nellie@gmail.com','44 Shirley Ave.,West Chicago, IL 60185','2018-03-01',2),(11,'Meade','Corrine',1000,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(29)200-85-96','corrine@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-01',3),(12,'Costanzo','Aydan',850,'http://via.placeholder.com/500x350/66bfff','Java Developer','+375(33)154-85-96','avdan@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-03',4),(13,'Ustinya','Zinovi',900,'http://via.placeholder.com/500x350/66bfff','.Net Developer','+375(29)200-85-96','zinoviv@gmail.com','70 Bowman St. South Windsor, CT 06074','2018-03-01',4);
+INSERT INTO `candidate` VALUES (1,'Ivan','Ivanov',1000,'http://via.placeholder.com/500x350/66bfff','Big Data Developer','+375(25)739-00-02','ivanov@gmail.com','27 Old Gloucester Street, London','2018-03-24',1),
+(2,'Ward','Jayme',500,'http://via.placeholder.com/500x350/66bfff','Full Stack Developer','+375(25)859-25-87','ward@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-02',2),
+(3,'Augustine','Gaetana',450,'http://via.placeholder.com/500x350/66bfff','React Native Developer','+375(33)154-85-96','aug@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-03',3),
+(4,'Colombina','Marty',1000,'http://via.placeholder.com/500x350/66bfff','Big Data Developer','+375(29)200-85-96','gae@gmail.com','70 Bowman St. South Windsor, CT 06074','2018-03-03',4),
+(5,'Arseni','Balfour',400,'http://via.placeholder.com/500x350/66bfff','Senior .NET Developer','+375(33)154-90-90','balf@gmail.com','4 Goldfield Rd. Honolulu, HI 96815','2018-03-01',1),
+(6,'Dove','Lexia',700,'http://via.placeholder.com/500x350/66bfff','React Native Developer','+375(44)300-85-96','lex@gmail.com','44 Shirley Ave.,West Chicago, IL 60185','2018-03-03',2),
+(7,'Arianna','Venceslao',850,'http://via.placeholder.com/500x350/66bfff','Senior Java Developer','+375(33)154-85-96','vansen@gmail.com','514 S. Magnolia St., Orlando, FL 32806','2018-03-02',3),
+(8,'Star','Dorofey',2000,'http://via.placeholder.com/500x350/66bfff','Senior Java Developer','+375(29)200-85-96','dorof@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-01',4),
+(9,'Drina','Vladlen',300,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','vladlen@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-03',1),
+(10,'Dafne','Nellie',650,'http://via.placeholder.com/500x350/66bfff','Full Stack Developer','+375(33)154-85-96','nellie@gmail.com','44 Shirley Ave.,West Chicago, IL 60185','2018-03-01',2),
+(11,'Meade','Corrine',1000,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(29)200-85-96','corrine@gmail.com','71 Pilgrim Avenue, Chevy Chase, MD 20815','2018-03-01',3),
+(12,'Costanzo','Aydan',850,'http://via.placeholder.com/500x350/66bfff','Big Data Developer','+375(33)154-85-96','avdan@gmail.com','123 6th St.Melbourne, FL 32904 ','2018-03-03',4),
+(13,'Ustinya','Zinovi',900,'http://via.placeholder.com/500x350/66bfff','Senior .NET Developer','+375(29)200-85-96','zinoviv@gmail.com','70 Bowman St. South Windsor, CT 06074','2018-03-01',4),
+(14,'Costan','Aydazen',1850,'http://via.placeholder.com/500x350/66bfff','Big Data Developer','+375(33)154-95-96','aydazen@gmail.com','199 8th St.Melbourne, FL 32904 ','2018-03-05',4),
+(15,'Cozo','Atydan',800,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)154-85-96','atydan@gmail.com','23 1th St.Melbourne, FL 32904 ','2018-04-03',4),
+(16,'Doveman','Lexian',1700,'http://via.placeholder.com/500x350/66bfff','Senior Java Developer','+375(44)300-84-96','lexian@gmail.com','34 Shirley Ave.,West Chicago, IL 60185','2018-04-02',2),
+(17,'Dov','Lexina',600,'http://via.placeholder.com/500x350/66bfff','React Native Developer','+375(44)300-83-96','lexina@gmail.com','99 Shirley Ave.,West Chicago, IL 60185','2018-02-03',2),
+(18,'August','Gaetansa',440,'http://via.placeholder.com/500x350/66bfff','Senior Java Developer','+375(33)164-85-96','augt@gmail.com','89 Pilg Avenue, Chevy Chase, MD 20815','2018-01-02',3),
+(19,'Astine','Gaetanva',350,'http://via.placeholder.com/500x350/66bfff','React Native Developer','+375(33)224-85-96','gaet@gmail.com','67 Grim Avenue, Chevy Chase, MD 20815','2018-03-04',3),
+(20,'Irina','Vladlenan',1300,'http://via.placeholder.com/500x350/66bfff','JavaScript Developer','+375(33)234-85-96','vladlenan@gmail.com','153 7th St.Melbourne, FL 32904 ','2018-03-08',1),
+(21,'Inna','Vladlenex',3000,'http://via.placeholder.com/500x350/66bfff','Big Data Developer','+375(33)567-85-96','vladlenex@gmail.com','122 6th St.Melbourne, FL 32904 ','2018-03-09',1);
 /*!40000 ALTER TABLE `candidate` ENABLE KEYS */;
 UNLOCK TABLES;
 

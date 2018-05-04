@@ -4,7 +4,7 @@
 'use strict';
 function UtilController() {
 	let _self = this;
-	
+
 	_self.computeRange = (rows, page, total) =>{
 		if (total % rows === 0) {
 			if (page === 1) {
@@ -16,19 +16,19 @@ function UtilController() {
 		} else {
 			let delta = total % rows;
 			let diff = rows - delta;
-			
+
 			if (page * rows > total) {
 				return ((page * rows - rows + 1) + "-" + (page * rows - diff));
 			} else {
 				return (page * rows - rows + 1) + "-" + (page * rows);
 			}
-			
+
 		}
 	};
-	
+
 	_self.addFilterForCandidates = (filter) =>{
 		let query = 'HAVING ';
-		
+
 		if (filter.name !== "") {
 			query += 'first_name LIKE ';
 			query += '\'%' + filter.name + '%\'';
@@ -55,14 +55,14 @@ function UtilController() {
 			query += ' AND ';
 		}
 		query = query.substring(0, (query.length - 'AND '.length));
-		
+
 		return (query === 'HAV')? ' ' : query;
 	};
-	
+
 	_self.addFilterForVacancies = (filter) =>{
-		
+
 		let query = 'WHERE ';
-		
+
 		if (filter.position !== "none") {
 			query += 'position LIKE ';
 			query += '\'%' + filter.position + '%\'';
@@ -79,9 +79,9 @@ function UtilController() {
 			query += ' AND ';
 		}
 		query = query.substring(0, (query.length - 'AND '.length));
-		
+
 		return (query === 'WH')? ' ' : query;
-		
+
 	};
 }
 
