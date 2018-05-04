@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {CandidateService} from '../../service/candidate/candidate.service';
 import {ActivatedRoute} from '@angular/router';
+import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 
 @Component({
   selector: 'app-skill-modal',
@@ -11,9 +12,12 @@ import {ActivatedRoute} from '@angular/router';
 export class SkillModalComponent implements OnInit {
 
   @Input()
-  refModal = '';
+  refModal: BsModalRef;
 
-  nameSkill: String = '';
+  skill = {name: ''};
+
+  @Output()
+  saveSkill: EventEmitter<Object> = new EventEmitter<Object>();
 
   constructor(private candidateService: CandidateService,
               private route: ActivatedRoute) {
@@ -24,10 +28,9 @@ export class SkillModalComponent implements OnInit {
 
   addSkill() {
     const id = +this.route.snapshot.paramMap.get('id');
-    console.log(id);
-    this.candidateService.addSkill(id, this.nameSkill).subscribe(
+    this.candidateService.addSkill(id, this.skill.name).subscribe(
+      data => this.saveSkill.emit(this.skill),
       error => console.log(error));
-    window.location.reload();
   }
 
 }

@@ -1,4 +1,5 @@
 import {Experience} from './experience';
+import {Skill} from './skill';
 
 export class Candidate {
   name: string;
@@ -10,7 +11,7 @@ export class Candidate {
   phone: string;
   status: string;
   email: string;
-  skills: string[];
+  skills: Skill[];
   experiences: Experience[];
 }
 

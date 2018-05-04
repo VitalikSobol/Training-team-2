@@ -122,3 +122,12 @@ tab p {
   background: #c0c0c0;
 }
 
+.review-date {
+  margin: 20px 10px;
+  text-align: right;
+  font-weight: bold;
+}
+
+.review-content {
+  margin-top: 20px;
+}
