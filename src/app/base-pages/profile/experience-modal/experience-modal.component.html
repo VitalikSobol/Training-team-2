@@ -8,14 +8,14 @@
   <div class="modal-body">
     <form #experienceForm="ngForm">
 
-      <label>
         *Period
-        <input type="text" class="exp-period form-control" [(ngModel)]="experience.period" required name="period"
-               #period="ngModel">
-        <div [hidden]="period.valid || period.pristine" class="alert-danger">
-          Period is required
+        <div class="exp-period">
+          <dp-date-picker [(ngModel)]="experience.start" [config]="datePickerConfig" theme="dp-material"
+                          mode="month" [ngModelOptions]="{standalone: true}"></dp-date-picker>
+          <span> - </span>
+          <dp-date-picker [(ngModel)]="experience.end" [config]="datePickerConfig" theme="dp-material"
+                          mode="month" [ngModelOptions]="{standalone: true}"></dp-date-picker>
         </div>
-      </label>
 
       <label>
         Position:

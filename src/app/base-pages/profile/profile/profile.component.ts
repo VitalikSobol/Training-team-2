@@ -47,6 +47,14 @@ export class ProfileComponent implements OnInit {
     this.user.status = $event;
   }
 
+  addExperience(experience) {
+    this.user.experiences.push(experience);
+  }
+
+  addSkill(skill) {
+    this.user.skills.push(skill);
+  }
+
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }

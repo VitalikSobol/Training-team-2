@@ -30,16 +30,18 @@ module.exports = function (server) {
 
   server.get("/api/notification", events.getNotification);
 
-  // server.get(/\/views\/?.*/, resources.loadResource);
-  // server.get('/', login.getLoginPage);
-
   server.get("/api/candidates/status/:name", candidate.getCandidateByStatus);
   server.get("/api/candidates", candidate.getCandidates);
   server.get("/api/candidates/:id", candidate.getCandidateById);
   server.get("/api/candidates/review/:id", candidate.getReview);
   server.put("/api/candidates/:id", candidate.updateCandidate);
+
   server.post("/api/candidates/skill/:id", candidate.addSkill);
+  server.del("/api/candidates/skill/:id", candidate.deleteSkill);
+  server.put("/api/candidates/skill/:id", candidate.updateSkill);
   server.post("/api/candidates/experience/:id", candidate.addExperience);
+  server.del("/api/candidates/experience/:id", candidate.deleteExperience);
+  server.put("/api/candidates/experience/:id", candidate.updateExperience);
   server.post("/api/candidates/review/:id", candidate.addReview);
 
   server.get("/api/user", users.getUser);

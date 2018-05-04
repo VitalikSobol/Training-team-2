@@ -114,25 +114,7 @@
           <button class="profile-button" (click)="openModal(experienceModal)">Add</button>
         </div>
 
-        <div class="experience">
-          <div class="experience-item" *ngFor="let experience of user?.experiences">
-            <div class="experience-info">
-              <p class="info-period"> {{experience.period}} </p>
-              <p class="text-muted info-position">{{experience.position}}</p>
-              <p class="text-muted info-location">{{experience.location}}</p>
-            </div>
-            <div class="experience-company">
-              <div class="experience-map">
-                <div class="experience-point"></div>
-                <div class="experience-line"></div>
-              </div>
-              <div class="company-info">
-                <p class="company-name">{{experience.company}}</p>
-                <p class="experience-description">{{experience.description}}</p>
-              </div>
-            </div>
-          </div>
-        </div>
+        <app-experience [experiences]="user?.experiences" [isEdit]="isEdit"></app-experience>
       </div>
 
       <div class="skill-developer">
@@ -142,11 +124,7 @@
           <button class="profile-button" (click)="openModal(skillModal)">Add</button>
         </div>
 
-        <div class="skills">
-          <span *ngFor="let skill of user?.skills">
-            {{skill.name}}
-          </span>
-        </div>
+        <app-skills [skills]="user?.skills" [isEdit]="isEdit"></app-skills>
 
       </div>
     </div>
@@ -158,11 +136,11 @@
 </div>
 
 <ng-template #experienceModal>
-  <app-experience-modal [refModal]="modalRef"></app-experience-modal>
+  <app-experience-modal [refModal]="modalRef" (saveExperience)="addExperience($event)"></app-experience-modal>
 </ng-template>
 
 <ng-template #skillModal>
-  <app-skill-modal [refModal]="modalRef"></app-skill-modal>
+  <app-skill-modal [refModal]="modalRef" (saveSkill)="addSkill($event)"></app-skill-modal>
 </ng-template>
 
 <ng-template #reviewModal>
