@@ -127,7 +127,7 @@
               [disabled]="position.invalid || description.invalid || salary.invalid"
               (click)="addVacancies(vacancies); modalRef.hide()">Save
       </button>
-      <button type="button" class="btn btn-danger" (click)="modalRef.hide()">Close</button>
+      <button type="button" class="btn btn-danger" (click)="clearNewVacancies()">Close</button>
     </div>
 
   </div>

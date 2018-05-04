@@ -15,7 +15,6 @@ import { Pagination} from "../../common/components/footer/pagination";
 })
 
 export class VacanciesComponent implements OnInit {
-  // item: Vacancies;
   items: Vacancies[] = [];
   vacancies = {};
   isEdit: boolean = false;
@@ -27,13 +26,13 @@ export class VacanciesComponent implements OnInit {
     position:  '',
     description: '',
     salary: '',
-  }
+  };
 
   pagination: Pagination = {
     rows: 10,
     begin: 0,
     page:1
-  }
+  };
 
   @ViewChild("vacancyColumns")
     numberColumns: ElementRef;
@@ -110,6 +109,11 @@ export class VacanciesComponent implements OnInit {
   //     error => console.log(error));
   //   console.log(item);
   // }
+
+  clearNewVacancies(){
+    this.modalRef.hide();
+    this.vacancies = '';
+  }
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
