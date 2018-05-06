@@ -8,6 +8,9 @@
       <app-search-input></app-search-input>
 
       <div class="header-button">
+        <a [routerLink]="['/cabinet']" class="cabinet">
+          <span class="glyphicon glyphicon-user cabinet-logo" aria-hidden="true"></span>
+        </a>
         <button class="button-bell" (click)="changeShowStatus()"></button>
         <button class="button-enter" (click)="logout()"></button>
       </div>

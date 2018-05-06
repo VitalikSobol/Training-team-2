@@ -14,6 +14,20 @@
   background: url(../../../assets/images/sprite.png) -413px -1px;
 }
 
+.cabinet-logo {
+  font-size: 18px;
+  margin: 0 10px;
+}
+
+.cabinet {
+  color: #757575;
+  text-decoration: none;
+}
+
+.cabinet:hover {
+  text-decoration: none;
+}
+
 .main-div {
   display: flex;
 

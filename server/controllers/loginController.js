@@ -31,7 +31,7 @@ function LoginController() {
         },
         config.JWT_KEY,
         {
-          expiresIn: "1h"
+          expiresIn: "30d"
         },
         (err, token) => {
           if (err) {

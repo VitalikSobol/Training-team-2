@@ -1,0 +1,98 @@
+.cabinet-form {
+  font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  max-width: 300px;
+  margin: auto;
+  padding: 30px 20px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.registration-info {
+  margin-top: 10px;
+}
+
+.registration-info input {
+  background: white;
+  border: none;
+  border-bottom: 2px solid #e8e8e8;
+  color: #636466;
+  padding: 6px;
+  margin-top: 6px;
+}
+
+.cabinet-page {
+  min-height: calc(100vh - 40px);
+}
+
+.button-role {
+  background: none;
+  border-color: #3f3f3f;
+  width: 155px;
+  text-align: left;
+}
+
+.form-field {
+  color: #636466;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.form-field > span {
+  padding-right: 10px;
+  width: 80px;
+}
+.form-field > input {
+  width: 95%;
+}
+
+.select {
+  margin-left: 35px;
+}
+
+.select .select-header {
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 10px;
+}
+
+.footer {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.btn {
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #636466;
+  border: none;
+}
+
+.footer a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #636466;
+}
+
+.cabinet-form input:invalid{
+  border-color: #d9271c;
+}
+
+.form-field p {
+  font-weight: lighter;
+  margin-left: 50px;
+  text-align: right;
+}
+
+.alert-danger {
+  background: none;
+  font-size: 15px;
+  font-style: italic;
+}
+

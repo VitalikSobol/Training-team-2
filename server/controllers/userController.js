@@ -14,7 +14,7 @@ function UserController() {
 		data: [],
 		status: 0,
 	};
-	
+
 	_self.getAll =  (req, res, next) => {
 		let connection = mysql.createConnection(config.database);
 		connection.connect();
@@ -39,7 +39,7 @@ function UserController() {
       let data = jwt.verify(token, config.JWT_KEY);
       let connection = mysql.createConnection(config.database);
       connection.connect();
-      let query = "SELECT user.id as id, first_name, last_name, email, phone, role.name as role FROM user " +
+      let query = "SELECT user.id as id, first_name as firstName, last_name as lastName, email, role.name as role FROM user " +
         " JOIN role ON role.id = role_id WHERE user.`id`=" + data.id;
       connection.query(query,  (err, data) => {
         if (err){
@@ -54,7 +54,9 @@ function UserController() {
         }
       });
     } catch (error) {
-      res.redirect('/');
+      res.status(500);
+      console.log(error);
+      res.error = error;
       next();
     }
   };
@@ -64,9 +66,8 @@ function UserController() {
     let connection = mysql.createConnection(config.database);
     connection.connect();
     let query = "UPDATE `user` SET " +
-      "`first_name` = '" + user.name+"'"+
+      "`first_name` = '" + user.firstName+"'"+
       ", `last_name` = '" + user.lastName+"'"+
-      ", `phone` = '" + user.phone+"'"+
       ", `email` = '" + user.email+"'"+
       ", `role_id`= (SELECT id FROM role WHERE role.name = '" + user.role +"') "+
       "  WHERE `id`=" + req.params.id;
