@@ -6,15 +6,17 @@ import {BaseAuthorizationComponent} from './base-authorization/base-authorizatio
 import {RegisterComponent} from './register/register.component';
 import {LoginComponent} from './login/login.component';
 import {RouterModule} from '@angular/router';
-import { EmailComponent } from './email/email.component';
-import { PasswordComponent } from './password/password.component';
+import {EmailComponent} from './email/email.component';
+import {PasswordComponent} from './password/password.component';
+import {NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   imports: [
     CommonModule,
     AuthorizationRoutingModule,
     FormsModule,
-    RouterModule
+    RouterModule,
+    NgbAlertModule.forRoot()
   ],
   declarations: [
     BaseAuthorizationComponent,
@@ -22,7 +24,8 @@ import { PasswordComponent } from './password/password.component';
     LoginComponent,
     EmailComponent,
     PasswordComponent
-  ]
+  ],
+
 })
 export class AuthorizationModule {
 

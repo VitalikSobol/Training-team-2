@@ -24,9 +24,9 @@ function PasswordController() {
         from: config.mailer.sendAddr,
         to: user.email,
         subject: "Reset password",
-        html: "Hi, " + user.name + ".<br> You recently requested to reset your password for your 'HR App' account." +
+        html: "Hi!<br> You recently requested to reset your password for your 'HR App' account." +
         " Use the link below to reset it. This password reset is only valid for the next 2 hours.<br>" +
-        " http://localhost:5000/password/" + token
+        " http://localhost:5000/api/password/" + token
       },  (error, response) => {
         if (error) {
           reject(new Error(error));
@@ -142,9 +142,9 @@ function PasswordController() {
     let token = req.params.token;
     try {
       jwt.verify(token, config.JWT_KEY);
-      res.redirect('/views/password.html?token=' + token, next);
+      res.redirect('/auth/password/' + token, next);
     } catch (error) {
-      res.redirect('/', next);
+      res.redirect('/auth/login', next);
     }
   };
 

@@ -17,16 +17,6 @@
   text-decoration: underline;
 }
 
-input.ng-valid[required], input.ng-valid.required {
-  border-bottom: 2px solid #42A948;
-}
-
-input.ng-invalid[required] {
-  border-bottom: 2px solid #a94442;
-}
-
-.alert-danger {
-  background: none;
-  font-style: italic;
-  font-size: 11px;
+.login-link {
+  margin-bottom: 10px;
 }
