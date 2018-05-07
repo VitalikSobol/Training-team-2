@@ -1,0 +1,83 @@
+<div class="cabinet-page">
+
+  <form class="cabinet-form" action="#">
+    <fieldset class="cabinet-info">
+
+      <div class="header">
+        <h3 class="form-header">User's cabinet</h3>
+      </div>
+
+      <div class="registration-info">
+        <div class="form-info">
+
+          <div class="form-field">
+            <span>Name</span>
+            <p *ngIf="!isEdit">{{user.firstName}}</p>
+            <div *ngIf="isEdit">
+              <input [(ngModel)]="user.firstName" type="text" class="form-control" name="firstName"
+                     placeholder="Your name" required #firstName="ngModel">
+              <div [hidden]="firstName.valid || firstName.untouched" class="alert-danger">
+                Name is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <span>Surname</span>
+            <p *ngIf="!isEdit">{{user.lastName}}</p>
+            <div *ngIf="isEdit">
+              <input [(ngModel)]="user.lastName" type="text" class="form-control" name="lastName"
+                     placeholder="Your surname" required #lastName="ngModel">
+              <div [hidden]="lastName.valid || lastName.untouched" class="alert-danger">
+                Surname is required
+              </div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <span>Role</span>
+            <p *ngIf="!isEdit">{{user.role}}</p>
+            <div *ngIf="isEdit" class="btn-group" dropdown>
+              <button dropdownToggle type="button"
+                      class="btn dropdown-toggle button-role"
+                      aria-controls="dropdown-role">
+                <span>{{user.role}}</span>
+                <span class="caret"></span>
+              </button>
+              <ul *dropdownMenu class="dropdown-menu dropdown-role"
+                  role="menu" aria-labelledby="button-role"
+                  (click)="setRole($event.target.innerText)">
+                <li role="menuitem">
+                  <a class="dropdown-item">Manager</a>
+                  <a class="dropdown-item">Developer</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <span>Email</span>
+            <p *ngIf="!isEdit">{{user.email}}</p>
+            <div *ngIf="isEdit">
+              <input [(ngModel)]="user.email" type="text" class="form-control" name="email"
+                     placeholder="abs@abc.com" required email #email="ngModel">
+              <div [hidden]="email.valid || email.untouched" class="alert-danger">
+                Email is required
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="footer">
+        <button class="btn save" *ngIf="isEdit" (click)="updateUserInfo()"
+                [disabled]="email.invalid || firstName.invalid || lastName.invalid">
+          save
+        </button>
+        <button class="btn" *ngIf="!isEdit" (click)="changeMode()">edit</button>
+      </div>
+
+    </fieldset>
+  </form>
+</div>

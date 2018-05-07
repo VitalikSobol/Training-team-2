@@ -2,9 +2,9 @@
   <div class="page-profile-header">
 
     <div class="breadcrumbs">
-      <p class="text-muted"><a href="/candidates"> Candidates</a> <span
-        class="glyphicon glyphicon-chevron-right"></span>
-        <a href="#" class="profile-fullName">{{user?.name}} {{user?.lastName}}</a></p>
+      <div class="route"><a routerLink="/candidates">Candidates</a></div>
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <div class="profile-fullName">{{user?.name}} {{user?.lastName}}</div>
     </div>
 
     <button class="profile-button review" (click)="openModal(reviewModal)">Review</button>

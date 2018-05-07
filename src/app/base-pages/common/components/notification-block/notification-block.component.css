@@ -90,6 +90,7 @@
 .notification-header span {
   line-height: 40px;
   padding-left: 15px;
+  z-index: 20;
 }
 
 .notification-body {
@@ -111,8 +112,8 @@
   overflow: hidden;
 }
 
-.js-all-candidates,
-.js-all-interview {
+.all-candidates,
+.all-interview {
   overflow: auto;
 }
 

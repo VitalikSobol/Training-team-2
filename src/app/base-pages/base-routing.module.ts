@@ -5,6 +5,7 @@ import {CandidatesComponent} from './candidates/candidates/candidates.component'
 import {VacanciesComponent} from './vacancies/vacancies/vacancies.component';
 import {InterviewComponent} from './interview/interview/interview.component';
 import {ProfileComponent} from './profile/profile/profile.component';
+import {CabinetComponent} from './cabinet/cabinet.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
       {path: 'interview', component: InterviewComponent},
       {path: 'vacancies', component: VacanciesComponent},
       {path: 'candidates', component: CandidatesComponent},
+      {path: 'cabinet', component: CabinetComponent},
       {path: '**', redirectTo: 'interview'}
     ]
   }

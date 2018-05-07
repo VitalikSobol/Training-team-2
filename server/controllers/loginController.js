@@ -31,7 +31,7 @@ function LoginController() {
         },
         config.JWT_KEY,
         {
-          expiresIn: "1h"
+          expiresIn: "30d"
         },
         (err, token) => {
           if (err) {
@@ -184,7 +184,8 @@ function LoginController() {
 
       let connection = mysql.createConnection(config.database);
 
-      let query = "INSERT INTO `user` (`email`, `password`) VALUES ('"+ user.email +"', '"+ user.password+"');";
+      let query = "INSERT INTO `user` (`email`, `password`, `first_name`, `last_name`) VALUES " +
+        "('"+ user.email +"', '"+ user.password+"', '"+user.firstName+"', '"+user.lastName+"');";
 
       connection.connect();
 
@@ -199,9 +200,9 @@ function LoginController() {
       });
     });
   };
+
   _self.registration = (req, res, next) => {
     let data = JSON.parse(req.body);
-
     let dbUser = {};
 
     checkEmail(data)
@@ -227,6 +228,8 @@ function LoginController() {
     ).then(
       result => {
         dbUser.password = result;
+        dbUser.firstName = data.firstName;
+        dbUser.lastName = data.lastName;
         return addUser(dbUser);
       }
     ).then(

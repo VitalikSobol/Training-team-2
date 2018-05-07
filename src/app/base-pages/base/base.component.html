@@ -1,17 +1,21 @@
 <div class="main-div">
 
-  <app-menu></app-menu>
+  <app-menu [isShow]="isVisibleMenu"></app-menu>
 
   <div class="reset-padding content">
     <header class="content-header">
 
+      <button class="hamburger-button" (click)="changeVisibleMenu()">
+        <span class="glyphicon glyphicon-menu-hamburger"></span>
+      </button>
       <app-search-input></app-search-input>
 
       <div class="header-button">
-        <button class="button-bell" (click)="changeShowStatus()"></button>
-        <a [routerLink]="['/cabinet']">
-          <button class="button-enter"></button>
+        <a [routerLink]="['/cabinet']" class="cabinet">
+          <span class="glyphicon glyphicon-user cabinet-logo" aria-hidden="true"></span>
         </a>
+        <button class="button-bell" (click)="changeShowStatus()"></button>
+        <button class="button-enter" (click)="logout()"></button>
       </div>
 
     </header>
