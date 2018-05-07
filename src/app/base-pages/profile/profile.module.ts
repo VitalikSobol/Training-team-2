@@ -12,6 +12,7 @@ import {FormsModule} from '@angular/forms';
 import {DpDatePickerModule} from 'ng2-date-picker';
 import { SkillsComponent } from './skills/skills.component';
 import { ExperienceComponent } from './experience/experience.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { ExperienceComponent } from './experience/experience.component';
     TabsModule.forRoot(),
     FormsModule,
     NgbModule.forRoot(),
-    DpDatePickerModule
+    DpDatePickerModule,
+    RouterModule
   ],
   declarations: [
     ProfileComponent,

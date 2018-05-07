@@ -1,8 +1,14 @@
-import { Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent {}
+export class MenuComponent {
+
+  @Input()
+  isShow: boolean;
+
+  constructor(){}
+}

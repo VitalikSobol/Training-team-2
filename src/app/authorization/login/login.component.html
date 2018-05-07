@@ -1,0 +1,43 @@
+<form class="form-login" action="#">
+  <fieldset class="account-info">
+    <h2 class="form-header">hr app</h2>
+
+    <p *ngFor="let alert of alertService.alerts">
+      <ngb-alert type="danger" (close)="closeAlert(alert)">
+        {{ alert }}
+      </ngb-alert>
+    </p>
+
+    <div class="form-field">
+      Email
+      <div class="app-tooltip">
+        <input class="form-control" type="email" name="email" [(ngModel)]="user.email" placeholder="Email address"
+               required email #email="ngModel">
+        <div [hidden]="email.valid || email.untouched" class="alert-danger">
+          Email is required (email@example.com)
+        </div>
+        <span class="tooltip-text">email@example.com</span>
+      </div>
+    </div>
+
+    <div class="form-field">
+      Password
+      <div class="app-tooltip">
+        <input class="form-control" type="password" name="password" [(ngModel)]="user.password" placeholder="Password"
+               required pattern=".{6,}" #password="ngModel">
+        <div [hidden]="password.valid || password.untouched" class="alert-danger">
+          Password is required (min 6 symbols)
+        </div>
+        <span class="tooltip-text">Enter your password</span>
+      </div>
+    </div>
+
+    <button class="btn" type="submit" name="submit" (click)="login(user)"
+            [disabled]="password.invalid || email.invalid">
+      Sign in
+    </button>
+
+    <a [routerLink]="['/auth/register']">Sign up</a>
+    <a class="forgot-link" [routerLink]="['/auth/email']">Forgot your password?</a>
+  </fieldset>
+</form>

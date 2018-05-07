@@ -38,8 +38,4 @@
   }
 }
 
-@media (min-width: 992px) {
-  .glyphicon-menu-hamburger {
-    display: none;
-  }
-}
+

@@ -1,0 +1,16 @@
+.form-email {
+  text-align: center;
+}
+
+.form-email .btn {
+  width: 150px;
+}
+
+.form-email .account-info {
+  padding: 0 20px 20px 20px;
+}
+
+.form-email h2 {
+  color: #757575;
+  font-size: 25px;
+}
