@@ -41,15 +41,6 @@
   margin-bottom: 3%;
 }
 
-/*.modal-body-input .form-3 .date input {*/
-/*width: 100%;*/
-/*font-size: 20px;*/
-/*height: 45%;*/
-/*}*/
-/*.modal-body-input .form-3 .date label {*/
-/*margin-bottom: 3%;*/
-/*text-transform: uppercase;*/
-/*}*/
 .modal-body-input .form-1 .date,
 .modal-body-input .form-1 .date button,
 .modal-body-input .form-1 .date input,
@@ -78,6 +69,16 @@
 .modal-body-input .form-3 > span,
 .other-options > span {
   padding: 0 30px 0 10px;
+}
+
+.date-time{
+  display: flex;
+  align-items: center;
+}
+
+.date-time > label,
+.date-time > input{
+  margin-right: 5px;
 }
 
 .caret {
@@ -195,15 +196,6 @@
   border: 2px solid #1D3557;
 }
 
-
-.hide-block {
-  display: none;
-}
-
-.show-block{
-  display:block;
-}
-
 .turn {
   transform: rotate(180deg);
 }
@@ -266,14 +258,6 @@
 
 .event-description {
   align-items: start;
-}
-
-.other-options {
-  display: none;
-}
-
-.modal-body-input .time-panel{
-  display: none;
 }
 
 @media (max-width: 500px) {

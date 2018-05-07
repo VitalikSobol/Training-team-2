@@ -26,7 +26,7 @@ module.exports = function (server) {
   server.post("/api/events", events.createEvent);
 
   server.get("/api/interviewee", candidate.getCandidatesForInterview);
-  server.get("/api/interviewers", users.getAll);
+  server.get("/api/interviewers", users.getAllInterviewers);
 
   server.get("/api/notification", events.getNotification);
 
