@@ -11,6 +11,7 @@ import {Router} from '@angular/router';
 export class BaseComponent implements OnInit {
 
   isVisibleNotification: boolean = false;
+  isVisibleMenu: boolean = false;
 
   constructor(private authService: AuthService,
               private router: Router) {
@@ -22,6 +23,11 @@ export class BaseComponent implements OnInit {
 
   changeShowStatus():void {
     this.isVisibleNotification = !this.isVisibleNotification;
+  }
+
+  changeVisibleMenu():void {
+    this.isVisibleMenu = !this.isVisibleMenu;
+    console.log(this.isVisibleMenu);
   }
 
   logout():void {

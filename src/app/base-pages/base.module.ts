@@ -15,7 +15,7 @@ import {InterviewModule} from './interview/interview.module';
 import {VacanciesComponent} from './vacancies/vacancies/vacancies.component';
 import {CandidatesComponent} from './candidates/candidates/candidates.component';
 import {BsDropdownModule} from 'ngx-bootstrap';
-import { CabinetComponent } from './cabinet/cabinet.component';
+import {CabinetComponent} from './cabinet/cabinet.component';
 
 @NgModule({
   imports: [

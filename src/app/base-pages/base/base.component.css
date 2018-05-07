@@ -34,8 +34,8 @@
 }
 
 app-menu {
-  width: 13%;
   z-index: 10;
+  width: 13%;
 }
 
 .hideNotification {
@@ -78,6 +78,12 @@ app-menu {
   padding: 0 30px;
 }
 
+.hamburger-button {
+  z-index: 15;
+  background: none;
+  border: none;
+}
+
 @media (max-width: 992px) {
   .content-header {
     position: fixed;
@@ -87,14 +93,14 @@ app-menu {
     box-shadow: 2px -2px 7px rgba(150, 150, 150, 0.5);
   }
 
-  app-menu {
-    width: 0;
-  }
-
   .content {
     position: relative;
     width: 100%;
     margin-top: 40px;
+  }
+
+  app-menu {
+    width: 0;
   }
 }
 
@@ -154,3 +160,10 @@ app-menu {
     padding: 0 5px;
   }
 }
+
+@media (min-width: 992px) {
+  .glyphicon-menu-hamburger {
+    display: none;
+  }
+}
+
