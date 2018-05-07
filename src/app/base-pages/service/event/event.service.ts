@@ -20,4 +20,28 @@ export class EventService {
         return Observable.throw(error);
       });
   }
+
+  public getCandidatesForInterview(){
+    const url = `/interviewee`;
+    return this.http.get<string[]>(url)
+      .catch((error: any) => {
+        console.log(error);
+        return Observable.throw(error);
+      });
+  }
+
+  public getAllInterviewers(){
+    const url = `/interviewers`;
+    return this.http.get<string[]>(url)
+      .catch((error: any) => {
+        console.log(error);
+        return Observable.throw(error);
+      });
+  }
+
+  public createEvent(newEvent){
+    const url = `/events`;
+    return this.http.post(url, JSON.stringify(newEvent));
+  }
+
 }

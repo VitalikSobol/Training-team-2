@@ -8,9 +8,10 @@ import _date = moment.unitOfTime._date;
 import {Experience} from '../../service/candidate/experience';
 
 @Component({
+  moduleId: module.id,
   selector: 'app-experience-modal',
-  templateUrl: './experience-modal.component.html',
-  styleUrls: ['./experience-modal.component.css'],
+  templateUrl: 'experience-modal.component.html',
+  styleUrls: ['experience-modal.component.css'],
   providers: [CandidateService]
 })
 export class ExperienceModalComponent implements OnInit {

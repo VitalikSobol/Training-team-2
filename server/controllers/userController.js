@@ -14,8 +14,8 @@ function UserController() {
 		data: [],
 		status: 0,
 	};
-	
-	_self.getAll =  (req, res, next) => {
+
+	_self.getAllInterviewers =  (req, res, next) => {
 		let connection = mysql.createConnection(config.database);
 		connection.connect();
 		let query = "SELECT id, first_name as name, last_name as lastName FROM user";
