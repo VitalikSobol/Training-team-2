@@ -15,6 +15,7 @@ server.use(plugins.jsonBodyParser());
 server.use(plugins.acceptParser(server.acceptable));
 server.use(plugins.queryParser());
 server.use(plugins.fullResponse());
+server.use(plugins.bodyParser());
 
 function unknownMethodHandler(req, res) {
   if (req.method.toLowerCase() === 'options') {

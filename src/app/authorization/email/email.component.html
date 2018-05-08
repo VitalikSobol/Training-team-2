@@ -1,0 +1,36 @@
+<form class="form-email">
+  <div class="account-info">
+
+    <h2 class="form-header">hr app</h2>
+
+    <h3 class="form-subtitle">Forgot your password?</h3>
+
+    <p *ngFor="let alert of alertService.alerts">
+      <ngb-alert type="danger" (close)="closeAlert(alert)">
+        {{ alert }}
+      </ngb-alert>
+    </p>
+
+    <ngb-alert type="success" [dismissible]="false" *ngIf="isSuccess">
+      Instruction send on email!
+    </ngb-alert>
+
+    <div class="form-field">
+      Enter your email, please
+      <div class="app-tooltip">
+        <input class="form-control" type="email" name="userEmail" [(ngModel)]="email" placeholder="Email" required email
+               #userEmail="ngModel">
+        <div [hidden]="userEmail.valid || userEmail.untouched" class="alert-danger">
+          Email is required (email@example.com)
+        </div>
+        <span class="tooltip-text">email@example.com</span>
+      </div>
+    </div>
+
+    <button class="btn" type="submit" name="submit" (click)="sendInstruction(email)"
+            [disabled]="userEmail.invalid">
+      Send instruction
+    </button>
+
+  </div>
+</form>

@@ -26,7 +26,7 @@ module.exports = function (server) {
   server.post("/api/events", events.createEvent);
 
   server.get("/api/interviewee", candidate.getCandidatesForInterview);
-  server.get("/api/interviewers", users.getAll);
+  server.get("/api/interviewers", users.getAllInterviewers);
 
   server.get("/api/notification", events.getNotification);
 
@@ -47,21 +47,24 @@ module.exports = function (server) {
   server.get("/api/user", users.getUser);
   server.put("/api/user/:id", users.updateUser);
 
-  function getClientPage(){
+  function getAssets(){
     return restify.plugins.serveStatic({
       directory: `${__dirname}/../dist`,
-      file: './index.html'
+      default: 'index.html'
     });
   }
 
-  server.get('/vacancies', getClientPage());
-  server.get('/candidates', getClientPage());
-  server.get('/interview', getClientPage());
-  server.get('/profile/(.*)', getClientPage());
+  server.get('.*\.js', getAssets());
+  server.get('.*\.js\.map', getAssets());
+  server.get('.*\.png', getAssets());
+  server.get('.*\.woff', getAssets());
+  server.get('.*\.eot', getAssets());
+  server.get('.*\.ttf', getAssets());
+  server.get('.*\.woff2', getAssets());
 
   server.get('/\\/(.*)?.*/', restify.plugins.serveStatic({
     directory: `${__dirname}/../dist`,
-    default: './index.html',
+    file: './index.html',
     maxAge: 0
   }));
 

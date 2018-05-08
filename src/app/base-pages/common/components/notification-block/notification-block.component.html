@@ -2,13 +2,13 @@
 
   <div>
 
-    <div class="notification-header">
+    <div class="notification-header" (click)="isCandidates = !isCandidates">
       <h4 class="text-center">New candidates</h4>
-      <span id="candidates-show-element" class="glyphicon glyphicon-chevron-up"></span>
+      <span class="glyphicon glyphicon-chevron-up"></span>
     </div>
 
-    <div class="notification-block-candidates">
-      <div class="notification-body notification-body-candidates">
+    <div class="notification-block-candidates" *ngIf="isCandidates">
+      <div class="notification-body notification-body-candidates" [ngClass]="{'all-candidates': isAllCandidates}">
 
         <div class="notification-card-candidates" *ngFor="let candidate of candidates">
 
@@ -26,21 +26,21 @@
 
       </div>
 
-      <div class="notification-footer" id="notif-footer-cand">
-        <span id="all-candidates-notification">View All</span>
+      <div class="notification-footer" (click)="isAllCandidates = !isAllCandidates">
+        <span>View All</span>
       </div>
 
     </div>
   </div>
   <div>
 
-    <div class="notification-header">
+    <div class="notification-header" (click)="isEvents = !isEvents">
       <h4 class="text-center">Next interview</h4>
-      <span id="interview-show-element" class="glyphicon glyphicon-chevron-up"></span>
+      <span class="glyphicon glyphicon-chevron-up"></span>
     </div>
 
-    <div class="notification-block-interview">
-      <div class="notification-body notification-body-interview">
+    <div class="notification-block-interview" *ngIf="isEvents">
+      <div class="notification-body notification-body-interview" [ngClass]="{'all-interview': isAllEvents}">
 
         <div class="notification-card-interview" *ngFor="let event of events">
           <p class="event-title">{{event.title}}</p>
@@ -49,7 +49,7 @@
 
       </div>
 
-      <div class="notification-footer" id="notif-footer-inter">
+      <div class="notification-footer" (click)="isAllEvents = !isAllEvents">
         <span id="all-interview-notification">View All</span>
       </div>
 

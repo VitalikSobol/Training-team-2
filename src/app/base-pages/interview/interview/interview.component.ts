@@ -22,13 +22,12 @@ export class InterviewComponent implements OnInit {
 
   @ViewChild(CalendarComponent) interviewCalendar: CalendarComponent;
 
-  constructor(private eventService: EventService, private modalService: BsModalService) {
-    this.loadEvents();
-  }
+  constructor(private eventService: EventService, private modalService: BsModalService) { }
 
   ngOnInit() {
-    this.loadEvents();
     this.setSettings();
+    this.clearEvents();
+    this.loadEvents();
   }
 
   loadEvents() {
@@ -37,13 +36,16 @@ export class InterviewComponent implements OnInit {
     });
   }
 
+  clearEvents() {
+    this.events = [];
+  }
+
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
   }
 
   setDateEvent (event) {
     this.dateEvent = new Date(event.detail.date._d).toISOString().substr(0,10);
-
   }
 
   setSettings() {
@@ -59,7 +61,7 @@ export class InterviewComponent implements OnInit {
         list: 'schedule',
       },
       header: {
-        left: 'prev,next, today',
+        left: 'prev, next, today',
         right: 'agendaDay, agendaWeek, month, list',
         center: 'title'
       },
@@ -67,10 +69,11 @@ export class InterviewComponent implements OnInit {
       theme: false,
       height: 'auto',
       weekends: false,
-      events: this.eventService.getEvents().subscribe((data: Event[]) => {
-        this.events = data;
-      })
+      events: []
     };
   }
 
+  renderEvent(newEvent){
+    this.interviewCalendar.fullCalendar('renderEvent', newEvent);
+  }
 }
