@@ -25,7 +25,8 @@ export class VacanciesComponent implements OnInit {
   filter: FilterVacancies = {
     position:  '',
     description: '',
-    salary: '',
+    salary1: '',
+    salary2:'',
   };
 
   pagination: Pagination = {

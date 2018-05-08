@@ -21,11 +21,16 @@
         </label>
       </th>
       <th class="mobile-device">
+        <div class="salary-search">
         <label>
           Salary
-          <input id="salary" #salary type="text" class="form-control salary "
-          (keyup)="filtering(salary.id,salary.value)">
+          <input id="salary1" #salary1 type="text" class="form-control salary "
+          (keyup)="filtering(salary1.id,salary1.value)">
+          <span>-</span>
+          <input id="salary2" #salary2 type="text" class="form-control salary "
+                 (keyup)="filtering(salary2.id,salary2.value)">
         </label>
+          </div>
       </th>
       <th>Candidates</th>
     </tr>

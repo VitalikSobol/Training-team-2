@@ -17,10 +17,13 @@ export class VacanciesService {
     let httpParams = new HttpParams()
       .set('position', filter.position)
       .set('description', filter.description)
-      .set('salary', filter.salary)
+      .set('salary1',filter.salary1)
+      .set('salary2',filter.salary2)
       .set('rows', pagination.rows)
       .set('begin', pagination.begin)
       .set('page',pagination.page);
+    console.log(httpParams);
+    console.log(filter);
 
     return this.http.get<Vacancies>(url, {params : httpParams})
       .catch((error: any) => {
@@ -33,6 +36,7 @@ export class VacanciesService {
     const url =`vacancies`;
     return this.http.post(url,JSON.stringify(vacancies))
   }
+
   updateVacancy(item: Vacancies) {
     const url = `vacancies`;
     return this.http.put(url, JSON.stringify(item));
