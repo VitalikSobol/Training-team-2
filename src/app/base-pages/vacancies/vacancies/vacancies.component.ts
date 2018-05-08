@@ -105,11 +105,11 @@ export class VacanciesComponent implements OnInit {
     this.isEdit = !this.isEdit;
   }
 
-  // saveChanges(item) {
-  //   this.vacanciesService.updateVacancy(item).subscribe(
-  //     error => console.log(error));
-  //   console.log(item);
-  // }
+  saveChanges(vacancies) {
+    this.vacanciesService.updateVacancy(vacancies).subscribe(
+      error => console.log(error));
+    console.log(vacancies);
+  }
 
   clearNewVacancies(){
     this.modalRef.hide();

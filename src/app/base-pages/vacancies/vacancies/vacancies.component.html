@@ -81,7 +81,7 @@
   <button class="button-add" (click)="openModal(vacanciesModal)">+</button>
   <button type="button" class="button-edit btn btn-default btn-sm" (click)="changeMode()">
     <span class="glyphicon glyphicon-pencil" *ngIf="!isEdit"></span>
-    <span class="glyphicon glyphicon-ok" *ngIf="isEdit" (click)="saveChanges()"></span>
+    <span class="glyphicon glyphicon-ok" *ngIf="isEdit" (click)="saveChanges(vacancies)"></span>
   </button>
 </main>
 

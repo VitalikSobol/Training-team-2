@@ -22,8 +22,8 @@ export class VacanciesService {
       .set('rows', pagination.rows)
       .set('begin', pagination.begin)
       .set('page',pagination.page);
-    console.log(httpParams);
-    console.log(filter);
+    // console.log(httpParams);
+    // console.log(filter);
 
     return this.http.get<Vacancies>(url, {params : httpParams})
       .catch((error: any) => {
@@ -37,8 +37,8 @@ export class VacanciesService {
     return this.http.post(url,JSON.stringify(vacancies))
   }
 
-  updateVacancy(item: Vacancies) {
+  updateVacancy(vacancies: Vacancies) {
     const url = `vacancies`;
-    return this.http.put(url, JSON.stringify(item));
+    return this.http.put(url, JSON.stringify(vacancies));
   }
 }
