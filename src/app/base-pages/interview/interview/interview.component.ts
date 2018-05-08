@@ -1,4 +1,5 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
+import {Router} from "@angular/router";
 import {CalendarComponent} from 'ng-fullcalendar';
 import {Options} from 'fullcalendar';
 import {EventService} from '../../service/event/event.service';
@@ -22,7 +23,9 @@ export class InterviewComponent implements OnInit {
 
   @ViewChild(CalendarComponent) interviewCalendar: CalendarComponent;
 
-  constructor(private eventService: EventService, private modalService: BsModalService) { }
+  constructor(private eventService: EventService,
+              private modalService: BsModalService,
+              private router: Router) { }
 
   ngOnInit() {
     this.setSettings();
@@ -76,4 +79,17 @@ export class InterviewComponent implements OnInit {
   renderEvent(newEvent){
     this.interviewCalendar.fullCalendar('renderEvent', newEvent);
   }
+
+  editEvent(event){
+    event.detail.element.bind('dblclick',()=>{
+      let id = event.detail.event.id;
+      this.goEvent(id);
+    });
+  }
+
+  goEvent(id) {
+    console.log(id);
+    this.router.navigate(['event',id]);
+  }
+
 }

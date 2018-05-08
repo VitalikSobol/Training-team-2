@@ -4,7 +4,7 @@
   </div>
   <div *ngIf="calendarOptions" class="page-interview-table">
     <ng-fullcalendar #interviewCalendar [options]="calendarOptions"
-                     [(eventsModel)]="events" (dayClick)="openModal(eventModal); setDateEvent($event)"></ng-fullcalendar>
+                     [(eventsModel)]="events" (dayClick)="openModal(eventModal); setDateEvent($event)" (eventRender)="editEvent($event)"></ng-fullcalendar>
   </div>
   <ng-template #eventModal>
     <app-event-add-modal [dateEvent] = "dateEvent" [refModal]="modalRef"

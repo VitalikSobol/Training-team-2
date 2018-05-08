@@ -39,7 +39,7 @@ function VacancyController() {
               range: util.computeRange(req.query.rows, req.query.page ,this.total)
             });
             next();
-          
+
         }
       });
   };
@@ -80,7 +80,7 @@ function VacancyController() {
       }
     });
   };
-  
+
 }
 
 module.exports = new VacancyController();
