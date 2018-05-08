@@ -72,6 +72,7 @@ export class CandidateService {
 
   getCandidates(filter: FilterCandidates, pagination): Observable<CandidateBase> {
     const url = `candidates`;
+
     let httpParams = new HttpParams()
       .set('name', filter.name)
       .set('position', filter.position)

@@ -1,0 +1,92 @@
+<div class="event">
+  <form #editEventForm="ngForm" (ngSubmit)="onSubmit(editEventForm)">
+    <div class="header">
+      <button id="exit" class="header-button">x</button>
+
+      <input class="event-title" type="text" name="title"
+             placeholder="Event title" [(ngModel)]="currentEvent.title">
+      <button type="submit" class="btn btn-primary save-button" [disabled]="rightTime()">Save</button>
+    </div>
+
+    <div class="event-date">
+      <input class="date-start date-event" type="date" name="dateStart"
+             [(ngModel)]="currentEvent.start">
+      <div class="bootstrap-timepicker timepicker">
+        <div class="event-time">
+          <input class="time-start time-event" name="timeStart" type="time" min="08:00" max="17:00"
+                 [(ngModel)]="timeStartEvent">
+          <span class="glyphicon glyphicon-minus"></span>
+          <input class="time-end time-event" name="timeEnd" type="time" min="08:00" max="17:00"
+                 [(ngModel)]="timeEndEvent">
+        </div>
+        <div *ngIf="rightTime()" class="alert alert-danger">
+          Incorrect time
+        </div>
+      </div>
+    </div>
+
+
+    <div class="content">
+        <h4>Information</h4>
+        <div>
+
+          <div class="information-part participants candidate">
+            <span class="glyphicon glyphicon-user span-image"></span>
+            <div class="group">
+              <span class="group-name">Candidates</span>
+              <div class="candidates group-items">
+                <span *ngFor="let candidate of currentCandidates">
+                  {{candidate.first_name + " " + candidate.last_name}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="information-part participants interview">
+            <span class="glyphicon glyphicon-user span-image"></span>
+            <div class="group">
+              <span class="group-name">Interviewers</span>
+              <div class="users group-items">
+                <span *ngFor="let user of currentUsers">
+                  {{user.first_name + " " + user.last_name}}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="information-part place">
+            <span class="glyphicon glyphicon-map-marker"></span>
+            <input type="text" placeholder="Place" name="place"
+                   [(ngModel)]="currentEvent.place">
+          </div>
+
+          <div class="information-part color">
+            <span class="glyphicon glyphicon-tint"></span>
+            <div class="btn-group" dropdown>
+              <button id="colorList" dropdownToggle type="button"
+                      class="btn btn-default dropdown-toggle button-color"
+                      aria-controls="dropdown-color">
+                <a class="{{colorEvent}}"></a>
+                <span class="caret"></span>
+              </button>
+              <ul id="dropdown-color" *dropdownMenu class="dropdown-menu"
+                  role="menu" aria-labelledby="colorList"
+                  (click)="setColorEvent($event)">
+                <li><a class="red" id="D90429"></a></li>
+                <li><a class="blue" id="1D3557"></a></li>
+                <li><a class="green" id="02C39A"></a></li>
+                <li><a class="lavender" id="7B506F"></a></li>
+                <li><a class="brown" id="47040B"></a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="information-part event-description">
+            <span class="glyphicon glyphicon-align-left"></span>
+            <textarea class="description-text" placeholder="Description" name="description"
+                      [(ngModel)]="currentEvent.description"></textarea>
+          </div>
+        </div>
+    </div>
+  </form>
+</div>
