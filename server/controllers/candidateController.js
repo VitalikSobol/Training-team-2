@@ -105,108 +105,183 @@ function candidateController() {
     });
   };
 
-  let getCandidate = (id, res) => {
-    let query = "SELECT candidate.id as id, " +
-      " first_name as name, last_name as lastName, phone, address, email," +
-      " job_title as position," +
-      " salary as payment, status.name as status,	" +
-      " DATEDIFF(CURRENT_DATE(), date_publishing) as date," +
-      " DATE_FORMAT(`date_publishing`, \"%M %d %Y\") as date_publishing," +
-      " image_url as image" +
-      " FROM candidate " +
-      "JOIN status on candidate.status_id = status.id WHERE candidate.id=" + id;
-    let connection = mysql.createConnection(config.database);
-    connection.connect();
-    connection.query(query, (err, data) => {
-      if (err) {
+  let getCandidate = (id) => {
+    return new Promise((resolve, reject) => {
+
+      let query = "SELECT candidate.id as id, " +
+        " first_name as name, last_name as lastName, phone, address, email," +
+        " job_title as position," +
+        " salary as payment, status.name as status,	" +
+        " DATEDIFF(CURRENT_DATE(), date_publishing) as date," +
+        " DATE_FORMAT(`date_publishing`, \"%M %d %Y\") as date_publishing," +
+        " image_url as image" +
+        " FROM candidate " +
+        "JOIN status on candidate.status_id = status.id WHERE candidate.id=" + id;
+      let connection = mysql.createConnection(config.database);
+      connection.connect();
+      connection.query(query, (err, data) => {
+        if (err) {
+          connection.end();
+          console.log('error: ' + err);
+          reject(new Error(err));
+        }
         connection.end();
-        console.log('error: ' + err);
-      }
-      connection.end();
-      user = data[0];
-      getCandidateSkills(id, res);
-    });
-  };
-
-  let getCandidateSkills = (id, res) => {
-    let query = "SELECT id, name FROM skill WHERE candidate_id=" + id;
-
-    let connection = mysql.createConnection(config.database);
-    connection.connect();
-    connection.query(query, (err, data) => {
-      if (err) {
-        connection.end();
-        console.log('error ' + err);
-      }
-      connection.end();
-      user.skills = data;
-      getCandidateExperience(id, res);
-    });
-  };
-
-  let getCandidateExperience = (id, res) => {
-    let query = "SELECT id, DATE_FORMAT(`start`, \"%b %Y\") as start, DATE_FORMAT(`end`, \"%b %Y\") as end, " +
-      "position, location, company, description FROM experience" +
-      " WHERE candidate_id=" + id;
-
-    let connection = mysql.createConnection(config.database);
-    connection.connect();
-    connection.query(query, (err, data) => {
-      if (err) {
-        connection.end();
-        console.log('error ' + err);
-      }
-      connection.end();
-      user.experiences = data;
-      getCandidateVacancies(id, res);
-    });
-  };
-
-  let getCandidateVacancies = (id, res) => {
-    let query = "SELECT position FROM vacancy_has_candidate" +
-      " JOIN vacancy ON vacancy.id = vacancy_id " +
-      "WHERE candidate_id = " + id;
-
-    let connection = mysql.createConnection(config.database);
-    connection.connect();
-    connection.query(query, (err, data) => {
-      if (err) {
-        connection.end();
-        console.log('error ' + err);
-      }
-      let vacancies = data.map(function (item) {
-        return item['position'];
+        user = data[0];
+        resolve(data[0]);
       });
-      connection.end();
-      user.vacancies = vacancies;
-      getAllVacancies(res);
-    });
+    })
   };
 
-  let getAllVacancies = (res) => {
-    let query = "SELECT position FROM vacancy " +
-      "WHERE status = 1";
+  let getCandidateSkills = (id) => {
+    return new Promise((resolve, reject) => {
 
-    let connection = mysql.createConnection(config.database);
-    connection.connect();
-    connection.query(query, (err, data) => {
-      if (err) {
+      let query = "SELECT id, name FROM skill WHERE candidate_id=" + id;
+
+      let connection = mysql.createConnection(config.database);
+      connection.connect();
+      connection.query(query, (err, data) => {
+        if (err) {
+          connection.end();
+          console.log('error ' + err);
+          reject(new Error(err));
+        }
         connection.end();
-        console.log('error: ' + err);
-      }
-      let allVacancies = data.map(function (item) {
-        return item['position'];
+        user.skills = data;
+        resolve(data);
       });
-      connection.end();
-      user.allVacancies = allVacancies;
-      res.json(200, user);
-    });
+    })
+  };
+
+  let getCandidateExperience = (id) => {
+    return new Promise((resolve, reject) => {
+
+      let query = "SELECT id, DATE_FORMAT(`start`, \"%b %Y\") as start, DATE_FORMAT(`end`, \"%b %Y\") as end, " +
+        "position, location, company, description FROM experience" +
+        " WHERE candidate_id=" + id;
+
+      let connection = mysql.createConnection(config.database);
+      connection.connect();
+      connection.query(query, (err, data) => {
+        if (err) {
+          connection.end();
+          console.log('error ' + err);
+          reject(new Error(err));
+        }
+        connection.end();
+        user.experiences = data;
+        resolve(data);
+      });
+    })
+  };
+
+  let getCandidateVacancies = (id) => {
+    return new Promise((resolve, reject) => {
+
+      let query = "SELECT position FROM vacancy_has_candidate" +
+        " JOIN vacancy ON vacancy.id = vacancy_id " +
+        "WHERE candidate_id = " + id;
+
+      let connection = mysql.createConnection(config.database);
+      connection.connect();
+      connection.query(query, (err, data) => {
+        if (err) {
+          connection.end();
+          console.log('error ' + err);
+          reject(new Error(err));
+        }
+        let vacancies = data.map(function (item) {
+          return item['position'];
+        });
+        connection.end();
+        user.vacancies = vacancies;
+        resolve(vacancies);
+      });
+    })
+  };
+
+  let getAllVacancies = () => {
+    return new Promise((resolve, reject) => {
+      let query = "SELECT position FROM vacancy " +
+        "WHERE status = 1";
+
+      let connection = mysql.createConnection(config.database);
+      connection.connect();
+      connection.query(query, (err, data) => {
+        if (err) {
+          connection.end();
+          console.log('error: ' + err);
+          reject(new Error(err));
+        }
+        let allVacancies = data.map(function (item) {
+          return item['position'];
+        });
+        connection.end();
+        user.allVacancies = allVacancies;
+        resolve(allVacancies);
+      });
+    })
   };
 
   self.getCandidateById = (req, res, next) => {
     let candidateId = req.params.id;
-    getCandidate(candidateId, res);
-    next();
+    let user = {};
+    getCandidate(candidateId)
+      .then(
+        result => {
+          user = result;
+          return getCandidateSkills(candidateId);
+        },
+        error => {
+          console.log(error.message);
+          res.end();
+          next();
+        }
+      )
+      .then(
+        result => {
+          user.skills = result;
+          return getCandidateExperience(candidateId);
+        },
+        error => {
+          console.log(error.message);
+          res.end();
+          next();
+        }
+      )
+      .then(
+        result => {
+          user.experiences = result;
+          return getCandidateVacancies(candidateId);
+        },
+        error => {
+          console.log(error.message);
+          res.end();
+          next();
+        }
+      )
+      .then(
+        result => {
+          user.vacancies = result;
+          return getAllVacancies();
+        },
+        error => {
+          console.log(error.message);
+          res.end();
+          next();
+        }
+      )
+      .then(
+        result => {
+          user.allVacancies = result;
+          res.json(user);
+        },
+        error => {
+          console.log(error.message);
+          res.end();
+          next();
+        }
+      )
+
   };
 
   let updateCandidate = (candidate, id) => {
