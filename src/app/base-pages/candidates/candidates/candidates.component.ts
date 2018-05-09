@@ -7,6 +7,7 @@ import {Candidate} from './candidate';
 import {NewCandidate} from '../../service/candidate/newCandidate'
 import {FilterCandidates} from "../../service/candidate/filterCandidates";
 import {Pagination} from "../../common/components/footer/pagination";
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -23,7 +24,7 @@ export class CandidatesComponent implements OnInit {
   vacancies: string[] = [];
   total: number = 1;
   range: string;
-  filterPosition: string = 'All positions';
+  filterPosition: string = this.route.snapshot.paramMap.get('vacancy') || 'All positions';
   filterStatus: string = 'All statuses';
   positionValid: boolean = false;
   dropdownSettings = {};
@@ -32,7 +33,7 @@ export class CandidatesComponent implements OnInit {
 
   filter: FilterCandidates = {
     name: '',
-    position: '',
+    position: this.route.snapshot.paramMap.get('vacancy') || '',
     date: '',
     status: '',
     email: ''
@@ -62,7 +63,8 @@ export class CandidatesComponent implements OnInit {
   };
 
   constructor(private modalService: BsModalService,
-              private candidateService: CandidateService) {
+              private candidateService: CandidateService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
