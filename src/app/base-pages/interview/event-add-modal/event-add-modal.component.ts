@@ -52,6 +52,7 @@ export class EventAddModalComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log(this.dateEvent);
     this.newEvent.start = this.dateEvent;
     this.loadCandidatesForInterview();
     this.loadAllInterviewers();
@@ -77,7 +78,7 @@ export class EventAddModalComponent implements OnInit {
   }
 
   rightTime(){
-    return this.timeStartEvent > this.timeEndEvent
+    return this.timeStartEvent >= this.timeEndEvent;
   }
 
   showCandidates(){
@@ -115,7 +116,6 @@ export class EventAddModalComponent implements OnInit {
 
   loadAllInterviewers(){
     this.eventService.getAllInterviewers().subscribe((data: any) => {
-      console.log(data);
       this.allInterviewers = data.data;
     });
   }
