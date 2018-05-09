@@ -335,6 +335,11 @@ function candidateController() {
 
   self.updateCandidate = (req, res, next) => {
     let candidate = JSON.parse(req.body);
+    candidate.address = candidate.address || '';
+    candidate.phone = candidate.phone || '';
+    candidate.email = candidate.email || '';
+    candidate.salary = candidate.salary || '';
+
     let id = req.params.id;
 
     updateCandidate(candidate, id)
@@ -386,6 +391,10 @@ function candidateController() {
 
   self.addCandidate = (req, res, next) => {
     let candidate = JSON.parse(req.body);
+    candidate.address = candidate.address || '';
+    candidate.phone = candidate.phone || '';
+    candidate.email = candidate.email || '';
+    candidate.salary = candidate.salary || '';
 
     insertCandidate(candidate)
       .then(

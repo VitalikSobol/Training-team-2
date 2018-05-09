@@ -21,6 +21,7 @@ const routes: Routes = [
       {path: 'candidates/:vacancy', component: CandidatesComponent},
       {path: 'candidates', component: CandidatesComponent},
       {path: 'cabinet', component: CabinetComponent},
+      {path: '', redirectTo: '/interview', pathMatch: 'full' },
       {path: '**', component: NotFoundComponent}
     ]
   }

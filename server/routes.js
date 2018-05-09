@@ -62,6 +62,7 @@ module.exports = function (server) {
   server.get('.*\.eot', getAssets());
   server.get('.*\.ttf', getAssets());
   server.get('.*\.woff2', getAssets());
+  server.get('.*\.ico', getAssets());
 
   server.get('/\\/(.*)?.*/', restify.plugins.serveStatic({
     directory: `${__dirname}/../dist`,
