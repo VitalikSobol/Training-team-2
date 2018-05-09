@@ -37,8 +37,27 @@ export class VacanciesService {
     return this.http.post(url,JSON.stringify(vacancies))
   }
 
-  updateVacancy(vacancies: Vacancies) {
+  updateVacancy(item: Vacancies) {
     const url = `vacancies`;
-    return this.http.put(url, JSON.stringify(vacancies));
+    return this.http.put(url, JSON.stringify(item));
   }
+
+  editVacancy(item: Vacancies ) {
+    const url = `vacancies/${item.id}`;
+    return this.http.put(url,JSON.stringify(item))
+      .catch((error: any) => {
+        console.log(error);
+        return Observable.throw(error);
+      });
+  }
+
+  deleteVacancy(id: number) {
+    const url =`vacancies/${id}`;
+    return this.http.delete(url)
+      .catch((error: any) => {
+        console.log(error);
+        return Observable.throw(error);
+      });
+  }
+
 }

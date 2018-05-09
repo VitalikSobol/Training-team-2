@@ -52,12 +52,9 @@ function VacancyController() {
       "(`position`,`salary`,`description`)" +
       " VALUES ('" + vacancy.position + "', '" + vacancy.salary + "', '" + vacancy.description +
       "')";
-
     connection.query(query, (err, data) => {
       if (err) {
         connection.end();
-        console.log(data);
-        console.log(err);
         next(err);
       }
       else {
@@ -70,10 +67,7 @@ function VacancyController() {
   };
 
   this.updateVacancy = (req, res, next) => {
-
     let vacancy = JSON.parse(req._body);
-    let connection = mysql.createConnection(config.database);
-    connection.connect();
     let query = "UPDATE `vacancy` SET " +
       "`position ` = '" + vacancy.position + "'" +
       ", `description` = '" + vacancy.description+ "'" +
@@ -82,12 +76,12 @@ function VacancyController() {
       // ", `vacancy_id`= UPDATE id FROM vacancy WHERE `vacancy.id` =" + req.params.id;
     // ", `vacancy_id`= (SELECT id FROM vacancy WHERE `id` = '" + user.role +"') "+
     // "  WHERE `id`=" + req.params.id;
-
+    let connection = mysql.createConnection(config.database);
+    connection.connect();
     connection.query(query,  (err, data) => {
       if (err){
         connection.end();
         console.log(err);
-        console.log(data);
         next(err);
       }
       else {
@@ -98,6 +92,24 @@ function VacancyController() {
       }
     });
   };
+
+  this.deleteVacancy = (req, res, next) => {
+    let connection = mysql.createConnection(config.database);
+    connection.connect();
+    let query = "DELETE FROM `vacancy` WHERE `id`='" + req.params.id + "'";
+    connection.query(query,(err, data) => {
+      if (err) {
+        connection.end();
+        next(err);
+        console.log(err);
+      }
+      else {
+        connection.end();
+        res.json(200);
+        next();
+      }
+    });
+  }
 
 }
 

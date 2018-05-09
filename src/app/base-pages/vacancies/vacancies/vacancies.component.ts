@@ -18,6 +18,7 @@ export class VacanciesComponent implements OnInit {
   items: Vacancies[] = [];
   vacancies = {};
   isEdit: boolean = false;
+  false: boolean = false;
 
   total:number;
   range:string;
@@ -105,10 +106,10 @@ export class VacanciesComponent implements OnInit {
     this.isEdit = !this.isEdit;
   }
 
-  saveChanges(vacancies) {
-    this.vacanciesService.updateVacancy(vacancies).subscribe(
+  saveChanges(item) {
+    this.vacanciesService.updateVacancy(item).subscribe(
       error => console.log(error));
-    console.log(vacancies);
+    console.log(item);
   }
 
   clearNewVacancies(){
@@ -122,6 +123,25 @@ export class VacanciesComponent implements OnInit {
 
   notFound(){
     return !this.total;
+  }
+
+  //edit
+  setEditVacancies(item:Vacancies) {
+    item.edit = true;
+  }
+
+  editVacancy(item: Vacancies) {
+    this.vacanciesService.editVacancy(item).subscribe(
+      data => item.edit = false,
+      error => console.log(error));
+    // item.edit = false ;
+  }
+
+  deleteVacancy(item: Vacancies) {
+    this.vacanciesService.deleteVacancy(item.id).subscribe(
+      data =>this.items.splice(this.items.indexOf(item),1),
+      error => console.log(error));
+
   }
 
 }
