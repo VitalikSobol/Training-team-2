@@ -14,7 +14,7 @@ module.exports = function (server) {
   server.get("/api/vacancies", vacancy.getVacancies);
   server.post("/api/vacancies", vacancy.addVacancies);
   server.del("/api/vacancies/:id", vacancy.deleteVacancy);
-  server.put("/api/vacancies",vacancy.updateVacancy);
+  server.put("/api/vacancies/:id",vacancy.updateVacancy);
 
   server.post("/api/login", login.login);
   server.post("/api/registration", login.registration);
