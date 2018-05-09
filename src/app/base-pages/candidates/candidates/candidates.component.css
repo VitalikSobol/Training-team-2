@@ -50,6 +50,10 @@ html {
   overflow: hidden;
 }
 
+.candidate-photo img {
+  width: 100px;
+}
+
 .button-position,
 .button-status {
   display: flex;

@@ -34,7 +34,7 @@
               role="menu" aria-labelledby="button-position"
               (click)="setFilterPosition($event)">
             <li role="menuitem" *ngFor="let vacancy of vacancies">
-              <a class="dropdown-item">{{vacancy.position}}</a></li>
+              <a class="dropdown-item">{{vacancy}}</a></li>
             <li class="divider dropdown-divider"></li>
             <li role="menuitem">
               <a class="dropdown-item">All positions</a>
@@ -70,7 +70,7 @@
     <tbody>
     <tr *ngFor="let candidate of candidates">
       <td class='candidate-photo'>
-        <div><img src='{{candidate.image}}' alt='' width='100'></div>
+        <div><img src='{{candidate.image}}' alt='photo'></div>
       </td>
       <td class='candidate-name'>{{candidate.name}}</td>
       <td class='candidate-mail'>{{candidate.email}}</td>
@@ -109,6 +109,14 @@
       </label>
 
       <label>
+        *Last Name:
+        <input type="text" class="form-control" [(ngModel)]="newCandidate.lastName" required name="lastName" #lastName="ngModel">
+        <div [hidden]="lastName.valid || lastName.untouched" class="alert-danger">
+          Last Name is required
+        </div>
+      </label>
+
+      <label>
         *Email:
         <input type="email" class="form-control" [(ngModel)]="newCandidate.email" required name="email" #email="ngModel" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
         <div [hidden]="email.valid || email.untouched" class="alert-danger">
@@ -117,22 +125,8 @@
       </label>
 
       <span><b>*Position:</b></span>
-      <div class="btn-group new-position" dropdown>
-        <button [ngClass]="{ positionValid: positionValid}"
-                id="button-new-position" dropdownToggle type="button"
-                class="btn dropdown-toggle button-new-position"
-                aria-controls="dropdown-new-position">
-          <span>{{newCandidate.position}}</span>
-          <span class="caret"></span>
-        </button>
-        <ul id="dropdown-new-position" *dropdownMenu
-            class="dropdown-menu dropdown-position"
-            role="menu" aria-labelledby="button-new-position"
-            (click)="setPositionNewCandidate($event)">
-          <li role="menuitem" *ngFor="let vacancy of vacancies">
-            <a class="dropdown-item">{{vacancy.position}}</a></li>
-        </ul>
-      </div>
+      <ng-multiselect-dropdown [placeholder]="'Vacancy'" [data]="vacancies" [(ngModel)]="selectedVacancy"
+                               [settings]="dropdownSettings"></ng-multiselect-dropdown>
 
       <label>
         Status:
@@ -143,8 +137,8 @@
 
     <div class="modal-footer ">
       <button type="button" class="btn btn-success"
-              [disabled]="name.invalid || email.invalid || !positionValid"
-              (click)="addCandidate(newCandidate)">Save
+              [disabled]="name.invalid || email.invalid || lastName.invalid || selectedVacancy.length == 0"
+              (click)="addCandidate(newCandidate, selectedVacancy)">Save
       </button>
       <button type="button" class="btn btn-danger" (click)="clearNewCandidates()">Close</button>
     </div>

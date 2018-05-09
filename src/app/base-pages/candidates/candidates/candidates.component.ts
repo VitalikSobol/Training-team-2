@@ -26,6 +26,9 @@ export class CandidatesComponent implements OnInit {
   filterPosition: string = 'All positions';
   filterStatus: string = 'All statuses';
   positionValid: boolean = false;
+  dropdownSettings = {};
+
+  selectedVacancy: string[] = [];
 
   filter: FilterCandidates = {
     name: '',
@@ -43,6 +46,7 @@ export class CandidatesComponent implements OnInit {
 
   newCandidate: NewCandidate = {
     name: '',
+    lastName: '',
     email: '',
     position: '',
     status: 'New'
@@ -64,6 +68,17 @@ export class CandidatesComponent implements OnInit {
   ngOnInit() {
     this.getCandidates();
     this.numberColumns = this.numberColumns.nativeElement.childElementCount;
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      enableCheckAll: false,
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
   }
 
   getCandidates() {
@@ -73,7 +88,8 @@ export class CandidatesComponent implements OnInit {
       this.vacancies = data.vacancies;
       this.total = data.total;
       this.range = data.range;
-    });
+    },
+      error=>console.log(error));
   }
 
   paginationStart(){
@@ -155,26 +171,19 @@ export class CandidatesComponent implements OnInit {
     this.modalRef = this.modalService.show(template, this.config);
   }
 
-  setPositionNewCandidate(event){
-    this.newCandidate.position = event.target.innerText;
-    if(event !== ''){
-      this.positionValid = true;
-    }
-  }
-
   clearNewCandidates(){
     this.modalRef.hide();
     this.newCandidate.position = '';
     this.newCandidate.email = '';
     this.newCandidate.name = '';
-    this.positionValid = false;
+    this.newCandidate.lastName = '';
   }
 
-  addCandidate(newCandidate){
-    this.candidateService.addCandidate(newCandidate).subscribe(
-      error => console.log(error));
-    this.clearNewCandidates();
-    this.getCandidates();
+  addCandidate(newCandidate, selectedVacancy){
+    this.candidateService.addCandidate(newCandidate, selectedVacancy).subscribe(
+      data => this.getCandidates(),
+      error => console.log(error),
+      () => this.clearNewCandidates());
   }
 
 }

@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs/Observable';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Candidate} from './candidate';
 import {CandidateBase} from './candidateBase';
 import {NewCandidate} from './newCandidate';
@@ -63,7 +63,9 @@ export class CandidateService {
 
   addReview(id: number, content: String) {
     const url = `candidates/review/${id}`;
-    return this.http.post(url, content)
+    let token = localStorage.getItem("User");
+
+    return this.http.post(url, content, {headers:new HttpHeaders({'Authorization': token})})
       .catch((error: any) => {
         console.log(error);
         return Observable.throw(error);
@@ -89,9 +91,14 @@ export class CandidateService {
       });
   }
 
-  addCandidate(newCandidate: NewCandidate) {
+  addCandidate(newCandidate: NewCandidate, selectedVacancy: string[]) {
     const url = `candidates`;
-    return this.http.post(url, JSON.stringify(newCandidate))
+    let candidate = {
+      'newCandidate': newCandidate,
+      'vacancies': selectedVacancy
+    };
+
+    return this.http.post(url, JSON.stringify(candidate))
       .catch((error: any) => {
         console.log(error);
         return Observable.throw(error);
