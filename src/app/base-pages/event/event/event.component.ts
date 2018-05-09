@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {EventService} from "../../service/event/event.service";
 import {ActivatedRoute} from '@angular/router';
 import {Router} from "@angular/router";
+import * as moment from 'moment';
 /*import {Event} from './event'*/
 
 export class Event{
@@ -59,7 +60,6 @@ export class EventComponent implements OnInit{
       this.currentCandidates = data.candidates;
       this.currentUsers = data.users;
       this.colorEvent = Color[data.data.color.substring(1)];
-      console.log(this.currentEvent)
     });
   }
 
@@ -68,13 +68,11 @@ export class EventComponent implements OnInit{
     this.router.navigate(['interview']);
   }
 
-
   parseDate(objectEvent){
-    this.timeStartEvent = objectEvent.start.substring(11,16);
-    this.timeEndEvent = objectEvent.end.substring(11,16);
-    objectEvent.start = objectEvent.start.substring(0,10);
-    objectEvent.end = objectEvent.end.substring(0,10);
-
+    this.timeStartEvent = moment(objectEvent.start).format("HH:mm");
+    this.timeEndEvent = moment(objectEvent.end).format("HH:mm");
+    objectEvent.start = moment(objectEvent.start).format("YYYY-MM-DD");
+    objectEvent.end = moment(objectEvent.end).format("YYYY-MM-DD");
   }
 
   onSubmit(){
@@ -82,7 +80,6 @@ export class EventComponent implements OnInit{
     this.currentEvent.start += " " + this.timeStartEvent;
     this.currentEvent.end  += " " + this.timeEndEvent;
     this.updateEventById();
-    console.log(this.currentEvent);
   }
 
   rightTime(){
@@ -92,6 +89,10 @@ export class EventComponent implements OnInit{
   setColorEvent(event){
     this.currentEvent.color = '#' + event.target.id;
     this.colorEvent = Color[this.currentEvent.color.substring(1)];
+  }
+
+  goBackOnInterview(){
+    this.router.navigate(['interview']);
   }
 }
 
