@@ -7,6 +7,7 @@ import {Candidate} from './candidate';
 import {NewCandidate} from '../../service/candidate/newCandidate'
 import {FilterCandidates} from "../../service/candidate/filterCandidates";
 import {Pagination} from "../../common/components/footer/pagination";
+import {ActivatedRoute} from '@angular/router';
 
 
 @Component({
@@ -23,13 +24,16 @@ export class CandidatesComponent implements OnInit {
   vacancies: string[] = [];
   total: number = 1;
   range: string;
-  filterPosition: string = 'All positions';
+  filterPosition: string = this.route.snapshot.paramMap.get('vacancy') || 'All positions';
   filterStatus: string = 'All statuses';
   positionValid: boolean = false;
+  dropdownSettings = {};
+
+  selectedVacancy: string[] = [];
 
   filter: FilterCandidates = {
     name: '',
-    position: '',
+    position: this.route.snapshot.paramMap.get('vacancy') || '',
     date: '',
     status: '',
     email: ''
@@ -43,6 +47,7 @@ export class CandidatesComponent implements OnInit {
 
   newCandidate: NewCandidate = {
     name: '',
+    lastName: '',
     email: '',
     position: '',
     status: 'New'
@@ -58,12 +63,24 @@ export class CandidatesComponent implements OnInit {
   };
 
   constructor(private modalService: BsModalService,
-              private candidateService: CandidateService) {
+              private candidateService: CandidateService,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit() {
     this.getCandidates();
     this.numberColumns = this.numberColumns.nativeElement.childElementCount;
+
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      enableCheckAll: false,
+      itemsShowLimit: 3,
+      allowSearchFilter: true
+    };
   }
 
   getCandidates() {
@@ -73,7 +90,8 @@ export class CandidatesComponent implements OnInit {
       this.vacancies = data.vacancies;
       this.total = data.total;
       this.range = data.range;
-    });
+    },
+      error=>console.log(error));
   }
 
   paginationStart(){
@@ -155,26 +173,19 @@ export class CandidatesComponent implements OnInit {
     this.modalRef = this.modalService.show(template, this.config);
   }
 
-  setPositionNewCandidate(event){
-    this.newCandidate.position = event.target.innerText;
-    if(event !== ''){
-      this.positionValid = true;
-    }
-  }
-
   clearNewCandidates(){
     this.modalRef.hide();
     this.newCandidate.position = '';
     this.newCandidate.email = '';
     this.newCandidate.name = '';
-    this.positionValid = false;
+    this.newCandidate.lastName = '';
   }
 
-  addCandidate(newCandidate){
-    this.candidateService.addCandidate(newCandidate).subscribe(
-      error => console.log(error));
-    this.clearNewCandidates();
-    this.getCandidates();
+  addCandidate(newCandidate, selectedVacancy){
+    this.candidateService.addCandidate(newCandidate, selectedVacancy).subscribe(
+      data => this.getCandidates(),
+      error => console.log(error),
+      () => this.clearNewCandidates());
   }
 
 }

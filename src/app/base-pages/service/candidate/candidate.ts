@@ -13,5 +13,7 @@ export class Candidate {
   email: string;
   skills: Skill[];
   experiences: Experience[];
+  vacancies: string[];
+  allVacancies: string[];
 }
 

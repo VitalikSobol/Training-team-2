@@ -61,7 +61,6 @@ function UtilController() {
   };
 
   _self.addFilterForVacancies = (filter) => {
-
     let query = 'WHERE ';
 
     if (filter.position !== "") {

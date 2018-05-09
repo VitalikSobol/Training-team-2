@@ -17,6 +17,7 @@ const routes: Routes = [
       {path: 'event/:id', component: EventComponent},
       {path: 'interview', component: InterviewComponent},
       {path: 'vacancies', component: VacanciesComponent},
+      {path: 'candidates/:vacancy', component: CandidatesComponent},
       {path: 'candidates', component: CandidatesComponent},
       {path: 'cabinet', component: CabinetComponent},
       {path: '**', redirectTo: 'interview'}

@@ -79,7 +79,7 @@
         <!--</div>-->
       </td>
 
-      <td><a routerLink="">View Candidates</a></td>
+      <td><a [routerLink]="['/candidates', item?.position]">View Candidates</a></td>
     </tr>
     <tr class="text-center" *ngIf="notFound()">
       <td [attr.colspan]='numberColumns'>No result found</td>

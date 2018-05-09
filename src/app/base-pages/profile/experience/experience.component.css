@@ -96,6 +96,7 @@ textarea {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .experience-info input {
@@ -122,14 +123,54 @@ textarea {
   text-align: center;
 }
 
+button[disabled] {
+  opacity: 0.5;
+}
+
 .experience-item:first-child .experience-line {
   display: none;
+}
+
+input.ng-valid[required], input.ng-valid.required {
+  border: 1px solid #42A948;
+}
+
+input.ng-invalid[required] {
+  border: 1px solid #a94442;
+}
+
+.alert-danger {
+  font-style: italic;
+  background: none;
 }
 
 @media screen and (max-width: 767px) {
   .experience-info {
     width: 135px;
     font-size: 12px;
+  }
+
+  :host ::ng-deep dp-date-picker.dp-material .dp-picker-input {
+    width: 110px;
+  }
+
+  :host ::ng-deep dp-month-calendar{
+    width: 110px;
+  }
+
+  :host ::ng-deep dp-month-calendar .dp-calendar-month {
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    padding: 0;
+  }
+
+  .experience-info input {
+    width: 70px;
+  }
+
+  .experience-company input{
+    width: 90px;
   }
 }
 

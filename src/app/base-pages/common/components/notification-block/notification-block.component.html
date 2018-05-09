@@ -1,16 +1,17 @@
 <aside class="notification-block" id="notification-block">
 
-  <div>
+  <div *ngIf="candidates?.length">
 
     <div class="notification-header" (click)="isCandidates = !isCandidates">
       <h4 class="text-center">New candidates</h4>
-      <span class="glyphicon glyphicon-chevron-up"></span>
+      <span class="glyphicon glyphicon-chevron-up" *ngIf="isCandidates"></span>
+      <span class="glyphicon glyphicon-chevron-down" *ngIf="!isCandidates"></span>
     </div>
 
     <div class="notification-block-candidates" *ngIf="isCandidates">
       <div class="notification-body notification-body-candidates" [ngClass]="{'all-candidates': isAllCandidates}">
 
-        <div class="notification-card-candidates" *ngFor="let candidate of candidates">
+        <div class="notification-card-candidates" *ngFor="let candidate of candidates" [routerLink]="['/profile',candidate.id]">
 
           <div class="candidates-notif-photo">
             <div><img src={{candidate.image}} alt=""></div>
@@ -26,31 +27,35 @@
 
       </div>
 
-      <div class="notification-footer" (click)="isAllCandidates = !isAllCandidates">
-        <span>View All</span>
+      <div class="notification-footer" *ngIf="candidates?.length > 3" (click)="isAllCandidates = !isAllCandidates">
+        <span *ngIf="!isAllCandidates">View All</span>
+        <span *ngIf="isAllCandidates">Hide</span>
       </div>
 
     </div>
   </div>
-  <div>
+
+  <div *ngIf="events?.length">
 
     <div class="notification-header" (click)="isEvents = !isEvents">
       <h4 class="text-center">Next interview</h4>
-      <span class="glyphicon glyphicon-chevron-up"></span>
+      <span class="glyphicon glyphicon-chevron-up" *ngIf="isEvents"></span>
+      <span class="glyphicon glyphicon-chevron-down" *ngIf="!isEvents"></span>
     </div>
 
     <div class="notification-block-interview" *ngIf="isEvents">
       <div class="notification-body notification-body-interview" [ngClass]="{'all-interview': isAllEvents}">
 
         <div class="notification-card-interview" *ngFor="let event of events">
-          <p class="event-title">{{event.title}}</p>
-          <span class="event-start"> at {{event.start}}</span>
+          <p class="event-title">Interview: {{event.title}}</p>
+          <span class="event-start">{{event.date}} at {{event.time}}</span>
         </div>
 
       </div>
 
-      <div class="notification-footer" (click)="isAllEvents = !isAllEvents">
-        <span id="all-interview-notification">View All</span>
+      <div class="notification-footer" (click)="isAllEvents = !isAllEvents" *ngIf="events?.length >3">
+        <span *ngIf="!isAllEvents">View All</span>
+        <span *ngIf="isAllEvents">Hide</span>
       </div>
 
     </div>

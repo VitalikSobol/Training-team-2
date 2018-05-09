@@ -6,7 +6,7 @@
   background: #fff;
   position: absolute;
   right: 250px;
-  top: 50px;
+  top: 40px;
   z-index: 5;
 }
 
@@ -18,6 +18,8 @@
 .candidate-email {
   font-size: 12px;
   color: #757575;
+  width: 130px;
+  word-wrap: break-word;
 }
 
 .event-title {
@@ -112,6 +114,10 @@
   overflow: hidden;
 }
 
+.candidates-notif-photo img {
+  width: 100px;
+}
+
 .all-candidates,
 .all-interview {
   overflow: auto;
@@ -120,7 +126,13 @@
 .notification-card-candidates {
   display: flex;
   margin-bottom: 15px;
-  height: 65px;
+  min-height: 65px;
+  align-items: center;
+}
+
+.notification-card-candidates:hover {
+  background: #dcdcdc;
+  cursor: pointer;
 }
 
 .notification-card-candidates > div {
@@ -184,6 +196,6 @@
 
 @media (max-width: 992px) {
   .notification-block {
-    top: 50px;
+    top: 0;
   }
 }
