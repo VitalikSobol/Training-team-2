@@ -33,6 +33,32 @@
           </label>
         </div>
       </th>
+      <th class="mobile-device">
+        <label>
+          Status
+          <div class="btn-group" dropdown>
+            <button id="button-status" dropdownToggle type="button"
+                    class="btn dropdown-toggle button-status"
+                    aria-controls="dropdown-status">
+              <span>{{filterStatus}}</span>
+              <span class="caret"></span>
+            </button>
+            <ul id="dropdown-status" *dropdownMenu
+                class="dropdown-menu dropdown-status"
+                role="menu" aria-labelledby="button-status"
+                (click)="setFilterStatus($event.target.innerText)">
+              <li role="menuitem">
+                <a class="dropdown-item">open</a>
+                <a class="dropdown-item">closed</a>
+              </li>
+              <li class="divider dropdown-divider"></li>
+              <li role="menuitem">
+                <a class="dropdown-item">All statuses</a>
+              </li>
+            </ul>
+          </div>
+        </label>
+      </th>
       <th>Candidates</th>
     </tr>
     </thead>
@@ -53,30 +79,42 @@
 
 
       <td *ngIf="!item.edit || !isEdit">{{item.position}}</td>
-      <td *ngIf="item.edit">
+      <td *ngIf="item.edit && isEdit">
         <input class="text-muted  form-control" name="position" placeholder="Position"
-               [(ngModel)]="item.position" required #position="ngModel" *ngIf="!isEdit || item.edit" >
-        <!--<div [hidden]="position.valid || position.pristine" class="alert-danger">-->
-          <!--Vacancy is required-->
-        <!--</div>-->
+               [(ngModel)]="item.position" required #position="ngModel">
       </td>
 
       <td *ngIf="!item.edit || !isEdit"> {{item.description}}</td>
-      <td *ngIf="item.edit">
-        <input class="text-muted  form-control" name="position" placeholder="Description"
-               [(ngModel)]="item.description" required #description="ngModel" *ngIf= "!isEdit || item.edit">
-        <!--<div [hidden]="description.valid || description.pristine" class="alert-danger">-->
-          <!--Description is required-->
-        <!--</div>-->
+      <td *ngIf="item.edit && isEdit">
+        <input class="text-muted  form-control" name="description" placeholder="Description"
+               [(ngModel)]="item.description" required #description="ngModel">
       </td>
 
       <td *ngIf="!item.edit || !isEdit">{{item.salary}}</td>
-      <td *ngIf="item.edit">
-        <input class="text-muted salary  form-control" name="position" placeholder="Salary" pattern="\d{2,}"
-               [(ngModel)]="item.salary" required #salary="ngModel" *ngIf="!isEdit || item.edit">
-        <!--<div [hidden]="salary.valid || salary.pristine" class="alert-danger-salary">-->
-          <!--Salary is required-->
-        <!--</div>-->
+      <td *ngIf="item.edit && isEdit">
+        <input class="text-muted salary  form-control" name="salary" placeholder="Salary" pattern="\d{2,}"
+               [(ngModel)]="item.salary" required #salary="ngModel">
+      </td>
+
+      <td *ngIf="!item.edit || !isEdit">{{item.status}}</td>
+      <td *ngIf="item.edit && isEdit">
+        <div class="btn-group" dropdown>
+          <button dropdownToggle type="button"
+                  class="btn dropdown-toggle button-status"
+                  aria-controls="dropdown-status">
+            <span>{{item.status}}</span>
+            <span class="caret"></span>
+          </button>
+          <ul *dropdownMenu
+              class="dropdown-menu dropdown-status"
+              role="menu" aria-labelledby="button-status"
+              (click)="setStatus(item, $event.target.innerText)">
+            <li role="menuitem">
+              <a class="dropdown-item">open</a>
+              <a class="dropdown-item">closed</a>
+            </li>
+          </ul>
+        </div>
       </td>
 
       <td><a [routerLink]="['/candidates', item?.position]">View Candidates</a></td>

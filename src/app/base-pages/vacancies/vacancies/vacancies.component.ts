@@ -1,11 +1,11 @@
 import {Component, OnInit, TemplateRef, ViewChild, ElementRef} from '@angular/core';
 
 import {Vacancies} from './vacancies';
-import {BsModalService} from "ngx-bootstrap/modal";
+import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import {VacanciesService} from "../../service/vacancies/vacancies.service";
-import {FilterVacancies} from "../../service/vacancies/filterVacancies";
-import { Pagination} from "../../common/components/footer/pagination";
+import {VacanciesService} from '../../service/vacancies/vacancies.service';
+import {FilterVacancies} from '../../service/vacancies/filterVacancies';
+import {Pagination} from '../../common/components/footer/pagination';
 
 @Component({
   moduleId: module.id,
@@ -19,31 +19,32 @@ export class VacanciesComponent implements OnInit {
   vacancies = {};
   isEdit: boolean = false;
   false: boolean = false;
+  filterStatus: string = 'All statuses';
 
-  total:number;
-  range:string;
+  total: number;
+  range: string;
 
   filter: FilterVacancies = {
-    position:  '',
+    position: '',
     description: '',
     salary1: '',
-    salary2:'',
+    salary2: '',
+    status: ''
   };
 
   pagination: Pagination = {
     rows: 10,
     begin: 0,
-    page:1
+    page: 1
   };
 
-  @ViewChild("vacancyColumns")
-    numberColumns: ElementRef;
+  @ViewChild('vacancyColumns')
+  numberColumns: ElementRef;
 
   modalRef: BsModalRef;
 
   constructor(private modalService: BsModalService,
-              private vacanciesService: VacanciesService,
-  ) {
+              private vacanciesService: VacanciesService,) {
   }
 
   ngOnInit() {
@@ -60,39 +61,61 @@ export class VacanciesComponent implements OnInit {
     });
   }
 
-  filtering(id,filterValue){
-    this.filter[id]=filterValue;
+  filtering(id, filterValue) {
+    this.filter[id] = filterValue;
     this.pagination.page = 1;
     this.pagination.begin = 0;
+    if (this.filterStatus !== 'All statuses')
+      this.filter.status = this.filterStatus;
+    else this.filter.status = '';
     this.getVacancies();
   }
 
-  changeRowsNumber(numberRows){
+  setFilterStatus(filterStatus) {
+    this.filterStatus = filterStatus;
+    this.pagination.page = 1;
+    this.pagination.begin = 0;
+
+    if (filterStatus !== 'All statuses') {
+      this.filter.status = filterStatus;
+      this.getVacancies();
+    }
+    else {
+      this.filter.status = '';
+      this.getVacancies();
+    }
+  }
+
+  setStatus(item: Vacancies, status) {
+    item.status = status;
+  }
+
+  changeRowsNumber(numberRows) {
     this.pagination.rows = +numberRows;
     this.pagination.page = 1;
     this.pagination.begin = 0;
     this.getVacancies();
   }
 
-  goToPage(classDirection){
-    if(classDirection == "button-next" && this.hasNext()){
+  goToPage(classDirection) {
+    if (classDirection == 'button-next' && this.hasNext()) {
       this.pagination.begin += this.pagination.rows;
       this.pagination.page += 1;
       this.getVacancies();
     }
 
-    if(classDirection == "button-prev" && this.hasPrevious()){
+    if (classDirection == 'button-prev' && this.hasPrevious()) {
       this.pagination.begin -= this.pagination.rows;
       this.pagination.page -= 1;
       this.getVacancies();
     }
   }
 
-  hasNext(){
+  hasNext() {
     return this.total - this.pagination.rows - this.pagination.begin > 0;
   }
 
-  hasPrevious(){
+  hasPrevious() {
     return this.pagination.begin - this.pagination.rows >= 0;
   }
 
@@ -112,7 +135,7 @@ export class VacanciesComponent implements OnInit {
     console.log(item);
   }
 
-  clearNewVacancies(){
+  clearNewVacancies() {
     this.modalRef.hide();
     this.vacancies = '';
   }
@@ -121,12 +144,12 @@ export class VacanciesComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
-  notFound(){
+  notFound() {
     return !this.total;
   }
 
   //edit
-  setEditVacancies(item:Vacancies) {
+  setEditVacancies(item: Vacancies) {
     item.edit = true;
   }
 
@@ -134,14 +157,12 @@ export class VacanciesComponent implements OnInit {
     this.vacanciesService.editVacancy(item).subscribe(
       data => item.edit = false,
       error => console.log(error));
-    // item.edit = false ;
   }
 
   deleteVacancy(item: Vacancies) {
     this.vacanciesService.deleteVacancy(item.id).subscribe(
-      data =>this.items.splice(this.items.indexOf(item),1),
+      data => this.items.splice(this.items.indexOf(item), 1),
       error => console.log(error));
-
   }
 
 }

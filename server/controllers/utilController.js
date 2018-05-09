@@ -36,7 +36,7 @@ function UtilController() {
       query += ' AND ';
     }
     if (filter.position !== "") {
-      query += 'job_title LIKE ';
+      query += 'position LIKE ';
       query += '\'%' + filter.position + '%\'';
       query += ' AND ';
     }
@@ -73,7 +73,11 @@ function UtilController() {
       query += '\'%' + filter.description + '%\'';
       query += 'AND ';
     }
-
+    if (filter.status !== "") {
+      query += 'vacancy_status.name LIKE ';
+      query += '\'%' + filter.status + '%\'';
+      query += 'AND ';
+    }
     if (filter.salary1 !== "" || filter.salary2 !== "") {
       if (filter.salary1 !== "" && filter.salary2 !== "") {
         query += " salary >=" + filter.salary1 + " AND salary <= " + filter.salary2;

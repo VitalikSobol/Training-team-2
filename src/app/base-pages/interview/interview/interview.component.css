@@ -8,34 +8,40 @@
   padding: 20px 30px 20px;
 }
 
-@media screen and (min-width:100px) and (max-width:400px) {
-  .fc-today-button{
+@media screen and (min-width: 100px) and (max-width: 400px) {
+  :host ::ng-deep .fc-today-button {
     display: none;
   }
-  .fc-toolbar button {
+
+  :host ::ng-deep .fc-toolbar button {
     position: relative;
     width: min-content;
   }
-  .fc-toolbar .fc-right {
+
+  :host ::ng-deep .fc-toolbar .fc-right {
     float: left;
   }
-   .fc-toolbar .fc-left{
+
+  :host ::ng-deep .fc-toolbar .fc-left {
     margin-right: 2%;
   }
 }
 
-@media screen and (min-width:100px) and (max-width:350px) {
-  .fc-today-button{
+@media screen and (min-width: 100px) and (max-width: 350px) {
+  :host ::ng-deep .fc-today-button {
     display: none;
   }
-  .fc-toolbar button {
+
+  :host ::ng-deep .fc-toolbar button {
     width: fit-content;
   }
-   .fc-toolbar .fc-right {
+
+  :host ::ng-deep .fc-toolbar .fc-right {
     float: left;
     margin-left: 2%;
   }
-  .fc-toolbar .fc-left{
+
+  :host ::ng-deep .fc-toolbar .fc-left {
     margin-right: 2%;
     margin-bottom: 2%;
   }

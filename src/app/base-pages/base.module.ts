@@ -18,6 +18,7 @@ import {CandidatesComponent} from './candidates/candidates/candidates.component'
 import {BsDropdownModule} from 'ngx-bootstrap';
 import {CabinetComponent} from './cabinet/cabinet.component';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -40,7 +41,8 @@ import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
     FooterComponent,
     VacanciesComponent,
     CandidatesComponent,
-    CabinetComponent
+    CabinetComponent,
+    NotFoundComponent
   ]
 })
 export class BaseModule {

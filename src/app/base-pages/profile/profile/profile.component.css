@@ -90,7 +90,9 @@
 }
 
 .name-developer img {
-  margin-top: 10px;
+  height: 180px;
+  width: 220px;
+  margin: auto;
 }
 
 .name-developer {
