@@ -17,6 +17,7 @@ import {VacanciesComponent} from './vacancies/vacancies/vacancies.component';
 import {CandidatesComponent} from './candidates/candidates/candidates.component';
 import {BsDropdownModule} from 'ngx-bootstrap';
 import {CabinetComponent} from './cabinet/cabinet.component';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import {CabinetComponent} from './cabinet/cabinet.component';
     EventModule,
     ProfileModule,
     InterviewModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   declarations: [
     BaseComponent,

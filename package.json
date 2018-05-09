@@ -37,6 +37,7 @@
     "moment": "^2.22.1",
     "mysql": "^2.15.0",
     "ng-fullcalendar": "1.5.2",
+    "ng-multiselect-dropdown": "^0.1.7",
     "ng2-date-picker": "^2.9.0",
     "ngx-bootstrap": "^2.0.4",
     "nodemailer": "^4.6.3",

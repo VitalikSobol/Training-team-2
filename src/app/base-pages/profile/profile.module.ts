@@ -13,6 +13,7 @@ import {DpDatePickerModule} from 'ng2-date-picker';
 import { SkillsComponent } from './skills/skills.component';
 import { ExperienceComponent } from './experience/experience.component';
 import {RouterModule} from '@angular/router';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {RouterModule} from '@angular/router';
     FormsModule,
     NgbModule.forRoot(),
     DpDatePickerModule,
-    RouterModule
+    RouterModule,
+    NgMultiSelectDropDownModule
   ],
   declarations: [
     ProfileComponent,

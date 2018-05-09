@@ -35,7 +35,7 @@ function UtilController() {
 			query += ' AND ';
 		}
 		if (filter.position !== "") {
-			query += 'job_title LIKE ';
+			query += 'position LIKE ';
 			query += '\'%' + filter.position + '%\'';
 			query += ' AND ';
 		}

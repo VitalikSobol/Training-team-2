@@ -14,8 +14,8 @@
 
     <tabset>
       <tab heading="Add review" id="tab1">
-        <textarea #content class="review-text" placeholder="Write..."></textarea>
-        <button type="button" class="review-button" (click)="addReview(content.value)">Send</button>
+        <textarea #content [(ngModel)]="review" class="review-text" placeholder="Write..."></textarea>
+        <button type="button" class="review-button" (click)="addReview(review)">Send</button>
       </tab>
       <tab *ngFor="let review of reviews" heading={{review.last_name}}>
         <div class="review-content">
