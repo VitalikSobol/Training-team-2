@@ -21,12 +21,14 @@ function EventController() {
   };
 
   self.getEvents =  (req, res, next) => {
-    let start = req.query.from;
-    let end = req.query.till;
+
+    /*let start = req.query.from;
+    let end = req.query.till;*/
+
     let connection = mysql.createConnection(config.database);
     connection.connect();
-    let query_old = "SELECT id, title, start, end, allDay, description, color, place" +
-      " FROM event WHERE start >= '" + start + "'" + "AND end <= '" + end + "'";
+    /*let query_old = "SELECT id, title, start, end, allDay, description, color, place" +
+      " FROM event WHERE start >= '" + start + "'" + "AND end <= '" + end + "'";*/
     let query = "SELECT id, title, start, end, allDay, description, color, place" +
       " FROM event";
     connection.query(query,  (err, data) => {
@@ -234,7 +236,7 @@ function EventController() {
 
   self.createEvent =  (req, res, next) => {
     let event = JSON.parse(req.body);
-
+    console.log(event);
     findLastEvent()
     .then(
       result => {

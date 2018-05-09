@@ -6,6 +6,7 @@ import {VacanciesComponent} from './vacancies/vacancies/vacancies.component';
 import {InterviewComponent} from './interview/interview/interview.component';
 import {ProfileComponent} from './profile/profile/profile.component';
 import {CabinetComponent} from './cabinet/cabinet.component';
+import {EventComponent} from "./event/event/event.component";
 
 
 const routes: Routes = [
@@ -13,6 +14,7 @@ const routes: Routes = [
     path: '', component: BaseComponent,
     children: [
       {path: 'profile/:id', component: ProfileComponent},
+      {path: 'event/:id', component: EventComponent},
       {path: 'interview', component: InterviewComponent},
       {path: 'vacancies', component: VacanciesComponent},
       {path: 'candidates', component: CandidatesComponent},

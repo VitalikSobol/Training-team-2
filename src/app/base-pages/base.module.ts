@@ -10,6 +10,7 @@ import {FormsModule} from '@angular/forms';
 import {FooterComponent} from './common/components/footer/footer.component';
 import {VacanciesModule} from './vacancies/vacancies.module';
 import {CandidatesModule} from './candidates/candidates.module';
+import {EventModule} from "./event/event.module";
 import {ProfileModule} from './profile/profile.module';
 import {InterviewModule} from './interview/interview.module';
 import {VacanciesComponent} from './vacancies/vacancies/vacancies.component';
@@ -25,6 +26,7 @@ import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
     FormsModule,
     VacanciesModule,
     CandidatesModule,
+    EventModule,
     ProfileModule,
     InterviewModule,
     BsDropdownModule.forRoot(),
