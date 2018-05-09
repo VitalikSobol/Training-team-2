@@ -48,7 +48,7 @@
             </div>
           </div>
 
-          <span class="salary" *ngIf="!isEdit">{{user?.payment}}$</span>
+          <span class="salary" *ngIf="!isEdit && user?.payment">{{user?.payment}}$</span>
           <div class="form-group" *ngIf="isEdit">
             <input class="salary form-control" placeholder="salary" [(ngModel)]="user.payment" required name="salary"
                    #salary="ngModel">
@@ -65,7 +65,8 @@
           <div class="contact-item">
             <span class="text-muted title-info">Contact information:</span>
             <span class="text-muted number-title">Telephone:</span>
-            <span class="number-info" *ngIf="!isEdit">{{user?.phone}}</span>
+            <span class="number-info" *ngIf="!isEdit && user?.phone">{{user?.phone}}</span>
+            <span class="number-info" *ngIf="!isEdit && !user?.phone"> - </span>
             <div class="form-group" *ngIf="isEdit">
               <input class="number-info form-control" placeholder="phone" [(ngModel)]="user.phone" name="phone">
             </div>
@@ -85,7 +86,8 @@
 
           <div class="contact-item">
             <span class="text-muted">Address:</span>
-            <span class="address" *ngIf="!isEdit">{{user?.address}}</span>
+            <span class="address" *ngIf="!isEdit && user?.address">{{user?.address}}</span>
+            <span class="address" *ngIf="!isEdit && !user?.address"> - </span>
             <div class="form-group" *ngIf="isEdit">
               <input class="address form-control" placeholder="address" [(ngModel)]="user.address" name="address">
             </div>
