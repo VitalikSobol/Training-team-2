@@ -7,6 +7,7 @@ import {InterviewComponent} from './interview/interview/interview.component';
 import {ProfileComponent} from './profile/profile/profile.component';
 import {CabinetComponent} from './cabinet/cabinet.component';
 import {EventComponent} from "./event/event/event.component";
+import {NotFoundComponent} from './not-found/not-found.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,7 @@ const routes: Routes = [
       {path: 'candidates/:vacancy', component: CandidatesComponent},
       {path: 'candidates', component: CandidatesComponent},
       {path: 'cabinet', component: CabinetComponent},
-      {path: '**', redirectTo: 'interview'}
+      {path: '**', component: NotFoundComponent}
     ]
   }
 ];

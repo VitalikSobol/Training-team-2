@@ -13,6 +13,7 @@ module.exports = function (server) {
 
   server.get("/api/vacancies", vacancy.getVacancies);
   server.post("/api/vacancies", vacancy.addVacancies);
+
   server.post("/api/login", login.login);
   server.post("/api/registration", login.registration);
 

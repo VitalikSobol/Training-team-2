@@ -1,0 +1,19 @@
+.not-found {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  text-align: center;
+  min-height: calc(100vh - 40px);
+  background: #e8e8e8;
+  color: white;
+}
+
+.message {
+  font-size: 50px;
+  text-shadow: 1px 1px 8px #3f3f3f;
+}
+
+.code{
+  font-size: 70px;
+  text-shadow: 1px 1px 8px #3f3f3f;
+}
