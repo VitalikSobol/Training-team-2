@@ -65,7 +65,7 @@ export class EventComponent implements OnInit{
 
   updateEventById(){
     this.eventService.updateEventById(this.currentEvent).subscribe();
-    this.router.navigate(['interview']);
+    setTimeout(()=>{ this.router.navigate(['interview'])}, 500);
   }
 
   parseDate(objectEvent){
