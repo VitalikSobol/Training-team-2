@@ -1,11 +1,11 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CandidateService} from '../../service/candidate/candidate.service';
+import {CandidateService} from '../../../service/candidate/candidate.service';
 import {ActivatedRoute} from '@angular/router';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import {IDatePickerConfig} from 'ng2-date-picker';
 import * as moment from 'moment';
 import _date = moment.unitOfTime._date;
-import {Experience} from '../../service/candidate/experience';
+import {Experience} from '../../../service/candidate/experience';
 
 @Component({
   moduleId: module.id,

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Skill} from '../../service/candidate/skill';
-import {CandidateService} from '../../service/candidate/candidate.service';
+import {Skill} from '../../../service/candidate/skill';
+import {CandidateService} from '../../../service/candidate/candidate.service';
 
 @Component({
   selector: 'app-skills',

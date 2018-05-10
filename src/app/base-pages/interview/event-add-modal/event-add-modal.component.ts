@@ -1,5 +1,5 @@
 import {Component, Input, Output, OnInit, EventEmitter} from '@angular/core';
-import {EventService} from "../../service/event/event.service";
+import {EventService} from "../../../service/event/event.service";
 
 
 export class NewEvent{

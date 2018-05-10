@@ -10,18 +10,18 @@
       <label>*Period</label>
       <div class="exp-period">
         <dp-date-picker [(ngModel)]="experience.start" [config]="datePickerConfig" theme="dp-material"
-                        mode="month" [ngModelOptions]="{standalone: true}" #start="ngModel" required></dp-date-picker>
+                        mode="month" [ngModelOptions]="{standalone: true}" #start="ngModel" required placeholder="Form"></dp-date-picker>
         <div [hidden]="start.valid || start.untouched" class="alert-danger">
           Period is required
         </div>
         <span> - </span>
         <dp-date-picker [(ngModel)]="experience.end" [config]="datePickerConfig" theme="dp-material"
-                        mode="month" [ngModelOptions]="{standalone: true}" #end="ngModel" required></dp-date-picker>
+                        mode="month" [ngModelOptions]="{standalone: true}" #end="ngModel" required placeholder="Till"></dp-date-picker>
         <div [hidden]="end.valid || end.untouched" class="alert-danger">
           Period is required
         </div>
       </div>
-      <div [hidden]="experience.end > experience.start" class="alert-danger">
+      <div [hidden]="experience.end >= experience.start" class="alert-danger">
         Invalid period
       </div>
 

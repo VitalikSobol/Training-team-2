@@ -568,7 +568,7 @@ function candidateController() {
 
   self.getReview = (req, res, next) => {
     let query = "SELECT review.id, review.content, user.first_name, user.last_name, review.date " +
-      "FROM review JOIN user on user.id = review.user_id";
+      "FROM review JOIN user on user.id = review.user_id WHERE  review.candidate_id = "+ req.params.id;
     let connection = mysql.createConnection(config.database);
     connection.connect();
     connection.query(query, (err, data) => {

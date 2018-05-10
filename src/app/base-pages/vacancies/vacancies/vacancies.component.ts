@@ -3,8 +3,8 @@ import {Component, OnInit, TemplateRef, ViewChild, ElementRef} from '@angular/co
 import {Vacancies} from './vacancies';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import {VacanciesService} from '../../service/vacancies/vacancies.service';
-import {FilterVacancies} from '../../service/vacancies/filterVacancies';
+import {VacanciesService} from '../../../service/vacancies/vacancies.service';
+import {FilterVacancies} from '../../../service/vacancies/filterVacancies';
 import {Pagination} from '../../common/components/footer/pagination';
 
 @Component({
@@ -16,9 +16,15 @@ import {Pagination} from '../../common/components/footer/pagination';
 
 export class VacanciesComponent implements OnInit {
   items: Vacancies[] = [];
-  vacancies = {};
+  vacancies: Vacancies = {
+    position: '',
+    description: '',
+    salary: 0,
+    edit: false,
+    id: 0,
+    status: 'open'
+  };
   isEdit: boolean = false;
-  false: boolean = false;
   filterStatus: string = 'All statuses';
 
   total: number;
@@ -121,8 +127,9 @@ export class VacanciesComponent implements OnInit {
 
   addVacancies(vacancies) {
     this.vacanciesService.addVacancies(vacancies).subscribe(
-      error => console.log(error));
-    this.items.unshift(vacancies);
+      data => this.clearNewVacancies(),
+      error => console.log(error),
+      ()=>this.getVacancies());
   }
 
   changeMode() {
@@ -137,7 +144,7 @@ export class VacanciesComponent implements OnInit {
 
   clearNewVacancies() {
     this.modalRef.hide();
-    this.vacancies = '';
+    this.vacancies = new Vacancies();
   }
 
   openModal(template: TemplateRef<any>) {

@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {NotificationService} from '../../../service/notification/notification.service';
-import {NotificationEvent} from '../../../service/notification/notification-event';
-import {NotificationCandidate} from '../../../service/notification/notification-candidate';
+import {NotificationService} from '../../../../service/notification/notification.service';
+import {NotificationEvent} from '../../../../service/notification/notification-event';
+import {NotificationCandidate} from '../../../../service/notification/notification-candidate';
 
 @Component({
   selector: 'app-notification-block',

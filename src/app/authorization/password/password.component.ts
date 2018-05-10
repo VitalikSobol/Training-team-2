@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {AlertService} from '../../base-pages/service/alert/alert.service';
-import {PasswordService} from '../../base-pages/service/password/password.service';
+import {AlertService} from '../../service/alert/alert.service';
+import {PasswordService} from '../../service/password/password.service';
 import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({

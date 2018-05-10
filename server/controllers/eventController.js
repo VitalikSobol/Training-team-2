@@ -135,10 +135,9 @@ function EventController() {
   self.getNotification =  (req, res, next) => {
     let query = "SELECT id, title, date_format(start, '%H:%i') as time, date_format(start, '%d.%m.%Y') as date FROM event" +
       " WHERE current_timestamp() <= start";
-    let query_temp = "SELECT id, title, date_format(start, '%H:%i') as time, date_format(start, '%d.%m.%Y') as date FROM event";
     let connection = mysql.createConnection(config.database);
     connection.connect();
-    connection.query(query_temp,  (err, data) => {
+    connection.query(query,  (err, data) => {
       if (err) {
         console.log(err);
         connection.end();

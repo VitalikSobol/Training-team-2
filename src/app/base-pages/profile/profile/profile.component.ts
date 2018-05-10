@@ -1,9 +1,9 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import {CandidateService} from '../../service/candidate/candidate.service';
+import {CandidateService} from '../../../service/candidate/candidate.service';
 
-import {Candidate} from '../../service/candidate/candidate';
+import {Candidate} from '../../../service/candidate/candidate';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -62,12 +62,8 @@ export class ProfileComponent implements OnInit {
     this.user.status = $event;
   }
 
-  addExperience(experience) {
-    this.user.experiences.push(experience);
-  }
-
-  addSkill(skill) {
-    this.user.skills.push(skill);
+  updateInformation():void {
+    this.getCandidate(this.id);
   }
 
   openModal(template: TemplateRef<any>) {

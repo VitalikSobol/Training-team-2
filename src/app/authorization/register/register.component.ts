@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {User} from '../../base-pages/service/auth/user';
-import {AuthService} from '../../base-pages/service/auth/auth.service';
-import {AlertService} from '../../base-pages/service/alert/alert.service';
+import {User} from '../../service/auth/user';
+import {AuthService} from '../../service/auth/auth.service';
+import {AlertService} from '../../service/alert/alert.service';
 import {Router} from '@angular/router';
-import {RegisterUser} from '../../base-pages/service/auth/register-user';
+import {RegisterUser} from '../../service/auth/register-user';
 
 @Component({
   selector: 'app-register',

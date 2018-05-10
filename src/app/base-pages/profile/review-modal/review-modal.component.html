@@ -9,7 +9,9 @@
 
     <div class="information">
       <span class="information-label">Position: </span>
-      <span class="position-profile">{{user.position}}</span>
+      <div *ngFor="let vacancy of user.vacancies">
+        <span class="position-profile">{{vacancy}}</span>
+      </div>
     </div>
 
     <tabset>
