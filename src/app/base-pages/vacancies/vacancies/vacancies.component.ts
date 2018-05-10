@@ -16,9 +16,15 @@ import {Pagination} from '../../common/components/footer/pagination';
 
 export class VacanciesComponent implements OnInit {
   items: Vacancies[] = [];
-  vacancies = {};
+  vacancies: Vacancies = {
+    position: '',
+    description: '',
+    salary: 0,
+    id: 0,
+    edit: false,
+    status: 'open',
+  };
   isEdit: boolean = false;
-  false: boolean = false;
   filterStatus: string = 'All statuses';
 
   total: number;
@@ -121,9 +127,17 @@ export class VacanciesComponent implements OnInit {
 
   addVacancies(vacancies) {
     this.vacanciesService.addVacancies(vacancies).subscribe(
-      error => console.log(error));
-    this.items.unshift(vacancies);
+      data=> this.getVacancies(),
+      error => console.log(error),
+      () => this.clearNewVacancies());
   }
+
+
+  // addVacancies(vacancies) {
+  //   this.vacanciesService.addVacancies(vacancies).subscribe(
+  //     error => console.log(error));
+  //   this.items.unshift(vacancies);
+  // }
 
   changeMode() {
     this.isEdit = !this.isEdit;
@@ -137,7 +151,9 @@ export class VacanciesComponent implements OnInit {
 
   clearNewVacancies() {
     this.modalRef.hide();
-    this.vacancies = '';
+    this.vacancies.position = '';
+    this.vacancies.description = '';
+    this.vacancies.salary = 0;
   }
 
   openModal(template: TemplateRef<any>) {
