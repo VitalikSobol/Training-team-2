@@ -64,11 +64,10 @@
           </ul>
         </div>
       </th>
-      <th></th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let candidate of candidates">
+    <tr *ngFor="let candidate of candidates" [routerLink]="['/profile/', candidate.id]">
       <td class='candidate-photo'>
         <div><img src='{{candidate.image}}' alt='photo'></div>
       </td>
@@ -76,7 +75,6 @@
       <td class='candidate-mail'>{{candidate.email}}</td>
       <td class='candidate-position'>{{candidate.position}}</td>
       <td class='candidate-stage'>{{candidate.status}}</td>
-      <td><a [routerLink]="['/profile/', candidate.id]">Show Profile</a></td>
     </tr>
     <tr class="text-center" *ngIf="notFound()">
       <td [attr.colspan]='numberColumns'>No result found</td>

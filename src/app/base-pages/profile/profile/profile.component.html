@@ -130,11 +130,11 @@
 </div>
 
 <ng-template #experienceModal>
-  <app-experience-modal [refModal]="modalRef" (saveExperience)="addExperience($event)"></app-experience-modal>
+  <app-experience-modal [refModal]="modalRef" (saveExperience)="updateInformation()"></app-experience-modal>
 </ng-template>
 
 <ng-template #skillModal>
-  <app-skill-modal [refModal]="modalRef" (saveSkill)="addSkill($event)"></app-skill-modal>
+  <app-skill-modal [refModal]="modalRef" (saveSkill)="updateInformation()"></app-skill-modal>
 </ng-template>
 
 <ng-template #reviewModal>

@@ -2,8 +2,8 @@ import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {CalendarComponent} from 'ng-fullcalendar';
 import {Options} from 'fullcalendar';
-import {EventService} from '../../service/event/event.service';
-import {Event} from '../../service/event/event';
+import {EventService} from '../../../service/event/event.service';
+import {Event} from '../../../service/event/event';
 
 import {BsModalService} from 'ngx-bootstrap/modal';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';

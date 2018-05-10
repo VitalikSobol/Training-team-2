@@ -48,3 +48,10 @@ input.ng-invalid[required] {
   font-style: italic;
   font-size: 12px;
 }
+
+:host ::ng-deep dp-date-picker.dp-material .dp-picker-input {
+  border: 1px solid #c0c0c0;
+  border-radius: 8px;
+  padding-left: 8px;
+  width: 150px;
+}

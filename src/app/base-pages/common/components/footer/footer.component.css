@@ -115,4 +115,8 @@
   .button-nav button {
     margin: 0 0;
   }
+
+  .content-footer span {
+    padding: 0 10px;
+  }
 }

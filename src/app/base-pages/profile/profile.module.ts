@@ -4,7 +4,7 @@ import {CommonModule} from '@angular/common';
 import {TabsModule} from 'ngx-bootstrap/tabs';
 import {ProfileComponent} from './profile/profile.component';
 import {DropdowsStatusComponent} from './dropdown-status/dropdown-status.component';
-import {CandidateService} from '../service/candidate/candidate.service';
+import {CandidateService} from '../../service/candidate/candidate.service';
 import {SkillModalComponent} from './skill-modal/skill-modal.component';
 import {ExperienceModalComponent} from './experience-modal/experience-modal.component';
 import {ReviewModalComponent} from './review-modal/review-modal.component';

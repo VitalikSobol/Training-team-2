@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from '../service/user/user.service';
-import {User} from '../service/user/user';
+import {UserService} from '../../service/user/user.service';
+import {User} from '../../service/user/user';
 
 @Component({
   selector: 'app-cabinet',

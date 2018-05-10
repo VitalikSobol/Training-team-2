@@ -91,8 +91,8 @@
 
 .name-developer img {
   height: 180px;
-  width: 220px;
-  margin: auto;
+  width: 200px;
+  margin: 10px auto;
 }
 
 .name-developer {
@@ -145,7 +145,7 @@
 .skill-developer {
   padding: 15px 0 0 15px;
   border-top: 1px solid #c0c0c0;
-  height: 25%;
+  min-height: 25%;
 }
 
 .skill-developer .title-name-skill {
@@ -244,5 +244,13 @@ input.ng-invalid[required] {
 
   .contact-developer {
     border-bottom: 1px solid #c0c0c0;
+  }
+
+  .experience-developer {
+    min-height: 100px;
+  }
+
+  .skill-developer {
+    min-height: 100px;
   }
 }

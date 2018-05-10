@@ -9,8 +9,20 @@
   margin: 0;
 }
 
+.filter-salary {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.salary-search {
+  display: flex;
+  flex-direction: column;
+}
+
 .content-vacancies-table {
-  min-height: calc(100vh - 170px); /*3-height in vacancies*/
+  min-height: calc(100vh - 170px);
 }
 
 .content-vacancies-table table {
@@ -18,20 +30,44 @@
   border-bottom: 1px solid #dcdcdc;
 }
 
-/*.content-vacancies-table table td a {*/
-  /*text-decoration: none;*/
-  /*color: #3f3f3f;*/
-/*}*/
-
 .content-vacancies-table table tr > th:first-child,
 .content-vacancies-table table tr > td:first-child {
-  padding-left: 30px;
+  padding: 0 0 0 30px;
 }
 
 .content-vacancies-table table tr > th,
 .content-vacancies-table table tr > td {
-  height: 60px;
+  min-height: 60px;
   vertical-align: middle;;
+}
+
+th.column-description, td.column-description {
+  width: 40%;
+}
+
+th.column-salary, td.column-salary {
+  width: 15%;
+}
+
+th.column-status, td.column-status {
+  width: 10%;
+}
+
+th.column-vacancy, td.column-vacancy {
+  width: 20%;
+}
+
+td.edit-button {
+  width: 80px;
+}
+
+.edit-button button {
+  background: none;
+  border: none;
+}
+
+.filter-salary input {
+  width: 40%;
 }
 
 .content-vacancies-table table tr > td {
@@ -110,6 +146,7 @@
 .vacancies-button:hover {
   background: #c0c0c0;
 }
+
 /* ------- Validation ------ */
 input.ng-valid[required], input.ng-valid.required {
   border-left: 4px solid #42A948;
@@ -118,20 +155,69 @@ input.ng-valid[required], input.ng-valid.required {
 input.ng-invalid[required] {
   border-left: 4px solid #a94442;
 }
- input.salary {
-   width: 50%;
- }
 
-.alert-danger-salary{
+input.salary {
+  width: 50%;
+}
+
+.alert-danger-salary {
   color: #a94442;
-  background-color: #f2dede;
   border-color: #ebccd1;
   width: 50%;
-  background-image: linear-gradient(to bottom,#f2dede 0,#e7c3c3 100%);
+  background: #f2dede linear-gradient(to bottom, #f2dede 0, #e7c3c3 100%);
+
 }
 
-.salary-search{
-  display: flex;
-  flex-direction: row;
+.dropdown-status li a{
+  white-space: normal;
+  cursor: pointer;
 }
+
+.button-status > span{
+  font-weight: 700;
+  overflow: hidden;
+}
+
+.button-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 34px;
+  background: none;
+  border: 1px solid #ccc;
+}
+
+@media (max-width: 800px) {
+
+  td.column-salary, th.column-salary,
+  .status-filter {
+    display: none;
+  }
+
+  .table-responsive > .table > tbody > tr > td {
+    white-space: normal;
+  }
+
+  th.column-description, td.column-description {
+    width: 50%;
+  }
+
+  th.column-status, td.column-status {
+    width: 15%;
+  }
+
+  th.column-vacancy, td.column-vacancy {
+    width: 20%;
+  }
+
+  td.edit-button {
+    width: 40px;
+  }
+
+  .content-vacancies-table table tr > th:first-child,
+  .content-vacancies-table table tr > td:first-child {
+    padding: 0 0 0 5px;
+  }
+}
+
 

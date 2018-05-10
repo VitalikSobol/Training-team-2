@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Experience} from '../../service/candidate/experience';
-import {CandidateService} from '../../service/candidate/candidate.service';
+import {Experience} from '../../../service/candidate/experience';
+import {CandidateService} from '../../../service/candidate/candidate.service';
 
 @Component({
   selector: 'app-experience',
