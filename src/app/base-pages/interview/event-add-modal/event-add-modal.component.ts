@@ -3,6 +3,7 @@ import {EventService} from "../../service/event/event.service";
 
 
 export class NewEvent{
+    id: number;
     start: any;
     end: any;
     title: string;
@@ -52,7 +53,6 @@ export class EventAddModalComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.dateEvent);
     this.newEvent.start = this.dateEvent;
     this.loadCandidatesForInterview();
     this.loadAllInterviewers();
@@ -73,8 +73,6 @@ export class EventAddModalComponent implements OnInit {
     this.newEvent.color = '#' + this.idColorEvent;
     if(!this.newEvent.description){this.newEvent.description = ''}
     this.createNewEvent();
-    this.renderEvent.emit(this.newEvent);
-    this.newEvent = new NewEvent();
   }
 
   rightTime(){
@@ -142,6 +140,9 @@ export class EventAddModalComponent implements OnInit {
 
   createNewEvent(){
     this.eventService.createEvent(this.newEvent).subscribe((data: any) => {
+      this.newEvent.id = data.result;
+      this.renderEvent.emit(this.newEvent);
+      this.newEvent = new NewEvent();
     });
   }
 }

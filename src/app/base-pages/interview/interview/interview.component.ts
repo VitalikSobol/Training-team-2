@@ -36,6 +36,7 @@ export class InterviewComponent implements OnInit {
   loadEvents() {
     this.eventService.getEvents().subscribe((data: Event[]) => {
       this.events = data;
+      this.calendarOptions.events = data;
     });
   }
 
@@ -88,7 +89,6 @@ export class InterviewComponent implements OnInit {
   }
 
   goEvent(id) {
-    console.log(id);
     this.router.navigate(['event',id]);
   }
 

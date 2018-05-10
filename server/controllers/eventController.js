@@ -236,10 +236,10 @@ function EventController() {
 
   self.createEvent =  (req, res, next) => {
     let event = JSON.parse(req.body);
-    console.log(event);
     findLastEvent()
     .then(
       result => {
+        res.json(200, {result});
         return insertEvent(result, event);
       },
       error => {
@@ -249,7 +249,6 @@ function EventController() {
       }
     ).then(
       result => {
-        console.log(result);
         return createTaskForInsert(event.interviewers, event.candidates, result);
       },
       error => {
@@ -261,7 +260,6 @@ function EventController() {
       result => {
         Promise.all(result).then(
           result => {
-            console.log(result);
             res.end();
             next();
           },
