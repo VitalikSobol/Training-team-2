@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {AuthService} from '../service/auth/auth.service';
+import {AuthService} from '../../service/auth/auth.service';
 import {Router} from '@angular/router';
 
 @Component({
@@ -27,7 +27,6 @@ export class BaseComponent implements OnInit {
 
   changeVisibleMenu():void {
     this.isVisibleMenu = !this.isVisibleMenu;
-    console.log(this.isVisibleMenu);
   }
 
   logout():void {

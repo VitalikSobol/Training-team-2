@@ -1,9 +1,8 @@
 import {Component, OnInit} from '@angular/core';
-import {EventService} from "../../service/event/event.service";
+import {EventService} from "../../../service/event/event.service";
 import {ActivatedRoute} from '@angular/router';
 import {Router} from "@angular/router";
 import * as moment from 'moment';
-/*import {Event} from './event'*/
 
 export class Event{
   id: number;

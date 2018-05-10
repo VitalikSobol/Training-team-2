@@ -2,10 +2,10 @@ import {Component, OnInit, ViewChild, ElementRef, TemplateRef} from '@angular/co
 
 import {BsModalService} from "ngx-bootstrap/modal";
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
-import {CandidateService} from '../../service/candidate/candidate.service';
+import {CandidateService} from '../../../service/candidate/candidate.service';
 import {Candidate} from './candidate';
-import {NewCandidate} from '../../service/candidate/newCandidate'
-import {FilterCandidates} from "../../service/candidate/filterCandidates";
+import {NewCandidate} from '../../../service/candidate/newCandidate'
+import {FilterCandidates} from "../../../service/candidate/filterCandidates";
 import {Pagination} from "../../common/components/footer/pagination";
 import {ActivatedRoute} from '@angular/router';
 

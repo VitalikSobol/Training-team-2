@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {CandidateService} from '../../service/candidate/candidate.service';
+import {CandidateService} from '../../../service/candidate/candidate.service';
 import {ActivatedRoute} from '@angular/router';
 import {BsModalRef} from 'ngx-bootstrap/modal/bs-modal-ref.service';
 

@@ -21,6 +21,11 @@ html {
   margin-bottom: 0;
 }
 
+.candidates-table table tr:hover:not(.filters) {
+  cursor: pointer;
+  border-bottom: 3px solid #ddd;
+}
+
 .candidates-table table tr > th:first-child,
 .candidates-table table tr > td:first-child{
   padding: 0 30px ;
@@ -177,20 +182,21 @@ input.ng-invalid[required] {
   width: 100%;
 }
 
-@media (max-width: 992px) {
+@media screen and (max-width: 700px) {
+
+  .table-responsive > .table > tbody > tr > td {
+    white-space: normal;
+  }
+
   .candidates-table table th:nth-child(3),
   .candidates-table table td:nth-child(3),
-  .candidates-table table th:nth-child(5),
-  .candidates-table table td:nth-child(5){
+  .candidates-table table th:nth-child(4),
+  .candidates-table table td:nth-child(4){
     display: none;
   }
-}
 
-@media screen and (max-width: 600px) {
-  .candidates-table table th:nth-child(4),
-  .candidates-table table td:nth-child(4),
-  .candidates-table table th:nth-child(6),
-  .candidates-table table td:nth-child(6){
-    display: none;
+  .candidates-table table tr > th:first-child,
+  .candidates-table table tr > td:first-child{
+    padding: 0 5px ;
   }
 }

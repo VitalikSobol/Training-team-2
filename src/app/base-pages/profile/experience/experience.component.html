@@ -12,7 +12,7 @@
         <dp-date-picker [(ngModel)]="experience.start" [config]="datePickerConfig" theme="dp-material"
                         mode="month" placeholder="From" [ngModelOptions]="{standalone: true}"></dp-date-picker>
         <dp-date-picker [(ngModel)]="experience.end" [config]="datePickerConfig" theme="dp-material"
-                        mode="month" placeholder="To" [ngModelOptions]="{standalone: true}"></dp-date-picker>
+                        mode="month" placeholder="Till" [ngModelOptions]="{standalone: true}"></dp-date-picker>
         <div [hidden]="experience.end > experience.start" class="alert-danger">
           Invalid period
         </div>
