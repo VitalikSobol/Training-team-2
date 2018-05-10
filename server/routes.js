@@ -13,6 +13,9 @@ module.exports = function (server) {
 
   server.get("/api/vacancies", vacancy.getVacancies);
   server.post("/api/vacancies", vacancy.addVacancies);
+  server.del("/api/vacancies/:id", vacancy.deleteVacancy);
+  server.put("/api/vacancies/:id",vacancy.updateVacancy);
+
   server.post("/api/login", login.login);
   server.post("/api/registration", login.registration);
 
@@ -61,6 +64,7 @@ module.exports = function (server) {
   server.get('.*\.eot', getAssets());
   server.get('.*\.ttf', getAssets());
   server.get('.*\.woff2', getAssets());
+  server.get('.*\.ico', getAssets());
 
   server.get('/\\/(.*)?.*/', restify.plugins.serveStatic({
     directory: `${__dirname}/../dist`,

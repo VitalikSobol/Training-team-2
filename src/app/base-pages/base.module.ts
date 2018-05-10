@@ -17,6 +17,8 @@ import {VacanciesComponent} from './vacancies/vacancies/vacancies.component';
 import {CandidatesComponent} from './candidates/candidates/candidates.component';
 import {BsDropdownModule} from 'ngx-bootstrap';
 import {CabinetComponent} from './cabinet/cabinet.component';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   imports: [
@@ -28,7 +30,8 @@ import {CabinetComponent} from './cabinet/cabinet.component';
     EventModule,
     ProfileModule,
     InterviewModule,
-    BsDropdownModule.forRoot()
+    BsDropdownModule.forRoot(),
+    NgMultiSelectDropDownModule.forRoot()
   ],
   declarations: [
     BaseComponent,
@@ -38,7 +41,8 @@ import {CabinetComponent} from './cabinet/cabinet.component';
     FooterComponent,
     VacanciesComponent,
     CandidatesComponent,
-    CabinetComponent
+    CabinetComponent,
+    NotFoundComponent
   ]
 })
 export class BaseModule {

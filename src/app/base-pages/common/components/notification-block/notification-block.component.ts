@@ -35,5 +35,6 @@ export class NotificationBlockComponent implements OnInit{
   getNewCandidates() {
     this.notificationService.getCandidatesNotification().subscribe(
       (data:NotificationCandidate[])=>this.candidates = data["data"]);
+    console.log(this.candidates);
   }
 }
