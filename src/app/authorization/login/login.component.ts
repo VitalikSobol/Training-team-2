@@ -28,10 +28,11 @@ export class LoginComponent implements OnInit {
   }
 
   login(user: User): void {
-    this.authService.login(user).subscribe(
+    this.router.navigate(['/candidates']));
+    /*this.authService.login(user).subscribe(
       response => this.authService.setAuthorizationToken(response.headers.get('Authorization')),
       error => this.alertService.add(error.error.message),
-      () => this.router.navigate(['/candidates']));
+      () => this.router.navigate(['/candidates']));*/
   }
 
   closeAlert(alert: string): void {
